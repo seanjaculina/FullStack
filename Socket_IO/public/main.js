@@ -1,8 +1,16 @@
 //grab the form
 const chatArea = document.getElementById('chat-form');
 
+//get username from the url query string using qs library (see the docs) [this is for the front end to render. On the back end we simply use destructuring on the joinRoom (and as seen oin the emit below)]
+const { username } = Qs.parse(location.search, {
+  ignoreQueryPrefix: true,
+});
+
 //make a new socket
 const socket = io();
+
+//join the chat
+socket.emit('joinRoom', { username });
 
 //this one function will listend for all message emissions on the backend handling our chat, and show them in the dom with the dom manipulation we did below! Super simple on the front end: this is how it should look for any app
 
@@ -28,24 +36,11 @@ chatArea.addEventListener('submit', (e) => {
 
   //clear the input field for clean UI
   e.target.elements.m.value = '';
-  e.target.elements.m.focus();
+  e.target.elements.m.focus(); //automatically focus to the empty imput for the next message to be typed
 });
 
 //output message to the DOM (we socket.on (show) this message with message as its event in the backend)
 function outputMessage(message) {
-  //get the time of submission
-  const today = new Date();
-  const hour = today.getHours();
-  let mins = today.getMinutes();
-
-  //minutes less than 10 do not accomodate for a 0 in front, so handle this
-  if (mins < 10) {
-    mins = '0' + mins;
-  }
-
-  const time = hour + ':' + mins;
-  const postTime = time;
-
   //we are using a list to display messages, so we will need to grab the ul
   const ul = document.getElementById('messages');
 
@@ -53,14 +48,41 @@ function outputMessage(message) {
   li.classList.add('message-list-item'); //give the li a class for styling,e tc.
   const div = document.createElement('DIV'); //create the div that should show up inside th elist item which will hold message, users name, etc.
 
-  //add some html to this div: an article for the message, a span for the time and span for their username [do styling in the css of course]
-  const messageText = `<p class="message-text-p">${message}</p>`;
-  const timeSpan = `<span class="time-span">Time: ${postTime}</span>`;
-  const userName = '<span class="user-name-span">Placeholder name</span>';
+  //if this is simply the entry message, do not display a time or username again
+  if (message.message === 'Welcome to the chat') {
+    const messageText = `<p class="message-text-p">${message.message} ${username}</p>`;
+    div.innerHTML = messageText;
+    //append the div to the LI
+    li.appendChild(div);
+    ul.appendChild(li);
+    return;
+  }
+  //if the user is entering or joining the chat, only display a message that they joined. Not a time and username! This is for simpler UI
+  else if (
+    message.message.substring(
+      message.message.length - 19,
+      message.message.length
+    ) === 'has joined the chat' ||
+    message.message.substring(
+      message.message.length - 17,
+      message.message.length
+    ) === 'has left the chat'
+  ) {
+    const messageText = `<p class="message-text-p">${message.message}</p>`;
+    div.innerHTML = messageText;
+    //append the div to the LI
+    li.appendChild(div);
+    ul.appendChild(li);
+    return;
+  } else {
+    const messageText = `<p class="message-text-p">${message.message}</p>`;
+    const timeSpan = `<span class="time-span">Time: ${message.time}</span>`;
+    const userName = `<span class="user-name-span">User: ${message.username}</span>`;
 
-  div.innerHTML = messageText + timeSpan + userName;
+    div.innerHTML = messageText + timeSpan + userName;
 
-  //append the div to the LI
-  li.appendChild(div);
-  ul.appendChild(li);
+    //append the div to the LI
+    li.appendChild(div);
+    ul.appendChild(li);
+  }
 }

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Landing Page</title>
+  </head>
+  <body>
+    <!--this page will act as a landing page for a user to enter a user name and then they can enter the chat-->
+
+    <main>
+      <h1>
+        Welcome to the Basic Chat App. Enter a username to join the public room!
+      </h1>
+      <!--form that when button is pressed, takes us to the chat server-->
+      <form action="/chat" method="GET">
+        <label for="username">Enter your username</label>
+        <!--the username is sent as a query string so we can grab that with a library in our backend when handling the users names-->
+        <input
+          type="text"
+          name="username"
+          id="username"
+          placeholder="User Name"
+        />
+        <button type="submit">Join Room</button>
+      </form>
+    </main>
+  </body>
+</html>

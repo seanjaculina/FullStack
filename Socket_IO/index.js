@@ -3,6 +3,9 @@ const http = require('http'); //import http for socket io to work
 const path = require('path'); //import path to join dirname and public folder and also the html
 const socketio = require('socket.io'); //import socketio
 
+const formatMessage = require('./utils/messages'); //our utility function to gather the message info
+const { userJoin, getCurrentUser } = require('./utils/users'); //for handling user name, etc)
+
 const app = express(); //new instance of express (by convention it is called app)
 const server = http.createServer(app); //create a new server instance for socketio to run on that takes in the express app
 const io = socketio(server); //create a new io instance that uses the server we made [used for sending io to the front end!]
@@ -10,28 +13,47 @@ const io = socketio(server); //create a new io instance that uses the server we 
 //tell express to use static assets(css, images, etc.)
 app.use(express.static(path.join(__dirname, 'public')));
 
-//create a simple route
+const chatBot = 'Chat Bot';
+
+//username enter route
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
+  res.sendFile(path.join(__dirname, '/public/entry.html'));
 });
 
-//listen for a connection event on incoming sockets and log that a new user connected when a connnection is successful
+app.get('/chat', (req, res) => {
+  res.sendFile(path.join(__dirname, '/index.html'));
+});
+
+//listen for a connection event on incoming sockets and log that a new user connected when a connnection is successful an
 io.on('connection', (socket) => {
-  //Welcome the current user
-  socket.emit('message', 'Welcome to the chat');
+  socket.on('joinRoom', ({ username }) => {
+    const user = userJoin(socket.id, username);
+    socket.join();
 
-  //Broadcast when a new user connects [broadcast emits the message to everyone in the chat]
-  socket.broadcast.emit('message', 'A user has joined the chat');
+    //Welcome the current user
+    socket.emit('message', formatMessage(chatBot, 'Welcome to the chat'));
 
-  //runs when user disconnects
-  socket.on('disconnect', () => {
-    io.emit('message', 'A user has left the chat');
+    //Broadcast when a new user connects [broadcast emits the message to everyone in the chat]
+    socket.broadcast.emit(
+      'message',
+      formatMessage(chatBot, `${username} has joined the chat`) //this utility function returns the message object with user name and time
+    );
+
+    //runs when user disconnects
+    socket.on('disconnect', () => {
+      io.emit(
+        'message',
+        formatMessage(chatBot, `${username} has left the chat`)
+      );
+    });
   });
 
   //listen for a chat message: we emitted chatmessage on front end, so listen for it here
   socket.on('chatMessage', (msg) => {
-    //emit message to everyones UI so we use IO [this again, we called message and in our main.js we listen for all emission of 'message'! so itr will also be accomodated for and used]
-    io.emit('message', msg);
+    //get the current user
+    const user = getCurrentUser(socket.id);
+    //output the users message
+    io.emit('message', formatMessage(user.username, msg));
   });
 });
 
