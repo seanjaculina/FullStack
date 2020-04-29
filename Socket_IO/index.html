@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=\, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Socket App</title>
+  </head>
+  <body>
+    <div class="title-div">
+      <h1>Basic Chat</h1>
+    </div>
+
+    <!--socket chat form-->
+    <ul id="messages"></ul>
+    <form action="" id="chat-form">
+      <input autocomplete="off" id="m" />
+      <button>Send</button>
+    </form>
+
+    <!--to use the io methods: this is a must on the index.html no matter what-->
+    <script src="/socket.io/socket.io.js"></script>
+    <!--our frontend JS file that creates a new socket, and then listens for an emiter and logs to the client side a welcome message (for debug)-->
+    <script src="main.js"></script>
+  </body>
+</html>
