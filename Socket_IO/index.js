@@ -2,9 +2,9 @@ const express = require('express'); //import express for our main rendering serv
 const http = require('http'); //import http for socket io to work
 const path = require('path'); //import path to join dirname and public folder and also the html
 const socketio = require('socket.io'); //import socketio
-
 const formatMessage = require('./utils/messages'); //our utility function to gather the message info
-const { userJoin, getCurrentUser } = require('./utils/users'); //for handling user name, etc)
+
+const { userJoin, getCurrentUser } = require('./utils/users'); //for handling user name, etc) [destructuring these two functions fro the users module]
 
 const app = express(); //new instance of express (by convention it is called app)
 const server = http.createServer(app); //create a new server instance for socketio to run on that takes in the express app
@@ -20,6 +20,7 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '/public/entry.html'));
 });
 
+//on username submission, route to this pagev (which uses all the socket code)
 app.get('/chat', (req, res) => {
   res.sendFile(path.join(__dirname, '/index.html'));
 });
