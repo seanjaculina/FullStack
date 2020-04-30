@@ -79,7 +79,7 @@ function outputMessage(message) {
     const timeSpan = `<span class="time-span">Time: ${message.time}</span>`;
     const userName = `<span class="user-name-span">User: ${message.username}</span>`;
 
-    div.innerHTML = messageText + timeSpan + userName;
+    div.innerHTML = userName + timeSpan + messageText;
 
     //append the div to the LI
     li.appendChild(div);

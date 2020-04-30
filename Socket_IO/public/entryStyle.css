@@ -2,9 +2,10 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
+/*THE LANDING PAGE STYLING*/
 .main-div {
   display: flex;
   flex-direction: column;
@@ -18,10 +19,95 @@
   margin-top: 20px;
 }
 
-#username {
-  height: 30px;
+
+.user-name-span,
+.time-span {
+  font-size: 10px;
+  display: inline-block;
 }
 
-#main-submit {
-  padding: 15px;
+.time-span {
+  margin-left: 10px;
+}
+
+
+
+#username {
+  height: 30px;
+  width: 270px;
+  border-radius: 4px;
+  border: 1px solid #8ba4b1;
+  padding-left: 4px;
+}
+
+.enter {
+
+  height: 30px;
+  width: 80px;
+  border-radius: 4px;
+  border: 1px solid #8ba4b1;
+}
+
+.enter:hover {
+  color: white;
+  background-color: darkcyan;
+  border: none;
+}
+
+
+
+
+/*CHAT ROOM STYLING*/
+.title-div {
+  border-bottom: 1px solid black;
+  color: white;
+  background-color: cornflowerblue;
+}
+
+h1 {
+  text-align: center;
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+.message-list-item {
+  border-bottom: 1px solid rgba(15, 18, 41, 0.35);
+  margin-left: 10px;
+  width: 50%;
+}
+
+#chat-form {
+  background: rgba(15, 18, 41, 0.75);
+  padding: 3px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+#chat-form input {
+  border: 0;
+  padding: 10px;
+  width: 90%;
+  margin-right: 0.5%;
+}
+
+#send {
+  width: 13em;
+  background: rgb(130, 224, 255);
+  border: none;
+  padding: 10px;
+}
+
+#send:hover {
+  color: white;
+  background-color: darkcyan;
+  border: none;
+}
+
+#messages {
+  list-style-type: none;
+}
+
+#messages li {
+  padding: 5px 10px;
 }
