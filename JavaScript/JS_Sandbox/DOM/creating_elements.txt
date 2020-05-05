@@ -1,0 +1,39 @@
+//creating new dom elements
+
+//creating an LI
+const li = document.createElement('LI');
+
+//add a class to the li (in this case, match the class to all the other current LI's)
+li.className = 'collection-item';
+
+//add an id as learning purposes
+li.id = 'test-id';
+
+//adding any attribute
+li.setAttribute('style', 'color=red')
+
+//create text for this item [different from innerhtml which actually adds html tags, etc.]
+liText = document.createTextNode('List Item New');
+//append that text to the li element (remmeber text nodes are children of an element node)
+li.appendChild(liText);
+
+//put this li into the current list
+const currentList = document.querySelector('ul.collection');
+
+//and add the li to the ul
+currentList.appendChild(li);
+
+
+//add the x-mark to this li (it is a link in the html and has classes )
+const link = document.createElement('a');
+//assign this link the same class name as the others in the list (copy and past from the html attribute)
+link.className = 'delete-item secondary-content';
+//add some html (an icon tag) that represents the actual x [again, copy and paste from the html]
+link.innerHTML = '<i class="fa fa-remove"></i>';
+
+//append this link to the containg li we also just made
+li.appendChild(link);
+
+
+
+console.log(li)

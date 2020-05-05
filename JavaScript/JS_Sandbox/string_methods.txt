@@ -1,0 +1,42 @@
+let firstName = 'Tanner'
+ler lastName = 'Barcelos'
+
+//concat
+firstName.concat(' ',lastName);     => tanner Barcelos
+
+//length
+firstName.length;   => 6
+
+//casing
+
+toLowerCase() / toUpperCase()  <= obvious
+
+
+//we can index characters
+let a = firstName[1];   // 'a'    or use a.charAt(1)  // 'a'
+
+
+//get index of a character starting from index 0
+firstName.indexOf('a')  // 1
+
+//we can go from the back too length-1
+firstName.lastIndexOf('r') // 5
+
+
+//substrings (big for interviews)
+
+//get 'tan'   firstName.substring(0,3) // up to but not including 3 ('tan')
+
+
+//slice() similar to substring  [slices a string from start to finish-1]
+
+
+//splitting at a delim [returns array of given collection based off the splitting delimeter]
+firstName.split('');  => 't','a','n','n','e','r'
+
+
+//replace(curr,new)  will replace a particular value, if it exists
+
+
+
+//includes()    // will return if a string includes some particular substring, etc.

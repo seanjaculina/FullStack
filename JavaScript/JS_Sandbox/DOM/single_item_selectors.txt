@@ -1,0 +1,39 @@
+//single element html element selectors
+
+//getElementById(): returns the node at given ID and we can work with that targeted node in the DOM Tree
+const task = document.getElementById('task-title');
+//when passing into a variable, this is called 'caching the element'
+
+//redundant, but output the id of this elemnet (we know it from above, but this is for tutorial purposes)
+console.log(task.id)
+console.log(task.className) //none since it only has an ID
+
+
+//we can change the style.background of the element and text color, etc. (we would do this in css but this is all accessible with the DOM!!!)
+task.style.backgroundColor = '#333';
+task.style.color = '#fff';
+task.style.padding = '7px';
+
+//change the text content of the targeted elemmet and even change the inner html of it
+task.textContent = 'Hello, i just changed the value!!';
+task.innerText = 'Changed again';
+task.innerHTML = '<span style="color:green">Inserting HTML</span>'
+
+
+
+//the other single element selector is querySelector() MUCH BETTER THAN ID: Can target ANYTHING not just an ID or Class
+const query = document.querySelector('#task-title');  //we need to put the hash for the id or . for class, since query selector gets anything,w e must be explicit on what its getting
+
+console.log(query.childElementCount)  //the child is a ul
+
+
+//grab an li
+const list = document.querySelector('li');
+list.style.color = 'red';
+list.style.fontSize = '20px';
+
+//grab the last li in the table: last-child is a pseudo selector in css but its all a valid param in DOM methods
+const last = document.querySelector('li:last-child');
+last.style.backgroundColor = 'red';
+
+//we can grab all the li's with the multiple selectors and even use css special selectors as the params

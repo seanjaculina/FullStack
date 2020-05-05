@@ -1,0 +1,162 @@
+MongoDB:
+
+- MongoDB is a NoSQL database. That is, Not Just SQL
+
+- It is a non-relational database [MySQL is a relational]
+
+- MongoDB data is stored as collections of documents [different from tables in MySQL and Postrese]. They are very similar to JSON/JavaScript Objects : this makes picking up Mongo very easy
+		|
+		|__> they call it 'BSON'
+
+- Used in MEAN,MERN, etc. stacks
+
+
+Mac Installation:
+
+	- install brew on Mac [search brew on google]
+	- go to https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/ and follow the steps to download 	and run Mongo
+	- Download compass [MongoDB GUI to manage the database. Easier than using the shell]
+		|
+		|__> https://www.mongodb.com/download-center/compass
+
+	- See documentation/ go to YouTube for windows 
+
+
+
+MongoDB command cheat sheet: (type these in the cmd/terminal)
+	
+		- mongo 						-> starts mongo
+		- show dbs						-> shows all databases
+		- use acme						-> create or switch database
+		- db.dropDatabase()					-> Drop
+		- db.createCollection('name')				-> create a collection
+		- show collections					-> show collections
+		- db.name.insert({key: 'value' ,,,})			-> insert to the database
+		- db.name.insertMany([{key: 'value'},])			-> insert many (array of objects)
+		- db.posts.find()					-> get all rows
+		- db.find()..pretty()					-> get all rows formatted
+		- db.name.find({key: 'value'})				-> finds a row by key/value pair in BSON
+		- db.name.find().sort({key: 1}).pretty() 		-> sort ascending
+		- db.name.find().sort({key: -1}).pretty() 		-> sort descending
+		- db.name.find( optional {key: 'value'}).count()	-> count rows
+		- db.name.find().limit(2).pretty()			-> limit rows
+		- db.name.find().limit(2).sort({key: 'value'}).pretty()	-> chaining multiple functions
+
+
+		- db.name.find().forEach(function(doc){			-> for each (example here prints every blog post title)
+			print('Blog Post: ' + doc.title)
+		  })
+		
+		- db.name.findOne({key: 'value'})			-> find one row
+
+
+		- db.name.find({ title: 'Post One' }, {			-> find specific field
+  			title: 1,
+  			author: 1
+		  })
+
+
+
+		- db.name.update({ title: 'Post Two' },			-> update row
+		  {
+  			title: 'Post Two',
+  			body: 'New body for post 2',
+  			date: Date()
+		  },
+		  {
+  			upsert: true
+		  })
+
+
+
+
+		- db.name.update({ title: 'Post Two' },			-> update specific field
+		 {
+  			$set: {
+    			  body: 'Body for post 2',
+    			  category: 'Technology'
+  			}
+		  })
+
+
+
+		- db.name.update({ title: 'Post Two' },			-> increment field
+		  {
+  			$inc: {
+    			  likes: 5
+  			}
+		  })
+
+
+
+		- db.name.update({ title: 'Post Two' },			-> Rename field
+
+		  {
+  			$rename: {
+    			  likes: 'views'
+  			}
+		  })
+
+
+
+		- db.name.remove({key: 'value'})			-> Delete a row
+
+
+
+		- db.name.update({ title: 'Post One' },			-> Sub-documents
+		{
+  			$set: {
+    			  comments: [
+      			    {
+        			body: 'Comment One',
+        			user: 'Mary Williams',
+        			date: Date()
+      			    },
+      			    {
+        			body: 'Comment Two',
+        			user: 'Harry White',
+        			date: Date()
+      			    }
+    			  ]
+  			}
+		})
+
+
+
+
+		- db.name.find({					-> Find by element in array
+  			comments: {
+     			  $elemMatch: {
+       				user: 'Mary Williams'
+       			  }
+    			}
+  		    }
+		)
+
+
+
+		- db.name.createIndex({key: 'value'})			-> Add index
+
+	
+		- db.posts.find({					-> Text search		
+  			$text: {
+    			  $search: "\"Post O\""
+    			  }
+		  })
+
+
+		Greater & less Than
+		
+		db.name.find({ key: { $gt: 2 } })
+		db.name.find({ key: { $gte: 7 } })
+		db.name.find({ key: { $lt: 7 } })
+		db.name.find({ key: { $lte: 7 } })
+
+
+
+- Running the above commands after a new DB is created and a collection exists, allows us to look at data in many ways, access particulars that we may find useful, etc. It really all comes down to what you wish to do
+
+
+- It is easiest to open a text editor and make a json file, and then copy and paste that into mongo shell when you want to insert a new row to the database
+
+

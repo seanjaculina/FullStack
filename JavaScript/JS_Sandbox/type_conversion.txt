@@ -1,0 +1,33 @@
+let val = 5;
+
+
+//output:
+console.log(val); //5
+console.log(typeof val);  //number
+console.log(val.length) //undefined     
+
+//convert number to string  -> can all be done inline like this
+val = String(val);
+
+any of the primitive types can be converted to strings (string is simply represents the given object as a sequence of characters)
+
+
+//we can also use toString() which is more common for interview problems
+let x = 22;
+x = toString();
+console.log(typeof x); <- string NOT NUMBER ANYMORE
+
+//can use Number('10')  and parse the string number into an actual number! super console
+
+toFixed(precisionVal) will represent the number to n fixed digits
+
+
+NaN values will be returned if trying to convert booleans, null and undefined values to number, etc.
+
+
+//we can also use parseInt() to parse an int from a string input that was an actual number
+let y = '100'
+let z = parseInt(y);
+console.log(z) <- 100 , typeof z === Number!
+
+parseFloaat(val) to parse floats

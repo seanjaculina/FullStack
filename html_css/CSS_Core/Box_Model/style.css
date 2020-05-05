@@ -1,0 +1,27 @@
+* {
+  box-sizing: border-box;
+  /*Prevents box from growing: only modifications to particular areas in the box will change: without this
+  if we added padding to a box, the whole width would grow. This prevents that*/
+  margin: 0;
+  padding: 0;
+}
+
+.box {
+  background: #f4f4f4;
+  border: 2px gray solid;
+  margin-bottom: 1rem;
+  width: 500px;
+
+  /*padding for all sides*/
+  padding: 20px;
+  /*padding perside top,right,botton,left is the order (or we can use the padding-top,tight,m etc*/
+  padding: 20px 10px 20px 10px;
+
+  /*margin for all sides*/
+  margin: 30px;
+  /*margin per side top right bottom left we can also use margin-top, margin-left, etc. but this syntax is so much easier*/
+  margin: 20px 10px 20px 10px;
+}
+
+/*press alt - f12 in the browser and the dev tools will give a description of the box model on any elements
+we press on with the numbers for sizing we gave, etc. really cool!*/

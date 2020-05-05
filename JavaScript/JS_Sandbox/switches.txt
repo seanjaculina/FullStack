@@ -1,0 +1,14 @@
+switches can contain checks for anything really but in this case we are doing a boolean
+const age = 24;
+
+switch (age > 21) {
+  case true:
+    console.log('Is of age')
+    break;
+  case false:
+    console.log('Is not of age');
+    break;
+  default:
+    console.log('this is a default')
+    break;
+}

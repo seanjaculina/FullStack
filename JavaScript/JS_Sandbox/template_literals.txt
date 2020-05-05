@@ -1,0 +1,12 @@
+we know this from cs351
+
+
+a template string can basically use variables/expressions of JS inside a string 
+
+ex)
+
+let name = 'Tanner Barcelos'
+
+let message = `Hello, ${name}!`;    <- notice the `` instead of '' or "". We do this to make a tremplate literal
+                                       such that this string allows us to use vars/expressions
+

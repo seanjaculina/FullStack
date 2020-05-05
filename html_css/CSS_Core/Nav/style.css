@@ -1,0 +1,76 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/*Navbar styling*/
+
+/*float the div containing li's to the left of the parent ul container (to put nav links in top right)*/
+.nav-inner-container {
+  float: right;
+}
+
+.navbar {
+  list-style: none;
+  background: #4c6ca0;
+  overflow: auto;
+}
+
+/*make them inline-block level elements: will make each li field a block (we could also do float left)*/
+.navbar li {
+  display: inline-block;
+}
+
+.navbar li a {
+  text-decoration: none;
+  color: white;
+  /*to space out the links: make them a block element so we can use box-model styling*/
+  display: block;
+  /*2 fields will do top/botton and left/right in that order specified to values given*/
+  padding: 15px 20px;
+}
+
+.navbar li a:hover {
+  color: #333;
+  background-color: #dddddd;
+}
+
+
+/*
+--------------------------------------------------------------------------------------------------------
+*/
+
+/*side-menu styling*/
+.side-menu {
+  list-style: none;
+  border: 1px solid #dddddd;
+  border-radius: 10px;
+  width: 300px;
+  padding: 20px;
+}
+
+.side-menu li {
+  font-size: 18px;
+  line-height: 2.4em;
+  border-bottom: 1px dotted #dddddd;
+}
+
+/*pseudo-selector to grab last-child of the li's cool trick!*/
+.side-menu li:last-child {
+  border: none;
+}
+
+.side-menu li a {
+  color: #333;
+  text-decoration: none;
+}
+
+.side-menu li a:hover {
+  color: coral;
+}

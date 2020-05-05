@@ -1,0 +1,501 @@
+							Contents
+
+	a) About Node
+	b) Why Node
+	c) Use Cases
+	d) NPM [high level explanation]
+	e) Modules
+	f) Installing Node and unserstanding repl
+	g) Creating a project and initializing it with Node and a package.json
+	h) Creating a JS file and running it with Node
+	i) working with the path module
+	j) working with the file system module
+	k) working with the os module
+	l) working with the urls module [key]
+	m) working with events
+	n) making a server with http
+	o) Deploying
+
+
+
+
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+Node:
+
+	1) Node is a JavaScript runtime -> allows you to run JS in the console
+	2) Built on Chromes v8 engine, written in C++
+	3) NPM -> Node Package Manager largest open source library system of API's for developers (see later)
+
+
+
+
+
+
+
+
+
+
+
+
+Why Node?
+
+	1) Fast, efficient, and highly scalable
+	2) Event driven, non blocking IO model
+				|
+				|__ Works on a single thread using non-blocking I/O calls
+				|__ Supports 10's of thousands concurrent connections
+				|__ Optimizes throughput & scalability with many I/O operations
+				|__ All of this makes Node.js apps very fast and efficient
+
+	3) Popular in the industry
+	4) Same language for both front/backend (JS)
+					|
+					|__ Node used on front end with react, etc. MERN stack, etc.
+
+
+
+
+
+
+
+
+
+
+
+Best Types of Use Cases:
+
+	1) REST API & Microservices
+	2) Chat apps
+	3) CRUD -> blogs, shopping carts, social networks
+	4) Tools/utils (chrome extensions?)
+	5) ANYTHING THAT IS NOT CPU INTENSIVE
+
+
+
+
+
+
+
+
+
+NPM (Node Package Manager):
+
+	1) Used to install 3rd party packages (frameworks, libraries, tools, etc.)
+	2) Packages are stored in node_modules folder in your project source folder after you run npm init (see soon)
+	3) All dependencies are listed in a package.json file (json = javascript object notation)
+	4) NPM scripts can be created to run certain tasks (to run a server -> we are using this for our app)
+
+	npm init    <--- Generates package.json file (first time will ask a bunch of questions to configure the file)
+	npm install -g _package_name	<--- Installs a package globally
+
+
+
+
+
+
+
+
+
+
+
+Node Modules:
+
+	1) Node core modules (path, fs[file system], http, etc.)
+	2) 3rd party modules installed via NPM (e.g nunjucks, other API)
+	3) Custom modules 
+	
+	example:
+		const path = require('path');		<-- to #include or import like C++ and python (to import a library installed from npm) we need to use reuire() and pass it into a CONST VARIABLE [const === cannot be changed]
+
+
+
+
+
+
+
+
+
+
+
+Installing Node and understanding 'repl':
+
+	1) Go to https://node.js.org/en/ and download the latest version for your OS
+	2) From here, node is on your machine and you can mess with the repl
+
+	repl: [read eval print loop] which basically allows you to run JS in your console/terminal AMAZING!
+								|
+								|__ node --version => will show version in console
+								|__ console.log('hello');  => will print hello in the console. 
+	Many things can be done
+	
+
+
+
+
+
+
+
+
+
+
+
+
+Creating a project and initializing it with Node and a package.json:
+
+	1) In your favorite text editor (i use VSCode => https://code.visualstudio.com/) create a new project and then open your terminal/console in the director of the project [in vscode you can select terminal -> new terminal]
+	2) from here, type the following command => npm init [will create a package.json file asking you a bunch of config questions... to do a bare bones, do npm init -y]
+	3) Follow the prompts and then type yes at the end. From here, notice the file manager to the left shows package.json -> go there and confirm all your setting were good
+	4) At this point, no node_modules folder is there, yet because we have not run npm install some_package. Once we install something, it will create this folder AND
+	   add this package as a dependency [there are dependencies (packages) and dev dependencies (packages used for development purposes like nodemon for auto server refresh) to your package.json automatically
+	5) The main purpose of package.json is to manage dependencies
+
+	6) lets install uuid (dependency) and nodemon (dev dependency for live server reeload)
+		|
+		|__ npm install uuid
+		|__ npm install -D nodemon    [the -D installs as dev dependency]
+		|__ npm install -D eslint     [linting: formats the code to the specific language basically]
+			 |__ add linting script to json in the "scripts" portion -> "lint": "eslint" 
+			 |__npm run lint -- --init [configure lint settings-> follow prompt]
+			 |__ https://medium.com/dailyjs/adding-eslint-to-your-project-7bd4feca35a8
+
+	Never push node_modules to github [add this to .gitignore]
+	package-lock.json simply stores the versions of our dependencies as we install them
+
+
+
+
+
+
+
+
+
+
+Creating a file and running it:
+
+	1) In the directory, create a new file called index.js
+	2) write console.log('anything_here');
+	3) open terminal and write node index and press enter [this runs the file in node from within the terminal]
+
+	- Every file you create is considered a module that you would export in your project and use
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Path Module:
+
+/* eslint-disable no-undef */			//<--- linting step (ignore copying this unless the editor requires this fix)
+const path = require('path'); //node internal library so no ./ needed
+
+//base file name i.e => no dir path, just the file name
+const fileName = path.basename(__filename);
+console.log(fileName); //path_demo.js
+
+//directory name : the full path of the current working folder
+const directory = path.dirname(__filename);
+console.log(directory); //C:\Users\Tanner Barcelos\OneDrive\DEV\Front End Development\Node\NodeCrashCourse\reference 
+
+//the file extension
+const extension = path.extname(__filename);
+console.log(extension); // .js
+
+//create a path object -> returns object of the root, directory, basename, extension and file name (since we saved in variable we can use the dot operator tro access any)
+const object = path.parse(__filename);
+console.log(object.name);
+
+
+//concatenate paths [using .join() used to concatenate a folder/file to the working directory		e.g  path.join(__dirname, something,something);]
+
+
+
+
+
+
+
+
+
+
+
+
+
+File System Module:
+
+	- this module is used for reading/wriiting files and incorporates the path module, so, if you make a file to read/write text or anything,
+	you will need to require both path and file system('fs')
+
+	- below is a bunch of code, a lot is commented out for testing purposes. Please copy and paste it into your editor and uncomment everything
+	and run one block at a time (that means comment all the code out below a block)
+
+
+
+
+
+[here is the code]
+
+/* eslint-disable no-undef */
+const file = require('fs'); //import the file system module
+const path = require('path'); //path module
+
+
+//create a folder [this is async (uses callback aka: runs function normally then moves on)]
+// file.mkdir(path.join(__dirname, '/testFolder'), {}, err => {
+//   if (err) {
+//        throw err;
+//    } else {
+//        console.log('New folder created');
+//   }
+//});
+
+
+//join the directory name path to a new folder we named testFolder and
+//this takes in an object, so we leave it blank in this case because we have nothing to insert and then it also takes in the async callback, that is, we check if the file can be made without an error and throw one if it does, else, output a nice statement [this folder will be made in the current direcotry this fileSystem_demo.js resides in
+
+
+
+
+
+//create and write a file: join the working directory and the folder we want to put this file in and also the file type/name (added param versus the last example) trrhen the next param of writefile is the contents to write then the third is the async function, in this case, runs asyncronous error check if the file can be made (if the file was to exist already, trhe error would throw)
+// file.writeFile(path.join(__dirname, '/testFolder', 'test.txt'), 'Test Text', err => {
+//     if (err) {
+//         throw err;
+//     } else {
+//         console.log('file written');
+//     }
+// });
+
+
+
+
+// //appending to the existing file: writefile overrides the text, append adds to it -> since its all asyncrobnous, this could be done inside callback of write file if we wanted, the functions will run one by one
+// file.appendFile(path.join(__dirname, '/testFolder', 'test.txt'), '\nadding more text to the existing file', err => {
+//     if (err) {
+//         throw err;
+//     } else {
+//         console.log('file written');
+//     }
+// });
+
+
+
+
+//reading from a file : instead of content to add to file like append/write, you must put the char encoding, in this case, utf8 is text and notice the function now takes in an error and also the data, and we can display the data : see below
+file.readFile(path.join(__dirname, '/testFolder', 'test.txt'), 'utf8', (err, data) => {
+    if (err) {
+        throw err;
+    } else {
+        console.log(data);
+    }
+});
+
+
+//we can rename as well: see docs
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+OS Module:
+
+	- provides info on the users machine OS
+
+
+
+[code below]
+
+const os = require('os');
+
+
+//get users device platform
+console.log(os.platform()); //darwin for mac, win32 for PC
+
+//get architecture
+console.log(os.arch());
+
+//get cores
+console.log(os.cpus()); //returns object of info on all the cores of the machine
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+URL's module:
+
+
+	- for url/web stuff
+
+[code here]
+
+/* eslint-disable no-unused-vars */
+const url = require('url');
+
+//make a new url 
+const myURL = new URL('http://mywebsite.com/hello.html?id=100&status=active');
+
+
+//get serialized URL (the actual url)
+console.log(myURL.href);
+
+
+//get the host (root domain)
+console.log(myURL.host); //or hostname (hostname will not return the port, though)
+
+
+//path name: returns actual file 
+console.log(myURL.pathname);
+
+//serialized query
+console.log(myURL.search);
+
+
+//params object
+console.log(myURL.searchParams);
+
+//adding params
+myURL.searchParams.append('abc', '123');
+//then log
+
+//we can loop the params with forEach on the value and name (key/val pair)
+
+
+
+
+
+
+
+
+
+
+
+
+
+Events:
+
+	-docs: https://nodejs.org/api/events.html#events_events
+
+[sample code basics]
+
+const EventEmitter = require('events');
+
+//create an emitter class
+
+class myEmitter extends EventEmitter {}
+
+
+
+//Init the object [i.e create an object]
+const emitter = new myEmitter();
+
+//create an event listener
+emitter.on('event', () => console.log('Event fired!'));
+
+//init the event
+emitter.emit('event');
+
+
+
+
+
+
+
+
+
+
+
+http/servers:
+
+	- we are going to create a very basic server that simply server, or outputs hello there to the screen
+
+[code here]
+
+const http = require('http');
+
+
+//create a server: takes in a request and serves a response
+http.createServer((req, res) => {
+
+    //serve (write) a response
+    res.write('Hello there!');
+    res.end(); //always
+
+}).listen(5000, () => {
+    console.log('Server running')
+});
+//listen on a port: needed to run the request [to create the server]
+
+
+//this is the most simple web server ever : press ctrl + c to quit the server
+
+
+
+
+
+
+
+
+
+
+
+
+Deploying: Using heroku
+
+	- signup for a heroku account
+	- download the heroku cli -> search google: heroku cli
+	- cd to the project folder you want to deploy
+	- run heroku login
+	- login and then init a new git repo and do not include node_modules nor reference directory to repo
+	- git add all the files
+	- git commit
+	- then type heroku create and it will add all the files to a new heroku app
+	- go to heroku website and click on the app that was created -> then click deploy
+	- copy and past the create a new git repo option into the cmd
+	- then push to git push heroku master
+	- run heroku open and it will open your app in the browser and its deployed and online!
+

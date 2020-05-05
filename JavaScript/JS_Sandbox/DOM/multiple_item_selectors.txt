@@ -1,0 +1,35 @@
+//multiple selector
+
+//grab all the li's (they all have the same class, so we can use the elements bu class name multiple element selector)
+let items = document.getElementsByClassName('collection-item');
+console.log(items)  //will show a returned html collection which is a collection of elements in an object (different from node list seen below)
+
+//style the first li
+items[0].style.color = 'red';
+
+//style the last li
+items[items.length - 1].style.backgroundColor = 'red';
+
+
+//we could also use queryselectorall(param) to grab all elements with a given param
+let listItems = document.querySelectorAll('.collection-item');
+//this rreturns a nodelist not an html collection [nodelist allows us to see the text nodes in the list nodes, we can loop without converting to array, 
+//etc.] a nodelist is an array, so no need to convert to one! Super convenient for faster manipulation using queryselectorall
+console.log(listItems)
+console.log(listItems[0].style.color) //what is the color of the first li?
+console.log(listItems[0].textContent) //can get the text content of this node
+
+//we can convert the html collection into an array! (collection is an object)(this is how you convert anything to array using Array.from())
+items = Array.from(items);
+items.forEach(val => console.log(val))
+
+
+//loop the even and odd li's in the list and change the background color and font color
+const evens = document.querySelectorAll('li:nth-child(even)');
+evens.forEach(val => val.style.backgroundColor = 'blue');
+
+const odds = document.querySelectorAll('li:nth-child(odd)');
+odds.forEach(val => {
+  val.style.backgroundColor = 'gray';
+  val.style.color = '#fff'
+})

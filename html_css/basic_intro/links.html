@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Links</title>
+</head>
+
+<body>
+
+  <h1>Example of links</h1>
+  <!--<a></a> tag: this is called an anchor tag: it is used for linking to absolute urls (external sites) or relative urls (files in our directory structure)-->
+  <a href="https://www.google.com/" target="_blank">Go to Google.com</a>
+  <!--notice the two attributes
+    - href = "" : this is used to hold that url(relative path or the abslute url)
+    - target=" _blank" : this attribute specifies that we are targeting this url, and we want to open it in a new tab (by default the target is set to open as a
+    next page, which is not what we want. We want users to stay on our website, and only leave in anotehr tab. Do not self-suicide!)
+  -->
+
+  <!--we can put multiple links for example, in p tags for block level styling (anchors are inline elements)-->
+  <p>
+    <a href="https://nfl.com/" target="_blank">NFL.com</a>
+  </p>
+  <p>
+    <a href="https://nba.com/" target="_blank">NBA.com</a>
+  </p>
+
+  <!--images: use the img tag and then a src attribute which is the relative or absolute url/path to that image and then
+  an alt attribute which basically explains the image on the screen, if the server cannot display the image
+  <p>This is how the image displays in the broswer</p>
+  <img src="./baybridge.jpg" alt="">
+  <p>Images can actually be links! So if we clicked on this image, wed be navigated to a website about san francisco</p>
+  -->
+
+  <!--here is the source code for the image as a link and opening in a new tab with target blank as we have learned-->
+  <p>Click the image to navigate to a wikipedia on the bay bridge!</p>
+  <a href="https://en.wikipedia.org/wiki/San_Francisco%E2%80%93Oakland_Bay_Bridge" target="_blank">
+    <img src="./baybridge.jpg" alt="image-of-bridge-link">
+  </a>
+</body>
+
+</html>

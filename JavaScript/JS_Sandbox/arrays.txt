@@ -1,0 +1,49 @@
+//array declaration #1
+let evens = [2, 4, 6, 8, 10];
+
+//array declaration #2 with constructor
+let odds = new Array(1, 3, 5, 7, 9);
+
+
+//JS is amazing! We can have mixed type arrays ! 
+let mixed = [1, "tanner", new Date(), { "name": "tanner" }]
+
+console.log(evens)
+console.log(odds)
+console.log(mixed)
+
+//array methods (nonm-iteration methods)
+
+let len = mixed.length;
+let isArray = Array.isArray(mixed); //checks if given collection in method off the Array main object is an array
+
+console.log(len)      //4 (indices)
+console.log(isArray)  //true
+
+
+//we can use indexOf() to return the index, if found, of a given value
+
+//push()      <- PUTS to end of list
+//unshift()   <- PUTS val at front
+//pop()       <- POPS last value off
+//shift()     <- POPS from front (like queue)
+
+
+//get a range of values with splice(start,end(non-inc))
+
+
+//reverse() obvious
+
+concat() obvious
+
+sort(callback) where callback is the sorting style
+
+e.g: sort numbers ASCENDING ->  nums.sort((a,b) => return a-b)
+//b-a for descending
+
+the callback is called a 'compare' function
+
+can also be written as 
+nums.sort(function compare (a, b) {
+  return a - b;
+})

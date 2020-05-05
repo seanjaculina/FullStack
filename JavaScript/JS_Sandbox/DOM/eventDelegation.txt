@@ -1,0 +1,12 @@
+we saw that we could clear all tasks on a todo list by grabbing the ul, and then
+saving all its childre, converting that container to an array, then traversing that array removing that childre
+
+but what happens when a user wants to delete any specific todo? We need to take into account all li's as we do 
+not know which li they want to delete, so how can we handle this?
+
+EVENT DELEGATION!
+
+We put an event on a parent element, and delegate that event to all its children. Instead of bubbling up in event bubbling,
+we actually 'bubble down' and every element gets the event, but only when the x icon is pressed, an event to remove this child fires. Pretty cool
+
+This also applies for adding a new todo item to the list (dynamic changes that dont occur onload should use some form of event delegation)

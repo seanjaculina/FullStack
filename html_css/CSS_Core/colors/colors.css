@@ -1,0 +1,20 @@
+h1 {
+  color: red;
+}
+
+h2 {
+  color: rgb(69, 116, 211);
+  /*255 is the highest you can go for r,g,b values 255 would be sarkest of that color val*/
+}
+
+h3 {
+  /*we will use hex the most 3 or 6 long letters and nums
+  2 bits represent r,g,b so 22 22 22 is r=22 g=22 b=22
+  we will neever memorize all this, so vscode allows us to hover and make more
+  
+  color-hex.com <- great site to see color scheming for colors because
+  maybe we have a site we wanna match colors and scheme for
+
+  000 === black fff === white*/
+  color: #030063
+}

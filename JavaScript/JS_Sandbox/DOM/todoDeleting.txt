@@ -1,0 +1,46 @@
+deleting todos from a todo list app
+
+//deleting a specific todo
+
+//save the parent
+const listContainerDelegate = document.querySelector('ul.collection').addEventListener('click', deleteTodo);
+
+//the maoin logic
+function deleteTodo (e) {
+  e.preventDefault();
+
+  //we want the icon when pressed to delete an item, however, an icon tag is not a list element
+  //so we actually need to target the i tag by its classname but we then need to target.parentElement() x amount 
+  //of times till we actually get the li (the i tag is within an a tag which is within an li so we will need to use parentEelement twice)
+
+  //check if the target of the 'click' has a className of the foloowing string and if it does, go up x amount of parents till we target the li and then remove it
+  if (e.target.className === 'fa fa-remove') {
+    e.target.parentElement.parentElement.remove();
+  }
+
+
+}
+
+//delete all todos on clear button press
+const clearButton = document.querySelector('.clear-tasks');
+const parentContainer = document.querySelector('ul.collection')
+
+
+clearButton.addEventListener('click', removeTasks);
+
+function removeTasks (e) {
+  e.preventDefault();
+
+  let taskList = parentContainer.children;
+
+  //show some message to the user for accessibility purposes
+  if (taskList.length < 1) {
+    alert('Cannot remove any more elements')
+  }
+
+  taskList = Array.from(taskList);
+
+  taskList.forEach(el => {
+    parentContainer.removeChild(el);
+  });
+}

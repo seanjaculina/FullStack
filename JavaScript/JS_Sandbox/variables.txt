@@ -1,0 +1,14 @@
+This file contains notes on variables
+
+//Variables: var, const and let
+
+var name = 'Tanner Barcelos';                 //global scope: can be reassigned anywhere, anytime
+let newName = 'Hayden Barcelos';              //block scoped: they exist only in the scope of its block (Can also be global of course)
+const USA = 'USA';                            //constant: cannot be reassigned
+
+
+//initializing  variable
+let name_;
+//assigning that variable a value: JS is dynamic/weakly typed so it assumes the type at run time
+name_ = 'Jon Doe'
+console.log(name_)

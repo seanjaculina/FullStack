@@ -1,0 +1,47 @@
+//how to replace, change and delete items in the dom (importantr for todo list vanilla js project, etc
+//with user interactivity on a page where JS controls adding/deleting stuff)
+
+
+/**
+ * REPLACING AN ELEMENT
+ */
+
+//create element
+const newHeading = document.createElement('H2');
+
+//add an id
+newHeading.id = 'task-title';     // <-- the id of h2 
+
+//give the h2 a text node (some text) we can do this all within the appendChild()!
+newHeading.appendChild(document.createTextNode('Task List'));
+
+//grab the OLD HEADING IN THE DOM
+const oldHeading = document.getElementById('task-title');
+
+//parent of the old elements: the ul in this case
+const cardAction = document.querySelector('.card-action');
+
+//replace
+cardAction.replaceChild(newHeading, oldHeading);
+
+console.log(newHeading)
+
+
+
+//what about removing an element completely?
+
+/**
+ * REMOVING AN ELEMENT COMPLETELY
+ */
+
+//grab all li's
+const lis = document.querySelectorAll('li');
+//grab the parent container (the ul) to remove from
+const listContainer = document.querySelector('ul');
+//remove a given element (we can remove the element someone clicks on for a todo app)
+lis[0].remove();
+
+//can also remove a child from given index this way too
+listContainer.removeChild(lis[3]);
+
+//we can also get classes and attributes, etc. on any elements

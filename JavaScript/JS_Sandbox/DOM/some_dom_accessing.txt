@@ -1,0 +1,23 @@
+let val;
+
+//we can grab the whole document. this contains the whole html structure as nested objects
+val = document;
+
+//grab all the html elements, etc in the dom
+val = document.all
+
+//we can grab the head, the body, doctype
+val = document.head  //all the head html
+val = document.body //all the body html
+val = document.doctype
+
+//grab stylesheet info
+val = document.styleSheets
+
+//grab links on page
+val = document.links
+
+//the document object is robust. we have access to everything on a web page! We mostly will interact with the DOM 
+//through getElementById(), className, other methods to manipulate, not look at necessarily
+
+console.log(val)

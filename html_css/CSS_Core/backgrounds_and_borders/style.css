@@ -1,0 +1,50 @@
+#box-1 {
+  background-color: blanchedalmond;
+  /* 3 mandatory fields: width, color and style (many for each) but this is a lot: the border: property has a singlular line way (see below)
+  border-width: 3px;
+  border-color: red;
+  border-style: solid;
+  */
+  border: 3px red solid;
+  border-radius: 10px;
+  /*radius rounds corners*/
+
+}
+
+#box-2 {
+  background: #333;
+  /*background property can use color or img*/
+  color: #fff;
+  border: 3px solid #ff33dd;
+  /*we can round specific corners, or the whole top or bottom, etc*/
+  border-top-left-radius: 10px;
+  border-top-right-radius: 30px;
+}
+
+#box-3 {
+  /* image background property takes a url*/
+  background-image: url('./imgs/galaxy.jpg');
+  background-repeat: no-repeat;
+  /*contorls the repeat of the image if the size of the container > image width or height
+    we can control x axis, y, all, etc*/
+  background-size: cover;
+  /*will shrink the image to fill the container with the whole image scaled down*/
+  color: white;
+  height: 200px;
+  width: 40rem;
+  /*40 * 16 (16px === root html) === 400 smethond*/
+  /*we can change position on x/y axis too */
+
+  /*we can do most of the repat, cover, url stuff in one line: code below will overrid code above*/
+  background: url('./imgs/galaxy.jpg') no-repeat center center/cover;
+  width: 600px;
+  height: 300px;
+
+}
+
+
+#box-4 {
+  background: url('./imgs/graphql.png') no-repeat center center;
+  background-attachment: fixed;
+  /*image stays in place, fixed to window. This is really cool*/
+}

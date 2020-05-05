@@ -1,0 +1,94 @@
+const clearButton = document.querySelector('.clear-tasks');
+
+//add an event for the button (this could be chaained to the end of query selector too)
+// clearButton.addEventListener('click', (e) => {
+//   //prevent the default behavior on the click (stops all defaults: will not reload screen)
+//   e.preventDefault(); //always use this for good practice
+//   //on a click of the clear button, a message will print in the console
+//   console.log('hello')
+// })
+
+//there are more than just 'click' events:
+/**
+ * dblclick
+ * mousedown
+ * mouseup
+ * mouseenter (when hovering over a element with an event, some function is invoked)
+ * mouseleave
+ * 
+ * //similar as mounseenter and mouseleave (these fire only when going into main element)
+ * mouseover:  
+ * mouseout:
+ * 
+ * mousemove 
+ * (whever the mouse goes inside a targeted element with an event listener of this 
+ * type, it infinitely tracks your mouse movement as long as its hovering over the targeted 
+ * element with the event): tested below
+ */
+
+//adding an event to the whole document! super cool
+document.body.addEventListener('mousemove', (e) => {
+  e.preventDefault();
+  console.log('hello');
+})
+
+//the above takes in an ES6 arrow anonymous function, but we can also pass it a named fucntion too
+//add an event for the button (this could be chaained to the end of query selector too)
+// clearButton.addEventListener('click', onClick);
+// // ^
+// // |
+// function onClick (e) {
+//   e.preventDefault();
+//   console.log('Hello');
+// }
+
+
+//challenge: clear the task list using what we have learned so far
+
+//grab the parent contsainer of the list items
+const parentContainer = document.querySelector('ul.collection')
+
+//on the clear click, remove all children elements. 
+
+clearButton.addEventListener('click', removeTasks);
+
+function removeTasks (e) {
+  e.preventDefault();
+
+  /**
+   * SIDE NOTES:
+   * 
+   *  we can access the element we are firing an event on with the e param of our event function
+   *  and accessing its target e.target.(many properties to choose from to manipulate)
+   */
+  console.log(e.target.innerText) //gets the text of the button that has an event on it [the button we targeted with the event object]
+
+  //grab the parents children (which are the li's we wish to remove)
+  let taskList = parentContainer.children;
+
+  //convert to array so we can traverse this container of elements
+  taskList = Array.from(taskList);
+
+  //traverse this array removing each element
+  taskList.forEach(el => {
+    parentContainer.removeChild(el);
+  });
+}
+
+
+
+
+//to get keyboard/input fields 
+
+we can save the input field into a variable with getElementById() or querySelector()
+and then do variable.value  which returns the value in the input field (this is often used for forms)
+of course on the backend, this is done differently
+
+
+
+what about the 'keydown' event type?
+
+this is cool for showing what a user is typing on the screen,as they type 
+we could log e.target.value in the console when we put an keydown type event on a input field, etc.
+
+we can also 'blur' 'focus' 'cut' 'paste' events on inputs and tect input/form stuff

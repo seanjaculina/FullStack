@@ -1,0 +1,48 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+/*giving the body some rules*/
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.4em;
+}
+
+/*styling our boxes of text*/
+.box {
+  background: #f4f4f4;
+  border: 1px solid #343434;
+  margin-bottom: 10px;
+  padding: 20px;
+}
+
+/*style ALL the paragraphs that exist in the class of box*/
+.box p {
+  text-align: left;
+}
+
+.container {
+  margin: 30px auto;
+  /*often is 0 auto, but here we want a all around 30px margin (will allocate to top and bottom) since
+  auto overrides the l and r margins*/
+  max-width: 960px;
+  /*ALWAYS use max-width on containers/wrappers for content like this (for responsive design)*/
+}
+
+.clear {
+  clear: both;
+}
+
+#box-2 {
+  float: left;
+  /*60% of the container div*/
+  width: 68%;
+}
+
+#box-3 {
+  float: right;
+  /*will go next to box 2 and have a width of 30% of the remainng 40% available*/
+  width: 30%;
+}

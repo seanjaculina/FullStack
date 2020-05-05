@@ -1,0 +1,34 @@
+//function declaration
+function double (x) {
+  return x * x;
+}
+
+console.log(double(2)); //call the actual function
+
+
+//function expression
+const double_expression = function (x) {
+  return x * x;
+}
+console.log(double_expression(4));  //call the funcrtion on the variable
+
+//function immediately invokable
+(function (name) {
+  console.log(`Hello, ${name}`)
+})('Tanner'); //pass the argument here
+
+
+
+//property methods
+const todo = {
+  addTodo: function () {
+    console.log('Adding todo...')
+  },
+  delTodo: function () {
+    console.log('Deleting todo...')
+  }
+}
+
+//use the object reference and the key but call it! Super cool
+todo.addTodo();
+todo.delTodo();

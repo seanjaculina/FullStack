@@ -1,0 +1,14 @@
+we can use the math object to parse given arguments with math functionality
+
+Math.PI()
+Math.E;
+Math.round(2.1342)
+Math.ceil(4.84)
+Math.floor(4.44)
+Math.sqrt(25)
+Math.abs(-3)
+Math.pow(2,3) ===8
+Math.min(sequence of numbers here)
+Math.max(sequence of numbers here)
+Math.random() * Maximum_range_num  ====> ex) generate ran num between 0-100  => Math.floor(Math.random() * 100)  and makes sure we generate random number between 0-100 without decimals
+

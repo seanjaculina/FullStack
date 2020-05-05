@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <link rel="stylesheet" href="./style.css">
+
+  <title>CSS Positioning</title>
+</head>
+
+<body>
+
+  <!--give the divs a class of box such that we can make all boxes a default height/width but then give each 
+  a special id such that we can change the color specific to that div, change its position on the page, etc-->
+  <div id="box-1" class="box"></div>
+  <div id="box-2" class="box"></div>
+  <div id="box-3" class="box"></div>
+  <div id="box-4" class="box"></div>
+  <div id="box-5" class="box"></div>
+
+  <!--
+    Position values:
+      - Static: Not affected by top,left,right,bottom props/vals
+      - Relative: top,left,right,bottom values cause element to be moved from its normal position 
+      - Absolute: positioned relative to its parent element if that is positioned relative (i.e: a div positioned
+                  relative that contains boxes inside it that can be moved anywhere absolutely in that main div that is relative)
+      - Fixed: positioned relative to the viewport (screen on the device viewing the page)
+      - Sticky: positioned based on scroll position
+
+
+    Z-Index: defines the closeness of a element to the user looking at it: z-index of 1 will come to the front
+              of any container that had originally covered it
+  -->
+
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.box {
+  width: 100px;
+  height: 100px;
+}
+
+#box-1 {
+  /*relative allows us to move the box in every direction*/
+  position: relative;
+  /*moved 50 px from the left (so its reverse of what we'd think)*/
+  left: 50px;
+  /*moved from the bottom up 10px*/
+  bottom: 10px;
+  top: 30px;
+  background-color: red;
+  /*positions this the highest shown value: will overlap everything else if so*/
+  z-index: 1;
+}
+
+
+#box-2 {
+  /*position: fixed; /*good for keeping an element fixed to the position its at no matter where we scroll e.g: ads on a website
+  position: sticky will stick the elemnt anywhere and keep it there: good for navbars to sticck to the top at top:0 and be there no matter where we scroll*/
+  background-color: blue;
+}
+
+#box-3 {
+  background-color: green;
+}
+
+#box-4 {
+  background-color: gray;
+}
+
+#box-5 {
+  background-color: purple;

@@ -1,0 +1,27 @@
+tags will hve highest otder for style initially
+    e.g:  nav{
+      color:white
+    }
+
+    however, if that nav has a class, and we style itas so ..
+    .navClass{
+      color:green
+    }
+
+    classes have higher specificity thant he tag, so, its overriden
+
+    further, since ID's are unique, ID's have highest specificity, thus
+    if you have a element with an id and class, the ID attributes will override
+    the style of class and tag itself
+
+    if you want to override all specificity rules, and keep somthing important
+    we can mark that property !important
+    e.g
+
+    .navClass{
+      color: green !important;
+    }
+
+    #navID{
+      color: blue;  //this would override class style, but, we marked class style important, thus, it is overriden
+    }

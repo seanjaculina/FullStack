@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Working with Forms</title>
+</head>
+
+<body>
+
+  <!--Key: forms in html only are the structure and design and allowances toenter data, etc
+  IT DOES NOT DO ANYTHING ELSE! WE USE A BACKEND TO PROCESS THE DATA to do post, get, delete requests, etc.-->
+
+  <form action="none">
+    <!--div: non-semantic (no meaning) element. Used to just contain things. Used often to be able to often encapsulate elements
+    such that we can style those individually-->
+
+    <!--for attribute value MUST match the id attribute of the form input tag below it. 
+      label tag is used to label an input, etc,
+      Notice:
+          - type attribute defines the type of input: in this case we did 'text' which will give a text box
+          - the next div has a email input so, this input verifies behind the scenes that its an input of an email
+           (it looks like a text box, but it will validate email for us)
+    -->
+
+    <div>
+      <label for="name">Name</label>
+      <input type="text" name="name-input" id="name">
+    </div>
+    <div>
+      <label for="email">Email</label>
+      <input type="email" name="email-field" id="email" placeholder="e-mail">
+      <!--placeholder attribute will put a dim-text placeholder text in the field-->
+    </div>
+    <div>
+      <label for="text-field">Write me a story!</label>
+      <!--a text area is an area where we can enter text. The id should still match its label! The difference
+      here is the cols and rows. These are the default rows/cols to build the area. Can be changed-->
+      <textarea name="story-area" id="text-field" cols="20" rows="20"></textarea>
+    </div>
+
+    <!--we have selection boxes as well!-->
+    <div>
+      <label for="gender-selector">Select your gender</label>
+      <!--select tag: used to create a drop down of options to select-->
+      <select name="gender" id="gender-selector">
+        <!--the options should be inside the select and the value should match the text
+        notice: selected attribute: onload, this option will be pre-selected-->
+        <option value="male" selected>male</option>
+        <option value="female">female</option>
+        <option value="other">other</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="membership">Membership</label>
+      <input type="radio" name="membership" id="member-radio">Simple
+      <input type="radio" name="membership" id="member-radio">Plus
+      <input type="radio" name="membership" id="member-radio" checked>Plus
+      <!--the checked attribute will pre-select that radio onload-->
+    </div>
+
+    <div>
+      <!--radio is a circular input box, checkbox is intuiotve: its a checkbox-->
+      <label for="checkbox">Checkbox example</label>
+      <input type="checkbox" name="chevy" id="checkbox">Chevy
+      <input type="checkbox" name="ford" id="checkbox">Ford
+      <input type="checkbox" name="other" id="checkbox">Other
+    </div>
+
+    <!--input submit and button submit-->
+    <p>This is an input of type submit (not a button)</p>
+    <input type="submit" value="submit">
+    <p>This is a button. No difference in look!</p>
+    <button type="submit">submit</button>
+
+    <!--reset button re-sets all form fields-->
+    <button type="reset">reset</button>
+  </form>
+
+  <!--other inputs
+  
+    <input type="number": will only accept numbers! Will not even let us enter letters (except e) good for getting age from a user, etc
+    <input type="date": will create a selectable date option for the user to make a date with
+    remember the labels 'for' must match the input id
+  -->
+
+
+</body>
+
+</html>

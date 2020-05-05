@@ -1,0 +1,94 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #344a72;
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Raleway'),
+    local('Raleway-Regular'),
+    url(https://fonts.gstatic.com/s/raleway/v14/1Ptug8zYS_SKggPNyCMIT4ttDfCmxA.woff2) format('woff2');
+}
+
+/*get rid of underlines for links*/
+a {
+  text-decoration: none;
+}
+
+/*this is th MAIN container*/
+#container {
+  margin: auto;
+  max-width: 440px;
+  padding: 50px;
+}
+
+/*the form wrapper: the main div for the form itself (white portion)*/
+.form-wrap {
+  background-color: #ffffff;
+  padding: 15px;
+  width: 410px;
+}
+
+/*aligning all text in the form*/
+.form-wrap h1,
+.form-wrap p {
+  text-align: center;
+  line-height: 40px;
+  padding: 8px;
+}
+
+.form-wrap .form-group {
+  padding: 10px;
+
+}
+
+/*will put level on top of the form entry field*/
+.form-wrap .form-group label {
+  display: block;
+  padding: 5px;
+  font-size: .8rem;
+  /*80% of the rem*/
+}
+
+/*form input fields should be 100% of the form wrap container*/
+.form-wrap .form-group input {
+  width: 100%;
+  height: 38px;
+}
+
+
+/*button styling*/
+.form-wrap button {
+  color: white;
+  background-color: #49c1a2;
+  display: block;
+  width: 80%;
+  margin: auto;
+  border-radius: 4px;
+  padding: 6px;
+}
+
+/*give the hover color on the button a little accessibility color change*/
+.form-wrap button:hover {
+  background-color: #37a08e;
+}
+
+.form-wrap .bottom-text {
+  font-size: .7em;
+  padding: 10px;
+}
+
+footer {
+  padding: 8px;
+  font-size: .7em;
+  text-align: center;
+  color: white;
+}
+
+footer a {
+  color: #49c1a2;
+}

@@ -1,0 +1,29 @@
+//object literal
+const person_1 = {
+  firstName: 'Tanner',
+  lastName: 'Barcelos',
+  age: 24,
+  address: '3494 Victoria Avenue',
+  hobbies: ['Coding', 'Working Out', 'Sports', 'School'],
+  getBirthYear: function () {
+    return (new Date().getFullYear()) - this.age
+  }
+}
+
+//objects can have functions, nested objects, arrays etc. as key/values
+
+//to access properties of an object from within that object, it works just like classes! We need to use 
+// the 'this' keyword : see getBirthYear() which is a function that can be called that returns the year of birth
+// based off current year - the users this.age (this users age)
+
+//displaying object value from given indexed key
+console.log(person_1['firstName'])
+
+//the cleaner way to get a value
+console.log(person_1.lastName)
+
+console.log(person_1.age)
+
+console.log(person_1.getBirthYear() - 1)
+
+//go to MDN and read up on the date object to see all sorts of logic and methods

@@ -1,0 +1,51 @@
+div:
+  - non-semantic (no 'meaning'), used as a container for things
+  - is block level
+
+  semantic tags have meaning:
+    - <header>  would hold a landing image, maybe an h1 saying some welcome text (nav should definitely not go in header)
+    - <footer>  footer like copyright stuff
+    - <main>  main content for the page, which can contain any other semantic stuff
+    - <section> section of related, important stuff
+    - <article> posts, blog stuff
+    - <aside> side bar (perfect for sidebar nav)
+    - h# 
+    etc. ANYTHING THAT HAS MEANING FOR THE PAGE/STUFF WE SEE
+
+span:
+  - inline: will just be an inline container for something
+
+
+spacing:
+  - html does NOT accomodate for spacing . if i do :
+      tanner is     great
+      or 
+      tanner is great
+      the content would still be -> tanner is great
+
+      to actually tell html to add white space, we do ...
+          &nbsp; between the text we want to add x-amount of space to
+
+
+Entities:
+-------------------
+
+> < symbols: the proper way to display greater than and less than symbols
+    5 &gt; 2        -> 5 > 2      &gt === #62 in hex (we can use &#g2; hex syntax, but its not common)
+    2 &lt; 3        -> 2 < 3      &lt === #60
+
+    copyright symbol === &copy;
+    reg symbol === &reg;
+
+    currency:
+      cents === &cent;
+      pound === &pound;
+      yen === &yen;
+      euro === &euro;
+
+  we can card suits too (look up, do not feel like noting)
+
+  display code in browser
+  <code>
+    std::cout << "Hello, world" << std::endl;
+  </code>

@@ -1,0 +1,35 @@
+This file has notes on the console and console.log
+
+
+
+//alert('This is an alert function. It is a function from the window object in JS and allows alerts in the browser');
+
+/**
+ * Logging to the console
+ *  - use clg shortcut to produce the console.log() method
+ */
+
+console.log("Hello world!")
+console.log(22)
+console.log(true)
+console.log([{
+  "tanner": 22
+}, {
+  "Hayden": "22"
+}])
+
+//can create a table of tabular data (an object)
+console.table({ 'tanner': 24, 'hayden': 22, 'jen': 28 })
+
+//displaying error
+console.error('Error exists')
+
+//clearing the console
+console.clear()
+
+//warning
+console.warn('this is a warning')
+
+//timing some code (basic way)
+console.time()  //start
+console.timeEnd() //end

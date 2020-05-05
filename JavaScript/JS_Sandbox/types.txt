@@ -1,0 +1,22 @@
+This file explains data types
+
+//Data Types: primitive and reference data types
+
+//primitive types:
+/**
+ * String -> 'tanner'
+ * Number -> 1, 1.0, 3.14
+ * Boolean  -> true, false
+ * Null     -> points to nothing
+ * Undefined  -> has not been defined yet e.g: let name;   <- no value assignment, so it is in an undefined state
+ * Symbols    ->ES6 feature
+ */
+
+ //Reference types
+/**
+ * Arrays: [1,2,3,4,5] <- typeof actually returns object because an array IS AN OBJECT
+ * Object literal: const name = {'tanner':24}..    the wholeliterl object
+ * Functions: =>, function(){}, etc.
+ * Dates: date time, now etc.    const today = new Date();
+ * Anything else that is not a primitive type (e.g user defined Abstract data types, etc.)
+ */

@@ -1,0 +1,51 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+a {
+  color: #333;
+  text-decoration: none;
+}
+
+/*pseudo selectors :pseudo this one is for hover state
+a:hover {
+  color: coral;
+  text-decoration: line-through;
+}
+*/
+
+/*when clicked state
+a:visited {
+  color: red;
+}
+*/
+
+/*when the link is active: i.e being clicked
+a:active {
+  color: green;
+}
+*/
+
+.btn {
+  background: #4c6ca0;
+  color: white;
+  border: none;
+  font-size: 16px;
+  /*top/bottom l/r*/
+  padding: 10px 20px;
+  border-radius: 5px;
+  /*when hovering over, make a pointer*/
+  cursor: pointer;
+}
+
+/*change the button color ever so slitely to indicate it is hovered on for its state*/
+.btn:hover {
+  color: #f4f4f4;
+  background: #446190;
+}

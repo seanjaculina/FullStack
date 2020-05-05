@@ -1,0 +1,49 @@
+let val;
+
+//grab the unordered list [this is a parent to the list items]
+const list = document.querySelector('ul.collection');
+//grabbed the ul's first child (we used the list as the dom reference, however we could have just done document.queryselctor.. and got this but this is fancy)
+//const item1 = list.querySelector('.collection-item:first-child');
+
+val = list.childNodes;  //returns (node list) the list items and also the text nodes inside those nodes
+
+val = list.children;    //will return html collection (so will return an collection of each list item as a whole which has multiple attributes attached)
+//children is used more
+
+val = list.childNodes[0].nodeType //returns 3 => 'text node'
+
+
+//get children element nodes
+val = list.children
+val = list.children[list.children.length - 1] //gets last child in the children li collection to the list [ul parent]
+
+//change last child of list backgorund color
+list.children[list.children.length - 1].style.backgroundColor = 'red';
+
+//change its text
+list.children[list.children.length - 1].textContent = 'Hello there'
+
+//we can get first and last with actual built ins
+val = list.firstChild           //returns the first child (text node) in the li, not the ekemenbt! So, we need to see the difference
+val = list.firstElementChild    //returns the first child element (an li)
+
+val = list.lastChild //same as firs tbut last
+val = list.lastElementChild //same
+
+
+//and of course we can get attributes like style, can change them, etc.
+
+
+//getting parent node of the ul (which shoiuld be card-action div)
+val = list.parentNode
+
+//ofcourse we can get the parent of the li's which would be the ul
+
+//count children from a parent
+val = list.childElementCount
+
+//we can go to the next sibling in the tree (this would be the next new element (in this case the clear tasks button))
+val = list.nextSibling; //returns the next siblings first node in that node (which is text)
+val = list.nextElementSibling //this of course returns the element itself (which is a button and the attributes)
+
+console.log(val)

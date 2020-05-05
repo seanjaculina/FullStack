@@ -1,0 +1,121 @@
+/*
+  Basic css styling syntax
+
+    selector{
+      property: value;
+    }
+*/
+
+* {
+  /*border-box will set this page to use the new box-model (common practice)*/
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Comic Neue', cursive;
+  /*from our google font we linked in in the html:
+  This style will be the default for ALL HTML IN THE PAGE UNLESS WE OVERRIDE THEM
+  AS I DID IN SOME CSS RULES BELOW (CONFIRM THIS IN THE LIVE RENDER OF THE HTML)*/
+}
+
+
+/*body element selector*/
+body {
+  background-color: turquoise;
+}
+
+/*h1 element selector*/
+h1 {
+  color: red;
+  text-align: center;
+}
+
+/*ul element selector*/
+ul {
+  list-style-type: none;
+}
+
+li {
+  padding: 5px;
+  border: 1px solid red;
+  margin: 20px;
+  text-align: center;
+}
+
+/*id selector */
+#hello {
+  margin: 0 auto;
+  margin-bottom: 15px;
+  /*will put a 15px margin between this container and the next div*/
+  width: 30em;
+  color: white;
+  background-color: teal;
+  padding: 10px;
+  text-align: center;
+  border: 5px solid black;
+}
+
+
+/*nested selectors [targets all specified nested elements to the root (first listed) element of the chain*/
+#hello p {
+  font-size: 30px;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.classDiv {
+  margin: 0 auto;
+  margin-bottom: 40px;
+  width: 30em;
+  /*30 * the pixel size of its parent (in this case, the parent is the root element, which is html, which is by default 16px) so 30*16 === 480
+  and if we changed this to 480px it would look the same KEY em,rem are important for relativity of sizing*/
+  color: white;
+  background-color: teal;
+  padding: 10px;
+  text-align: center;
+  border: 5px solid black;
+}
+
+.classDiv p {
+  font-size: 30px;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+/*notice in the html, the two divs look similar. For tutorial purposes,
+we made a class and an ID'd version of the divs, but notice the styling is the same!
+If we need to have repeated containers, elememnts, etc. that look the same, its best
+to simply give them all the same id and have one style for multiple html elements. 1 id to have sepecific 
+style for multiple elemnents. By convention, ID shoudl be specific to only one element, though,
+so it would be best to give multiple similars a class as these similar things would
+belong to 'this class' makes sense for core OOP. See below code and the nested divs in the html*/
+
+.similarDesign {
+  margin: 0 auto;
+  /*0 auto will center the container in the middle of the page: must change width or by default, this stretches 100% of the page*/
+  background-color: indianred;
+  margin-bottom: 10px;
+  padding: 12px;
+  border: 12px solid green;
+  /*width: 30em*/
+  width: 30rem;
+  /*30x size of parent element: in this case parent element is the htnl element which is a default of 16px
+  so if i changed 30 em to 480px (16*30) it owuld look the same 
+  
+  This div is a child to the html element, therefore an em is relative to the parent (this case the parent is root_
+  and if thats the case, its best to just do rem since the parent of this div is the root
+  
+  if we made a div that held 3 other divs, and we wanted to style those nested divs, we could style their widths, etc. relative to 
+  the parent div with em. And get a design. If we did not have the parent div, wed have to use rem (better pattern) and notic, then,
+  this parent div would then directly gain design from root, if we used rem!
+
+  em/rem does not only apply to width, it applies to font size, etc. ANYTHIGN TO DO WITH SIZING, WE CAN USE EM/REM/%,VW,VH for relativity
+  */
+}
+
+.similarDesign p {
+  text-align: center;
+  font-size: 1rem;
+  /*1* the size of root element, which is html element which has default of 16px === confrim by changeging 1rem to 16px and it will be the same*/
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+/*for more on relativity, font sizes, etc. see
+https://www.w3.org/Style/Examples/007/units.en.html*/
