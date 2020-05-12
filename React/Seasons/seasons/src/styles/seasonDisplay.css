@@ -1,0 +1,49 @@
+/*
+this file only applies to the seasonDisplay component
+*/
+
+.icon-left {
+  /*will apply absolute positioning to this object such that ewe can define its absolute positioning below*/
+  position: absolute;
+  /*10 px from top side of browser*/
+  top: 10px;
+  /*10 px from left side of browser*/
+  left: 10px;
+}
+
+.icon-right {
+  /*will apply absolute positioning to this object such that ewe can define its absolute positioning below*/
+  position: absolute;
+  /*10 px from bottom side of browser*/
+  bottom: 10px;
+  /*10 px from right side of browser*/
+  right: 10px;
+}
+
+.season-display {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.winter {
+  background: aliceblue;
+}
+
+.summer {
+  background: orange;
+}
+
+/*grab the winter classed icon in our component (it may or may 
+not exist of course based off our function that determines that)*/
+
+.season-display.winter i {
+  color: blue;
+}
+
+/*likewise here*/
+
+.season-display.summer i {
+  color: red;
+}
