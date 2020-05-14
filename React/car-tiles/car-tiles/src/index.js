@@ -10,8 +10,8 @@ import App from './components/App';
 
 //root app render
 ReactDOM.render(
-  <React.StrictMode>
+  <div>
     <App />
-  </React.StrictMode>,
+  </div>,
   document.getElementById('root')
 );
