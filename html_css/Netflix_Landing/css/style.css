@@ -1,0 +1,187 @@
+/*a custom css property: sets the root primary color and can be used as a var() anywhere in our code since this is a global prop*/
+
+:root {
+  --primary-color: #e50914;
+  --dark-color: #141414
+}
+
+/*Establishing our resets and default styles (notice default ul to no style, etc. this is just common practice)*/
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  background: #000;
+  color: #999;
+}
+
+ul {
+  list-style: none;
+}
+
+h1, h2, h3, h4 {
+  color: #fff;
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
+}
+
+/*1rem === size of root html fonts size: (roots default === 16px therefore 0.5rem would be 8px top/bottom and 0 L/R)*/
+
+p {
+  margin: 0.5rem 0;
+}
+
+img {
+  width: 100%;
+}
+
+.showcase {
+  width: 100%;
+  /*93 slots out of the available 100% slots available */
+  height: 93vh;
+  /*we will have some absolute positioned stuff, so the container for an absolutely positioned element MUST be relative*/
+  position: relative;
+  background: url('../img/background.jpg') no-repeat center center/cover;
+}
+
+/*transparent background overlay*/
+
+.showcase::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /*bring to front above anything else*/
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.6);
+  /*shadow in all 4 border edges*/
+  box-shadow: inset 120px 100px 250px #000, inset -120px 100px 250px #000;
+}
+
+/*one of the divs to style*/
+
+.showcase-top {
+  position: relative;
+  height: 90px;
+  /*put above the z-index 1 (heigher the index, the closer it gets to the user)*/
+  z-index: 2;
+}
+
+.showcase-top img {
+  width: 170px;
+  /*showcase top container is relative, therefore from that container, we can assign absolute position to the logo!*/
+  position: absolute;
+  top: 50%;
+  /*this includes the width of the image so it actually wont be centered..we need to transform it (see next line)*/
+  left: 50%;
+  /*neg goes up and left n %*/
+  transform: translate(-50%, -50%);
+}
+
+/*sign in link: will be on same plane as logo, but we just position it all the way to the right (0)*/
+
+.showcase-top a {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  /*neg goes up and left n %*/
+  transform: translate(-50%, -50%);
+}
+
+/*how we can center a div and all its contents along the center of the page all the way through the end of the div */
+
+.showcase-content {
+  position: relative;
+  margin: auto;
+  display: flex;
+  /*by default direction === row*/
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 9rem;
+  z-index: 2;
+}
+
+.showcase-content h1 {
+  font-weight: 700;
+  font-size: 5.2rem;
+  line-height: 1.1;
+  margin: 0 0 2rem 0;
+}
+
+.showcase-content p {
+  text-transform: uppercase;
+  color: #fff;
+  font-weight: 400;
+  font-size: 1.9rem;
+  line-height: 1.25;
+  margin: 0 0 2rem 0;
+}
+
+/*Tabs*/
+
+.tabs {
+  background: var(--dark-color);
+  padding-top: 1rem;
+  border-bottom: 3px solid #3d3d3d;
+}
+
+/*make the 3 tabs a grid syle: so target the containers in the tabs container and we want to center them in the 3 grid columns we made*/
+
+.tabs .container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/*Buttons*/
+
+.btn {
+  display: inline-block;
+  /*using that custom defined css prop as a var: will make the button that red color we defined: we use 
+  custom props because if we want to define a color scheme for the website, its easier to make the properties we may
+  use a lot, like colors, etc. global root props which we can use as vars later (like we do here) this just avoids
+  unwanted styling, etc.*/
+  background: var(--primary-color);
+  color: #fff;
+  padding: 0.4rem 1.3rem;
+  font-size: 1rem;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+  margin-right: 0.5rem;
+  outline: none;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.45);
+  border-radius: 2px;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+.btn-rounded {
+  border-radius: 5px;
+}
+
+.btn-xl {
+  /*of course html root is 16, rem is relative to that, so 2 * 16 === 32*/
+  font-size: 2rem;
+  /*remember: for box styling properties like margin, border, padding, etc. if we use only two values,
+  it means style t/b and l/r sides! This is simply a code/time saver */
+  padding: 1.5rem 1.3rem;
+  text-transform: uppercase;
+}

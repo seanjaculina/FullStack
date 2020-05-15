@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Netflix - Watch TV Shows Online, Watch Movies Online</title>
+
+    <!--local css-->
+    <link rel="stylesheet" href="./css/style.css" />
+
+    <!--font awesome cdn link for all our icons, and anything else: see docs-->
+    <script
+      src="https://kit.fontawesome.com/5883173e93.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <!--this header contains a lot of stylin-->
+    <header class="showcase">
+      <div class="showcase-top">
+        <img src="./img/logo.png" alt="Netflix" />
+        <a href="#" class="btn btn-rounded">Sign in</a>
+      </div>
+      <div class="showcase-content">
+        <h1>See what's next</h1>
+        <p>Watch Anywhere. Cancel anytime</p>
+        <a href="#" class="btn btn-xl">
+          Watch Free For 30 Days <i class="fas fa-chevron-right btn-icon"></i>
+        </a>
+      </div>
+    </header>
+    <!--end of header-->
+
+    <!--info section area: anything with fa classes is font awesome (see docs for what they are)-->
+    <section class="tabs">
+      <div class="container">
+        <div id="tab-1" class="tab-item tab-border">
+          <i class="fas fa-door-open fa-3x"></i>
+          <p class="hide-sm">Cancel anytime</p>
+        </div>
+        <div id="tab-2" class="tab-item">
+          <i class="fas fa-tablet-alt fa-3x"></i>
+          <p class="hide-sm">Watch anywhere</p>
+        </div>
+        <div id="tab-3" class="tab-item tab-border">
+          <i class="fas fa-tags fa-3x"></i>
+          <p class="hide-sm">Pick your price</p>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
+
+<!--
+
+  Notice:
+
+  - notice how many elements we made have classes separated by spaces. What this means is, each class on this element
+  will have a specific style, when some action is invoked. Example, for all the buttons, we have multiple classes 
+  as we may want all buttons to have similar color and border radius etc. but when we wish to have a buttons size look the same
+  but be bigger or smaller, we may add a second class to it, to apply some additional rules to it...
+
+  - further, for pseudo-classes, multiple space separated class names are good as we can have a class dedicated to what happens to 
+  buttons when hoverd..so, we can have a default class in that list. This is a very important concept to understand and rigorsously learn
+
+
+
+-->
