@@ -36,6 +36,8 @@ class App extends Component {
     //to avoid this, we can invoke it with an arrow in the prop, in the constructor or make an arrow for this asycn
     //ALL METHODS CALLED AS PROPS OR IN EVENTS MUST BE BOUND OR ELSE THEY WILL BE UNDEFINED!! TEHY MUST BE BOUND TO THE INSTANCE OF THE CLASS
     this.setState({
+      //if we wanted to push inidivudally, we would need to use the spread operator: this is bacis js stuff
+      //to push to an array in an object, we need to use the spread
       images: res.data.results
     });
   }
