@@ -12,7 +12,7 @@ class SearchBar extends Component {
     this.onFormSubmit = this.onFormSubmit.bind(this);
   }
 
-  //call back for the onchange evnt handler (of course could have been called in the event itself, but eh)
+  //callback for the onchange event handler: everytime a character is pressed, onchange calls this method to reset the state capture of the current search term
   onInputChange(e) {
     this.setState({ term: e.target.value });
   }
@@ -22,7 +22,8 @@ class SearchBar extends Component {
   onFormSubmit(e) {
     e.preventDefault();
 
-    //TODO: make sure to call from parent component
+    //call the onsearchsubmit method from app component which takes the search term state, and uses the axios library to call it and search youtube
+    this.props.onFormSubmit(this.state.term);
   }
 
   render() {
@@ -31,7 +32,8 @@ class SearchBar extends Component {
         <form onSubmit={this.onFormSubmit} className="ui form">
           <div className="field">
             <label htmlFor="search-video">Video Search</label>
-            {/*make a controlled input: that is, hook it to state to store the data (every char entered) for the search component and not the dom*/}
+            {/*make a controlled input: that is, hook it to state to store the data (every char entered) for the search component and not the dom
+            and assign the value of the input node the state term for efficiency*/}
             <input
               type="text"
               id="serch-video"
