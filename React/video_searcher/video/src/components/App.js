@@ -9,8 +9,8 @@ import "../App.css";
 //api: holds our axios instance to send a request [we will use a callback in app, and call it with the term in the seach bar component]
 import youtube from '../api/youtube'
 
-//config api key file
-import {key} from '../config'
+//config api key file (exported an object of important env vars, so make sure to do vars.key to get the key)
+import vars from '../config'
 
 class App extends Component {
   constructor(props) {
@@ -36,7 +36,7 @@ class App extends Component {
           part: 'snippet',
           type: 'video',
           maxResults: 5,
-          key: key,
+          key: vars.key,
         }
       })
       //rest the state: assign the videos array the returned result data property which has a video property which is an array!
