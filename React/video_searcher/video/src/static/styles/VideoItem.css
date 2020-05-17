@@ -1,15 +1,17 @@
-*{
+* {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
 }
 
-.video-item{
+.video-item {
     display: flex !important;
-    align-items: center !important;         /*align the text to the center*/
-    cursor: pointer;                        /*accessibility: makes it obvious the image is a link*/
+    align-items: center !important;
+    /*align the text to the center*/
+    cursor: pointer;
+    /*accessibility: makes it obvious the image is a link*/
 }
 
-.video-item.item img{
+.video-item.item img {
     max-width: 180px;
 }
