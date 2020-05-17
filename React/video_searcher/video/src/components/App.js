@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 //component imports
 import SearchBar from "./SearchBar";
+import VideoList from './VideoList';
 
 //styles
 import "../App.css";
@@ -17,7 +18,19 @@ class App extends Component {
     super(props);
 
     this.state = {
-      videos:[]
+      videos:[],
+      selectedVideo: null 
+      /*Explanation of selected video state:
+
+          this piece of state will hold the current video selected to be displayed. The way we handle this is as followed:
+
+            - we will make a method in the app component called onVideoSelect() which will be a callback that is invoked in the video item 
+            - we will pass this callback as reference, down as a prop to the video list, in which video list will pass that as a prop to the video item
+            - once at the item, we can invoke that method as we learned in earlier projects to pass the selected video title (or whatever makes most sense 
+            into that callback argument, in which that will then invoke the method, and it will fire off here in app
+            - once fired off, we will be able to actually determine which video to display in the detail component
+
+      */
     };
 
     //bind our events
@@ -28,7 +41,7 @@ class App extends Component {
   //and submits a request to youtube api : the search path is specific! Youtube wants us to use that and then the object query must be called q
   //rememebr axios is an asyn lib, so use async/await
   onFormSubmit = async(term) => {
-      //await the response
+      //await the response: we want app to handle the data and use it as a super-component which can pass it all down to children after the search query is called and sent back
       const result = await youtube.get('/search',{
         //query params
         params : {
@@ -55,7 +68,7 @@ class App extends Component {
       it got the most recent submission
       By convention our propname should match the callback we pass it , or whatever else like a var*/}
         <SearchBar onFormSubmit={this.onFormSubmit}/>
-        Videos Found: {this.state.videos.length}
+        <VideoList videos={this.state.videos} />
       </div>
     );
   }
