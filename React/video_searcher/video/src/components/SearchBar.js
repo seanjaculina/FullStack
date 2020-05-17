@@ -1,10 +1,10 @@
-import React, { Component } from "react";
+import React, {Component} from 'react';
 
 class SearchBar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      term: ""
+      term: '',
     };
 
     //bind events to this
@@ -14,7 +14,7 @@ class SearchBar extends Component {
 
   //callback for the onchange event handler: everytime a character is pressed, onchange calls this method to reset the state capture of the current search term
   onInputChange(e) {
-    this.setState({ term: e.target.value });
+    this.setState({term: e.target.value});
   }
 
   //handles the submission of the search term
