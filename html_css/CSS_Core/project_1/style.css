@@ -6,9 +6,18 @@
   list-style: none;
 }
 
+h1 {
+  font-weight: 200;
+}
+
+h4 {
+  font-weight: 300;
+}
+
 /*will center the main header vertically and horizontally*/
 #section-top-land {
   text-align: center;
+  align-items: center;
   /*rememebr: top/bottom left/right if only given two vals for box styling
   so, we make the padding even on top and bottom in the container, but 0 on l/r
   which will ensure vertical center and horizontal*/
@@ -42,6 +51,11 @@
   margin-bottom: 3px;
 }
 
+.description,
+.price {
+  color: #808080;
+}
+
 /*direct child combinator:
 will only grab an element that is a child of some element
 in this case:
@@ -50,6 +64,7 @@ in this case:
   margin: .3rem;
 }
 
+/*descendant combinator: space separated elements/tags*/
 #item p {
   margin: .3rem;
 }
@@ -57,6 +72,7 @@ in this case:
 #item:hover {
   transition: .2s ease-in;
   background-color: bisque;
+  cursor: pointer;
 }
 
 .section-title {
@@ -64,3 +80,26 @@ in this case:
   section container centered on l/r (that is what auto does)*/
   margin: 2rem auto;
 }
+
+.cartIcon {
+  float: right;
+  color: #000;
+}
+
+.cartIcon:hover {
+  transition: .1s ease-in;
+  color: #808080;
+  cursor: pointer;
+}
+
+/*
+
+Resources:
+
+  combinator:
+    - https://www.w3schools.com/css/css_combinators.asp
+  
+  aligning text and containers:
+    - https://www.w3schools.com/css/css_align.asp
+
+*/
