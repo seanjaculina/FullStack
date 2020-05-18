@@ -10,12 +10,24 @@
     <!-- font awesome script-->
     <script src="https://kit.fontawesome.com/5883173e93.js" crossorigin="anonymous"></script>
 
+    <!--google font -->
+    <link href="https://fonts.googleapis.com/css2?family=Jost&display=swap" rel="stylesheet">
     <!--link our styles-->
     <link rel="stylesheet" href="style.css">
 </head>
 
 <!--this code below is a good scaffold to follow to actually build a mock online grocery shopping app in react! Follow along 
-and grind the CSS-->
+and grind the CSS
+
+// we can get the images for the item from unsplash api using axios
+// can use state to handle cart total, changes to it, et
+//we can architect this whole thing and get it to production and use it on our portfolio
+
+//buttons to clear all items (which would reset cart total)
+// to add item which would invoke a search MODAL (Look up react modal with css ? if not, just 
+use a search bar compoennt like we had in the yotuube and image app)
+
+-->
 
 <body>
     <main class="main-content">
@@ -31,7 +43,9 @@ and grind the CSS-->
                 <ul class="product-listings">
                     <li class="list-item">
                         <div id="item">
-                            <h4 class="item-title">Bananas</h4>
+                            <h4 class="item-title">Bananas
+                                <img class="prod-img" src="./banana.jpg" alt="i">
+                            </h4>
                             <p class="description">Pitique Bananas</p>
                             <p class="price">
                                 <i class="fas fa-dollar-sign"></i>
@@ -41,7 +55,9 @@ and grind the CSS-->
                     </li>
                     <li class="list-item">
                         <div id="item">
-                            <h4 class="item-title">Apples</h4>
+                            <h4 class="item-title">Apples
+                                <img class="prod-img" src="./apple.jpg" alt="apple">
+                            </h4>
                             <p class="description">Fuji Apples</p>
                             <p class="price">
                                 <i class="fas fa-dollar-sign"></i>
@@ -51,7 +67,9 @@ and grind the CSS-->
                     </li>
                     <li class="list-item">
                         <div id="item">
-                            <h4 class="item-title">Pears</h4>
+                            <h4 class="item-title">Pears
+                                <img class="prod-img" src="./pear.jpg" alt="pear">
+                            </h4>
                             <p class="description">Albanian Squeeze Pairs</p>
                             <p class="price">
                                 <i class="fas fa-dollar-sign"></i>
