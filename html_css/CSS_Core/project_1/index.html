@@ -6,14 +6,68 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>uHost</title>
     <link rel="shortcut icon" href="favicon.png">
+
+    <!-- font awesome script-->
+    <script src="https://kit.fontawesome.com/5883173e93.js" crossorigin="anonymous"></script>
+
+    <!--link our styles-->
+    <link rel="stylesheet" href="style.css">
 </head>
 
+<!--this code below is a good scaffold to follow to actually build a mock online grocery shopping app in react! Follow along 
+and grind the CSS-->
+
 <body>
-    <main>
+    <main class="main-content">
+        <section id="section-top-land">
+            <!--we want a title to be specific so we gave it an id:id's only get used once-->
+            <h1 id="product-overview">Grocery Store</h1>
+        </section>
         <section>
-            <h1>Get the freedom you deserve.</h1>
+            <h1 class="section-title">Products</h1>
+            <div class="product-container">
+                <ul class="product-listings">
+                    <li class="list-item">
+                        <div id="item">
+                            <h4 class="item-title">Bananas</h4>
+                            <p class="description">Pitique Bananas</p>
+                            <p class="price">
+                                <i class="fas fa-dollar-sign"></i>
+                                2.99
+                            </p>
+                        </div>
+                    </li>
+                    <li class="list-item">
+                        <div id="item">
+                            <h4 class="item-title">Apples</h4>
+                            <p class="description">Fuji Apples</p>
+                            <p class="price">
+                                <i class="fas fa-dollar-sign"></i>
+                                1.99
+                            </p>
+                        </div>
+                    </li>
+                    <li class="list-item">
+                        <div id="item">
+                            <h4 class="item-title">Pears</h4>
+                            <p class="description">Albanian Squeeze Pairs</p>
+                            <p class="price">
+                                <i class="fas fa-dollar-sign"></i>
+                                4.99
+                            </p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
         </section>
     </main>
 </body>
 
 </html>
+
+<!--
+    Notes:
+
+
+    <i class="fas fa-dollar-sign"></i>  icon is our dollar sign icon
+-->
