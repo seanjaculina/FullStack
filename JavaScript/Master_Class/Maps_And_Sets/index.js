@@ -30,6 +30,8 @@ console.log (ids);
 
 /**
  * Maps: uniquely keyed object style data structures
+ * 
+ *  - they ar elike objects, but cannot have duplicate keys
  */
 
 //lets make some objects of people data we will use to work with to convert things into a map
@@ -47,7 +49,7 @@ const p2 = {
 const {name, age} = p1;
 const {name_, age_} = p2; //again destructuring pulling out the exact key of the object as the variable to reference it
 
-const personData = new Map ();
+const personData = new Map (); //step 1: always make a new map instance to work with
 
 personData.set (name, age); //setting the key to be the object person 1 name and the value to be age
 personData.set (name_, age_);
