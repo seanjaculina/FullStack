@@ -109,6 +109,13 @@ console.log (combinator);
 //spread is simply used for copying over iterable values into some new iterable (used freequently) and also passing the whole collection
 //to some funcion that can take a sequence (ex) Math.min(...thisCart) remember it will pass the elements as a list therefore because min() requires a comma-sep list, we can pass it (if we had just passed a reference to the array, it would not work)
 
+//we are always passing references to the objects if we copy an array of objects somewhere else, etc. Because of this,
+//if we change something about an object when copying the object, array of them etc. will actually affect the original object
+
+//if we do not want to affect the state of the original data in the oriinal object, we should map the array of objects to a new array of objects
+//that way we no longer reference the data of the original onbject as we made a new array with new objects exactly targeting rh e properties of the old object [see video 202 in udemy course]. This is called cloning! When we
+//take an existing object, and copy it when we plan to change that objects data, but do not want to touch the original object
+
 //removing last element
 
 //pop()
@@ -284,3 +291,14 @@ console.log (cartStatus); //BOOM! This works. Why? Well, when we chain that mean
 //that supports that.. map returns an array, thus, that call can then call reduce to work on that mapped array and sum up our cart totals
 
 //we see how this logic would work for making a shopping cart logic for an e-commerce app
+
+//Array destructurong: a way to extract indices from an array without a loop
+const [a, b] = [100, 200]; // a references index 0 of the array which is 100, etc.
+console.log (a, b);
+
+const h = [1, 2, 3, 4, 5];
+const [f, g, z] = [100, 200, ...h]; //look at this! We pointed f,g,h to 100,200, and ...h so f,g,h are now variable constants that can be used wherever we'd like
+console.log (f, g, z); //notice z === 1 because the spread operator used on h brings in the whole array, therefore, we only access the third element in the sequence we point to.
+//to get the whole array for z to point to, we must either put brackets aroung ...h or maze z a rest also (i like making z a rest)
+const [an, ban, ...can] = [900, 800, ...h];
+console.log (an, ban, can); // <- now can is a whole array like we wanted
