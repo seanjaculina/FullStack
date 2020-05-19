@@ -72,17 +72,17 @@ h4 {
 will only grab an element that is a child of some element
 in this case:
   style any h4 that is a child of an #item */
-#item>h4 {
-  margin: .3rem;
+#item > h4 {
+  margin: 0.3rem;
 }
 
 /*descendant combinator: space separated elements/tags*/
 #item p {
-  margin: .3rem;
+  margin: 0.3rem;
 }
 
 #item:hover {
-  transition: .2s ease-in;
+  transition: 0.2s ease-in;
   background-color: bisque;
   cursor: pointer;
 }
@@ -101,7 +101,7 @@ in this case:
 }
 
 .cartIcon:hover {
-  transition: .1s ease-in;
+  transition: 0.1s ease-in;
   color: #808080;
   cursor: pointer;
 }
