@@ -77,45 +77,37 @@ nameArr.unshift (arrToAdd); // < puts [4,5,2,1] at index 0
 ]
  */
 
-//cool so we can add the whole array object itself as an index: but what if we want to take some current array, and place all its contents
-//at the front (or back, etc.) in this nameArr but each index is an index of the array we are adding from?
-
-//We can use rest! rest operator takes a collection, and actually pulls out all its data, and places it into some collection
-//value for value into some position
-nameArr.unshift (...arrToAdd); //puts 4 at index 0, 5 at index 1 ... so on
+//cool so we can add the whole array object itself as an index
 
 /**
- * [
-  4,
-  5,
-  2,
-  1,
-  [ 4, 5, 2, 1 ],   <--ignore this: the array currently holds what we did when pushing the array obj.reference (i do not feel like deleting it)
-  'T',
-  'a',
-  'n',
-  'n',
-  'e',
-  'r',
-  'Barcelos',
-  {
-    name: 'bob',
-    email: 'bob@gmail.com',
-    date: 2020-05-19T18:42:50.230Z,
-    id: 6
-  },
-  {
-    name: 'bob',
-    email: 'bob@gmail.com',
-    date: 2020-05-19T18:42:50.230Z,
-    id: 4
-  }
-]
+ * What if we want to copy an existing array and put its contents into a new array and add some more values to that new array?
+ * 
+ * Good example would be:
+ * 
+ *      - we have an array of grocery items representing our shopping cart. We want to always update that shopping cart to 
+ *      show the current state of the cart + or - any items a user wishes to add or get rid of. How could we update that array
+ *      to copy all its current data and then add or remove an item to that old array of items to update it? Well, we can 
+ *      use push() but what if we do not want to directly alter the state of the cart, only reset it with updates so its always assured to be the 
+ *      most recent? We can copy contents into another array using the spread operator!! 
  */
 
-//so the rest operator is used to take some collection, and place each of its values into the new collection at dev defined position
-//we use this often in redux to create a new state with updated data, rather than push() and modify exiting arrays
-//this is also useful for todo lists and maybe re-rendering the list but only for a new item!etc. s
+let thisCart = ['apples', 'pears', 'oranges', 'banana'];
+
+//lets update the cart completely and add some oatmeal and bread
+thisCart = [...thisCart, 'oatmeal', 'bread'];
+console.log (thisCart); // as we see, we used the spread operator to pull out all indices of the cart, and throw them into this reassignment of the cart and then added some new data to it ALL WITHOUT PUSH! So cool
+
+//the above example is good for state in react and redux: but what about for apps not using that?
+
+//lets copy numsof array to an array of odds
+const nums_of = [9, 8, 7, 6, 5, 4, 3, 2, 1];
+const odds = [1, 3, 5, 7, 9, 11, 13, 33, ...nums_of]; //<- will comboine odds with numsof
+const combinator = [...odds]; //will put odds as a copy into combinator
+console.log (odds);
+console.log (combinator);
+
+//spread is simply used for copying over iterable values into some new iterable (used freequently) and also passing the whole collection
+//to some funcion that can take a sequence (ex) Math.min(...thisCart) remember it will pass the elements as a list therefore because min() requires a comma-sep list, we can pass it (if we had just passed a reference to the array, it would not work)
 
 //removing last element
 
