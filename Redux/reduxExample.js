@@ -5,8 +5,6 @@
  * 
  */
 
-console.clear ();
-
 // Action creator: Create Policy action - if a user comes in wanting to signup for the company, this action would be the form (action to do) that they tell the dispatcher for the reducers to work with
 const createPolicy = (name, amount) => {
   //this is an action {type,payload{...}}
