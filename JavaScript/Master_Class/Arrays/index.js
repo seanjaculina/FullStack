@@ -187,6 +187,17 @@ console.log (copy.lastIndexOf (33));
 console.log ('this is a copy' + copy);
 console.log (nameArr);
 
+//find and findIndex()
+
+//fin() takes in a function that tracks the current val, current index and the array itself and returns if what we want to find is found
+const found = newest.find ((val, ind, persons) => {
+  return val === 10;
+});
+
+console.log (found, newest);
+
+//findIndex() takes in the same as find, but returns the index of the found value [if we want to find 10 in our newest we know that its at index 3 (position 4)]
+
 //higher order methods   SORT(),MAP(),FILTER(),REDUCE()
 
 //we have a sort method which can sorts an array (by default converts all indices to strings and sorts that but this is not good:
