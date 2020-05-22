@@ -2,10 +2,12 @@ import {combineReducers} from 'redux'; //must import: used to combine reducers t
 
 //import our external reducers:
 import postsReducer from './postsReducer';
+import usersReducer from './usersReducer';
 
 //must combine reducers for redux store: key is the alias we will reference, and it will call the reducer
 export default combineReducers ({
   posts: postsReducer,
+  users: usersReducer,
 });
 
 /**

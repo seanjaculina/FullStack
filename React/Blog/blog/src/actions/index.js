@@ -1,12 +1,29 @@
 import jsonPlaceholder from '../API/jsonPlaceholder';
 
 //fetch post action creator: utilizes redux-thunk for the async request [because it makes request, we must return a function that takes dispatch and getstate]
-//es6 way of writing function that returns a function: async action creators have to be done like this (or th elong way but this is encouraged)
-export const fetchPosts = () => async (dispatch, getState) => {
+//(we can negate the get state param) es6 way of writing function that returns a function: async action creators have to be done like this (or th elong way but this is encouraged)
+export const fetchPosts = () => async dispatch => {
   const response = await jsonPlaceholder.get ('/posts');
+  dispatch ({type: 'FETCH_POSTS', payload: response.data});
+};
+
+/**
+ * Remember: we define the action type! The actions are what ewe define and the type is like a signature for our reducer to look at to do some
+ * decision making and logic!!!! If the reducer does not see the action type it wants to change state, it ignore it
+ * 
+ * I was having trouble understanding this but i get it now! TYPE IS DEFINED BY THE ENGINEER! Depending on the actions (events fired to produce some result for us)
+ * we can return an action to take! For the reducer to see and function off of!!!
+ */
+
+//actioon creator to fetch one user at a time from the users route by their id (this is async, so use redux-thunk)
+//the fetchPosts contains post data with an ID for a user, but not the users header (name, etc) so we make a second action here
+//to fetch users that we can match to posts (See videos for design and idea)
+export const fetchUser = id => async dispatch => {
+  const response = await jsonPlaceholder.get (`/users/${id}`);
   dispatch ({
-    type: 'FETCH_POSTS',
-    payload: response,
+    //rememebr we need to explicitely call the dispatcher sending it our action as this is a step critical to resolving async action creator issues
+    type: 'FETCH_USER',
+    payload: response.data,
   });
 };
 
