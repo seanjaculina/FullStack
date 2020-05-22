@@ -1,14 +1,24 @@
 import React from 'react';
+
+//css imports
 import '../App.css';
 
-//always destructure if we are trying to import named exports (function, etc. exported from a file)
-import {selectSong} from '../actions'; //imports our actions [webpack knows to give us the file in this folder] (this goes for anythng)
+//always destructure if we are trying to import named exports (function, etc. exported from a file) and just a variable name for default exports
+import SongList from './SongList';
+import SongDetail from './SongDetail';
 
 //Top level app functional component
 const App = () => {
   return (
-    <div className="App">
-      <h1>Hello, world</h1>
+    <div className="ui container grid">
+      <div className="ui row">
+        <div className="column eight wide">
+          <SongList />
+        </div>
+      </div>
+      <div>
+        <SongDetail />
+      </div>
     </div>
   );
 };
