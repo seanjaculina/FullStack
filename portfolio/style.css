@@ -105,6 +105,57 @@ h1 {
   text-align: left !important;
 }
 
+.card {
+  width: 15rem;
+  height: 15.5rem;
+  text-align: center;
+  align-items: center;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.card-body {
+  text-align: center;
+}
+
+.blocker {
+  display: flex;
+  justify-content: space-evenly;
+  overflow: hidden;
+}
+
+.card-text {
+  align-items: center;
+  text-align: center;
+}
+
+.card-text button {
+  margin: 0 auto;
+  margin-top: 6px;
+}
+
+.card-img-top {
+  width: 100%;
+  object-fit: cover;
+  height: 120px;
+}
+
+.boot {
+  display: block;
+  width: 120px;
+  color: white;
+  text-decoration: none;
+}
+
+
+a {
+  color: white;
+}
+
+a:hover {
+  color: white;
+  text-decoration: none;
+}
+
 .landing {
   position: relative;
 }
@@ -138,6 +189,15 @@ h1 {
 .field {
   margin-bottom: 2rem;
 }
+
+.row {
+  margin-bottom: 30px;
+}
+
+.column {
+  margin-left: 10px;
+}
+
 
 /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 500px) {
