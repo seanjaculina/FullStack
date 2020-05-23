@@ -3,6 +3,7 @@
   margin: 0;
   padding: 0;
   font-family: 'Quicksand', sans-serif;
+  list-style-type: none;
 }
 
 html {
@@ -54,6 +55,30 @@ h1 {
   font-size: calc(1rem + 3vw);
 }
 
+.flexer {
+  margin: 0 auto;
+  align-items: center;
+}
+
+.row {
+  display: flex;
+  border: none;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  padding: 20px;
+}
+
+.column {
+  flex: 33.33%;
+  padding: 2rem;
+}
+
+.me {
+  border-radius: 50%;
+  width: 300px;
+  height: 300px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
 .about-me {
   position: absolute;
   top: 10%;
@@ -67,7 +92,7 @@ h1 {
 
 .contact-head {
   position: absolute;
-  top: 25%;
+  top: 20%;
   transform: translateY(-50%);
   text-align: center;
   color: #000;
@@ -76,10 +101,10 @@ h1 {
 }
 
 .container {
-  margin-top: 350px;
+  width: 100vw;
+  margin-top: 330px;
   text-align: left !important;
 }
-
 
 .landing {
   position: relative;
