@@ -92,7 +92,7 @@ h1 {
 
 .contact-head {
   position: absolute;
-  top: 20%;
+  top: 10%;
   transform: translateY(-50%);
   text-align: center;
   color: #000;
@@ -101,8 +101,7 @@ h1 {
 }
 
 .container {
-  width: 100vw;
-  margin-top: 330px;
+  margin-top: 200px;
   text-align: left !important;
 }
 
@@ -138,4 +137,11 @@ h1 {
 
 .field {
   margin-bottom: 2rem;
+}
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 500px) {
+  .column {
+    width: 100%;
+  }
 }
