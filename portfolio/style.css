@@ -4,13 +4,16 @@
   padding: 0;
   font-family: 'Quicksand', sans-serif;
   list-style-type: none;
+
 }
+
 
 html {
   font-family: sans-serif;
   scroll-snap-type: mandatory;
   scroll-snap-points-y: repeat(100vh);
   scroll-snap-type: y mandatory;
+
 }
 
 section {
@@ -110,7 +113,7 @@ h1 {
   height: 15.5rem;
   text-align: center;
   align-items: center;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 0 4px 8px 0 rgba(192, 63, 255, 0), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .card-body {
@@ -158,6 +161,19 @@ a:hover {
 
 .landing {
   position: relative;
+  color: #fff;
+  background: -webkit-linear-gradient(110deg, #a60af3 40%, rgba(0, 0, 0, 0) 30%), -webkit-radial-gradient(farthest-corner at 0% 0%, #7a00cc 70%, #c03fff 70%);
+  background: -o-linear-gradient(110deg, #a60af3 40%, rgba(0, 0, 0, 0) 30%), -o-radial-gradient(farthest-corner at 0% 0%, #7a00cc 70%, #c03fff 70%);
+  background: -moz-linear-gradient(110deg, #a60af3 40%, rgba(0, 0, 0, 0) 30%), -moz-radial-gradient(farthest-corner at 0% 0%, #7a00cc 70%, #c03fff 70%);
+  background: linear-gradient(110deg, #a60af3 40%, rgba(0, 0, 0, 0) 30%), radial-gradient(farthest-corner at 0% 0%, #7a00cc 70%, #c03fff 70%);
+}
+
+.landing h1 {
+  color: #fff;
+}
+
+.landing p {
+  color: #fff;
 }
 
 .social-links {
@@ -172,12 +188,18 @@ a:hover {
 
 .social-links i {
   font-size: 40px;
-  color: #4093b4;
+  color: #b150f6;
 }
 
-.social-links #first:hover,
+#first:hover {
+  color: white;
+  opacity: 0.9;
+  transition: .3s ease;
+}
+
 #second:hover {
-  opacity: 0.4;
+  color: white;
+  opacity: 0.9;
   transition: .3s ease;
 }
 
