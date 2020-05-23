@@ -205,3 +205,13 @@ a:hover {
     width: 100%;
   }
 }
+
+#disclaim {
+  position: absolute;
+  top: 15%;
+  left: 43.4%;
+}
+
+#overcase {
+  color: blue;
+}
