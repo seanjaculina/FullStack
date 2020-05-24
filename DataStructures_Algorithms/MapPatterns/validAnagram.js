@@ -41,3 +41,15 @@ const validAnagram = (s, t) => {
 };
 
 validAnagram ('rac', 'car');
+
+//should use for of with strings and for in for objects iterables like arrays, etc.
+
+let b = 'adcdwcwc';
+for (let g in b) {
+  console.log (g);
+}
+//output:  0,1,2,3,4,5..
+for (let g of b) {
+  console.log (g);
+}
+//output: a d c d w c w c
