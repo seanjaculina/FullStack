@@ -16,15 +16,12 @@ class UserHeader extends Component {
   }
 
   render () {
-    //get the user based off the users we get from props and return it: .find() returns the data in an array based off a condition we
-    //wish to use to find that value
-    const user = this.props.users.find (user => {
-      return user.id === this.props.userId;
-    });
+    //get the name for the user
+    const {user} = this.props;
 
     //initial render , we will have no data received, so, check for no user
     if (!user) {
-      return 'Loading...';
+      return null;
     }
 
     //esle, we have a user from the post
@@ -37,11 +34,15 @@ class UserHeader extends Component {
 }
 
 //to give state to this component: its the array of users that we gave all its data to from the async fetch and then getting it
-const mapStateToProps = state => {
+//its good to map state and put logix for the state needed for a component right in the mapstatetoprops method
+const mapStateToProps = (state, ownProps) => {
   return {
-    users: state.users,
+    users: state.users.find (user => user.id === ownProps.userId),
   };
 };
+
+//get the user based off the users we get from props and return it: .find() returns the data in an array based off a condition we
+//wish to use to find that value
 
 //connect takes in mapstatetoprops and the actions and called this component
 export default connect (mapStateToProps, {fetchUser}) (UserHeader);

@@ -9,6 +9,7 @@ import App from './components/App';
 
 import reducers from './reducers';
 
+//apply thunk to our store to make the reducers async work correctly with it
 const store = createStore (reducers, applyMiddleware (thunk));
 //exactly how we create our global store: we need to pass it our root reducers import (which combines all reducers) and also
 //only since we use async action creators, we need to add a second argument of applyMiddleware(thunk) which basically uses

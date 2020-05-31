@@ -1,0 +1,27 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+#box {
+  background-color: #999;
+  width: 400px;
+  height: 160px
+}
+
+.class1 {
+  border: 2px solid red;
+}
+
+.class2 {
+  background-color: yellow;
+}
+
+.class3 {
+  margin-left: 50px;
+}
+
+.class4 {
+  width: 400px;
+}

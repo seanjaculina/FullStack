@@ -1,4 +1,6 @@
-import jsonPlaceholder from '../API/jsonPlaceholder';
+import jsonPlaceholder from '../API/jsonPlaceholder'; //import the instance of axios we made in api folder
+
+import _ from 'lodash'; //for memoization of network requests
 
 //fetch post action creator: utilizes redux-thunk for the async request [because it makes request, we must return a function that takes dispatch and getstate]
 //(we can negate the get state param) es6 way of writing function that returns a function: async action creators have to be done like this (or th elong way but this is encouraged)
@@ -18,14 +20,21 @@ export const fetchPosts = () => async dispatch => {
 //actioon creator to fetch one user at a time from the users route by their id (this is async, so use redux-thunk)
 //the fetchPosts contains post data with an ID for a user, but not the users header (name, etc) so we make a second action here
 //to fetch users that we can match to posts (See videos for design and idea)
-export const fetchUser = id => async dispatch => {
+export const fetchUser = id => dispatch => _fetchUser (id, dispatch);
+
+//these two functions are the correct way to memoize fetching data that would be x long (like 10 posts per person, and we have
+//10 people, we'd make 100 requests. this allows us to get all posts per user by their id in one fetch! And then when we map that state
+// to the props of the users header  (shows user name) we will decrease 100 requests to 10 !)
+
+//this is a private function: identified with _
+const _fetchUser = _.memoize (async (id, dispatch) => {
   const response = await jsonPlaceholder.get (`/users/${id}`);
   dispatch ({
     //rememebr we need to explicitely call the dispatcher sending it our action as this is a step critical to resolving async action creator issues
     type: 'FETCH_USER',
     payload: response.data,
   });
-};
+});
 
 //process the request for fetching all posts : notice the get -> configured the url instance in api so we can make the get only the route of the data
 //we want for this particular action!
@@ -39,3 +48,10 @@ export const fetchUser = id => async dispatch => {
 //async function that takes in dispatch and getState and then we can await our normal request... only after that, though
 //we must explicitely call dispatch and pass it the action we want to return as dispatch(), as we know, takes an action
 //and sends it off to our reducers implicitely in sync actions but with async, redux thuink requires the syntax/ idea we see in the action creator above
+
+/**
+ * 
+ * In the network tab we can see that for every user being rendered, we make x user amount of requests! This is a waste of time! So, in order
+ * to kill some overhead, we can use lodashes 'memoization' function to run a request once, remember the previous result and do not process
+ * a new request uNTIL a new user ID is seen! This is used for unique renders we needs
+ */
