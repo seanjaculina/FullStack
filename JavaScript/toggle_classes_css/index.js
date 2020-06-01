@@ -1,8 +1,18 @@
-let box = document.getElementById ('box');
-let classList = box.classList.toString (); //classlist returns the array of classes on the dom element selected [we can convert to strig, index, etc.]
+//we will use event propogation: that is, we will set an event handler on the whole ul of the list, and be able to have event handlers on
+//every li in its descendant tree
 
-addClass = () => {
-  box.classList.add ('class4');
-};
+let changeActives = document.getElementById ('ulMain');
 
-console.log (classList);
+changeActives.addEventListener ('click', e => {
+  //e.preventDefault ();
+
+  let target = e.target;
+  //check if the current target has a class. If so, remove that class
+  if (target.classList.contains ('active')) {
+    target.classList.remove ('active');
+  } else {
+    //else, add active to the currently selected item. Remove active class from the previously active items
+
+    target.classList.add ('active');
+  }
+});

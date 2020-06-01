@@ -2,26 +2,36 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: sans-serif;
+  color: black;
 }
 
-#box {
-  background-color: #999;
-  width: 400px;
-  height: 160px
+ul {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50);
+  margin: 0;
+  padding: 0;
+  display: flex;
+  text-decoration: none;
 }
 
-.class1 {
-  border: 2px solid red;
+ul li {
+  list-style: none;
 }
 
-.class2 {
-  background-color: yellow;
+ul li a {
+  display: block;
+  padding: 10px 20px;
+  text-decoration: none;
+  position: relative;
+  text-transform: uppercase;
+  font-weight: bold;
 }
 
-.class3 {
-  margin-left: 50px;
-}
 
-.class4 {
-  width: 400px;
+a.active {
+  background-color: #262626;
+  color: #fff !important;
 }

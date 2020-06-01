@@ -1,0 +1,45 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Source Code Pro', monospace;
+}
+
+/* Making the whole body the background. In reality, we would be using
+background images for hero headers, and divs. So, we could just move 
+this to the .pro, makd that div 100vh and then allow us to scroll if needed */
+body {
+  background-image: url('./mac.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
+.pro {
+  width: 100vw;
+  padding: 20px;
+  position: relative;
+  height: 100vh;
+}
+
+.me {
+  width: 100vw;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-weight: 400;
+}
+
+.me .word {
+  font-size: 3.5rem;
+  color: #fff;
+  font-weight: 300;
+}
+
+#pro {
+  text-decoration: underline;
+  width: 40px;
+  z-index: 4;
+}
