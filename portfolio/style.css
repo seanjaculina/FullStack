@@ -7,8 +7,9 @@
 }
 
 section {
-  padding: 10% 0;
+  padding: 5% 0;
   text-align: center;
+  padding-bottom: 200px;
 }
 
 section:nth-child(even) {
