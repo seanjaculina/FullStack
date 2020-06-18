@@ -166,6 +166,8 @@ const backdropClickHandler = () => {
   clearMovieInput ();
 };
 
+//events to change style and things do not need binding: only when we need to change the DOM or reference data from one element
+//locally to a function without using ()=>  we should bind bind does nothing more than bind the method to the object in which it is called upon such that we can hook in to its 'this' context and local state and work with it
 startAddMovieButton.addEventListener ('click', showMovieModal);
 backdrop.addEventListener ('click', backdropClickHandler);
 cancelAddMovieButton.addEventListener ('click', cancelAddMovieHandler);
