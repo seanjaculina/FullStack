@@ -67,7 +67,10 @@ const startDeleteMovieHandler = movieId => {
 
   confirmDeletionButton = deleteMovieModal.querySelector ('.btn--danger');
 
-  // confirmDeletionButton.removeEventListener('click', deleteMovieHandler.bind(this, movieId)); // will not work :(
+  // confirmDeletionButton.removeEventListener('click', deleteMovieHandler.bind(this, movieId));
+  // will not work :( we only are removing the listener. We do not need to reference 'this' in the object we are calling this function on.
+  //we just cclose the modal to delete the move and toggle the dark backdrop. in no way shape or form do we bind to tan object in the dom like a list elemnet to invoke some logic
+  //only when the event should be bound (if not using an arrow) to change the state/reference of thisobject should we use bind
 
   cancelDeletionButton.removeEventListener ('click', closeMovieDeletionModal);
 
