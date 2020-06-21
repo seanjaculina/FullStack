@@ -38,19 +38,29 @@ const renderMovies = (filterValue = '') => {
   filteredMovies.forEach (movie => {
     const movieElement = document.createElement ('li');
 
-    //pull out all the movie info with destructure for cleaner syntax and then use the rest operator to get the REST of the props) [see difference from spread]
+    //pull out all the movie info [movie in for each here, as we know, is each object of movies in our list] with destructure for cleaner syntax and then use the rest operator to get the REST of the props) [see difference from spread]
     const {info, ...other} = movie;
-    //pull out the title from the info
-    const {title} = info;
 
-    //grab the current movies title
-    let text = title + ' - ';
+    //one way to pull out data with destructuring
+    //pull out the title from the info
+    //const {title} = info;
+
+    //grab the current movies formatted title method
+    let {getFormattedTitle} = movie;
+    //getFormattedTitle = getFormattedTitle.bind (movie); //of course, we can get context to the movies 'this' in the object with just doing movie.someFunction but this isnt really good practice
+    //using bind is better and a big thing in React.. remmeber: the function in the movie object we make is apart of that object, BUT it is bound to the object that calls it . so, whatever object is made for that obhect,
+    //will make its own context for every object, thus, we need to either use the object to call it, or use bind to bind to the context of that object [and we get access to the data]
+
+    //call the getformat.. on the movie object to immediately transfer the 'this' context to the movie and return the formatted title. call(), apply() and bind() are very ., very powerful
+    let text = getFormattedTitle.call (movie) + ' - ';
+
+    //apply() will do call() but apply n amount of args to apply to call on that object
 
     //traverse the keys of an object with for-in and then we can index the object with the key for its calue
     //use for-of for arrays
     for (const key in info) {
       //and add on the sub info of the extra name and value as a side descr
-      if (key !== 'title') {
+      if (key !== 'title' && key !== '_title') {
         text = text + `${key}: ${info[key]}`;
       }
     }
@@ -67,29 +77,45 @@ const addMovie = () => {
   const extraValue = document.querySelector ('#extra-value').value;
 
   // Do some basic validation
-  if (
-    title.trim () === '' ||
-    extraName.trim () === '' ||
-    extraValue.trim () === ''
-  ) {
+  if (extraName.trim () === '' || extraValue.trim () === '') {
     return;
   }
 
   // Make a new movie from the field inputs
   const newMovie = {
     info: {
-      // we can just pass the variables we made here if we want. Javascript will make the prop === value
-      title,
+      // // we can just pass the variables we made here if we want. Javascript will make the prop === value
+      // title,
+
+      //using a getter is great for read-only transformations
+      get title () {
+        return this._title;
+      },
+
+      set title (val) {
+        if (val.trim () === '') {
+          this._title = 'DEFAULT';
+        }
+        this._title = val;
+      },
       [extraName]: extraValue,
     },
     // all objects should have id's
-    id: Math.random (),
+    id: Math.random ().toString (),
+    //will be bound to 'this' in the calling objects context [NOT THIS OBJECT: REMEMBER THIS. SO, we need to bind to 'this' context of the object in movies]
+    getFormattedTitle () {
+      return this.info.title.toUpperCase ();
+    },
   };
+
+  newMovie.info.title = title;
 
   movies.push (newMovie); //push this movie to the array
   renderMovies (); //render out the current list of movies [this is called and updates the list with the most updated movie array... we see why react is so powerful now. this is tedious]
 };
 
+// arrow functions are bound to the context of the class they fall in to [in this case, the windown. in react: the component class
+//arrows need not to know about 'this' where all other functions are bound to the object that calls it only]
 const searchMovieHandler = () => {
   const filterval = document.querySelector ('#filter-title').value;
   renderMovies (filterval);
