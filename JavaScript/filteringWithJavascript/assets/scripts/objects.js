@@ -38,15 +38,20 @@ const renderMovies = (filterValue = '') => {
   filteredMovies.forEach (movie => {
     const movieElement = document.createElement ('li');
 
+    //pull out all the movie info with destructure for cleaner syntax and then use the rest operator to get the REST of the props) [see difference from spread]
+    const {info, ...other} = movie;
+    //pull out the title from the info
+    const {title} = info;
+
     //grab the current movies title
-    let text = movie.info.title + ' - ';
+    let text = title + ' - ';
 
     //traverse the keys of an object with for-in and then we can index the object with the key for its calue
     //use for-of for arrays
-    for (const key in movie.info) {
+    for (const key in info) {
       //and add on the sub info of the extra name and value as a side descr
       if (key !== 'title') {
-        text = text + `${key}: ${movie.info[key]}`;
+        text = text + `${key}: ${info[key]}`;
       }
     }
     movieElement.textContent = text;
