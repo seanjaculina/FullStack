@@ -35,8 +35,8 @@ class ProductList {
     ),
   ];
 
-  render () {
-    const renderHook = document.getElementById ('app'); // grab the app div we will be appending all our html to
+  //creates the ul to be put in the app and renders out all products in the 'database' and returns the list to the caller
+  getShoppingList () {
     const prodList = document.createElement ('ul'); // create an unordered list and give it a classname
     prodList.className = 'product-list';
 
@@ -47,6 +47,42 @@ class ProductList {
       prodList.append (productElement); // append this product to the ul
     }
     //append the product list itself to the app div
+    return prodList;
+  }
+}
+
+// creates a shopping cart and handles the change of price and also returning the html of the cart to be seen in the UI
+class ShoppingCart {
+  cart = [];
+
+  addProduct (product) {
+    this.cart.push (product);
+    this.totalOutput = `<h2>Total: \$${1}</h2>`;
+  }
+
+  getTotal () {
+    const cartElement = document.createElement ('section');
+    cartElement.innerHTML = `
+      <h2>Total: \$${0}</h2>
+      <button>Order</button>
+    `;
+
+    this.totalOutput = cartElement.querySelector ('h2');
+    cartElement.className = 'cart';
+    return cartElement;
+  }
+}
+
+class Shop {
+  //render the shopping cart itself (the main app div we render in to )
+  render () {
+    const renderHook = document.getElementById ('app'); // grab the app div we will be appending all our html to
+    const cart = new ShoppingCart (); //create the shopping cart
+    const cartTotal = cart.getTotal ();
+    const productList = new ProductList (); //create the shopping list
+    const prodList = productList.getShoppingList (); //render the shopping list
+
+    renderHook.append (cartTotal);
     renderHook.append (prodList);
   }
 }
@@ -61,7 +97,7 @@ class ProductItem {
   // adds item to cart: callback for event listened on the button of the product: the buttons event is bound by default to the object in which calls it
   //which is in another class, therefore, its undefined! We need to always bind event listeners to things that are used elsewhere (this is a big thing in react)
   addItemToCart () {
-    console.log ('Adding to cart:' + this.product);
+    console.log (this.product);
   }
 
   // [user defined method] creates a new list item product card and returns that item to be rendered
@@ -82,14 +118,18 @@ class ProductItem {
       </div>
     `;
 
-    //put an event listener on the button in the product element
-    const addToCart = productElement.querySelector ('button');
-    addToCart.addEventListener ('click', this.addItemToCart.bind (this)); //add product to cart: bind the method to this particular products context and nit the object ocntext calling it in the other class
-
-    //return the new DOM element
-    return productElement;
+    const addToCart = productElement.querySelector ('button'); //put an event listener on the button in the product element
+    addToCart.addEventListener ('click', this.addItemToCart.bind (this)); //add product to cart: bind the method to this particular products context (the instance calling the method)
+    return productElement; //return the new DOM element
   }
 }
 
-const productList = new ProductList ();
-productList.render ();
+// init class to initialize the app and provide static data to be used elsewhere
+class App {
+  static init () {
+    const shop = new Shop ();
+    shop.render ();
+  }
+}
+
+App.init ();
