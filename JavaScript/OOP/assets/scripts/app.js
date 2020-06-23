@@ -25,25 +25,31 @@ const productList = {
 
   // a self-defined render method to render the list of products : notice this app looks a lot like react [this is how we'd do things in vanillaJS]
   render () {
+    // grab the app div we will be appending all our html to
     const renderHook = document.getElementById ('app');
+
+    // create an unordered list and give it a classname
     const prodList = document.createElement ('ul');
     prodList.className = 'product-list';
 
     // loop all the products in our 'database' [this objects array of products] and create list items to append to the list
     for (const product of this.products) {
+      //create a list item [remember in react we made a list item component and just mapped all the lists so sick]
       const productElement = document.createElement ('li');
       productElement.className = 'product-item';
 
       //gather all the data for this product and render it with some html : style.css will style this []
       productElement.innerHTML = ` 
-      <div>
-        <img src="${product.img}" alt="${product.title}"/>
-        <div class="product-item__content>
-          <h2>${product.title}</h2>   
-          <h3>\$${product.price}</h3>
-          <p>${product.description}</p>     
+        <div>
+          <img src="${product.img}" alt="${product.title}"/>
+          <div class="product-item__content>
+            <h2>${product.title}</h2>   
+            <h3>\$${product.price}</h3>
+            <p>${product.description}</p>   
+            <button>Add to Cart</button>  
+          </div>
         </div>
-      </div>`;
+      `;
 
       //append this list item to the product list
       prodList.append (productElement);
@@ -52,3 +58,6 @@ const productList = {
     renderHook.append (prodList);
   },
 };
+
+//render the code into the dom
+productList.render ();
