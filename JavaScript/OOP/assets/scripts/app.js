@@ -1,63 +1,95 @@
-/**
- * Mock database of products
- */
-const productList = {
-  products: [
-    {
-      title: 'Pillow',
-      img: 'data:image/jpeg;base64,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',
-      price: 19.99,
-      description: 'Basic pillow',
-    },
-    {
-      title: '49ers hat',
-      img: 'data:image/jpeg;base64,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',
-      price: 34.95,
-      description: 'Black cap 4/7',
-    },
-    {
-      title: 'Macbook Pro 15',
-      img: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.cnet.com%2Freviews%2Fapple-macbook-pro-with-touch-bar-15-inch-2018-review%2F&psig=AOvVaw2tAoZknn-lpgbJiNfxPwdE&ust=1593023528658000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCNiYq57JmOoCFQAAAAAdAAAAABAE',
-      price: 2499.99,
-      description: '16gb 256gb TouchBar',
-    },
-  ],
+//class to define a product object: like a struct or object in java
+class Product {
+  // Constructor
+  constructor (title, imgURL, description, price) {
+    this.title = title;
+    this.imgURL = imgURL;
+    this.description = description;
+    this.price = price;
+  }
+}
 
-  // a self-defined render method to render the list of products : notice this app looks a lot like react [this is how we'd do things in vanillaJS]
+// class to define an actual list to render to the DOM
+class ProductList {
+  constructor () {}
+  // fields
+  productList = [
+    //this array mimics a database
+    new Product (
+      'Pillow',
+      'https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60',
+      'Plush pillow',
+      34.99
+    ),
+    new Product (
+      'RVCA Hat',
+      'https://images.unsplash.com/photo-1556306535-0f09a537f0a3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60',
+      'RVCA cap',
+      40.99
+    ),
+    new Product (
+      'Ocean Painting',
+      'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1353&q=80',
+      'Ocean painting',
+      10.99
+    ),
+  ];
+
   render () {
-    // grab the app div we will be appending all our html to
-    const renderHook = document.getElementById ('app');
-
-    // create an unordered list and give it a classname
-    const prodList = document.createElement ('ul');
+    const renderHook = document.getElementById ('app'); // grab the app div we will be appending all our html to
+    const prodList = document.createElement ('ul'); // create an unordered list and give it a classname
     prodList.className = 'product-list';
 
     // loop all the products in our 'database' [this objects array of products] and create list items to append to the list
-    for (const product of this.products) {
-      //create a list item [remember in react we made a list item component and just mapped all the lists so sick]
-      const productElement = document.createElement ('li');
-      productElement.className = 'product-item';
-
-      //gather all the data for this product and render it with some html : style.css will style this []
-      productElement.innerHTML = ` 
-        <div>
-          <img src="${product.img}" alt="${product.title}"/>
-          <div class="product-item__content>
-            <h2>${product.title}</h2>   
-            <h3>\$${product.price}</h3>
-            <p>${product.description}</p>   
-            <button>Add to Cart</button>  
-          </div>
-        </div>
-      `;
-
-      //append this list item to the product list
-      prodList.append (productElement);
+    for (const product of this.productList) {
+      const productItem = new ProductItem (product); //instantiate each product from the product item clss and create a new LI
+      const productElement = productItem.createElement (); //create that element (product item class will provide the html/logic to do so [returns that dome elemnent which is  why we saved it])
+      prodList.append (productElement); // append this product to the ul
     }
     //append the product list itself to the app div
     renderHook.append (prodList);
-  },
-};
+  }
+}
 
-//render the code into the dom
+// creates a product item card
+class ProductItem {
+  // accepts a product to be rendered to the DOM
+  constructor (product) {
+    this.product = product;
+  }
+
+  // adds item to cart: callback for event listened on the button of the product: the buttons event is bound by default to the object in which calls it
+  //which is in another class, therefore, its undefined! We need to always bind event listeners to things that are used elsewhere (this is a big thing in react)
+  addItemToCart () {
+    console.log ('Adding to cart:' + this.product);
+  }
+
+  // [user defined method] creates a new list item product card and returns that item to be rendered
+  createElement () {
+    const productElement = document.createElement ('li');
+    productElement.className = 'product-item';
+
+    //gather all the data for this product (the one passed into the constructor in the product list render method) and render it with some html : style.css will style this []
+    productElement.innerHTML = ` 
+      <div>
+        <img src="${this.product.imgURL}" alt="${this.product.title}"/>
+        <div class="product-item__content">
+          <h2>${this.product.title}</h2>   
+          <h3>\$${this.product.price}</h3>
+          <p>${this.product.description}</p>   
+          <button>Add to Cart</button>
+        </div>
+      </div>
+    `;
+
+    //put an event listener on the button in the product element
+    const addToCart = productElement.querySelector ('button');
+    addToCart.addEventListener ('click', this.addItemToCart.bind (this)); //add product to cart: bind the method to this particular products context and nit the object ocntext calling it in the other class
+
+    //return the new DOM element
+    return productElement;
+  }
+}
+
+const productList = new ProductList ();
 productList.render ();
