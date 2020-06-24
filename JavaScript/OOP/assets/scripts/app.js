@@ -1,128 +1,185 @@
-//define a product object: like a struct or object in java
 class Product {
-  constructor (title, imgURL, description, price) {
+  // title = 'DEFAULT';
+  // imageUrl;
+  // description;
+  // price;
+
+  constructor (title, image, desc, price) {
     this.title = title;
-    this.imgURL = imgURL;
-    this.description = description;
+    this.imageUrl = image;
+    this.description = desc;
     this.price = price;
   }
 }
 
-// class to define an actual list to render to the DOM
-class ProductList {
-  productList = [
-    //this array mimics a database
-    new Product (
-      'Pillow',
-      'https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60',
-      'Plush pillow',
-      34.99
-    ),
-    new Product (
-      'RVCA Hat',
-      'https://images.unsplash.com/photo-1556306535-0f09a537f0a3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60',
-      'RVCA cap',
-      40.99
-    ),
-    new Product (
-      'Ocean Painting',
-      'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1353&q=80',
-      'Ocean painting',
-      10.99
-    ),
-  ];
-
-  //creates the ul to be put in the app and renders out all products in the 'database' and returns the list to the caller
-  getShoppingList () {
-    const prodList = document.createElement ('ul');
-    prodList.className = 'product-list';
-
-    for (const product of this.productList) {
-      const productItem = new ProductItem (product);
-      const productElement = productItem.createElement ();
-      prodList.append (productElement);
-    }
-    return prodList;
+class ElementAttribute {
+  constructor (attrName, attrValue) {
+    this.name = attrName;
+    this.value = attrValue;
   }
 }
 
-// creates a shopping cart and handles the change of price and also returning the html of the cart to be seen in the UI
-class ShoppingCart {
-  //fields
-  cart = [];
+class Component {
+  constructor (renderHookId, shouldRender = true) {
+    this.hookId = renderHookId;
+    if (shouldRender) {
+      this.render ();
+    }
+  }
+
+  render () {}
+
+  createRootElement (tag, cssClasses, attributes) {
+    const rootElement = document.createElement (tag);
+    if (cssClasses) {
+      rootElement.className = cssClasses;
+    }
+    if (attributes && attributes.length > 0) {
+      for (const attr of attributes) {
+        rootElement.setAttribute (attr.name, attr.value);
+      }
+    }
+    document.getElementById (this.hookId).append (rootElement);
+    return rootElement;
+  }
+}
+
+class ShoppingCart extends Component {
+  items = [];
+
+  set cartItems (value) {
+    this.items = value;
+    this.totalOutput.innerHTML = `<h2>Total: \$${this.totalAmount.toFixed (2)}</h2>`;
+  }
+
+  get totalAmount () {
+    const sum = this.items.reduce (
+      (prevValue, curItem) => prevValue + curItem.price,
+      0
+    );
+    return sum;
+  }
+
+  constructor (renderHookId) {
+    super (renderHookId, false);
+    this.orderProducts = () => {
+      console.log ('Ordering...');
+      console.log (this.items);
+    };
+    this.render ();
+  }
 
   addProduct (product) {
-    this.cart.push (product);
-    this.totalOutput = `<h2>Total: \$${1}</h2>`;
+    const updatedItems = [...this.items];
+    updatedItems.push (product);
+    this.cartItems = updatedItems;
   }
 
-  getTotal () {
-    const cartElement = document.createElement ('section');
-    cartElement.innerHTML = `
-      <h2>Total: \$${0}</h2>
-      <button>Order</button>
-    `;
-
-    this.totalOutput = cartElement.querySelector ('h2');
-    cartElement.className = 'cart';
-    return cartElement;
-  }
-}
-
-//render the shopping cart itself (the main app div we render in to )
-class Shop {
   render () {
-    const renderHook = document.getElementById ('app'); // grab the app div we will be appending all our html to
-    const cart = new ShoppingCart (); //create the shopping cart
-    const cartTotal = cart.getTotal ();
-    const productList = new ProductList (); //create the shopping list
-    const prodList = productList.getShoppingList (); //render the shopping list
-
-    renderHook.append (cartTotal);
-    renderHook.append (prodList);
-  }
-}
-
-// creates a product item card
-class ProductItem {
-  // accepts a product to be rendered to the DOM
-  constructor (product) {
-    this.product = product;
-  }
-
-  addItemToCart () {
-    console.log (this.product);
-  }
-
-  createElement () {
-    const productElement = document.createElement ('li');
-    productElement.className = 'product-item';
-
-    //gather all the data for this product (the one passed into the constructor in the product list render method) and render it with some html : style.css will style this []
-    productElement.innerHTML = ` 
-      <div>
-        <img src="${this.product.imgURL}" alt="${this.product.title}"/>
-        <div class="product-item__content">
-          <h2>${this.product.title}</h2>   
-          <h3>\$${this.product.price}</h3>
-          <p>${this.product.description}</p>   
-          <button>Add to Cart</button>
-        </div>
-      </div>
+    const cartEl = this.createRootElement ('section', 'cart');
+    cartEl.innerHTML = `
+      <h2>Total: \$${0}</h2>
+      <button>Order Now!</button>
     `;
-
-    const addToCart = productElement.querySelector ('button'); //put an event listener on the button in the product element
-    addToCart.addEventListener ('click', this.addItemToCart.bind (this)); //add product to cart: bind the method to this particular products context (the instance calling the method)
-    return productElement;
+    const orderButton = cartEl.querySelector ('button');
+    // orderButton.addEventListener('click', () => this.orderProducts());
+    orderButton.addEventListener ('click', this.orderProducts);
+    this.totalOutput = cartEl.querySelector ('h2');
   }
 }
 
-// this class is the driver: notice static keyword. this creates a static method such that we need not an instance to use it, therefore, it is nice to
-//initialize the app and render the UI
+class ProductItem extends Component {
+  constructor (product, renderHookId) {
+    super (renderHookId, false);
+    this.product = product;
+    this.render ();
+  }
+
+  addToCart () {
+    App.addProductToCart (this.product);
+  }
+
+  render () {
+    const prodEl = this.createRootElement ('li', 'product-item');
+    prodEl.innerHTML = `
+        <div>
+          <img src="${this.product.imageUrl}" alt="${this.product.title}" >
+          <div class="product-item__content">
+            <h2>${this.product.title}</h2>
+            <h3>\$${this.product.price}</h3>
+            <p>${this.product.description}</p>
+            <button>Add to Cart</button>
+          </div>
+        </div>
+      `;
+    const addCartButton = prodEl.querySelector ('button');
+    addCartButton.addEventListener ('click', this.addToCart.bind (this));
+  }
+}
+
+class ProductList extends Component {
+  products = [];
+
+  constructor (renderHookId) {
+    super (renderHookId);
+    this.fetchProducts ();
+  }
+
+  fetchProducts () {
+    this.products = [
+      new Product (
+        'A Pillow',
+        'https://www.maxpixel.net/static/photo/2x/Soft-Pillow-Green-Decoration-Deco-Snuggle-1241878.jpg',
+        'A soft pillow!',
+        19.99
+      ),
+      new Product (
+        'A Carpet',
+        'https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Ardabil_Carpet.jpg/397px-Ardabil_Carpet.jpg',
+        'A carpet which you might like - or not.',
+        89.99
+      ),
+    ];
+    this.renderProducts ();
+  }
+
+  renderProducts () {
+    for (const prod of this.products) {
+      new ProductItem (prod, 'prod-list');
+    }
+  }
+
+  render () {
+    this.createRootElement ('ul', 'product-list', [
+      new ElementAttribute ('id', 'prod-list'),
+    ]);
+    if (this.products && this.products.length > 0) {
+      this.renderProducts ();
+    }
+  }
+}
+
+class Shop {
+  constructor () {
+    this.render ();
+  }
+
+  render () {
+    this.cart = new ShoppingCart ('app');
+    new ProductList ('app');
+  }
+}
+
 class App {
+  static cart;
+
   static init () {
     const shop = new Shop ();
-    shop.render ();
+    this.cart = shop.cart;
+  }
+
+  static addProductToCart (product) {
+    this.cart.addProduct (product);
   }
 }
 
