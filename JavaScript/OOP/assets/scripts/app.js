@@ -1,6 +1,5 @@
-//class to define a product object: like a struct or object in java
+//define a product object: like a struct or object in java
 class Product {
-  // Constructor
   constructor (title, imgURL, description, price) {
     this.title = title;
     this.imgURL = imgURL;
@@ -11,8 +10,6 @@ class Product {
 
 // class to define an actual list to render to the DOM
 class ProductList {
-  constructor () {}
-  // fields
   productList = [
     //this array mimics a database
     new Product (
@@ -37,22 +34,21 @@ class ProductList {
 
   //creates the ul to be put in the app and renders out all products in the 'database' and returns the list to the caller
   getShoppingList () {
-    const prodList = document.createElement ('ul'); // create an unordered list and give it a classname
+    const prodList = document.createElement ('ul');
     prodList.className = 'product-list';
 
-    // loop all the products in our 'database' [this objects array of products] and create list items to append to the list
     for (const product of this.productList) {
-      const productItem = new ProductItem (product); //instantiate each product from the product item clss and create a new LI
-      const productElement = productItem.createElement (); //create that element (product item class will provide the html/logic to do so [returns that dome elemnent which is  why we saved it])
-      prodList.append (productElement); // append this product to the ul
+      const productItem = new ProductItem (product);
+      const productElement = productItem.createElement ();
+      prodList.append (productElement);
     }
-    //append the product list itself to the app div
     return prodList;
   }
 }
 
 // creates a shopping cart and handles the change of price and also returning the html of the cart to be seen in the UI
 class ShoppingCart {
+  //fields
   cart = [];
 
   addProduct (product) {
@@ -73,8 +69,8 @@ class ShoppingCart {
   }
 }
 
+//render the shopping cart itself (the main app div we render in to )
 class Shop {
-  //render the shopping cart itself (the main app div we render in to )
   render () {
     const renderHook = document.getElementById ('app'); // grab the app div we will be appending all our html to
     const cart = new ShoppingCart (); //create the shopping cart
@@ -94,13 +90,10 @@ class ProductItem {
     this.product = product;
   }
 
-  // adds item to cart: callback for event listened on the button of the product: the buttons event is bound by default to the object in which calls it
-  //which is in another class, therefore, its undefined! We need to always bind event listeners to things that are used elsewhere (this is a big thing in react)
   addItemToCart () {
     console.log (this.product);
   }
 
-  // [user defined method] creates a new list item product card and returns that item to be rendered
   createElement () {
     const productElement = document.createElement ('li');
     productElement.className = 'product-item';
@@ -120,11 +113,12 @@ class ProductItem {
 
     const addToCart = productElement.querySelector ('button'); //put an event listener on the button in the product element
     addToCart.addEventListener ('click', this.addItemToCart.bind (this)); //add product to cart: bind the method to this particular products context (the instance calling the method)
-    return productElement; //return the new DOM element
+    return productElement;
   }
 }
 
-// init class to initialize the app and provide static data to be used elsewhere
+// this class is the driver: notice static keyword. this creates a static method such that we need not an instance to use it, therefore, it is nice to
+//initialize the app and render the UI
 class App {
   static init () {
     const shop = new Shop ();
