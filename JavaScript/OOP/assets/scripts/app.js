@@ -1,9 +1,4 @@
 class Product {
-  // title = 'DEFAULT';
-  // imageUrl;
-  // description;
-  // price;
-
   constructor (title, image, desc, price) {
     this.title = title;
     this.imageUrl = image;
@@ -82,7 +77,6 @@ class ShoppingCart extends Component {
       <button>Order Now!</button>
     `;
     const orderButton = cartEl.querySelector ('button');
-    // orderButton.addEventListener('click', () => this.orderProducts());
     orderButton.addEventListener ('click', this.orderProducts);
     this.totalOutput = cartEl.querySelector ('h2');
   }
