@@ -38,7 +38,42 @@ class LinkedList {
   }
 
   // O(N) average, O(1) best -> insert to a specific position
-  insert () {}
+  insert (position, val) {
+    let newNode = new Node (val);
+    if (position > this.length) {
+      return null;
+    } else {
+      this.length++;
+
+      /// check for empty list
+      if (!this.head) {
+        this.head = newNode;
+      }
+
+      // check if this insert position is head or tail to correctly reset those pointers
+      if (position === 0) {
+        newNode.next = this.head;
+        this.head = newNode;
+        return;
+      } else if (position === this.length) {
+        this.tail = newNode;
+        return;
+      }
+
+      // else, find insert position
+      let prev = null;
+      let curr = this.head;
+      let count = 0;
+      while (count <= position) {
+        prev = curr;
+        curr = curr.next;
+        count++;
+      }
+      // found insert position -> place it
+      prev.next = newNode;
+      newNode.next = curr;
+    }
+  }
 
   remove (val) {
     if (!this.head) {
@@ -74,7 +109,7 @@ class LinkedList {
     }
   }
 
-  //returns -1 or th eposition found in the list
+  //returns -1 or the position found in the list
   get (val) {
     if (!this.head) {
       return false;
@@ -126,3 +161,6 @@ while (count < 7) {
 //list.remove (4);
 // console.log (list.get (11000));
 console.log (list.get (77));
+list.insert (0, 10); //resets head
+list.insert (9, 10); //out of bounds
+list.log ();
