@@ -7,9 +7,9 @@
 }
 
 section {
-  padding: 5% 0;
+  padding: 90px 0;
   text-align: center;
-  padding-bottom: 200px;
+  padding-bottom: 30px;
 }
 
 section:nth-child(even) {
@@ -80,7 +80,6 @@ section:nth-child(even) {
 .container {
   margin-top: 30px;
   text-align: left !important;
-  align-items: center;
 }
 
 .card {
@@ -100,7 +99,6 @@ section:nth-child(even) {
 .blocker {
   display: flex;
   justify-content: space-evenly;
-  overflow: hidden;
   flex-wrap: wrap;
 }
 
@@ -110,8 +108,12 @@ section:nth-child(even) {
 }
 
 .card-text button {
-  margin: 0 auto;
-  margin-top: 6px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100% !important;
+  border: none;
+  background-color: #a60af3;
 }
 
 .card-img-top {
@@ -224,28 +226,31 @@ i {
 }
 
 @media screen and (min-width:1024px) {
-  html {
-    /* body won't work ¯\_(ツ)_/¯ */
-    scroll-snap-type: y mandatory;
-  }
-
   section {
     height: 100vh;
     width: 100vw;
-    scroll-snap-align: start;
   }
 }
 
-@media screen and (max-width:768px) {
-
-  html {
-    scroll-snap-type: none;
-  }
-
+/* 1028 -> 1203*/
+@media screen and(max-width: 1200px) {
   .section {
-    height: auto;
-    width: auto;
-    scroll-snap-align: none;
+    height: 100vh;
+  }
+}
+
+@media screen and(max-width: 1000px) {
+  .section {
+    height: 100vh;
+  }
+}
+
+
+@media screen and (max-width:768px) {
+  .section {
+    /* get rid of the overflow from flex cards into about me*/
+    height: 100vw;
+    width: 100vh;
   }
 
   .container {
