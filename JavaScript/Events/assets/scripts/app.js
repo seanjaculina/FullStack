@@ -9,7 +9,9 @@ class DOMHelper {
     const element = document.getElementById(elementId);
     const destinationElement = document.querySelector(newDestinationSelector);
     destinationElement.append(element);
-    element.scrollIntoView({ behavior: 'smooth' });
+    element.scrollIntoView({
+      behavior: 'smooth'
+    });
   }
 }
 
@@ -84,6 +86,7 @@ class ProjectItem {
     this.updateProjectListsHandler = updateProjectListsFunction;
     this.connectMoreInfoButton();
     this.connectSwitchButton(type);
+    this.connectDrag()
   }
 
   showMoreInfoHandler() {
@@ -101,6 +104,14 @@ class ProjectItem {
     );
     tooltip.attach();
     this.hasActiveTooltip = true;
+  }
+
+  connectDrag() {
+    // get the item: the id here is passed into the constructor of this object (this is an oop way of coding.)
+    document.getElementById(this.id).addEventListener('dragstart', e => {
+      e.dataTransfer.setData('text/plain', this.id);
+      e.dataTransfer.effectAllowed = 'move';
+    })
   }
 
   connectMoreInfoButton() {
@@ -140,6 +151,39 @@ class ProjectList {
       );
     }
     console.log(this.projects);
+    this.connectDroppable()
+  }
+
+  // connect the droppable item to the list of finished projects
+  connectDroppable() {
+    const list = document.querySelector(`#${this.type}-projects ul`);
+    list.addEventListener('dragenter', e => {
+      if (e.dataTransfer.types[0] === 'text/plain') {
+        e.preventDefault();
+      }
+      list.parentElement.classList.add('droppable');
+    })
+    list.addEventListener('dragover', e => {
+      if (e.dataTransfer.types[0] === 'text/plain') {
+        e.preventDefault();
+      }
+    })
+    list.addEventListener('dragleave', e => {
+      if (e.relatedTarget.closest && e.relatedTarget.closest(`#${this.type}-projects ul`)) {
+        list.parentElement.classList.remove('droppable')
+      }
+    })
+    list.addEventListener('drop', e => {
+      e.preventDefault()
+      const projectId = e.dataTransfer.getData('text/plain');
+      // if we did not leave the box we dragged from, and let go, it will not re-add to the container it came from
+      if (this.projects.find(p => p.id === projectId)) {
+        return;
+      }
+      document.getElementById(projectId).querySelector('button:last-of-type').click();
+      list.parentElement.classList.remove('droppable')
+      e.preventDefault()
+    })
   }
 
   setSwitchHandlerFunction(switchHandlerFunction) {
