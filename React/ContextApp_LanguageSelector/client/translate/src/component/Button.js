@@ -8,12 +8,6 @@ class Button extends Component {
   // hookup to context: must be named contextType for React context to work and must be static [class level variable: non-instance variable WE KNOW THIS!]
   // if we use a Consumer, though, we do not need this: things are easier, so, i will have this commented out bUT this is one of the two ways
   // we can hook into our context and get the data there
-  //static contextType = LanguageContext;
-
-  /**
-   * since we hooked into the context object, we can now reference that context and its data to get it
-   * using this.context
-   */
 
   // get the current context state : this is a callback to the actual function the Consumer needs to call to get that state: this is just a cleanup for us! See video 307
   renderSubmit(language) {
