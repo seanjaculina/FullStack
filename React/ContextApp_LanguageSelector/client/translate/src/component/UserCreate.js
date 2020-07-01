@@ -4,7 +4,8 @@ import React from 'react';
 import Field from './Field';
 import Button from './Button';
 
-const UserCreate = props => {
+// renders out both the button and field for the components
+const UserCreate = (props) => {
   return (
     <div className="ui form">
       <Field />
