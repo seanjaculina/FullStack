@@ -16,7 +16,7 @@ class App extends Component {
   render() {
     return (
       <div className="ui container">
-        {/**wrap the component children in our root store context */}
+        {/**wrap the component children in our root store context so we can pass all state and callbacks as props to any component in our app: see react course */}
         <Store>
           <LanguageSelector />
           <UserCreate />
