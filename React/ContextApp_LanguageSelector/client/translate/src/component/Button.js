@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 // context hookup -> context is essentially the 'global store' for various data. We see though how this is a bit less interesting than redux and a little bit
 // less senseful
-import LanguageContext from './context/ContextStore';
+import Context from './context/ContextStore';
 
 class Button extends Component {
   // hookup to context: must be named contextType for React context to work and must be static [class level variable: non-instance variable WE KNOW THIS!]
@@ -24,18 +24,18 @@ class Button extends Component {
   renderButton(color) {
     return (
       <button className={`ui button ${color}`}>
-        <LanguageContext.Consumer>
+        <Context.Consumer>
           {({language}) => this.renderSubmit(language)}
-        </LanguageContext.Consumer>
+        </Context.Consumer>
       </button>
     );
   }
 
   render() {
     return (
-      <LanguageContext.Consumer>
+      <Context.Consumer>
         {({color}) => this.renderButton(color)}
-      </LanguageContext.Consumer>
+      </Context.Consumer>
     );
   }
 }
