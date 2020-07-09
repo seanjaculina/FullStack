@@ -1,7 +1,7 @@
 const JWT = require('jsonwebtoken')
 
 // exporting in node
-exports.authenticateUser = function (req, res, next) {
+exports.authenticateToken = function (req, res, next) {
   // get the token from header
   const authHeader = req.headers['authorization'];
 
@@ -19,3 +19,6 @@ exports.authenticateUser = function (req, res, next) {
     next();
   })
 }
+
+// showing how multiple things can be exported from one module without having to be in a root object or class
+exports.name = "tanner bob";

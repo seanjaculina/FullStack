@@ -4,40 +4,36 @@ const app = express();
 // config the .env
 require('dotenv').config();
 
-//jwt
-const JWT = require('jsonwebtoken');
-
 // data imports : destructure out the names exports
 const {
   posts
 } = require('./posts');
 
-const auth = require('./middlewares')
-console.log(auth)
-
-//middlewares: destructure them out as we want to cherrypick the specific functions from this module
+// middleware function imports
 const {
-  authenticateUser
+  authenticateToken,
+  name //practice with imports..ignore for actual tutorial logic and purposes
 } = require('./middlewares');
 
-//const auth = require('./middlewares');
 
+// import jwt creation function
+const {
+  generateToken
+} = require('./generateToken');
+
+console.log(name)
 
 // middlewares
 app.use(express.json());
 console.log(posts)
 
-/**
- * @route   /
- * @param   none
- * @access  public
- */
+
 app.get('/', (req, res) => {
   res.send(posts);
 })
 
-
-app.get('/posts', authenticateUser, (req, res) => {
+// will take in the token in request and authenticate the token and then find the user based off their username which is used for the sign in and then return their data from the posts 'database'
+app.get('/posts', authenticateToken, (req, res) => {
   res.json(posts.filter(post => post.username === req.user.name))
 })
 
@@ -46,18 +42,16 @@ app.post('/login', (req, res) => {
   // authenticateUser user at this step 
   // some code.....
 
+  // get the username from the request
   const username = req.body.username;
 
+  // put the user into an object and pass it to the generate token method
   const user = {
     name: username,
   }
 
-  // get the secret key from the .env
-  const SECRET = process.env.ACCESS_TOKEN_SECRET;
-
-
-  // create the JWT with the user, token and expiration
-  const token = JWT.sign(user, SECRET);
+  // generate the token : logic extracted to its own module
+  const token = generateToken(user);
 
   // we can then return the JWT
   res.json({
