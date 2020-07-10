@@ -17,23 +17,17 @@
 // optimized solution
 const validAnagram = (str1, str2) => {
 
-  // edge cases
   if (str1.length !== str2.length) return false;
 
-  // map creation
   const map1 = new Map()
 
-  // loop string 1
   for (let i of str1) {
     map1.set(i, (map1.get(i) || 0) + 1)
   }
 
-  // loop string 2 comparing each character to the occurence in string 1--- return false if some count is off
   for (let letter of str2) {
-    if (!(map1.get(letter))) return false
-
-    // else decrement the occurence in the map by 1 : this essentially is handling the case
-    // that some letter in s2occurs more than s1 
+    if (!(map1.get(letter)))
+      return false
     map1.set(letter, map1.get(letter) - 1)
   }
   return true;
