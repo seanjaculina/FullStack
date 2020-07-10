@@ -14,28 +14,27 @@
  * 
  */
 
-/**
- * this can be refactored down to using only one map and comparing the count of chars
- * in str1 with str2 occurences. we know if any character is left in str1 after iterating str2
- * vice, versa, we do not have an anagram
- */
+// optimized solution
 const validAnagram = (str1, str2) => {
 
   // edge cases
   if (str1.length !== str2.length) return false;
 
   // map creation
-  const [map1, map2] = [new Map(), new Map()];
+  const map1 = new Map()
 
-  // loop both strings [for...of for strings]
+  // loop string 1
   for (let i of str1) {
     map1.set(i, (map1.get(i) || 0) + 1)
   }
-  for (let i of str2) {
-    map2.set(i, (map2.get(i) || 0) + 1)
-  }
-  for (let letter of map1.keys()) {
-    if (map1.get(letter) !== map2.get(letter)) return false;
+
+  // loop string 2 comparing each character to the occurence in string 1--- return false if some count is off
+  for (let letter of str2) {
+    if (!(map1.get(letter))) return false
+
+    // else decrement the occurence in the map by 1 : this essentially is handling the case
+    // that some letter in s2occurs more than s1 
+    map1.set(letter, map1.get(letter) - 1)
   }
   return true;
 }
