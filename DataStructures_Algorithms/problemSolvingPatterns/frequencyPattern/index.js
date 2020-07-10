@@ -13,32 +13,23 @@
  *  ->  same([1,2,1], [4,4,1])    // false
  */
 
+// O(N) time and space
 function same(arr1, arr2) {
 
-  // edge case: different sizes
   if (arr1.length !== arr2.length) return false;
 
-  // 1-line multiple map creation (using destrucutring) -> easily could do two line initialization
-  const [map1, map2] = [new Map(), new Map()];
+  const [map1, map2] = [new Map(), new Map()]
 
-  //add frequencies to both maps [notice the absolutely amazing logic for setting the frequency]
   arr1.forEach(value => {
     map1.set(value, (map1.get(value) || 0) + 1)
   })
-  // same for array 2
   arr2.forEach(value => {
     map2.set(value, (map2.get(value) || 0) + 1)
   })
-
-  // use for...of and pull out key/val with destructuring or just use the .keys() 
   for (const key of map1.keys()) {
-
-    // check if the key squared is in map 2
     if (!(map2.has(key ** 2))) {
       return false;
     }
-
-    // if it is, check the frequency matches
     if (map2.get(key ** 2) !== map1.get(key)) {
       return false;
     }
