@@ -2,8 +2,15 @@
  * This file will explain/show how linear search works
  * 
  * 
- * Linear search in an O(N) search aglroithm that looks at each element in some collection
+ * Linear search is a search aglroithm that looks at each element in some collection
  * comparing it to a query and returns true/false if any element in that collection matches the query
+ * 
+ * Complexity analysis:
+ * -----------------------------
+ * best case: O(1) if value existed at start position of search (obviously rare)
+ * avg case: O(N)
+ * worst: O(N)
+ * 
  * 
  * A good example is finding a number in an un-sorted list [it casn be sorted but then we would prefer binary search.. in another file I explain this]
  * 
