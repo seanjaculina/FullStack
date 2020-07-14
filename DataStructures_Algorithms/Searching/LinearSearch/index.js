@@ -40,7 +40,7 @@ const getIndex = (arr, val) => {
   // for...in will account for the indices where for...of will simply get the values [we can index for...in with the collection[index]]
   for (const i in arr) {
     if (arr[i] === val) {
-      return +i;
+      return +i; // need to convert to number as the index of for...in will actually use strings as the return values
     }
   }
   return -1;
