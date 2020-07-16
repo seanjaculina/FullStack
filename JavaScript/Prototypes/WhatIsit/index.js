@@ -36,6 +36,8 @@ User.getPerson(); // Tanner 24
  * So, with this explanation out of the way, how can we bnasically call a function on our Person, for example getName() but the class does not have that? We can make a prototype for this 
  * person object to fallback on in order to 'inherit' and use! Amazing
  * 
+ * see this link to understand hoisting, lexical scope and closures: https://medium.com/@nickbalestra/javascripts-lexical-scope-hoisting-and-closures-without-mystery-c2324681d4be
+ * 
  * we cannot use arrows because we lose access to lexical 'this' as arrows need not to worry about context, and will automatically bind to the calling object
  * therefore, using arrows will actuall he applied to the prototype and not the object we wanted to call it on! Read book and also read docs on this
  * 
