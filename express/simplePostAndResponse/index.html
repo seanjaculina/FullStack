@@ -5,17 +5,31 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Working with forms</title>
+
+  <!--semantic UI CDN-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+  <link rel="stylesheet" href="./public/app.css">
 </head>
 
 <body>
 
-  <form action="/submitData" method="POST">
-    <label for="name">Enter your name</label>
-    <input type="text" name="name" id="name">
-    <label for="comment">Please enter a comment</label>
-    <input type="text" name="comment" id="comment">
-    <input type="submit" value="Enter data">
-  </form>
+  <!--the name attributes in input/form elements are the query params that are passed in the request body when it is sent. So, either in html or using JSX in react,
+  when we make forms, we definitely need to put name attributes! Not only to easily index the state we possibly make for named components and updating characters,
+  but if we are sending data to a backend server, the name fields will be accessible on a route via req.body.nameFromReqBodyKey-->
+
+  <div class="ui container" id="container" style="margin-top: 50px;">
+    <form action="/submitData" method="POST" class="ui form">
+      <div class="field">
+        <label for="name">Enter your name</label>
+        <input type="text" name="name" id="name">
+      </div>
+      <div class="field">
+        <label for="comment">Please enter a comment</label>
+        <input type="text" name="comment" id="comment">
+      </div>
+      <input type="submit" value="Enter data" class="ui blue button">
+    </form>
+  </div>
 
 </body>
 
