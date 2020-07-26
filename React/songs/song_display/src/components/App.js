@@ -1,13 +1,14 @@
-import React from 'react';
+import React from "react";
 
-//css imports
-import '../App.css';
+//css import
+import "../App.css";
 
-//always destructure if we are trying to import named exports (function, etc. exported from a file) and just a variable name for default exports
-import SongList from './SongList';
-import SongDetail from './SongDetail';
+// components are not named exports. They are default exports therefore we can represent the whole file with a name here but if its a named export (like our actions)
+// we always need to destrucutre those functions (same for node apps.. exports const app = ... needs to be const {S} = require(...) and so on)
+import SongList from "./SongList";
+import SongDetail from "./SongDetail";
 
-//Top level app functional component
+// Always need an App component that would typically mount any top level sub components like navbar, react routers, etc
 const App = () => {
   return (
     <div className="ui container grid">

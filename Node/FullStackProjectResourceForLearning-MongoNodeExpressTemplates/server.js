@@ -32,10 +32,10 @@ app.use(express.static('public')); // tell express what folder all our static co
 
 
 // routes in the app : common routes are allowed in separate files and matched suing express router
-const indexRouter = require('./routes/index');
+const articles = require('./routes/articles');
 
-// set up the route handlers
-app.use('/', indexRouter);
+// all routes in articles file will be routed off of /articles since we are using router
+app.use('/articles', articles);
 
 
 // Listen -> Save port and listen
