@@ -12,7 +12,7 @@ h1 {
 .container {
   width: 40vw;
   height: 40vh;
-  margin: 200px auto;
+  margin: 50px auto;
   background-color: beige;
   display: flex;
   border-radius: 5px;
