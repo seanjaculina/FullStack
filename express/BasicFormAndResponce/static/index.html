@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Basic form</title>
+  </head>
+  <body>
+    <h1>Messing with forms!</h1>
+    <div class="container">
+      <!--Must have action: route to send request to and the request method - by default it is a GET-->
+      <form action="formSubmission" method="POST" class="form">
+        <label for="name">Enter name</label>
+        <input type="text" name="name" id="name" />
+        <label for="age">Enter age</label>
+        <input type="number" name="age" id="age" />
+        <label for="id">Enter student ID</label>
+        <input type="text" name="id" id="id" />
+        <input type="submit" value="Submit" />
+      </form>
+    </div>
+  </body>
+</html>

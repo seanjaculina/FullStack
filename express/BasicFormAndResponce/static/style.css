@@ -1,0 +1,40 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  text-align: center;
+  padding-top: 100px;
+}
+
+.container {
+  width: 40vw;
+  height: 40vh;
+  margin: 200px auto;
+  background-color: beige;
+  display: flex;
+  border-radius: 5px;
+  /* Align form to center of div horizontally */
+  align-items: center;
+}
+
+.form {
+  width: 70%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  border: none;
+}
+
+.form input,
+label {
+  /* Left align label to the input box but put top padding */
+  padding: 10px 0;
+}
+
+.form [type="submit"] {
+  margin-top: 20px;
+  width: 20%;
+}
