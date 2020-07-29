@@ -16,7 +16,7 @@ class SearchBar extends Component {
   // handle the form submission
   onFormSubmit = (e) => {
     e.preventDefault();
-    this.props.userSubmission(this.state.term.trim());
+    this.props.userSubmission(this.state.car_input.trim());
   };
 
   render() {
