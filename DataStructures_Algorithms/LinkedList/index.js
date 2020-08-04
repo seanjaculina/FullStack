@@ -7,7 +7,6 @@ class Node {
     this.next = null;
   }
 }
-
 class LinkedList {
   // to initialize new linked list
   constructor() {
@@ -136,3 +135,6 @@ const list = new LinkedList();
  * print() => O(N)
  * delete() => O(N)
  */
+
+// to use in another file if we want - will see this in use in the stack
+module.exports = { LinkedList };
