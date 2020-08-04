@@ -87,6 +87,7 @@ class LinkedList {
     }
   }
 
+  // Deletes a node at that specific nodes location, if it exists
   delete(data) {
     if (!this.head) return;
     this.size--;
@@ -109,6 +110,27 @@ class LinkedList {
     }
   }
 
+  // Removes last element in the list
+  removeLast() {
+    if (!this.head) return;
+    this.size--;
+    // if the list is only one node - this is a special case
+    if (!this.head.next) {
+      this.head = null;
+    } else {
+      let curr = this.head;
+      let temp = null;
+      while (curr.next) {
+        temp = curr;
+        curr = curr.next;
+      }
+      let t = curr.data;
+      temp.next = null;
+      curr = null;
+      return t;
+    }
+  }
+
   print() {
     if (!this.head) return;
     let curr = this.head;
@@ -125,7 +147,9 @@ class LinkedList {
 
 // Create a new linked list - all methods were tested. Mess with the list as you wish
 const list = new LinkedList();
-
+list.append(10);
+list.removeLast();
+console.log(list.size_());
 /**
  * Time complexities:
  *
@@ -136,5 +160,5 @@ const list = new LinkedList();
  * delete() => O(N)
  */
 
-// to use in another file if we want - will see this in use in the stack
-module.exports = { LinkedList };
+// to use in another file if we want - will see this in use in the stack {can wrap in curlies, or not - if we do, we need to destructure in the import}
+module.exports = LinkedList;
