@@ -1,222 +1,302 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--font awesome-->
+    <script
+      src="https://kit.fontawesome.com/5883173e93.js"
+      crossorigin="anonymous"
+    ></script>
 
-  <!--font awesome-->
-  <script src="https://kit.fontawesome.com/5883173e93.js" crossorigin="anonymous"></script>
+    <!--google fonts-->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap"
+      rel="stylesheet"
+    />
 
-  <!--google fonts-->
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet" />
+    <!--semantic ui-->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
 
-  <!--semantic ui-->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous" />
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="./style.css" />
 
-  <script src="script.js" defer></script>
-  <link rel="stylesheet" href="./style.css" />
+    <title>Tanner Barcelos</title>
+  </head>
 
-  <title>Tanner Barcelos</title>
-</head>
-
-<body>
-  <section class="landing">
-    <div class="landing-div">
-      <h1>Hi, I'm Tanner!</h1>
-      <p class="splash">
-        Student.<br />Creator.<br />Aspiring software engineer
-      </p>
-      <div class="social-links">
-        <a href="https://github.com/TannerBarcelos" target="_blank">
-          <i class="fa fa-github" id="first"></i>
-        </a>
-        <a href="https://www.linkedin.com/in/tanner-barcelos-695619a1/" target="_blank">
-          <i class="fa fa-linkedin-square" id="second"></i>
-        </a>
+  <body>
+    <section class="landing">
+      <div class="landing-div">
+        <h1>Hi, I'm Tanner!</h1>
+        <p class="splash">
+          Student.<br />Creator.<br />Aspiring software engineer
+        </p>
+        <div class="social-links">
+          <a href="https://github.com/TannerBarcelos" target="_blank">
+            <i class="fa fa-github" id="first"></i>
+          </a>
+          <a
+            href="https://www.linkedin.com/in/tanner-barcelos-695619a1/"
+            target="_blank"
+          >
+            <i class="fa fa-linkedin-square" id="second"></i>
+          </a>
+        </div>
       </div>
-    </div>
-  </section>
-  <section>
-    <div>
-      <h1 class="project">Projects</h1>
+    </section>
+    <section>
+      <div>
+        <h1 class="project">Projects</h1>
+        <div class="container">
+          <div class="blocker">
+            <div class="card">
+              <img
+                src="./img/youtube.png"
+                class="card-img-top"
+                alt="youtube-project"
+              />
+              <div class="card-body">
+                <p class="card-text">
+                  YouTube clone (React)
+                  <button type="submit" class="btn btn-primary boot">
+                    <a
+                      href="https://tanneryoutubeclone.netlify.app/"
+                      target="_blank"
+                    >
+                      See Live</a
+                    >
+                  </button>
+                </p>
+              </div>
+            </div>
+            <div class="card">
+              <img
+                src="./img/shareable.png"
+                class="card-img-top"
+                alt="shareable-project"
+              />
+              <div class="card-body">
+                <p class="card-text">
+                  Shareable - A social platform (MERN)
+                  <button type="submit" class="btn btn-primary boot">
+                    <a
+                      href="https://github.com/TannerBarcelos/Shareable"
+                      target="_blank"
+                    >
+                      See Repo</a
+                    >
+                  </button>
+                </p>
+              </div>
+            </div>
+            <div class="card">
+              <img src="./img/stream.png" class="card-img-top" alt="hospital" />
+              <div class="card-body">
+                <p class="card-text">
+                  Twitch Clone (React/Redux)
+                  <button type="submit" class="btn btn-primary boot">
+                    <a
+                      href="https://github.com/TannerBarcelos/Twitch-Clone"
+                      target="_blank"
+                    >
+                      See Repo</a
+                    >
+                  </button>
+                </p>
+              </div>
+            </div>
+            <div class="card">
+              <img
+                src="./img/covid.png"
+                class="card-img-top"
+                alt="COVID-project"
+              />
+              <div class="card-body">
+                <p class="card-text">
+                  COVID-19 County Death Visualizer (JavaScript)
+                  <button type="submit" class="btn btn-primary boot">
+                    <a
+                      href="https://tannerbarcelos.github.io/COVID-19-Fatality-Visualizer/"
+                      target="_blank"
+                    >
+                      See Live</a
+                    >
+                  </button>
+                </p>
+              </div>
+            </div>
+            <div class="card">
+              <img
+                src="./img/ebay.png"
+                class="card-img-top"
+                alt="eBay-project"
+              />
+              <div class="card-body">
+                <p class="card-text">
+                  ebay like clone (react/redux/express)
+                  <button type="submit" class="btn btn-primary boot">
+                    <a
+                      href="https://ebay-clone-react.herokuapp.com/"
+                      target="_blank"
+                    >
+                      See Live</a
+                    >
+                  </button>
+                </p>
+              </div>
+            </div>
+            <div class="card">
+              <img
+                src="./img/baysbookland.jpg"
+                class="card-img-top"
+                alt="Baysbook-project"
+              />
+              <div class="card-body">
+                <p class="card-text">
+                  Baysbook - a Facebook clone for CSUEB (MERN)
+                  <button type="submit" class="btn btn-primary boot">
+                    <a
+                      href="https://glacial-journey-55442.herokuapp.com/?fbclid=IwAR0CtCB32bMNEhIemAEnNwCqBfIslK78WeEZ2XRgLG9zS6PpC_mDSO3WMlc"
+                      target="_blank"
+                    >
+                      See Live</a
+                    >
+                  </button>
+                </p>
+              </div>
+            </div>
+            <div class="card">
+              <img
+                src="./img/weather.png"
+                class="card-img-top"
+                alt="weather project"
+              />
+              <div class="card-body">
+                <p class="card-text">
+                  Weather Tracker (React)
+                  <button type="submit" class="btn btn-primary boot">
+                    <a
+                      href="https://tannersweatherapp.netlify.app/"
+                      target="_blank"
+                    >
+                      See Live</a
+                    >
+                  </button>
+                </p>
+              </div>
+            </div>
+            <div class="card">
+              <img
+                src="./img/socket.png"
+                class="card-img-top"
+                alt="socket-project"
+              />
+              <div class="card-body">
+                <p class="card-text">
+                  SocketIO chat room
+                  <button type="submit" class="btn btn-primary boot">
+                    <a
+                      href="https://github.com/TannerBarcelos/Web-Socket-Chat"
+                      target="_blank"
+                    >
+                      See Repo</a
+                    >
+                  </button>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section>
+      <h1 class="about-me">About Me</h1>
+      <div class="row container flexer">
+        <img class="me" src="./img/me.jpg" alt="me" />
+        <div class="column">
+          My name is Tanner and I am currently studying computer science at CSU
+          East Bay.<br />
+          I have an interest in full stack development and am always eager to
+          learn new technologies. See some of my technical skills!
+        </div>
+        <div class="column">
+          <table class="table">
+            <tbody>
+              <tr>
+                <td>Java</td>
+                <td>Python</td>
+                <td>C++</td>
+              </tr>
+              <tr>
+                <td>HTML5</td>
+                <td>CSS3</td>
+                <td>JavaScript</td>
+              </tr>
+              <tr>
+                <td>React</td>
+                <td>NodeJS</td>
+                <td>Express</td>
+              </tr>
+              <tr>
+                <td>Redux</td>
+                <td>Data Structures</td>
+                <td>Algorithms</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+    <section>
+      <h1 class="contact-head">Contact Me!</h1>
       <div class="container">
-        <div class="blocker">
-          <div class="card">
-            <img src="./img/youtube.png" class="card-img-top" alt="youtube-project" />
-            <div class="card-body">
-              <p class="card-text">
-                YouTube clone (React)
-                <button type="submit" class="btn btn-primary boot">
-                  <a href="https://tanneryoutubeclone.netlify.app/" target="_blank">
-                    See Live</a>
-                </button>
-              </p>
-            </div>
+        <form
+          class="form-inp"
+          action="https://formspree.io/xaypqgjn"
+          method="POST"
+        >
+          <div class="form-group">
+            <label for="name">First Name</label>
+            <input type="text" class="form-control" id="name" />
           </div>
-          <div class="card">
-            <img src="./img/stream.png" class="card-img-top" alt="hospital" />
-            <div class="card-body">
-              <p class="card-text">
-                Twitch Clone (React/Redux)
-                <button type="submit" class="btn btn-primary boot">
-                  <a href="https://github.com/TannerBarcelos/Twitch-Clone" target="_blank">
-                    See Repo</a>
-                </button>
-              </p>
-            </div>
+          <div class="form-group">
+            <label for="last">Last Name</label>
+            <input type="text" class="form-control" id="last" />
           </div>
-          <div class="card">
-            <img src="./img/covid.png" class="card-img-top" alt="youtube-project" />
-            <div class="card-body">
-              <p class="card-text">
-                COVID-19 County Death Visualizer (JavaScript)
-                <button type="submit" class="btn btn-primary boot">
-                  <a href="https://tannerbarcelos.github.io/COVID-19-Fatality-Visualizer/" target="_blank">
-                    See Live</a>
-                </button>
-              </p>
-            </div>
+          <div class="mb-3">
+            <label>Send me a message</label>
+            <textarea name="submission" class="form-control"></textarea>
           </div>
-          <div class="card">
-            <img src="./img/ebay.png" class="card-img-top" alt="youtube-project" />
-            <div class="card-body">
-              <p class="card-text">
-                ebay like clone (react/redux/express)
-                <button type="submit" class="btn btn-primary boot">
-                  <a href="https://ebay-clone-react.herokuapp.com/" target="_blank">
-                    See Live</a>
-                </button>
-              </p>
-            </div>
-          </div>
-          <div class="card">
-            <img src="./img/baysbookland.jpg" class="card-img-top" alt="youtube-project" />
-            <div class="card-body">
-              <p class="card-text">
-                Baysbook - a Facebook clone for CSUEB (MERN)
-                <button type="submit" class="btn btn-primary boot">
-                  <a href="https://glacial-journey-55442.herokuapp.com/?fbclid=IwAR0CtCB32bMNEhIemAEnNwCqBfIslK78WeEZ2XRgLG9zS6PpC_mDSO3WMlc"
-                    target="_blank">
-                    See Live</a>
-                </button>
-              </p>
-            </div>
-          </div>
-          <div class="card">
-            <img src="./img/weather.png" class="card-img-top" alt="weather project" />
-            <div class="card-body">
-              <p class="card-text">
-                Weather Tracker (React)
-                <button type="submit" class="btn btn-primary boot">
-                  <a href="https://tannersweatherapp.netlify.app/" target="_blank">
-                    See Live</a>
-                </button>
-              </p>
-            </div>
-          </div>
-          <div class="card">
-            <img src="./img/bmi.png" class="card-img-top" alt="youtube-project" />
-            <div class="card-body">
-              <p class="card-text">
-                BMI Calculator - (vanillaJS, HTML5, CSS3)
-                <button type="submit" class="btn btn-primary boot">
-                  <a href="https://vanillabmicalculator.netlify.app/" target="_blank">
-                    See Live</a>
-                </button>
-              </p>
-            </div>
-          </div>
-          <div class="card">
-            <img src="./img/socket.png" class="card-img-top" alt="socket-project" />
-            <div class="card-body">
-              <p class="card-text">
-                SocketIO chat room
-                <button type="submit" class="btn btn-primary boot">
-                  <a href="https://github.com/TannerBarcelos/Web-Socket-Chat" target="_blank">
-                    See Repo</a>
-                </button>
-              </p>
-            </div>
-          </div>
-        </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
       </div>
-    </div>
-  </section>
-  <section>
-    <h1 class="about-me">About Me</h1>
-    <div class="row container flexer">
-      <img class="me" src="./img/me.jpg" alt="me" />
-      <div class="column">
-        My name is Tanner and I am currently studying computer science at CSU
-        East Bay.<br />
-        I have an interest in full stack development and am always eager to
-        learn new technologies. See some of my technical skills!
-      </div>
-      <div class="column">
-        <table class="table">
-          <tbody>
-            <tr>
-              <td>Java</td>
-              <td>Python</td>
-              <td>C++</td>
-            </tr>
-            <tr>
-              <td>HTML5</td>
-              <td>CSS3</td>
-              <td>JavaScript</td>
-            </tr>
-            <tr>
-              <td>React</td>
-              <td>NodeJS</td>
-              <td>Express</td>
-            </tr>
-            <tr>
-              <td>Redux</td>
-              <td>Data Structures</td>
-              <td>Algorithms</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </section>
-  <section>
-    <h1 class="contact-head">Contact Me!</h1>
-    <div class="container">
-      <form class="form-inp" action="https://formspree.io/xaypqgjn" method="POST">
-        <div class="form-group">
-          <label for="name">First Name</label>
-          <input type="text" class="form-control" id="name" />
-        </div>
-        <div class="form-group">
-          <label for="last">Last Name</label>
-          <input type="text" class="form-control" id="last" />
-        </div>
-        <div class="mb-3">
-          <label>Send me a message</label>
-          <textarea name="submission" class="form-control"></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
-    </div>
-    <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
-  </section>
+      <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+    </section>
 
-  <!--video animation-->
-  <!--bootstr-->
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
-  </script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
-  </script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
-    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
-  </script>
+    <!--video animation-->
+    <!--bootstr-->
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+      integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+      crossorigin="anonymous"
+    ></script>
 
-  <script src="./script/index.js"></script>
-</body>
-
+    <script src="./script/index.js"></script>
+  </body>
 </html>
