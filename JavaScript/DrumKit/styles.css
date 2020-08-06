@@ -53,7 +53,7 @@ footer {
 
 .pressed {
   box-shadow: 0 3px 4px 0 #dbedf3;
-  opacity: 0.5;
+  opacity: 0.8;
 }
 
 .red {
@@ -80,4 +80,6 @@ footer {
 
 .drum:hover {
   cursor: pointer;
+  transform: translateY(-10px);
+  transition: 0.2s all ease-in-out;
 }
