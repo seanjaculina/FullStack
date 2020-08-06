@@ -9,7 +9,6 @@ const contactDrop = document.querySelector(".contact-dropdown");
 // hover listener on about hover
 about.addEventListener("mouseover", () => {
   aboutDrop.classList.add("show");
-  // array methods for adding classes/seeing if they exist (add,remove, contains)
 });
 about.addEventListener("mouseleave", () => {
   aboutDrop.classList.remove("show");

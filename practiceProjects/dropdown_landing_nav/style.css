@@ -1,5 +1,5 @@
 :root {
-  --nav-color: #000;
+  --nav-color: #322f3d;
   --dropdown-color: #bd9090;
 }
 
@@ -8,6 +8,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .nav__container {
@@ -21,12 +22,12 @@
   color: #fff;
   /* Contain 100% of parent - which is the nav tag */
   height: 100%;
+  width: 100vw;
   list-style: none;
   display: flex;
-
   /* Align flex items centered on its maina axis [in row, cross axis is on horizon] */
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-evenly;
 }
 
 .nav__list .nav__items {
@@ -36,9 +37,9 @@
   align-items: center;
 }
 
-.nav__list .nav__items:last-child {
-  margin-right: 2.4rem;
-}
+/* .nav__list .nav__items:nth-child(3) {
+  margin-right: 60vw;
+} */
 
 .nav__items:hover {
   cursor: pointer;
@@ -46,7 +47,7 @@
 }
 
 .dropdown__container {
-  left: 60vw;
+  left: 60px;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -58,8 +59,7 @@
   color: #fff;
   font-weight: 200;
   font-size: 15px;
-  margin-top: 5px;
-  border-radius: 3%;
+  margin-top: 3px;
 }
 
 .dropdown__container:hover {
@@ -80,18 +80,23 @@
 .about-dropdown {
   display: none;
   position: absolute;
-  left: 60vw;
   top: 63px;
 }
 
 .contact-dropdown {
   display: none;
   position: absolute;
-  left: 73vw;
   top: 63px;
 }
 
 /* added and removed from the two dropdowns with js*/
 .show {
   display: block;
+}
+
+#search {
+  width: 400px;
+  padding: 4px;
+  border-radius: 3px;
+  border: none;
 }
