@@ -37,10 +37,6 @@
   align-items: center;
 }
 
-/* .nav__list .nav__items:nth-child(3) {
-  margin-right: 60vw;
-} */
-
 .nav__items:hover {
   cursor: pointer;
   opacity: 0.7;
