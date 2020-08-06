@@ -1,6 +1,6 @@
 :root {
   --nav-color: #000;
-  --dropdown-color: #000;
+  --dropdown-color: #bd9090;
 }
 
 /* Browser padding and margin reset */
@@ -14,7 +14,7 @@
   width: 100vw;
   height: 4rem;
   background-color: var(--nav-color);
-  position: sticky;
+  position: relative;
 }
 
 .nav__list {
@@ -31,6 +31,9 @@
 
 .nav__list .nav__items {
   margin: 0 2rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
 }
 
 .nav__list .nav__items:last-child {
@@ -40,4 +43,55 @@
 .nav__items:hover {
   cursor: pointer;
   opacity: 0.7;
+}
+
+.dropdown__container {
+  left: 60vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  list-style: none;
+  width: 200px;
+  height: 150px;
+  background-color: var(--dropdown-color);
+  color: #fff;
+  font-weight: 200;
+  font-size: 15px;
+  margin-top: 5px;
+  border-radius: 3%;
+}
+
+.dropdown__container:hover {
+  cursor: pointer;
+}
+
+.dropdown__items {
+  width: 100%;
+  text-align: center;
+  padding: 5px;
+}
+
+.dropdown__items:hover {
+  background-color: lightgrey;
+  color: #000;
+}
+
+.about-dropdown {
+  display: none;
+  position: absolute;
+  left: 60vw;
+  top: 63px;
+}
+
+.contact-dropdown {
+  display: none;
+  position: absolute;
+  left: 73vw;
+  top: 63px;
+}
+
+/* added and removed from the two dropdowns with js*/
+.show {
+  display: block;
 }

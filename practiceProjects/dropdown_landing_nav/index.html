@@ -11,9 +11,30 @@
     <nav class="nav__container">
       <ul class="nav__list">
         <li class="nav__items">Home</li>
-        <li class="nav__items">About</li>
-        <li class="nav__items">Contact</li>
+        <!--add event to this li and it will delegate down to all the children of this li! 
+        Solves the hovering problem-->
+        <li class="nav__items" id="about">
+          About
+          <div class="about-dropdown">
+            <ul class="dropdown__container">
+              <li class="dropdown__items" id="careers">Careers</li>
+              <li class="dropdown__items" id="faq">FAQ</li>
+              <li class="dropdown__items" id="learn">Learn More</li>
+              <li class="dropdown__items" id="team">Team</li>
+            </ul>
+          </div>
+        </li>
+        <li class="nav__items" id="contact">
+          Contact
+          <div class="contact-dropdown">
+            <ul class="dropdown__container">
+              <li class="dropdown__items" id="inquiry">Send us an inquiry</li>
+              <li class="dropdown__items" id="find">Where you can find us</li>
+            </ul>
+          </div>
+        </li>
       </ul>
     </nav>
+    <!--add dynamic styling to about and contact dropdown in js-->
   </body>
 </html>
