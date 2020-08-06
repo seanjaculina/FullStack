@@ -1,0 +1,43 @@
+:root {
+  --nav-color: #000;
+  --dropdown-color: #000;
+}
+
+/* Browser padding and margin reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.nav__container {
+  width: 100vw;
+  height: 4rem;
+  background-color: var(--nav-color);
+  position: sticky;
+}
+
+.nav__list {
+  color: #fff;
+  /* Contain 100% of parent - which is the nav tag */
+  height: 100%;
+  list-style: none;
+  display: flex;
+
+  /* Align flex items centered on its maina axis [in row, cross axis is on horizon] */
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.nav__list .nav__items {
+  margin: 0 2rem;
+}
+
+.nav__list .nav__items:last-child {
+  margin-right: 2.4rem;
+}
+
+.nav__items:hover {
+  cursor: pointer;
+  opacity: 0.7;
+}
