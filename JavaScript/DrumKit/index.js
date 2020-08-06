@@ -8,30 +8,37 @@ const determinePressed = (btnTarget) => {
     case "w":
       const audioW = new Audio("./sounds/tom-1.mp3");
       audioW.play();
+      animation("w");
       break;
     case "a":
       const audioA = new Audio("./sounds/tom-2.mp3");
       audioA.play();
+      animation("a");
       break;
     case "s":
       const audioS = new Audio("./sounds/tom-3.mp3");
       audioS.play();
+      animation("s");
       break;
     case "d":
       const audioD = new Audio("./sounds/tom-4.mp3");
       audioD.play();
+      animation("d");
       break;
     case "j":
       const audioJ = new Audio("./sounds/crash.mp3");
       audioJ.play();
+      animation("j");
       break;
     case "k":
       const audioK = new Audio("./sounds/kick-bass.mp3");
       audioK.play();
+      animation("k");
       break;
     case "l":
       const audioL = new Audio("./sounds/snare.mp3");
       audioL.play();
+      animation("l");
       break;
     default:
       alert("unknown sound");
@@ -52,6 +59,18 @@ const handlePress = (e) => {
   const keyCode = String.fromCharCode(e.which || e.keyCode);
   // determine the key and play sound
   determinePressed(keyCode);
+};
+
+// Will create a little animation when the icon is pressed or the corresponding key is pressed
+const animation = (char) => {
+  // get the button pressed from the char [dynamic query selector]
+  const queried = document.querySelector(`.${char}`);
+  queried.classList.add("pressed");
+
+  // remove this style after .300ths of seconds (use setTimeout)
+  setTimeout(() => {
+    queried.classList.remove("pressed");
+  }, 300);
 };
 
 // Add the event listener to each button for click
