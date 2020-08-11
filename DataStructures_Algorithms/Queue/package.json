@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon arrayImplementation"
+    "start": "nodemon linkedImplementation"
   },
   "keywords": [],
   "author": "",

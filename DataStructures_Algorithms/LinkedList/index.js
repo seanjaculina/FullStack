@@ -110,6 +110,15 @@ class LinkedList {
     }
   }
 
+  // removeFirst() {
+  //   if (!this.head) return;
+  //   else {
+  //     let temp = this.head.data;
+  //     this.head = this.head.next;
+  //     return temp;
+  //   }
+  // }
+
   // Removes last element in the list
   removeLast() {
     if (!this.head) return;
@@ -146,10 +155,10 @@ class LinkedList {
 }
 
 // Create a new linked list - all methods were tested. Mess with the list as you wish
-const list = new LinkedList();
-list.append(10);
-list.removeLast();
-console.log(list.size_());
+// const list = new LinkedList();
+// list.append(10);
+// list.removeLast();
+// console.log(list.size_());
 /**
  * Time complexities:
  *
