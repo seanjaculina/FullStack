@@ -91,3 +91,27 @@ object.newGreet();
  *  function expressions and declarations bind to their parents context, always.
  *  we can change binding objects/contexts using .bind() when needed or making prototypes
  */
+
+// this is hoisting in action. JS is read top to bottom, and will gather all functions and variables and compile the code and then interpret the code it needs to
+// and then executes it and shows results. We can call functions before they are declared, it does not really matter in JS (other languages, this will not work)
+console.log(bye());
+//hi(); there is a caveat, though: if using arrow functions or expressions, the function is not hosited, whether or not using 'var' therefore
+// these things will not work.. only function declarations are hoisted and var variables are hoisted.. see below
+function bye() {
+  return "bye";
+}
+
+const hi = () => {
+  console.log("hi");
+};
+
+// console.log(tanner);  <-- tried to print tanner variable before declaring it when using let/const... but var does! var ALWAYS is hoisted however
+// you still do not see the result, but you get no error because function/variable declarations get hoisted, but not their definitions, there for
+// only let tanner is hoisted, and not the assignment therefore JS will know about tanner and its existence but will not know its contents till it is actually used
+// after the assignment!
+// let tanner = "tanner";
+
+console.log(tanner);
+var tanner = "tanner";
+
+// hoisting exists in the global scope and also in function scope and block scope so, keep an eye out
