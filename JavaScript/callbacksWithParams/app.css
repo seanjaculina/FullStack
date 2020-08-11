@@ -1,0 +1,43 @@
+html {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+#bomb {
+  margin: 2rem auto;
+  width: 90%;
+  max-width: 40rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  border-radius: 8px;
+  padding: 0.5rem 0;
+  background: #7c006c;
+}
+
+#bomb h2 {
+  color: white;
+}
+
+#defuse-kit {
+  margin: 1rem auto;
+  width: 90%;
+  max-width: 40rem;
+}
+
+button {
+  font: inherit;
+  background: #7c006c;
+  border: 1px solid #7c006c;
+  color: white;
+  cursor: pointer;
+  padding: 0.5rem 1.5rem;
+}
+
+button:focus {
+  outline: none;
+}
+
+button:active,
+button:hover {
+  background: #36012f;
+  border-color: #36012f;
+}
