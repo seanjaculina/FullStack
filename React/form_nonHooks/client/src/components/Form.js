@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 
-class Form extends Component {
+// React strap - bootstrap 4 components for react (basically all normal react but with custom styling)
+import { Button, Form, FormGroup, Label, Input } from "reactstrap";
+
+class Form_ extends Component {
   state = {
     username: "",
     password: "",
@@ -20,34 +23,45 @@ class Form extends Component {
   // do for a sign in and send a request to as server to sign in to an application
   onFormSubmit = (e) => {
     e.preventDefault();
-    console.log(this.state);
+    //console.log(this.state);
+    // pretend we send some network request to login  or whatever in a server
   };
 
   render() {
     return (
-      <div>
-        <form onSubmit={(e) => this.onFormSubmit(e)}>
-          <label htmlFor="username">Username</label>
-          <input
+      <Form
+        onSubmit={(e) => this.onFormSubmit(e)}
+        className="container"
+        style={{ marginTop: "100px" }}
+      >
+        <FormGroup>
+          <Label for="username">username</Label>
+          <Input
             type="text"
             name="username"
-            value={this.state.username}
+            id="username"
             onChange={(e) => this.handleFormChange(e)}
           />
-          <label htmlFor="password">Username</label>
-          <input
+        </FormGroup>
+        <FormGroup>
+          <Label for="password">password</Label>
+          <Input
             type="text"
             name="password"
-            value={this.state.password}
+            id="password"
             onChange={(e) => this.handleFormChange(e)}
           />
-          <button type="submit" onSubmit={(e) => this.handleFormChange(e)}>
-            submit
-          </button>
-        </form>
-      </div>
+        </FormGroup>
+        <Button
+          color="primary"
+          type="submit"
+          onSubmit={(e) => this.onFormSubmit(e)}
+        >
+          submit
+        </Button>
+      </Form>
     );
   }
 }
 
-export default Form;
+export default Form_;
