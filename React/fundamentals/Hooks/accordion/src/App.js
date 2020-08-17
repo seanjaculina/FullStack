@@ -1,9 +1,9 @@
-import React from 'react';
+import React from "react";
 
 // the array of items we are using to render in the accordion: named export so must use {} to import
-import {items} from './Items';
+import { items } from "./Items";
 
-import Accordion from './components/Accordion';
+import Accordion from "./components/Accordion";
 
 const App = () => {
   return (

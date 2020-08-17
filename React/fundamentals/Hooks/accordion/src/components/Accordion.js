@@ -1,26 +1,22 @@
-import React, {useState} from 'react';
+import React, { useState } from "react";
 
 // importing helpers from 3rd refactor!
-import {renderAccordionItems} from '../helpers/accordionHelpers';
+import { renderAccordionItems } from "../helpers/accordionHelpers";
 
 // takes in prop called items: we destructure it for simplicity
-const Accordion = ({items}) => {
-  // see notes in ipad, but, this is intuitive: we know this from other youtube courses
-  // we set the initial state to null and then it can be changed off some event
+const Accordion = ({ items }) => {
+  // functional version of state using the useState hook
   const [activeIndex, setActiveIndex] = useState(null);
-  //console.log(activeIndex); // proof: will output null initially [change null to 'apples' and see th eoutput]
 
   // handles the event object, and the index from the map in the helper function to set the state to that index
   const getIndex = (index) => {
-    // setting state for this component: index comes from the index of the clicked index [div] in the mapped out accordion
-    //divs in the helper function (calue, index) index is second optional value in map() and an event handler can automatically just know thats the
-    // index since each index is an item object in our items array, with its own event listener on it, so, we can implicitely get the index
+    // changing state with our function to get this item
     setActiveIndex(index);
   };
 
   return (
     <div className="ui styled accordion">
-      {/* pass the items array, the callback to setstate onClick and the current state to the render helper*/}
+      {/* pass the items array, the callback to setstate onClick and the current state to the render helper in the helpers dir - we imported that helper to use it here*/}
       {renderAccordionItems(items, getIndex, activeIndex)}
     </div>
   );

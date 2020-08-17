@@ -1,17 +1,16 @@
 // still need to import react as the obvious: these functions use react/jsx logic
 //so we need to import it
-import React from 'react';
+import React, { Fragment } from "react";
 
 // helper function for the data to throw a nice simple function call in the return statememnt of our actual component
 export const renderAccordionItems = (items, getIndex, activeIndex) => {
   // map(itemIterating, optional index argument [using this here to be able to track which index [item in the accordion] that is selected])
   const renderedItems = items.map((item, index) => {
     //determine if the current index we are iterating on is === active state in the accordion
-    // [key thing] : we separated this helper from accordion! so, we passed the state down as a parameter to this function
-    // such that we can still see the state, but we couple it stricly to the component and do not put it here!
-    const active = index === activeIndex ? 'active' : '';
+    // [key thing] : we separated this helper from accordion to clean u our code base - this could be int he Accordion file if we wanted!
+    const active = index === activeIndex ? "active" : "";
     return (
-      <React.Fragment key={item.title}>
+      <Fragment key={item.title}>
         <div
           //dynamic styling : will add the active class only to the item in the accordion in which is currently the activeIndex in the state of the accordion...we passed that in
           className={`title ${active}`}
@@ -30,7 +29,7 @@ export const renderAccordionItems = (items, getIndex, activeIndex) => {
         >
           <p>{item.content}</p>
         </div>
-      </React.Fragment>
+      </Fragment>
     );
   });
   return renderedItems;
