@@ -10,19 +10,15 @@ class App extends Component {
 
   // Handles state change in the component
   onHandleClick = () => {
-    if (this.state.text === "Show Hello") {
-      // change the state to the opposite of what it currently is
-      this.setState({
-        showing: !this.state.showing,
-        text: "Hide Hello",
-      });
-    }
-    if (this.state.text === "Hide Hello") {
-      this.setState({
-        showing: !this.state.showing,
-        text: "Show Hello",
-      });
-    }
+    this.state.text === "Show Hello"
+      ? this.setState({
+          showing: !this.state.showing,
+          text: "Hide Hello",
+        })
+      : this.setState({
+          showing: !this.state.showing,
+          text: "Show Hello",
+        });
   };
 
   render() {
@@ -36,5 +32,4 @@ class App extends Component {
     );
   }
 }
-
 export default App;
