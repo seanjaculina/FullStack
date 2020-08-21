@@ -1,0 +1,23 @@
+/* This is called a reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  background-color: rgb(231, 207, 207);
+}
+
+/* Will be added to an h1 through JQuery after some interaction*/
+.changeH1 {
+  font-size: 100px;
+  color: #fff;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+label {
+  display: block;
+  margin-top: 50px;
+}
