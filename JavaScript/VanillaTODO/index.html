@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TODO List</title>
+  </head>
+  <body>
+    <!--HTML for the list and JS interation-->
+    <nav class="top__nav">
+      <ul class="nav__container">
+        <h1 class="title">TODO List</h1>
+      </ul>
+    </nav>
+    <div class="task__container">
+      <p>Enter a task and priority for that task [1-10]</p>
+      <input type="text" name="task" id="task__input" />
+      <input
+        type="number"
+        value="0"
+        min="0"
+        max="5"
+        name="priority"
+        id="priority__input"
+      />
+      <button id="submit__task">Submit</button>
+    </div>
+    <main class="main__content">
+      <div class="container">
+        <div class="task__filler-content">
+          <ul id="list__todo-items"></ul>
+        </div>
+      </div>
+    </main>
+
+    <!--JavaScript injection-->
+    <script src="./index.js"></script>
+  </body>
+</html>
