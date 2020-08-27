@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>TODO List</title>
   </head>
   <body>
@@ -13,7 +14,7 @@
       </ul>
     </nav>
     <div class="task__container">
-      <p>Enter a task and priority for that task [1-10]</p>
+      <p>Enter a task and priority for that task [0-5]</p>
       <input type="text" name="task" id="task__input" />
       <input
         type="number"
@@ -28,6 +29,11 @@
     <main class="main__content">
       <div class="container">
         <div class="task__filler-content">
+          <!--add class of 'show' in JS to display filters only when list has AT LEAST 1 element-->
+          <div class="filterables">
+            <button>Sort high to low</button>
+            <button>Sort low to high</button>
+          </div>
           <ul id="list__todo-items"></ul>
         </div>
       </div>
