@@ -4,6 +4,75 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+/* Nav Styles */
+.nav__container {
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  height: 4rem;
+  color: #fff;
+  background-color: rgb(70, 62, 62);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Main container */
+.container {
+  margin: auto;
+  width: 50%;
+  border: none;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Submit Item container */
+.task__container {
+  margin: 8vh auto;
+  margin-bottom: 30px;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Actual list item style */
+.list__item {
+  background-color: blue;
+  display: flex;
+  height: 6rem;
+  margin-bottom: 1.5rem;
+  border: none;
+  border-radius: 3px;
+  box-shadow: 5px 10px 18px #888888;
+}
+
+/* List item hover effect - moves up -5px y*/
+.list__item:hover {
+}
+
+/* todo items render container */
+#list__todo-items {
+  margin: 1rem auto;
+  width: 100%;
+  display: flex;
+  background-color: #f3f3f3;
+  flex-direction: column;
+  list-style-type: none;
+}
+
+/* Submit button style */
+#submit__task {
+  width: 4.3rem;
+  height: 2rem;
+  margin-top: 1rem;
+  border: none;
+  border-radius: 3px;
+  background-color: #0f4c75;
+  color: #fff;
 }
 
 .filterables {

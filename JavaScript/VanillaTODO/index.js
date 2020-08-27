@@ -3,7 +3,7 @@ const task_input = document.querySelector("#task__input");
 const priority_input = document.querySelector("#priority__input");
 const btn = document.querySelector("#submit__task");
 const task_list = document.querySelector("#list__todo-items");
-const task_container = document.querySelector(".task__filler-content");
+const task_container = document.querySelector(".container");
 const filters = document.querySelector(".filterables");
 // Array to hold all todoitems for sorting purposes
 const items = [];
@@ -15,6 +15,7 @@ const createTodoItem = (task, priority) => {
 
   // Add the task priority as data attribute to this list item for easy sorting
   listItemWrapper.setAttribute("data-priority", priority.value);
+  listItemWrapper.classList.add("list__item");
 
   // Create task paragraph
   const taskName = document.createElement("p");
