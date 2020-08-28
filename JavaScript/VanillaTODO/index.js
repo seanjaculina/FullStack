@@ -44,6 +44,16 @@ const createTodoItem = (task, priority) => {
   listItemWrapper.appendChild(priorityIcon);
   listItemWrapper.appendChild(todoItem);
   task_list.appendChild(listItemWrapper);
+
+  // add delete listener to the delete button
+  delBtn.addEventListener("click", () => {
+    // find the item clicked to delete and remove it from the DOM
+    const taskNode = Array.from(task_list.children).find((node) => {
+      const nodeText = node.innerText.slice(3, node.innerText.length - 3);
+      return nodeText === taskName.innerText; // this elements text
+    });
+    task_list.removeChild(taskNode);
+  });
 };
 
 // Soring logic
@@ -159,3 +169,5 @@ submitBtn.addEventListener("click", (e) => {
   task_input.value = "";
   priority_input.value = 0;
 });
+
+// delete a task logic
