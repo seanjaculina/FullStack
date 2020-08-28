@@ -79,7 +79,7 @@ const sortLowestPriority = () => {
     items.forEach((todo) => {
       createTodoItem(todo.task, todo.priority);
     });
-  }, 1000);
+  }, 500);
 };
 const sortHighestPriority = () => {
   /**
@@ -121,7 +121,7 @@ const sortHighestPriority = () => {
     items.forEach((todo) => {
       createTodoItem(todo.task, todo.priority);
     });
-  }, 1000);
+  }, 500);
 };
 
 // Sort listeners
