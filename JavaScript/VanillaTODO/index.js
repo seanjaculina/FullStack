@@ -153,7 +153,6 @@ const sortHighestPriority = () => {
 };
 
 // Sort listeners
-
 highLow.addEventListener("click", sortHighestPriority);
 lowHigh.addEventListener("click", sortLowestPriority);
 
@@ -177,7 +176,7 @@ submitBtn.addEventListener("click", (e) => {
   // create an li with the newly entered task
   createTodoItem(task_.task, task_.priority, task_.id_);
   task_input.value = "";
-  priority_input.value = 0;
+  priority_input.value = 1;
 });
 
 // add logic to open modal, show the todos renders the same way in list in this trash can
