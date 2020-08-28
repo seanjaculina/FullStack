@@ -9,9 +9,13 @@ const filters = document.querySelector(".filterables");
 const submitBtn = document.querySelector("#submit__task");
 const highLow = document.querySelector("#sort__high");
 const lowHigh = document.querySelector("#sort__low");
+const trash = document.querySelector(".trashbin");
 
-// Array to hold all todoitems for sorting purposes
+// Array to hold all todoitems for sorting purposes and an array to lightly store deleted todos
+// later we will have the todos render in there in a modal and allow the user to un-delete and put back into DOM
+// OR remove completely and never see that todo again
 const items = [];
+const trashBin = [];
 
 // Creates a todo item - will be used for re-render in sorting and initial list creation
 const createTodoItem = (task, priority, id) => {
@@ -174,4 +178,11 @@ submitBtn.addEventListener("click", (e) => {
   createTodoItem(task_.task, task_.priority, task_.id_);
   task_input.value = "";
   priority_input.value = 0;
+});
+
+// add logic to open modal, show the todos renders the same way in list in this trash can
+// only in the modal, and allow the user to delete forever, cancel that selection of the item OR
+// put back in list if it was an accident to delete
+trash.addEventListener("click", () => {
+  alert("Clicked trash");
 });

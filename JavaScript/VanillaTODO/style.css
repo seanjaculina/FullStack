@@ -28,6 +28,7 @@
   border: none;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 /* Submit Item container */
@@ -187,4 +188,15 @@
 .spin {
   width: 150px !important;
   height: 150px !important;
+}
+
+.trashbin {
+  position: absolute;
+  font-size: 2rem;
+  bottom: 10px;
+  right: 20px;
+}
+
+.trashbin:hover {
+  cursor: pointer;
 }
