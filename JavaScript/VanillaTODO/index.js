@@ -28,6 +28,11 @@ const createTodoItem = (task, priority) => {
   taskName.classList.add("task__text");
   taskName.innerText = task;
 
+  // Create delete task button for each item
+  const delBtn = document.createElement("BUTTON");
+  delBtn.classList.add("delete__task-btn");
+  delBtn.innerText = "X";
+
   // To show priority of the item
   const priorityIcon = document.createElement("p");
   priorityIcon.classList.add("priority__icon");
@@ -35,6 +40,7 @@ const createTodoItem = (task, priority) => {
 
   // Appends
   todoItem.appendChild(taskName);
+  todoItem.appendChild(delBtn);
   listItemWrapper.appendChild(priorityIcon);
   listItemWrapper.appendChild(todoItem);
   task_list.appendChild(listItemWrapper);

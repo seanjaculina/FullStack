@@ -40,6 +40,7 @@
 }
 .task__text {
   padding: 1rem;
+  position: relative;
 }
 
 .list__content__box {
@@ -55,7 +56,7 @@
 }
 
 .task__container input#priority__input {
-  width: 10%;
+  width: 6.3rem;
   text-align: center;
 }
 
@@ -94,7 +95,6 @@
   /* move the box up just slightly for a nice user experience and visual*/
   transform: translate(0, -5px);
   transition: 0.1s ease-in;
-  cursor: pointer;
 }
 
 /* todo items render container */
@@ -108,13 +108,31 @@
 
 /* Submit button style */
 #submit__task {
-  width: 4.3rem;
-  height: 2rem;
+  width: 6.3rem;
+  height: 3rem;
   margin-top: 1rem;
   border: none;
   border-radius: 3px;
   background-color: #0f4c75;
   color: #fff;
+}
+
+.delete__task-btn {
+  border: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  width: 2rem;
+  height: 2rem;
+  background-color: #ff7171;
+}
+.delete__task-btn:hover {
+  cursor: pointer;
+  opacity: 0.8;
 }
 
 #submit__task:hover {
@@ -134,8 +152,11 @@
 
 .priority__icon {
   position: absolute;
-  padding: 7px;
-
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
   /* Put in top right corner */
   top: 0;
   right: 0;
