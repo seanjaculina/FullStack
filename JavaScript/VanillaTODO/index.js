@@ -34,6 +34,7 @@ const sortHighestPriority = () => {};
 btn.addEventListener("click", (e) => {
   if (task_input.value === "") {
     alert("Must enter a task to continue");
+    return;
   }
 
   // Create a new task

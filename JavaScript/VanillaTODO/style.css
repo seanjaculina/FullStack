@@ -39,10 +39,28 @@
   flex-direction: column;
 }
 
+.task__container input {
+  padding: 0.5rem;
+  margin: 1rem 0;
+}
+
+.task__container input#priority__input {
+  width: 10%;
+  text-align: center;
+}
+
+#task__input {
+  border: none;
+  border-bottom: 1px solid #000;
+}
+
 /* Actual list item style */
 .list__item {
-  background-color: blue;
   display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  flex-wrap: wrap;
   height: 6rem;
   margin-bottom: 1.5rem;
   border: none;
@@ -50,8 +68,24 @@
   box-shadow: 5px 10px 18px #888888;
 }
 
+.list__item:nth-child(odd) {
+  background-color: #f1f3f8;
+}
+.list__item:nth-child(even) {
+  background-color: #d6e0f0;
+}
+
+.list__item p {
+  display: flex;
+  max-width: 50%;
+}
+
 /* List item hover effect - moves up -5px y*/
 .list__item:hover {
+  /* move the box up just slightly for a nice user experience and visual*/
+  transform: translate(0, -5px);
+  transition: 0.1s ease-in;
+  cursor: pointer;
 }
 
 /* todo items render container */
@@ -59,7 +93,6 @@
   margin: 1rem auto;
   width: 100%;
   display: flex;
-  background-color: #f3f3f3;
   flex-direction: column;
   list-style-type: none;
 }
@@ -75,10 +108,41 @@
   color: #fff;
 }
 
+#submit__task:hover {
+  cursor: pointer;
+}
+
 .filterables {
   display: none;
+  margin-bottom: 2rem;
+  margin-bottom: 2rem;
 }
 
 .show {
   display: flex;
+  justify-content: space-evenly;
+}
+
+/* Sorting btn styles */
+#sort__high,
+#sort__low {
+  padding: 5px 15px 5px 15px;
+  border-radius: 5px;
+  border: none;
+}
+
+#sort__high:hover,
+#sort__low:hover {
+  cursor: pointer;
+}
+
+#sort__high {
+  background-color: #8d93ab;
+  color: #fff;
+  font-weight: 100;
+}
+
+#sort__low {
+  background-color: #393b44;
+  color: #fff;
 }
