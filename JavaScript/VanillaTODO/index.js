@@ -14,13 +14,14 @@ const lowHigh = document.querySelector("#sort__low");
 const items = [];
 
 // Creates a todo item - will be used for re-render in sorting and initial list creation
-const createTodoItem = (task, priority) => {
+const createTodoItem = (task, priority, id) => {
   const listItemWrapper = document.createElement("LI");
   const todoItem = document.createElement("DIV");
   todoItem.classList.add("list__content__box");
 
   // Add the task priority as data attribute to this list item for easy sorting
   listItemWrapper.setAttribute("data-priority", priority);
+  listItemWrapper.setAttribute("data-id_", id);
   listItemWrapper.classList.add("list__item");
 
   // Create task paragraph
@@ -48,11 +49,20 @@ const createTodoItem = (task, priority) => {
   // add delete listener to the delete button
   delBtn.addEventListener("click", () => {
     // find the item clicked to delete and remove it from the DOM
+    let index = 0; // to track where we stopped in the node list so we can delete the item from the array
     const taskNode = Array.from(task_list.children).find((node) => {
       const nodeText = node.innerText.slice(3, node.innerText.length - 3);
+      index++;
       return nodeText === taskName.innerText; // this elements text
     });
     task_list.removeChild(taskNode);
+
+    // find the index of this actual todo item in our array of items and delete it [we need to hook into the data attribute of the actual node
+    // and compare it to the id in our array of todo objects : they will match]
+    const indexOf = items.findIndex((itm) => {
+      itm.id_ === taskNode.attributes["data-id_"];
+    });
+    items.splice(indexOf, 1);
   });
 };
 
@@ -123,8 +133,6 @@ const sortHighestPriority = () => {
   highLow.style.display = "none";
   lowHigh.style.display = "none";
 
-  // mimick a process with set timeout and show a spinner in the DOM
-
   // sort the array descending
   items.sort((a, b) => b.priority - a.priority);
 
@@ -156,18 +164,14 @@ submitBtn.addEventListener("click", (e) => {
   const task_ = {
     task: task_input.value,
     priority: priority_input.value,
+    id_: Math.floor(Math.random() * 13) * items.length * 3 + 1, //always use primes when doing math and randomness. Primes have this weird behavior that just works for random number gen
   };
 
   // Add task to array
   items.push(task_);
-  // If the list has 2+ items, display the sorting buttons
-  if (items.length > 1) {
-    filters.classList.add("show");
-  }
+
   // create an li with the newly entered task
-  createTodoItem(task_.task, task_.priority);
+  createTodoItem(task_.task, task_.priority, task_.id_);
   task_input.value = "";
   priority_input.value = 0;
 });
-
-// delete a task logic

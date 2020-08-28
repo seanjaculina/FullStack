@@ -140,14 +140,10 @@
 }
 
 .filterables {
-  display: none;
-  margin-bottom: 2rem;
-  margin-bottom: 2rem;
-}
-
-.show {
   display: flex;
   justify-content: space-evenly;
+  margin-bottom: 2rem;
+  margin-bottom: 2rem;
 }
 
 .priority__icon {
