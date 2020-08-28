@@ -22,9 +22,9 @@
 }
 
 /* Main container */
-.container {
+.container_ {
   margin: auto;
-  width: 50%;
+  width: 50vw;
   border: none;
   display: flex;
   flex-direction: column;
@@ -34,9 +34,19 @@
 .task__container {
   margin: 8vh auto;
   margin-bottom: 30px;
-  width: 50%;
+  max-width: 50%;
   display: flex;
   flex-direction: column;
+}
+.task__text {
+  padding: 1rem;
+}
+
+.list__content__box {
+  width: 100%;
+  /* to avoid the paragraph/content from overflowing the encasing div
+  use word-wrap: xyz   see mdn;*/
+  word-wrap: break-word;
 }
 
 .task__container input {
@@ -57,11 +67,14 @@
 /* Actual list item style */
 .list__item {
   display: flex;
+  position: relative;
   align-items: center;
   text-align: center;
   justify-content: center;
-  flex-wrap: wrap;
-  height: 6rem;
+  /* Min-height of the div - if the text of the todo is too large for the div, the div will adjust its height 
+  past the min height...always try to use mins/maxes instead of stright height/width property*/
+  min-height: 6rem;
+  width: 50vw;
   margin-bottom: 1.5rem;
   border: none;
   border-radius: 3px;
@@ -71,13 +84,9 @@
 .list__item:nth-child(odd) {
   background-color: #f1f3f8;
 }
+
 .list__item:nth-child(even) {
   background-color: #d6e0f0;
-}
-
-.list__item p {
-  display: flex;
-  max-width: 50%;
 }
 
 /* List item hover effect - moves up -5px y*/
@@ -91,7 +100,7 @@
 /* todo items render container */
 #list__todo-items {
   margin: 1rem auto;
-  width: 100%;
+  max-width: 100%;
   display: flex;
   flex-direction: column;
   list-style-type: none;
@@ -123,6 +132,17 @@
   justify-content: space-evenly;
 }
 
+.priority__icon {
+  position: absolute;
+  padding: 7px;
+
+  /* Put in top right corner */
+  top: 0;
+  right: 0;
+  background-color: #0f4c75;
+  color: #fff;
+}
+
 /* Sorting btn styles */
 #sort__high,
 #sort__low {
@@ -145,4 +165,9 @@
 #sort__low {
   background-color: #393b44;
   color: #fff;
+}
+
+.spin {
+  width: 150px !important;
+  height: 150px !important;
 }

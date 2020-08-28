@@ -1,10 +1,15 @@
 // Grab inputs, buttons and list to append to
 const task_input = document.querySelector("#task__input");
 const priority_input = document.querySelector("#priority__input");
-const btn = document.querySelector("#submit__task");
 const task_list = document.querySelector("#list__todo-items");
-const task_container = document.querySelector(".container");
+const task_container = document.querySelector(".container_");
 const filters = document.querySelector(".filterables");
+
+// buttons
+const submitBtn = document.querySelector("#submit__task");
+const highLow = document.querySelector("#sort__high");
+const lowHigh = document.querySelector("#sort__low");
+
 // Array to hold all todoitems for sorting purposes
 const items = [];
 
@@ -12,51 +17,139 @@ const items = [];
 const createTodoItem = (task, priority) => {
   const listItemWrapper = document.createElement("LI");
   const todoItem = document.createElement("DIV");
+  todoItem.classList.add("list__content__box");
 
   // Add the task priority as data attribute to this list item for easy sorting
-  listItemWrapper.setAttribute("data-priority", priority.value);
+  listItemWrapper.setAttribute("data-priority", priority);
   listItemWrapper.classList.add("list__item");
 
   // Create task paragraph
   const taskName = document.createElement("p");
-  taskName.innerText = task.value;
+  taskName.classList.add("task__text");
+  taskName.innerText = task;
 
+  // To show priority of the item
+  const priorityIcon = document.createElement("p");
+  priorityIcon.classList.add("priority__icon");
+  priorityIcon.innerText = priority;
+
+  // Appends
   todoItem.appendChild(taskName);
+  listItemWrapper.appendChild(priorityIcon);
   listItemWrapper.appendChild(todoItem);
   task_list.appendChild(listItemWrapper);
 };
 
 // Soring logic
-const sortLowestPriority = () => {};
-const sortHighestPriority = () => {};
+const sortLowestPriority = () => {
+  /**
+   * Algorithm
+   *
+   * 1 - Remove all list items from dom (but not the array we use to store items)
+   * 2 - add a spinner to the screen to simulate algorotihm running
+   * 3 - sort the array descending of the items currently in the array of item
+   * 4 - call the createTodoItem function on each item of the array using modern JS
+   * 5 - DOM should represent the sorted low - high priority array
+   */
+
+  // remove the existing items
+  while (task_list.firstChild) {
+    task_list.removeChild(task_list.firstChild);
+  }
+
+  // add spinner to the UI to simnulate the algorithm running
+  const spin = document.createElement("DIV");
+  spin.classList.add("spinner-border", "spin");
+  spin.setAttribute("role", "status");
+  task_list.appendChild(spin);
+
+  // hide the sort buttons to just make the screen UI cleaner
+  highLow.style.display = "none";
+  lowHigh.style.display = "none";
+
+  // sort the array ascending
+  items.sort((a, b) => a.priority - b.priority);
+
+  // wait at least a second to remove the spinner - this is async so it waits for all other code to finish first, if needed
+  setTimeout(() => {
+    // wait at least one second and remove the spnner and show the new sorted list
+    task_list.removeChild(spin);
+    highLow.style.display = "flex";
+    lowHigh.style.display = "flex";
+    items.forEach((todo) => {
+      createTodoItem(todo.task, todo.priority);
+    });
+  }, 1000);
+};
+const sortHighestPriority = () => {
+  /**
+   * Algorithm
+   *
+   * 1 - Remove all list items from dom (but not the array we use to store items)
+   * 2 - add a spinner to the screen to simulate algorotihm running
+   * 3 - sort the array descending of the items currently in the array of item
+   * 4 - call the createTodoItem function on each item of the array using modern JS
+   * 5 - DOM should represent the sorted high - low priority array
+   */
+
+  // remove the existing items
+  while (task_list.firstChild) {
+    task_list.removeChild(task_list.firstChild);
+  }
+
+  // add spinner to the UI to simnulate the algorithm running
+  const spin = document.createElement("DIV");
+  spin.classList.add("spinner-border", "spin");
+  spin.setAttribute("role", "status");
+  task_list.appendChild(spin);
+
+  // hide the sort buttons to just make the screen UI cleaner
+  highLow.style.display = "none";
+  lowHigh.style.display = "none";
+
+  // mimick a process with set timeout and show a spinner in the DOM
+
+  // sort the array descending
+  items.sort((a, b) => b.priority - a.priority);
+
+  // wait at least a second to remove the spinner - this is async so it waits for all other code to finish first, if needed
+  setTimeout(() => {
+    // wait at least one second and remove the spnner and show the new sorted list
+    task_list.removeChild(spin);
+    highLow.style.display = "flex";
+    lowHigh.style.display = "flex";
+    items.forEach((todo) => {
+      createTodoItem(todo.task, todo.priority);
+    });
+  }, 1000);
+};
+
+// Sort listeners
+
+highLow.addEventListener("click", sortHighestPriority);
+lowHigh.addEventListener("click", sortLowestPriority);
 
 // On click event on submission, create a task and then reset the fields
-btn.addEventListener("click", (e) => {
+submitBtn.addEventListener("click", (e) => {
   if (task_input.value === "") {
     alert("Must enter a task to continue");
     return;
   }
 
   // Create a new task
-  const task = {
+  const task_ = {
     task: task_input.value,
     priority: priority_input.value,
   };
 
   // Add task to array
-  items.push(task);
+  items.push(task_);
   // If the list has 2+ items, display the sorting buttons
   if (items.length > 1) {
     filters.classList.add("show");
   }
-  console.log(items);
   // create an li with the newly entered task
-  createTodoItem(task_input, priority_input);
+  createTodoItem(task_.task, task_.priority);
   task_input.value = "";
   priority_input.value = 0;
 });
-
-// console.log(
-//   document.querySelectorAll(".task__filler-content ul#list__todo-items li")
-//     .length
-// );
