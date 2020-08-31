@@ -1,0 +1,56 @@
+/*make this style extendable so it can be inherited by multiple elements to style
+of course we named this btn which intuitively means these default styles should be for buttons
+just try to name these inheritable class styles intuitively
+
+we use these styles anywhere in selectors thereafter to provide some defaults 
+using the @extend %default_Style_name anywhere
+
+in this case it is @extend %btn
+
+notice that both buttons will look the same minus color. And as we know in OOP instead of 
+code duplication, we can make a 'class' which can be extended across other 'sub-classes' 
+to use its variables, etc. without re-writing/defining the code. That is what we are doing! Only 
+this is applying itslelf to sass now.
+
+Also notice we used $primary-color variable. Because in oiur config partial we imported it to the 
+root style.scss file, and then we included this partial in that (below the config import) we gain access to all
+styles/globals in every sub module! REMEMBER : all our sass is compiledd into one large compressed css file
+so, all the styles will technically have access to each other
+
+
+One last thing: btn is not a class in the html! It is a 'style class' if you will that we are making
+that can be extended in many locations of this document that would otherwise duplicate the same styling.
+*/
+%btn {
+  display: inline-block;
+  border-radius: 5px;
+  padding: 8px 20px;
+  margin: 3px;
+
+  // use the parent (which is the class btn) and a pseudo selector for this
+  // simpluy remember & === parent class/selector name
+  &:hover {
+    // timy squeeze in
+    transform: scale(0.98);
+  }
+}
+
+/*
+Note: the buttons are just a tags that we are styling to look like buttons. This is 
+common for bootstrap and advanced developers. Really nice paradigm
+*/
+
+.btn-primary {
+  // extend the btn style
+  @extend %btn;
+  // lighten() is a sass function that will lighten some color and by a % so
+  // because this primary color is the background color of our container,
+  // we want to lighten it to make it out as a blickable button. Super cool
+  background-color: lighten($primary-color, 10%);
+}
+
+.btn-secondary {
+  // extend the btn style
+  @extend %btn;
+  background-color: $secondary-color;
+}

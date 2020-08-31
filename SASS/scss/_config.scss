@@ -1,0 +1,23 @@
+/*
+Best practice is to make a config module that will hold default styling VARIABLES
+that would be imported into other modules across our styles. This just provides
+a better design and code base for easy accessing to a collection of default variables 
+so it is easy to refer to. 
+
+Since the config / any modules is prefixed with _ this tells sass
+not to compile this file to save space and time and sass knows this is a partial. Because of this
+we will be able to import this module anywhere and the sass files that took that import will compile
+those variables 
+
+To use utility classes / global utilities we can create an _utilities.scss partial that should, of course
+hold all styles for utility class styles that would often be used in differentr parts of our app. See traversy video
+and also the _config.scss file in this project
+
+Using these partials makes changing styles used in a lot of places easily accessible to change. Really nice
+*/
+
+// creating a sass variables
+$light-color: #f4f4f4;
+$font-stack: Arial, Helvetica, sans-serif;
+$primary-color: #0e6cff;
+$secondary-color: #ff8700;

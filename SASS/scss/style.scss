@@ -1,14 +1,22 @@
-// creating a sass variables
-$light-color: #f4f4f4;
-$font-stack: Arial, Helvetica, sans-serif;
-$primary-color: #0e6cff;
-$secondary-color: #ff8700;
+// importing some default style variables from the config module (partial)
+// all these imports will be put into the compiled css . Importing here does not mean we are using it in style.scss
+// it simply means we can do that but ALSO we want the compiler to put all these utilities and extras into the minified compiled css
+// so the DOM knows ALL styles we made
 
+@import "config"; // config variable default styles partial
+@import "utilities"; // utility class styles partial
+@import "buttons"; // default button styles partial - this will all be compiled into our css
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
+
+/*
+Anything we do not nest will be a global style that will apply to everything in the html
+like normal css! Remember this. All SASS does is simply make writing css easier / better. The rules
+of global styles, utilities, etc. still apply. Do not get that twisted
+*/
 
 body {
   background-clip: $light-color;
@@ -16,5 +24,67 @@ body {
   line-height: 1.6;
 }
 
+img {
+  width: 100%;
+}
+
+a {
+  text-decoration: none;
+}
+
 .showcase {
+  background-color: $primary-color;
+  color: #fff;
+  height: 600px;
+
+  // nav is in the showcase so we can nest nav styles here! This is the power of SASS
+  nav {
+    display: flex;
+    align-items: center;
+    // will put logo on far left and ul on far right
+    justify-content: space-between;
+
+    // ul is in nav so we can also nest
+    // we want the ul to be a flex container for the li's so make this a flex container also
+    ul {
+      display: flex;
+      list-style: none;
+    }
+
+    li {
+      padding: 15px;
+    }
+
+    a:hover {
+      color: $secondary-color;
+    }
+  }
+  a {
+    color: #fff;
+  }
+
+  // since showcase is in the showcase-parent class, we can use it as a parent
+  // and use the & symbold to actually take the parent class / selector and prefix some
+  // part of a rule with the name of the parent
+  &-content {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    // the image itself is nested in this showcase-content div so, we want to shrink it
+    // since its nested in the html guess what? We can nest it in this selector and style it!
+    img {
+      width: 50%;
+    }
+
+    h1 {
+      font-size: 50px;
+      line-height: 1.2;
+    }
+
+    p {
+      margin: 20px 0;
+    }
+  }
 }
