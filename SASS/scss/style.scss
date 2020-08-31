@@ -73,6 +73,7 @@ a {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 30px;
 
     // the image itself is nested in this showcase-content div so, we want to shrink it
     // since its nested in the html guess what? We can nest it in this selector and style it!
@@ -84,9 +85,10 @@ a {
       font-size: 50px;
       line-height: 1.2;
     }
-
-    p {
-      margin: 20px 0;
-    }
   }
 }
+
+// media querie partial import
+@import "mobile";
+
+// WE DO NOT DDEPLY SCSS DIRECTORY! WHY? Because the css is all we need in deployment! It is the compiled code!
