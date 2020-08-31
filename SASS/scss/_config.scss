@@ -21,3 +21,24 @@ $light-color: #f4f4f4;
 $font-stack: Arial, Helvetica, sans-serif;
 $primary-color: #0e6cff;
 $secondary-color: #ff8700;
+
+// functions for dynamic styles without JS should go in the config
+
+// Set text color based on bg color : really useful for light/darkmode toggle
+// takes in some color variable and will determine the text color based off that and its lightness
+@function set-text-color($color) {
+  @if (lightness($color) > 70) {
+    @return #333;
+  } @else {
+    @return #fff;
+  }
+}
+
+// mixin to set bg color and implement the set-text-color
+// a mixin is like a function but does not return anything. It does styles only
+// but is determined by the function it exectures. We are doing this so we can replace multiple lines
+// of setting bg color and then setting color with just this mixin logic
+@mixin set-background($color) {
+  background-color: $color;
+  color: set-text-color($color);
+}
