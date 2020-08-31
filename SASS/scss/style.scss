@@ -1,0 +1,17 @@
+// creating a sass variables
+$light-color: #f4f4f4;
+$font-stack: Arial,
+Helvetica,
+sans-serif;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-clip: $light-color;
+  font-family: $font-stack;
+  line-height: 1.6;
+}
