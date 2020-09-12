@@ -1,21 +1,24 @@
 //this file will demonstrate a module
 
-const URL = 'http://mylogger.io/log';
-
-function log (msg) {
-  //send an http request to the endpoint above
-  console.log(msg);
+function log(msg) {
+  console.log(`Hello from log fn in logger.js : here is the message ->${msg}`);
 }
 
-function log_2 () {
-  console.log('Hello, world');
+function log_2() {
+  console.log("Hello, world");
 }
 
-//export this function to be used anywhere in the Module object:
-//exports is a propert of the module object, that contains an object of functions in this
-//module, thus, we must export.log = log; that way using common OOP, we can access the log key in the exports property
-//of the module object and specifically set it to the log function
-module.exports = log;
+exports.getPerson = function () {
+  console.log("ignore this.. this just shows a named export");
+};
 
-//show the module object fields to show tht exports is an object of specified exports (by us) we are exporting
-//console.log(module)
+const name = "Tanner";
+
+//export the log function and name variable - module.exports is an object under the hood so we can use
+// dot notation or destructuring naturally when we require in another module
+module.exports = { log, log_2, name };
+
+/**
+ * If we want to do named exports and not have a 'default' module.exports expression, we can do
+ * exports.variable/functionName = the thing to export
+ */

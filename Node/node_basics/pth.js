@@ -1,4 +1,4 @@
-const path = require('path'); //node module
+const path = require("path"); //node module
 
 /**
  * Let's show what the path object contains when we use both filename and dir name
@@ -27,7 +27,6 @@ this represents info about the file
 Now if we do the dirname..
  */
 
-
 const dirNamePath = path.parse(__dirname);
 console.log(dirNamePath);
 
@@ -43,4 +42,4 @@ console.log(dirNamePath);
  */
 
 //this just prints the dirname (we need to parse it with path module)
-console.log(__dirname)
+console.log(__dirname);
