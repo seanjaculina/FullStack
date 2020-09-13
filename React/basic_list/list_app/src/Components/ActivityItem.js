@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 
-function Activity_Item({ name, _id, desc, index, handleClick }) {
+function ActivityItem({ name, _id, desc, handleDelete }) {
   return (
     <div
       className="item"
-      key={_id}
       style={{
         marginTop: "3rem",
         backgroundColor: "lightgray",
@@ -19,7 +18,7 @@ function Activity_Item({ name, _id, desc, index, handleClick }) {
       <button
         className="ui red button"
         style={{ marginTop: "10px" }}
-        onClick={(e) => handleClick(e, index)}
+        onClick={handleDelete.bind(this, _id)} //Arrows in event handlers are fine but it is better practice to bind a callback/function to the 'this' of the itme in the UI
       >
         x
       </button>
@@ -27,4 +26,4 @@ function Activity_Item({ name, _id, desc, index, handleClick }) {
   );
 }
 
-export default Activity_Item;
+export default ActivityItem;
