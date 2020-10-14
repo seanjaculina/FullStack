@@ -1,0 +1,4 @@
+- For this project, we are putting ALL components that deal with the music API
+in a sub-directory in our components root.
+- This is just semantics. You do not actually need to do separate folders for things in your 
+apps however it does help make readibility better 
