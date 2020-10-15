@@ -52,7 +52,4 @@ export const Consumer = Context.Consumer;
  *
  * In our provider class, we essnetially have state. This is just like the 'store' in redux which we can
  * store state any moment in time within our app and basically change it through actions and receive it with a context consumer
- *
- *
- *
  */

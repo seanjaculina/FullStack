@@ -26,7 +26,7 @@ class Tracks extends Component {
             <>
               <h3 className="text-center mb-4">{heading}</h3>
               <div className="row">
-                {track_list.map((tk, i) => (
+                {track_list.map((tk) => (
                   // pass it the trackid as the key and the whole track object down as props
                   <Track key={tk.track.track_id} track={tk.track} />
                 ))}
