@@ -5,6 +5,7 @@ import { Provider } from "../context"; // import the context provider to give ou
 // Component imports
 import Navbar from "./layout/Navbar";
 import Index from "./layout/Index";
+import Lyrics from "./tracks/Lyrics";
 
 class App extends Component {
   render() {
@@ -18,6 +19,8 @@ class App extends Component {
             <div className="container">
               <Switch>
                 <Route exact path="/" component={Index} />
+                {/* goes to a 'page' for the given track ID to get lyrics */}
+                <Route path="/lyrics/track/:id" component={Lyrics} />
               </Switch>
             </div>
           </>

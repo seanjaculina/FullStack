@@ -21,6 +21,7 @@ const Track = ({ track }) => {
           </p>
           <Link
             //this is a link to a route we establish in the router - a different ui will show up based on the id param passed in
+            // see app.js
             to={`lyrics/track/${track.track_id}`}
             className="btn btn-dark btn-block"
           >
