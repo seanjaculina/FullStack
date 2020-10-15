@@ -1,27 +1,33 @@
 import React, { Component } from "react";
-
+import axios from "axios";
 const Context = React.createContext();
 
+// obviously not a default export so we will need to use {} for the export object when importing
 export class Provider extends Component {
   state = {
-    track_list: [
-      {
-        track: {
-          track_name: "abc",
-        },
-      },
-      {
-        track: {
-          track_name: "123",
-        },
-      },
-      {
-        track: {
-          track_name: "fvevve",
-        },
-      },
-    ],
+    track_list: [],
+    heading: "Top 10 tracks",
   };
+
+  // fetch the tracks from the API
+  async componentDidMount() {
+    // using dotenv for securing the api key - see .env => we had to pass this as a http parameter in our wuery string (As we know,
+    //we can use params in a query string with &key=val to start then preceeding & for others too) also notice the heroku call. This api has cors
+    // enabled so we are using a proxy to send requests to the api and bypass cors - cool trick for frontend apps.. not good for production froontend apps (e.g: coffeeconnect issue with yelp)
+    const endpoint = `https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/chart.tracks.get?&page=1&page_size=10&country=us&f_has_lyrics=1&apikey=${process.env.REACT_APP_API_KEY}`;
+    try {
+      const res = await axios.get(endpoint);
+      const trackListings = await res.data;
+      //console.log(trackListings);
+
+      //set the state here
+      this.setState({
+        track_list: trackListings.message.body.track_list,
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  }
 
   render() {
     return (
@@ -33,6 +39,9 @@ export class Provider extends Component {
     );
   }
 }
+
+// export the consumer to allow access to the state - similar to 'connect()' in redux
+export const Consumer = Context.Consumer;
 
 /**
  * No default export for this file: we are going to be exporting the Provider and a consumer
