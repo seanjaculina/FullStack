@@ -2,11 +2,26 @@ import React, { Component } from "react";
 import axios from "axios";
 const Context = React.createContext();
 
+// reducer that will take in an action and attempt to update the state
+const reducer = (state, action) => {
+  switch (action.type) {
+    case "SEARCH_TRACKS":
+      return {
+        ...state, // remember each switch case of an action must always send off the old state and any new state to add - reducers take actions and return data - they do not change the state
+        track_list: action.payload, // will contain the api query from the onSubmit of the search component - it will be passed here as payload
+        heading: "Search Results",
+      };
+    default:
+      return state;
+  }
+};
+
 // obviously not a default export so we will need to use {} for the export object when importing
 export class Provider extends Component {
   state = {
     track_list: [],
     heading: "Top 10 tracks",
+    dispatch: (action) => this.setState((state) => reducer(state, action)), // will be passed to all components. Can be called anywhere so we can dispatch some action in the UI to our reducer which will work with the state to change it
   };
 
   // fetch the tracks from the API

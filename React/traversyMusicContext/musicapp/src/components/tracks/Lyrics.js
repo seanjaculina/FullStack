@@ -42,7 +42,6 @@ class Lyrics extends Component {
   render() {
     // pull the state out using destructuring : semantics , not a must
     const { track, lyrics } = this.state;
-    console.log(track);
     //display spinner while stuff is loading (the objects are undefined) or else show the nice UI or all song info
     return !track ||
       !lyrics ||
