@@ -1,11 +1,9 @@
 import React, { Component } from "react";
 import axios from "axios";
-import moment from "react-moment";
 import { Link } from "react-router-dom";
 
 // spinner component
 import Spinner from "../layout/Spinner";
-import Moment from "react-moment";
 /**
  * Depending on the URL for when this component is routed, a different song ID is in the URLL.
  * Using react-router v4+, we can easily extract the params from the url using props as it will be passed automatically as props
