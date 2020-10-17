@@ -14,8 +14,6 @@ class Tracks extends Component {
       // and then inside write a JS function that will send all the state into whatever we render as JSX now for this component
       <Consumer>
         {(value) => {
-          console.log(value);
-
           // pull out just the track list array state and the heading state
           const { track_list, heading } = value;
 
