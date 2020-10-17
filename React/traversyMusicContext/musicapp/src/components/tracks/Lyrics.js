@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import axios from "axios";
+import moment from "react-moment";
 import { Link } from "react-router-dom";
 
 // spinner component
 import Spinner from "../layout/Spinner";
+import Moment from "react-moment";
 /**
  * Depending on the URL for when this component is routed, a different song ID is in the URLL.
  * Using react-router v4+, we can easily extract the params from the url using props as it will be passed automatically as props
@@ -30,12 +32,10 @@ class Lyrics extends Component {
       // retrieve track info
       const trackRes = await axios.get(trackEndpoint);
       const trackData = await trackRes.data;
-
       this.setState({
         track: trackData.message.body.track,
         lyrics: lyrics.message.body.lyrics,
       });
-      console.log(this.state);
     } catch (err) {
       console.log(err);
     }
@@ -44,11 +44,12 @@ class Lyrics extends Component {
   render() {
     // pull the state out using destructuring : semantics , not a must
     const { track, lyrics } = this.state;
+    console.log(track);
     //display spinner while stuff is loading (the objects are undefined) or else show the nice UI or all song info
     return !track ||
       !lyrics ||
-      Object.keys(track).length === 0 ||
-      Object.keys(lyrics).length === 0 ? (
+      Object.keys(track) === 0 ||
+      Object.keys(lyrics) === 0 ? (
       <Spinner />
     ) : (
       <>
@@ -68,6 +69,10 @@ class Lyrics extends Component {
         <ul className="list-group mt-3">
           <li className="list-group-item">
             <strong>Album ID</strong>: {track.album_id}
+          </li>
+          <li className="list-group-item">
+            <strong>Explicit Words</strong>:{" "}
+            {track.explicit === 0 ? "No" : "Yes"}
           </li>
         </ul>
       </>
