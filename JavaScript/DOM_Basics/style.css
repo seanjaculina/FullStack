@@ -78,19 +78,20 @@ body {
 
 .input__container {
   position: relative;
-  width: 60%;
+  max-width: 60%;
   height: 50%;
   display: flex;
   align-items: center;
-  text-align: center;
+  justify-content: center;
   background-color: rgb(138, 138, 209);
-  margin: 30% auto;
+  margin: 10rem auto;
   border-radius: 5px;
 }
 
 .input__container h5 {
   color: #fff;
   font-weight: 300;
+  font-size: 1.5rem;
 }
 
 .input__container .close {
@@ -107,4 +108,6 @@ body {
 
 .input__container .close:hover {
   cursor: pointer;
+  transform: scale(1.1);
+  transition: 0.1s ease;
 }
