@@ -75,3 +75,19 @@ body {
   height: calc(100% - 7rem);
   background-color: rgb(235, 219, 219);
 }
+
+.input__container {
+  width: 60%;
+  height: 50%;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  background-color: rgb(138, 138, 209);
+  margin: 30% auto;
+  border-radius: 5px;
+}
+
+.input__container h5 {
+  color: #fff;
+  font-weight: 300;
+}
