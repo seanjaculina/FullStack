@@ -44,19 +44,38 @@ btn_1.addEventListener("click", () => {
   const text = document.createTextNode(`Your age is ${age}`);
   h5.append(text);
   div.appendChild(h5);
+
+  const xBtn = document.createElement("button");
+  xBtn.classList.add("close");
+  xBtn.innerHTML = "X";
+  div.appendChild(xBtn);
+
+  xBtn.addEventListener("click", () => {
+    resContainer.removeChild(resContainer.firstChild);
+  });
+
   resContainer.appendChild(div);
 });
 btn_2.addEventListener("click", () => {
   if (resContainer.firstChild) {
     resContainer.removeChild(resContainer.firstChild);
-    const div = document.createElement("DIV");
-    div.classList.add("input__container");
-    const h5 = document.createElement("h5");
-    const text = document.createTextNode(`Your name is ${fName} ${lName}`);
-    h5.append(text);
-    div.appendChild(h5);
-    resContainer.appendChild(div);
   }
+  const div = document.createElement("DIV");
+  div.classList.add("input__container");
+  const h5 = document.createElement("h5");
+  const text = document.createTextNode(`Your name is ${fName} ${lName}`);
+  h5.append(text);
+  div.appendChild(h5);
+
+  const xBtn = document.createElement("button");
+  xBtn.classList.add("close");
+  xBtn.innerHTML = "X";
+  div.appendChild(xBtn);
+
+  xBtn.addEventListener("click", () => {
+    resContainer.removeChild(resContainer.firstChild);
+  });
+  resContainer.appendChild(div);
 });
 btn_3.addEventListener("click", () => {
   if (resContainer.firstChild) {
@@ -70,5 +89,14 @@ btn_3.addEventListener("click", () => {
   );
   h5.append(text);
   div.appendChild(h5);
+
+  const xBtn = document.createElement("button");
+  xBtn.classList.add("close");
+  xBtn.innerHTML = "X";
+  div.appendChild(xBtn);
+
+  xBtn.addEventListener("click", () => {
+    resContainer.removeChild(resContainer.firstChild);
+  });
   resContainer.appendChild(div);
 });

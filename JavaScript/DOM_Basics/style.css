@@ -77,6 +77,7 @@ body {
 }
 
 .input__container {
+  position: relative;
   width: 60%;
   height: 50%;
   display: flex;
@@ -90,4 +91,20 @@ body {
 .input__container h5 {
   color: #fff;
   font-weight: 300;
+}
+
+.input__container .close {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  border: none;
+  color: #fff;
+  background-color: rgb(190, 72, 72);
+}
+
+.input__container .close:hover {
+  cursor: pointer;
 }
