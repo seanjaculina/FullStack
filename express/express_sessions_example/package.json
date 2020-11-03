@@ -1,0 +1,21 @@
+{
+  "name": "session-json-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "tourServer.js",
+  "scripts": {
+    "start" : "node serverRun"
+  },
+  "keywords": [],
+  "author": "Dr. Greg M. Bernstein",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "express": "^4.16.4",
+    "express-session": "^1.15.6",
+    "node-fetch": "^2.6.1"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0"
+  }
+}

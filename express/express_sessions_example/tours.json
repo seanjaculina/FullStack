@@ -1,0 +1,12 @@
+{"virtTours": [
+	{"name": "Kiting Neptune", "date": "Starting June 2022"},
+	{"name": "Windsurfing the Methane Lakes of Titan", "date": "Starting December 2022"},
+	{"name": "Kiting Jupiter's Great Red Spot", "date": "Starting June 2023"}
+],
+ 
+ "phyTours": [
+	 {"name": "Windsurf Foiling San Francisco Bay", "date": "May-September, Weekly by appointment"},
+	 {"name": "'Bump and Jump' Windsurfing in the South Bay", "date": "Wind watch based tour"},
+	 {"name": "Windsurf or Kite the Delta", "date": "Wind watch based tour"}
+ ]
+}
