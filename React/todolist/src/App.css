@@ -2,4 +2,104 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+  background-color: lightgray;
+  width: 70%;
+  margin: 0 auto;
+  margin-top: 2rem;
+}
+
+.titleTag {
+  text-align: center;
+  padding: 1rem 0;
+}
+
+.todo__container {
+  width: 70%;
+  margin: 0 auto;
+  margin-top: 2rem;
+}
+
+.todo-item {
+  width: 100%;
+  height: 4rem;
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center; /* change later */
+}
+
+.todo-item:nth-child(2n+1) {
+  background-color: lightsalmon;
+}
+.todo-item:nth-child(2n+2) {
+  background-color: lightblue;
+}
+.todo-item:nth-child(2n+3) {
+  background-color: rgb(81, 93, 97);
+  color: #fff;
+}
+
+
+form {
+  width: 70%;
+  margin: 0 auto;
+  height: 3rem;
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+form input[type=text] {
+  width: 70%;
+  border: 1px solid lightgray;
+  border-right: none;
+  border-top-right-radius: 0;
+  border-bottom-left-radius: 0;
+  border-radius: 3px;
+}
+
+form input[type=button] {
+  width: 30%;
+  border: none;
+  border-radius: 3px;
+}
+
+form input[type=button]:hover {
+  cursor: pointer;
+}
+
+.options {
+  position: absolute;
+  width: 5rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  top: 0;
+  right: 1rem;
+}
+.options .delete {
+  display: flex;
+  color: #fff !important;
+  align-items: center;
+  justify-content:center;
+  width: 2rem;
+  height: 2rem;
+  background-color: rgb(161, 52, 52);
+  border-radius: 50%;
+}
+
+.options .edit{
+  display: flex;
+  color: #fff !important;
+  align-items: center;
+  justify-content:center;
+  width: 2rem;
+  height: 2rem;
+  background-color: rgb(172, 170, 77);
+  border-radius: 50%;
 }
