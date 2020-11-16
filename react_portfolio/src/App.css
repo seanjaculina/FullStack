@@ -144,3 +144,57 @@
   transform: scale(1.01);
   transition: .1s all ease-in-out;
 }
+
+
+.about{
+  max-width: 90vw;
+  min-height: 100vh; /* Allow the container to expand with more and more projects*/
+  margin: 0 auto;
+}
+
+.about .section__heading {
+  margin-top: 2rem;
+}
+
+
+.section__content {
+  max-width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content:space-evenly;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.section__content img {
+  border-radius: 50%;
+  width: 350px;
+  height: 350px;
+  margin: 2rem;
+}
+
+.section__content p {
+  display: flex;
+  justify-content:center;
+  font-size: 1.2rem;
+  max-width: 60%;
+  text-align: center;
+  line-height: 2rem;
+}
+
+.section__content .technologies_container {
+  display: flex;
+  padding: 2rem;
+  width: 100%;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.technologies_container i {
+  font-size: 5rem;
+  padding: 2rem;
+}
+
+
+
+
