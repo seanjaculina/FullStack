@@ -18,8 +18,12 @@ const Home = () => {
           <li>
             <a href="https://www.linkedin.com/in/tanner-barcelos-695619a1/" target="_blank"><i className="fab fa-linkedin"></i></a>
           </li>
+          <li>
+            <a href="https://drive.google.com/file/d/1evWH-bcGH1yEAqPQu5-8GC1-20xmL9WL/view?ths=true" target="_blank"><i className="far fa-file"></i></a>
+          </li>
         </ul>
       </div>
+      <i className="fas fa-arrow-down arrow"></i>
     </div>
   ) 
 }
