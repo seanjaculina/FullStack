@@ -5,17 +5,17 @@
   font-family: 'Work Sans', sans-serif;
 }
 
-.container {
+.section_container {
   width: 100%;
   min-height: 100vh;
 }
 
 /* The home component container BG */
-.container:first-child {
+.section_container:first-child {
   background: linear-gradient(rgba(20,20,20, .8), rgba(20,20,20, .7)),url('./images/landing.jpg');
 }
 
-.container:nth-child(2n+2) {
+.section_container:nth-child(2n+2) {
   background-color: rgb(243, 241, 241);
 }
 
@@ -97,6 +97,7 @@
   flex-direction: column;
   background-color: #fff;
   border-radius: 5px;
+  border: none;
   width: 400px;
   height: 400px;
   position: relative;
@@ -126,6 +127,8 @@
   border: none;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
   background-color: rgb(50, 58, 65);
   color: #fff;
 }

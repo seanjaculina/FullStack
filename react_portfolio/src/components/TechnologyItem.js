@@ -1,7 +1,6 @@
 import React from 'react'
 
 const TechnologyItem = ({icon}) => {
-
   const iconColorMap = {
     "js": "rgb(247,166,18)",
     "react": "rgb(97,218,251)",
@@ -12,13 +11,7 @@ const TechnologyItem = ({icon}) => {
     "python": "rgb(62,128,158)",
     "data structures and algorithms": "#52057b"
   }
-
-
-  return (
-    <>
-      <i className={icon.className} style={{color:iconColorMap[icon.technology]}} data-technology={icon.technology}></i>
-    </>
-  )
+  return <i className={icon.className} style={{color:iconColorMap[icon.technology]}} data-technology={icon.technology}></i>
 }
 
 export default TechnologyItem;

@@ -4,7 +4,7 @@ import React from 'react'
 
 const Home = () => {
   return (
-    <div className="container">
+    <div className="section_container">
       <div className="hero-content">
         <h1>Hi, my name is Tanner Barcelos</h1>
         <span className="msg">

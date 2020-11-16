@@ -5,9 +5,8 @@ import ProjectList from '../projects.json';
 import ProjectItem from './ProjectItem';
 
 const Projects = () => {
-  console.log(ProjectList);
   return (
-    <div className="container">
+    <div className="section_container">
       <div className="projects">
         <h1 className="section__heading">Projects</h1>
         {
