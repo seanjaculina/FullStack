@@ -2,49 +2,49 @@
   {
     "title" : "Coffee Connection",
     "link": "https://coffee-connection.herokuapp.com/",
-    "image": "../images/coffee_connection.png",
+    "image": "coffee_connection",
     "btnText": "See Live"
   },
   {
     "title" : "YouTube Clone",
     "link": "https://tanneryoutubeclone.netlify.app/",
-    "image": "",
+    "image": "youtube",
     "btnText": "See Live"
   },
   {
     "title" : "Movie Finder",
     "link": "https://github.com/TannerBarcelos/Movie-Search",
-    "image": "",
+    "image": "movie_app",
     "btnText": "See on GitHub"
   },
   {
     "title" : "COVID-19 Fatality Visualizer",
     "link": "https://tannerbarcelos.github.io/COVID-19-Fatality-Visualizer/",
-    "image": "",
+    "image": "covid",
     "btnText": "See Live"
   },
   {
     "title" : "Ebay Clone",
     "link": "https://ebay-clone-react.herokuapp.com/",
-    "image": "",
+    "image": "ebay",
     "btnText": "See Live"
   },
   {
     "title" : "Twitch Clone",
     "link": "https://github.com/TannerBarcelos/Twitch-Clone",
-    "image": "",
+    "image": "stream",
     "btnText": "See on GitHub"
   },
   {
     "title" : "Baysbook",
     "link": "https://glacial-journey-55442.herokuapp.com/?fbclid=IwAR0CtCB32bMNEhIemAEnNwCqBfIslK78WeEZ2XRgLG9zS6PpC_mDSO3WMlc",
-    "image": "",
+    "image": "baysbookland",
     "btnText": "See Live"
   },
   {
     "title" : "Weather App",
     "link": "https://tannersweatherapp.netlify.app/",
-    "image": "",
+    "image": "weather",
     "btnText": "See Live"
   }
 ]
