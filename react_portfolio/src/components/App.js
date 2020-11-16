@@ -10,8 +10,8 @@ function App() {
   return (
     <>
       <Home />
-      <About />
       <Projects />
+      <About />
       <Contact />
     </>
   );
