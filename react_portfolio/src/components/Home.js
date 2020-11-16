@@ -7,10 +7,6 @@ const Home = () => {
     <div className="section_container">
       <div className="hero-content">
         <h1>Hi, my name is Tanner Barcelos</h1>
-        <span className="msg">
-          <p>Creator</p>
-          <p>Aspiring software engineer</p>
-        </span>
         <ul className="socials">
           <li>
             <a href="https://github.com/TannerBarcelos" target="_blank"><i className="fab fa-github"></i></a>

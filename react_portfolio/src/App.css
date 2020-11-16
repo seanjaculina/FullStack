@@ -207,5 +207,46 @@
 }
 
 
+/* Media Queries */
 
+@media screen and (max-width: 480px) {
+  .hero-content .socials{
+    width: 100%;
+    justify-content:space-evenly;
+  }
+
+  .section__heading {
+    font-size: 3rem;
+    width: 100%;
+    padding: 2rem;
+    margin: 2rem 0;
+    padding-top: 5rem;
+  }
+
+  .form-inp{
+    width: 90% !important;
+    padding: 1rem 0;
+  }
+
+  .form-inp .btn {
+    width: 100%;
+  }
+
+  .section__content p {
+    width: 100%;
+  }
+
+  .project-item {
+    box-shadow: none;
+    border: 1px solid lightgray;
+  }
+
+  .arrow {
+    left: 46% !important;
+  }
+
+  .hero-content h1 {
+    width: 100%;
+  }
+}
 

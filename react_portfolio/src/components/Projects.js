@@ -17,7 +17,7 @@ const Projects = () => {
               return <ProjectItem data={project} key={Math.floor(Math.random() * 10000)}/>
             })
           }
-        </div>s
+        </div>
       </div>
     </Fade>
   )
