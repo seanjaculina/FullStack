@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 // Component imports
 import Rating from './Rating';
@@ -23,15 +24,15 @@ const Product = ({product}) => {
    */
   return (
     <Card className="my-3 p-3 rounder">
-      <a href={`/product/${_id}`}>
+      <Link to={`/product/${_id}`}>
         <Img src={image} variant="top"/>
-      </a>
+      </Link>
       <Body>
-        <a href={`/product/${_id}`}>
+        <Link to={`/product/${_id}`}>
           <Title as="div">
             <strong>{name}</strong>
           </Title>
-        </a>
+        </Link>
         <Text as="div">
           <Rating value={rating} text={`${numReviews} reviews`}/>
         </Text>
