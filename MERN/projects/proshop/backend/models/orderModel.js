@@ -5,7 +5,7 @@ const orderSchema = mongoose.Schema(
     user: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,
-      ref: 'User',
+      ref: 'User', //reference a User as the relationship (this property in the DB with the type property and the 'ref' will show the user _id associated with the product (i think this is for admin only?))
     },
     orderItems: [
       {
