@@ -22,7 +22,7 @@ app.get('/api/products', (req, res) => {
 
 app.get('/api/products/:id', (req, res) => {
   const { id } = req.params; // pull out just the id param
-  const product = find((p) => p._id === id);
+  const product = products.find((p) => p._id === id);
   res.json(product);
 });
 
