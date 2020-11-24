@@ -1,9 +1,9 @@
 import React from 'react';
-import {BrowserRouter as Router, Route} from 'react-router-dom'; // client side routing
+import { BrowserRouter as Router, Route } from 'react-router-dom'; // client side routing
 import './index.css';
 
 // React bootstrap styles
-import {Container} from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 
 // components (default exported so no need to extract using {} of course)
 import Header from './components/Header';
@@ -17,13 +17,13 @@ const App = () => {
       <Header />
       <main className="py-3">
         <Container>
-          <Route exact path="/" component={HomeScreen}/>
-          <Route path="/product/:id" component={ProductScreen}/> {/* Will render the prodct clicked on and then show all data about it in UII using match from HTML5 history API */}
+          <Route exact path="/" component={HomeScreen} />
+          <Route path="/product/:id" component={ProductScreen} />
+          {/* Will render the prodct clicked on and then show all data about it in UII using match from HTML5 history API */}
         </Container>
       </main>
-      <Footer/>
+      <Footer />
     </Router>
-  )
-}
-
+  );
+};
 export default App;
