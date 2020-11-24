@@ -12,15 +12,18 @@ const Projects = () => {
       <div className="section_container">
         <div className="projects">
           <h1 className="section__heading">Projects</h1>
-          {
-            ProjectList.map(project => {
-              return <ProjectItem data={project} key={Math.floor(Math.random() * 10000)}/>
-            })
-          }
+          {ProjectList.map((project) => {
+            return (
+              <ProjectItem
+                data={project}
+                key={Math.floor(Math.random() * 10000)}
+              />
+            );
+          })}
         </div>
       </div>
     </Fade>
-  )
-}
+  );
+};
 
 export default Projects;

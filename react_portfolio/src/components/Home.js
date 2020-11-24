@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-no-target-blank */
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React from 'react'
+import React from 'react';
 
 const Home = () => {
   return (
@@ -9,19 +9,28 @@ const Home = () => {
         <h1>Hi, my name is Tanner Barcelos</h1>
         <ul className="socials">
           <li>
-            <a href="https://github.com/TannerBarcelos" target="_blank"><i className="fab fa-github"></i></a>
+            <a href="https://github.com/TannerBarcelos" target="_blank">
+              <i className="fab fa-github"></i>
+            </a>
           </li>
           <li>
-            <a href="https://www.linkedin.com/in/tanner-barcelos-695619a1/" target="_blank"><i className="fab fa-linkedin"></i></a>
+            <a
+              href="https://www.linkedin.com/in/tanner-barcelos-695619a1/"
+              target="_blank"
+            >
+              <i className="fab fa-linkedin"></i>
+            </a>
           </li>
           <li>
-            <a href="https://drive.google.com/file/d/1evWH-bcGH1yEAqPQu5-8GC1-20xmL9WL/view?ths=true" target="_blank"><i className="far fa-file"></i></a>
+            <a href="https://tannerbarcelos.github.io/resume/" target="_blank">
+              <i className="far fa-file"></i>
+            </a>
           </li>
         </ul>
       </div>
       <i className="fas fa-arrow-down arrow"></i>
     </div>
-  ) 
-}
+  );
+};
 
 export default Home;

@@ -1,6 +1,5 @@
 import '../App.css';
 
-
 // Component imports
 import Home from './Home';
 import About from './About';
@@ -12,14 +11,11 @@ function App() {
     <>
       <Home />
 
-        <Projects />
+      <Projects />
 
+      <About />
 
-        <About />
-
-
-        <Contact />
-
+      <Contact />
     </>
   );
 }
