@@ -79,4 +79,4 @@ const products = [
   },
 ];
 
-module.exports = products;
+export default products; // using esmodules in Node! So this works
