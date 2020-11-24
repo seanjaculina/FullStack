@@ -34,7 +34,8 @@ router.get(
     if (productFoundByID) {
       return res.json(productFoundByID);
     } else {
-      return res.status(404).json({ message: 'Product not found' });
+      res.status(404);
+      throw new Error('Product not found'); // this will throw error with a stack trace, this message and the custom message. Cool
     }
   })
 );

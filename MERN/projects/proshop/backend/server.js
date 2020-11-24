@@ -1,8 +1,8 @@
 import express from 'express'; // to use esmodules in node, we need to add a "type": "module" property to the root package.json
 import dotenv from 'dotenv'; // use .env
 import colors from 'colors';
-
 import connectDB from './config/db.js'; // remember: esmodules NEEDS .extension
+import { notFound, errorHandler } from './middlewares/errorMiddleware.js';
 
 // Router files
 import productRoutes from './routes/productRoutes.js';
@@ -14,6 +14,14 @@ connectDB(); // connect to the DB with our config (this would look different (se
 
 // Router entrypoints
 app.use('/api/products', productRoutes);
+
+// Middlewares
+app.use(errorHandler);
+app.use(notFound);
+/**
+ * Refer video 23 of Traversy MERN E-Commerce to see how we can setup cool env variables
+ * for postman to alias our localhost and also make folders, etc. in Postman
+ */
 
 /*
  * Unlike in react or other client side esmodules, when we import
