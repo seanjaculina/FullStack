@@ -1,0 +1,19 @@
+{
+  "name": "proshop",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "cd backend && node server",
+    "dev": "cd backend && nodemon server"
+  },
+  "keywords": [],
+  "author": "Tanner Barcelos",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  }
+}
