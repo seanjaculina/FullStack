@@ -3,14 +3,17 @@ import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 // Reducer imports
-import { productListReducer } from './reducers/productReducers';
+import {
+  productListReducer,
+  productDetailsReducer,
+} from './reducers/productReducers';
 
 // The reducer will be an object of all the reducers in our application combined such that
 // we can always send actions and each reducer will see the action and determine what reducer
 //to fire off and change some state. This is important
 const rootReducer = combineReducers({
-  productList: productListReducer, // the productList is an array of products that will be received whenever the productListReducer receives an action type that is for getting data from backend!
-  // all properties of the object in combineReducers contain some data / state returned from separate reducers
+  productList: productListReducer,
+  productDetails: productDetailsReducer,
 });
 
 // the initial app state - can be empty or anything you want by default when app loads
