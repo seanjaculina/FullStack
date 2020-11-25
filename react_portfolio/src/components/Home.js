@@ -22,7 +22,10 @@ const Home = () => {
             </a>
           </li>
           <li>
-            <a href="https://tannerbarcelos.github.io/resume/" target="_blank">
+            <a
+              href="https://drive.google.com/file/d/1ke9h9jog2PigDWSzDfftDK83CknJHQf6/view"
+              target="_blank"
+            >
               <i className="far fa-file"></i>
             </a>
           </li>
