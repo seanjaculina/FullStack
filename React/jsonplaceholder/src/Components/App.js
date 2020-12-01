@@ -1,19 +1,24 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
-import Selections from './Selections';
+import SelectionBox from './SelectionBox';
+import SelectionContainer from './SelectionContainer';
 
-function App() {
+const App = () => {
   const [selection, setSelection] = useState('');
-  console.log(selection);
+
+  const setSelectionOption = (value) => {
+    setSelection(value);
+  };
   return (
     <div
       className="container-md"
       style={{ marginTop: '2rem', textAlign: 'center' }}
     >
       <h1>Select a button to send a request</h1>
-      <Selections setSelection={setSelection} />
+      <SelectionBox setSelectionOption={setSelectionOption} />
+      <SelectionContainer selection={selection} />
     </div>
   );
-}
+};
 
 export default App;

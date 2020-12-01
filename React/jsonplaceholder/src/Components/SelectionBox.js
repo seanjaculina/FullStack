@@ -1,10 +1,10 @@
 import React from 'react';
 
-function Selections({ setSelection }) {
-  function onSelection(e) {
+const Selections = ({ setSelectionOption }) => {
+  const onSelection = (e) => {
     const selection = e.target.outerText.toLowerCase();
-    setSelection(selection);
-  }
+    setSelectionOption(selection);
+  };
 
   return (
     <div
@@ -18,6 +18,7 @@ function Selections({ setSelection }) {
       <button
         type="button"
         className="btn btn-primary"
+        style={{ width: '7rem' }}
         onClick={(e) => onSelection(e)}
       >
         Posts
@@ -25,6 +26,7 @@ function Selections({ setSelection }) {
       <button
         type="button"
         className="btn btn-secondary"
+        style={{ width: '7rem' }}
         onClick={(e) => onSelection(e)}
       >
         Users
@@ -32,6 +34,7 @@ function Selections({ setSelection }) {
       <button
         type="button"
         className="btn btn-success"
+        style={{ width: '7rem' }}
         onClick={(e) => onSelection(e)}
       >
         Todos
@@ -39,12 +42,13 @@ function Selections({ setSelection }) {
       <button
         type="button"
         className="btn btn-dark"
+        style={{ width: '7rem' }}
         onClick={(e) => onSelection(e)}
       >
         Albums
       </button>
     </div>
   );
-}
+};
 
 export default Selections;
