@@ -3,7 +3,6 @@ import UserItem from './UserItem';
 
 const UsersContainer = () => {
   const [userData, setUserData] = useState(null);
-  const [information, setInformation] = useState(null);
   useEffect(() => {
     (async () => {
       try {
@@ -18,27 +17,14 @@ const UsersContainer = () => {
     })();
   }, []);
 
-  // handles which button you clicked for posts or todos
-  const onClick = (e, userID) => {
-    const resourceString = e.target.outerText.split(' ')[1].toLowerCase();
-    setInformation((oldState) => ({ ...oldState, resourceString, userID }));
-    fetch(
-      `https://jsonplaceholder.typicode.com/${resourceString}?userId=${userID}`,
-    )
-      .then((res) => res.json())
-      .then((data) => console.log(data));
-  };
-
   return userData ? (
     <>
       <div className="container">
         <h1 style={{ margin: '1rem 1rem' }}>REST API and React Tutorial</h1>
-      </div>
-      <div className="row">
-        {userData &&
-          userData.map((user) => (
-            <UserItem key={user.id} user={user} onClick={onClick} />
-          ))}
+        <div className="row">
+          {userData &&
+            userData.map((user) => <UserItem key={user.id} user={user} />)}
+        </div>
       </div>
     </>
   ) : null;
