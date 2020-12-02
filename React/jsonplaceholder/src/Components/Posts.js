@@ -1,28 +1,31 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
+import PostItem from './PostItem';
+
 const Posts = ({ match }) => {
   console.log(match);
   const [postData, setPosts] = useState(null);
 
   useEffect(() => {
     (async () => {
-      // send request to the endpoint for todos and pass the userId into the query string to get that users data by the ID we passed
-      // if we were using express, we would get the data sent from here and then pull it out with req.params
       const res = await fetch(
         `https://jsonplaceholder.typicode.com/posts?userId=${match.params.id}`,
       );
       const data = await res.json();
       setPosts(data);
-      console.log(data);
     })();
   }, [match.params.id]);
   return (
-    <div className="container" style={{ margin: '1rem 1rem' }}>
-      <h1>Posts</h1>
+    <div className="container">
+      <h1 style={{ margin: '1rem 1rem' }}>Posts</h1>
       <Link to="/" className="btn btn-light">
         Go Back
       </Link>
+      <div className="row">
+        {postData &&
+          postData.map((post) => <PostItem data={post} key={post.id} />)}
+      </div>
     </div>
   );
 };
