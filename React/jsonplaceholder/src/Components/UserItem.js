@@ -18,10 +18,10 @@ const UserItem = ({ user }) => {
             justifyContent: 'space-evenly',
           }}
         >
-          <Link to={`/${user.username}/posts/${user.id}`}>
+          <Link to={`/posts/${user.id}`}>
             <p className="btn btn-primary">See Posts</p>
           </Link>
-          <Link to={`/${user.username}/todos/${user.id}`}>
+          <Link to={`/todos/${user.id}`}>
             <p className="btn btn-secondary">See Todos</p>
           </Link>
         </div>

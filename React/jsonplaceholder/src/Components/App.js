@@ -11,8 +11,8 @@ const App = () => {
     <Router>
       <Switch>
         <Route exact path="/" component={UserContainer} />
-        <Route exact path="/:username/posts/:id" component={Posts} />
-        <Route exact path="/:username/todos/:id" component={Todos} />
+        <Route exact path="/posts/:id" component={Posts} />
+        <Route exact path="/todos/:id" component={Todos} />
       </Switch>
     </Router>
   );
