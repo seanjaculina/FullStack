@@ -1,23 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-import SelectionBox from './SelectionBox';
-import SelectionContainer from './SelectionContainer';
+import UserContainer from './UsersContainer';
 
 const App = () => {
-  const [selection, setSelection] = useState('');
-
-  const setSelectionOption = (value) => {
-    setSelection(value);
-  };
   return (
-    <div
-      className="container-md"
-      style={{ marginTop: '2rem', textAlign: 'center' }}
-    >
-      <h1>Select a button to send a request</h1>
-      <SelectionBox setSelectionOption={setSelectionOption} />
-      <SelectionContainer selection={selection} />
-    </div>
+    <>
+      <div className="container" style={{ marginTop: '2rem' }}>
+        <h1 style={{ margin: '1rem 1rem' }}>REST API and React Tutorial</h1>
+      </div>
+      <div className="container">
+        <UserContainer />
+      </div>
+    </>
   );
 };
 
