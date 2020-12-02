@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const UserItem = ({ user, onClick }) => {
   return (
@@ -17,12 +18,19 @@ const UserItem = ({ user, onClick }) => {
             justifyContent: 'space-evenly',
           }}
         >
-          <p className="btn btn-primary" onClick={(e) => onClick(e, user.id)}>
-            See Posts
-          </p>
-          <p className="btn btn-secondary" onClick={(e) => onClick(e, user.id)}>
-            See Todos
-          </p>
+          <Link to={`/${user.username}/posts/${user.id}`}>
+            <p className="btn btn-primary" onClick={(e) => onClick(e, user.id)}>
+              See Posts
+            </p>
+          </Link>
+          <Link to={`/${user.username}/todos/${user.id}`}>
+            <p
+              className="btn btn-secondary"
+              onClick={(e) => onClick(e, user.id)}
+            >
+              See Todos
+            </p>
+          </Link>
         </div>
       </div>
     </div>

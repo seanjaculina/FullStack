@@ -1,17 +1,20 @@
 import React from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import UserContainer from './UsersContainer';
+import Posts from './Posts';
+import Todos from './Todos';
 
 const App = () => {
   return (
-    <>
-      <div className="container" style={{ marginTop: '2rem' }}>
-        <h1 style={{ margin: '1rem 1rem' }}>REST API and React Tutorial</h1>
-      </div>
-      <div className="container">
-        <UserContainer />
-      </div>
-    </>
+    // using react router to render only componnets on the screen that we wish to see
+    <Router>
+      <Switch>
+        <Route exact path="/" component={UserContainer} />
+        <Route exact path="/:username/posts/:id" component={Posts} />
+        <Route exact path="/:username/todos/:id" component={Todos} />
+      </Switch>
+    </Router>
   );
 };
 

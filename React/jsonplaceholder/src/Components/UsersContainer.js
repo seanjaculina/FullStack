@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import UserItem from './UserItem';
 
-const SelectionContainer = () => {
-  const [data, setData] = useState(null);
-  const [information, setInformation] = useState({});
+const UsersContainer = () => {
+  const [userData, setUserData] = useState(null);
+  const [information, setInformation] = useState(null);
   useEffect(() => {
     (async () => {
       try {
@@ -11,8 +11,7 @@ const SelectionContainer = () => {
           `https://jsonplaceholder.typicode.com/users`,
         );
         const results = await fetchedData.json();
-        setData(results);
-        console.log(results);
+        setUserData(results);
       } catch (err) {
         console.error(err);
       }
@@ -22,21 +21,27 @@ const SelectionContainer = () => {
   // handles which button you clicked for posts or todos
   const onClick = (e, userID) => {
     const resourceString = e.target.outerText.split(' ')[1].toLowerCase();
-    const ID = userID;
-    setInformation((oldState) => ({ ...oldState, resourceString, ID }));
-    fetch(`https://jsonplaceholder.typicode.com/${resourceString}?userId=${ID}`)
+    setInformation((oldState) => ({ ...oldState, resourceString, userID }));
+    fetch(
+      `https://jsonplaceholder.typicode.com/${resourceString}?userId=${userID}`,
+    )
       .then((res) => res.json())
       .then((data) => console.log(data));
   };
 
-  return data ? (
-    <div className="row">
-      {data &&
-        data.map((user) => (
-          <UserItem key={user.id} user={user} onClick={onClick} />
-        ))}
-    </div>
+  return userData ? (
+    <>
+      <div className="container">
+        <h1 style={{ margin: '1rem 1rem' }}>REST API and React Tutorial</h1>
+      </div>
+      <div className="row">
+        {userData &&
+          userData.map((user) => (
+            <UserItem key={user.id} user={user} onClick={onClick} />
+          ))}
+      </div>
+    </>
   ) : null;
 };
 
-export default SelectionContainer;
+export default UsersContainer;
