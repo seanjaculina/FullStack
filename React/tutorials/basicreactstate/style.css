@@ -1,0 +1,52 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+#title {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.container {
+  width: 80%;
+  margin: 2rem auto;
+  margin-top: 2rem;
+  min-height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  border: 1px solid #000;
+  padding: 1.5rem;
+}
+
+.container .atom-item {
+  max-width: 26%;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin: 2rem 1rem;
+}
+
+.sorting-container {
+  width: 80%;
+  margin: 1rem auto 0 auto;
+  height: 4rem;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.sorting-container button {
+  height: 100%;
+  padding: 0.5rem;
+  border-radius: 3px;
+  border: 1px solid lightgray;
+  background-color: #fff;
+}
+
+.sorting-container button:hover {
+  cursor: pointer;
+}
