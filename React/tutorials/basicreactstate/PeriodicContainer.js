@@ -15,15 +15,16 @@ class PeriodicContainer extends Component {
   }
 
   sortAlpha() {
-    console.log(this.state.atoms);
     this.setState((prevState) => ({
-      atoms: prevState.atoms.sort((a, b) => a.name - b.name),
+      atoms: prevState.atoms.sort((a, b) => a.name.localeCompare(b.name)),
     }));
   }
 
   sortByMass() {
     this.setState((prevState) => ({
-      atoms: prevState.atoms.sort((a, b) => a.atomic_mass - b.atomic_mass),
+      atoms: prevState.atoms.sort((a, b) =>
+        a.atomic_mass > b.atomic_mass ? -1 : 1,
+      ),
     }));
   }
 

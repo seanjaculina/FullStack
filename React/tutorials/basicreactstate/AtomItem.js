@@ -8,7 +8,7 @@ class AtomItem extends Component {
     return (
       <div className="atom-item">
         <h3>{this.props.atomData.name}</h3>
-        <p>{this.props.atomData.atomic_mass}</p>
+        <h6>Atomic Mass {this.props.atomData.atomic_mass}</h6>
         <p>{this.props.atomData.summary}</p>
         <small>{this.props.atomData.symbol}</small>
       </div>

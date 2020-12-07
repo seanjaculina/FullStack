@@ -33160,7 +33160,7 @@ var AtomItem = /*#__PURE__*/function (_Component) {
     value: function render() {
       return /*#__PURE__*/_react.default.createElement("div", {
         className: "atom-item"
-      }, /*#__PURE__*/_react.default.createElement("h3", null, this.props.atomData.name), /*#__PURE__*/_react.default.createElement("p", null, this.props.atomData.atomic_mass), /*#__PURE__*/_react.default.createElement("p", null, this.props.atomData.summary), /*#__PURE__*/_react.default.createElement("small", null, this.props.atomData.symbol));
+      }, /*#__PURE__*/_react.default.createElement("h3", null, this.props.atomData.name), /*#__PURE__*/_react.default.createElement("h6", null, "Atomic Mass ", this.props.atomData.atomic_mass), /*#__PURE__*/_react.default.createElement("p", null, this.props.atomData.summary), /*#__PURE__*/_react.default.createElement("small", null, this.props.atomData.symbol));
     }
   }]);
 
@@ -33232,11 +33232,10 @@ var PeriodicContainer = /*#__PURE__*/function (_Component) {
   _createClass(PeriodicContainer, [{
     key: "sortAlpha",
     value: function sortAlpha() {
-      console.log(this.state.atoms);
       this.setState(function (prevState) {
         return {
           atoms: prevState.atoms.sort(function (a, b) {
-            return a.name - b.name;
+            return a.name.localeCompare(b.name);
           })
         };
       });
@@ -33247,7 +33246,7 @@ var PeriodicContainer = /*#__PURE__*/function (_Component) {
       this.setState(function (prevState) {
         return {
           atoms: prevState.atoms.sort(function (a, b) {
-            return a.atomic_mass - b.atomic_mass;
+            return a.atomic_mass > b.atomic_mass ? -1 : 1;
           })
         };
       });
@@ -33460,7 +33459,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51460" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55652" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
