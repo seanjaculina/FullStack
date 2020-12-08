@@ -14,7 +14,7 @@ export const productListReducer = (
   state = {
     products: [],
   },
-  action
+  action,
 ) => {
   // determine the action type (the action to do something to this state)
   switch (action.type) {
@@ -41,7 +41,7 @@ export const productListReducer = (
 // this sets state for the currently request product data stuff
 export const productDetailsReducer = (
   state = { product: { reviews: [] } },
-  action
+  action,
 ) => {
   // determine the action type (the action to do something to this state)
   switch (action.type) {

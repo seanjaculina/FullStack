@@ -1,4 +1,4 @@
-import { CART_ADD_ITEM } from './actionTypes';
+import { CART_ADD_ITEM, CART_REMOVE_ITEM } from './actionTypes';
 
 /**
  * Remember:
@@ -34,6 +34,15 @@ export const cartReducer = (state = { cartItems: [] }, action) => {
         // and use the spread operator and then also adding the new item )
         return { ...state, cartItems: [...state.cartItems, item] };
       }
+
+    case CART_REMOVE_ITEM:
+      return {
+        ...state,
+        cartItems: state.cartItems.filter(
+          // filter out the product that we are trying to remove (.product is associated to the products id. We just did not name it ID)
+          (itm) => itm.product !== action.payload,
+        ),
+      };
     default:
       return state; // if the action dispsatched does not pass the conditions in this reducer, just return state. the dispatched action must be handled in another reducer
   }

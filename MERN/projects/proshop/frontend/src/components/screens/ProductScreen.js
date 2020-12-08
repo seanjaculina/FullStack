@@ -24,7 +24,7 @@ import { listProductDetails } from '../../actions/productActions';
 // match object which is in props when using router to give html5 history. Match will allow us to pull out params from the url of the
 // "page" being rendered!
 const ProductScreen = ({ history, match }) => {
-  const [qty, setQty] = useState(0);
+  const [qty, setQty] = useState(1);
   // this hook allows us to dispatch actions to our redux store
   const dispatch = useDispatch();
 

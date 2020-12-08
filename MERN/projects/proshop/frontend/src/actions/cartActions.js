@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // action creator files of course should bring in those constants we made available
-import { CART_ADD_ITEM } from '../reducers/actionTypes';
+import { CART_ADD_ITEM, CART_REMOVE_ITEM } from '../reducers/actionTypes';
 
 // this action is asynchronous so we need to use dispatch with the normal arrow function
 export const addToCart = (id, qty) => async (dispatch, getState) => {
@@ -26,5 +26,16 @@ export const addToCart = (id, qty) => async (dispatch, getState) => {
   });
 
   // we want to persist the users cart in local storage so they can go back to this page later and see their current cart items
+  localStorage.setItem('cartItems', JSON.stringify(getState().cart.cartItems));
+};
+
+// takes in the ID of the item to remove
+export const removeFromCart = (id) => async (dispatch, getState) => {
+  dispatch({
+    type: CART_REMOVE_ITEM,
+    payload: id,
+  });
+
+  // remove it from the local_storage
   localStorage.setItem('cartItems', JSON.stringify(getState().cart.cartItems));
 };
