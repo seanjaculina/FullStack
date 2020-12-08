@@ -3,7 +3,15 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 // bootstrap
-import { Row, Col, Image, ListGroup, Card, Button } from 'react-bootstrap';
+import {
+  Row,
+  Col,
+  Image,
+  ListGroup,
+  Card,
+  Button,
+  Form,
+} from 'react-bootstrap';
 
 // Component imports
 import Rating from '../Rating';
@@ -15,7 +23,8 @@ import { listProductDetails } from '../../actions/productActions';
 
 // match object which is in props when using router to give html5 history. Match will allow us to pull out params from the url of the
 // "page" being rendered!
-const ProductScreen = ({ match }) => {
+const ProductScreen = ({ history, match }) => {
+  const [qty, setQty] = useState(0);
   // this hook allows us to dispatch actions to our redux store
   const dispatch = useDispatch();
 
@@ -26,8 +35,17 @@ const ProductScreen = ({ match }) => {
   const { loading, error, product } = productDetails;
 
   useEffect(() => {
+    // will dispatch the listProductDetails action to send request to our API
+    // to get the product details of the product we clicked on in the UI and the page with description of the product
+    // we get the item by the ID in the URL - when using dispatch, we simply
+    // pass in an action and then it fires off and sends the type and payload to the reducers for us when we made the combineReducers
     dispatch(listProductDetails(match.params.id));
   }, [dispatch, match.params.id]);
+
+  // adds the product to cart with the amount of quantity selected (passed as a query string)
+  const addToCartHandler = () => {
+    history.push(`/cart/${match.params.id}?qty=${qty}`); // redirect in the client side using history api
+  };
 
   return (
     <>
@@ -79,8 +97,29 @@ const ProductScreen = ({ match }) => {
                     </Col>
                   </Row>
                 </ListGroup.Item>
+                {product.countInStock > 0 && (
+                  <ListGroup.Item>
+                    <Row>
+                      <Col>Qty</Col>
+                      <Col>
+                        <Form.Control
+                          as="select"
+                          value={qty}
+                          onChange={(e) => setQty(e.target.value)}
+                        >
+                          {[...Array(product.countInStock).keys()].map((x) => (
+                            <option key={x + 1} value={x + 1}>
+                              {x + 1}
+                            </option>
+                          ))}
+                        </Form.Control>
+                      </Col>
+                    </Row>
+                  </ListGroup.Item>
+                )}
                 <ListGroup.Item>
                   <Button
+                    onClick={addToCartHandler}
                     className="btn-block"
                     type="button"
                     disabled={product.countInStock === 0}

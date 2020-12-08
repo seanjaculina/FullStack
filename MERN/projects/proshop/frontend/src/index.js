@@ -6,7 +6,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-// import our store
+// import our store which does all the combine reducers, init state, etc.
 import store from './store';
 
 ReactDOM.render(
@@ -15,7 +15,7 @@ ReactDOM.render(
   <Provider store={store}>
     <App />
   </Provider>,
-  document.querySelector('#root')
+  document.querySelector('#root'),
 );
 
 reportWebVitals();

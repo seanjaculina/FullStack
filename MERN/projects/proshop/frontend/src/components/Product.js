@@ -23,6 +23,10 @@ const Product = ({ product }) => {
    * This paradigm is followed A LOT IN MANY MERN / MANY APPS IN GENERAL!
    */
   return (
+    // the Links are linking us to a new "page" that is based off the _id of the Product
+    // we clicked on. We can get the data for the pages UI when we get linked there by sending a request
+    // using our action creators and reducers with redux on that page by using the match.params.id and passing it to the action creators
+    // and firing it
     <Card className="my-3 p-3 rounder">
       <Link to={`/product/${_id}`}>
         <Img src={image} variant="top" />
