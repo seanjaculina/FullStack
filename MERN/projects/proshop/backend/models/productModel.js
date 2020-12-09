@@ -18,7 +18,7 @@ const reviewSchema = mongoose.Schema(
   // second option will add real-time timestamps to every new user or review or product, etc. added to the DB from UI/Bakcend logic
   {
     timestamps: true,
-  }
+  },
 );
 
 const productSchema = mongoose.Schema(
@@ -72,7 +72,7 @@ const productSchema = mongoose.Schema(
   },
   {
     timestamps: true,
-  }
+  },
 );
 
 const Product = mongoose.model('Product', productSchema);
