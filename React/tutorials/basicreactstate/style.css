@@ -10,41 +10,49 @@
 }
 
 .container {
-  width: 80%;
+  width: 90vw; /* 90% of the width of the screen always*/
   margin: 2rem auto;
   margin-top: 2rem;
-  min-height: 100vh;
+  min-height: 100vh; /* min-height is the screen but as content in the page lengthens, so will the container*/
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
   padding: 1rem;
 }
 
-.container .atom-item {
-  max-width: 26%;
-  min-height: 200px;
+.atom-item {
+  width: 350px;
+  min-height: 350px;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   margin: 2rem 1rem;
   position: relative;
-  border: 1px solid lightgray;
+  border-radius: 5px;
   padding: 1rem;
   line-height: 2rem;
+  box-shadow: 2px 3px 17px #5e5e5e;
 }
 
-.container .atom-item h3 {
+.atom-item:hover {
+  transform: scale(1.01);
+  transition: 0.1s ease-out;
+}
+
+.atom-item h3 {
   font-size: 1.5rem;
   border-bottom: 1px solid lightgray;
   padding-bottom: 0.5rem;
   width: 50%;
 }
 
-.container .atom-item small {
+.atom-item small {
   position: absolute;
   font-size: 1.5rem;
-  top: 0;
-  right: 0;
+  border-radius: 5px;
+  border: none;
+  top: 5px;
+  right: 5px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -64,11 +72,12 @@
 }
 
 .sorting-container button {
-  height: 100%;
+  height: 80%;
   padding: 0.5rem;
-  border-radius: 3px;
+  border-radius: 5px;
   border: 1px solid lightgray;
-  background-color: #fff;
+  background-color: rgb(143, 104, 104);
+  color: #fff;
 }
 
 .sorting-container button:hover {
