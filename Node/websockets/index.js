@@ -1,17 +1,26 @@
-import express from 'express';
-import colors from 'colors';
+const express = require('express');
+const socket = require('socket.io');
+const http = require('http');
+const colors = require('colors');
 
-// App initialization
+// Init application
 const app = express();
 
-// Middlewares
-
-// Init a port number
-const PORT = process.env.PORT || 5000;
+app.get('/', (req, res) => {
+  res.json({ msg: 'Opened connection.' });
+});
 
 // Create a server
-app.listen(PORT, () =>
-  console.log(
-    `Server started on ${PORT}`.magenta, // colors from npm
-  ),
-);
+const server = http.createServer(app);
+
+// Express server startup
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`Sever listening on port ${PORT}`.magenta));
+
+// Instantiate a new web socket
+const io = socket(server);
+
+// Listen for a socket connection
+io.on('connection', (socket) => {
+  console.log(`Socket connection opened: ${socket.id}`);
+});
