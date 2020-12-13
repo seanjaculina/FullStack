@@ -12,10 +12,10 @@ const server = http.createServer(app);
 // Create a socket with our newly created socket
 const io = socketIO(server);
 
-// // Default router
-// app.get('/', (req, res) => {
-//   res.send('<h1>Hello, world</h1>');
-// });
+// Default router
+app.get('/', (req, res) => {
+  res.send('<h1>Hello, world</h1>');
+});
 
 io.on('connection', (socket) => {
   // this event that we emitted in client sent a name and room so, on server we

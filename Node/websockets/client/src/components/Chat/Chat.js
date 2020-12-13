@@ -6,8 +6,8 @@ import io from 'socket.io-client';
 let socket;
 
 const Chat = ({ location }) => {
-  const [userName, setUserName] = useState('');
-  const [chatRoom, setRoom] = useState('');
+  const [name, setUserName] = useState('');
+  const [room, setRoom] = useState('');
 
   // Socket connection endpoint
   const endpoint = '/';
@@ -28,14 +28,14 @@ const Chat = ({ location }) => {
     // username just joined chatRoom. The third argument is a callback which is fired off only if the callbacks
     // in the server side that listend for this event is fired orr. In this case, if an error showed up, we'd fire the callback off with that error.
     // in the server side which would then cause this third arg. callback accepting that error to run
-    socket.emit('join', { name: userName, room: chatRoom }, (error) => {});
+    socket.emit('join', { name: name, room: room }, (error) => {});
 
     // cleanup. Close up the connection and turn it
     return () => {
       socket.emit('disconnect');
       socket.off();
     };
-  }, [location.search, endpoint, userName, chatRoom]);
+  }, [location.search, endpoint]);
 
   return (
     <div>
