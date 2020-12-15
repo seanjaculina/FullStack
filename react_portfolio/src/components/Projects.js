@@ -9,7 +9,7 @@ import ProjectItem from './ProjectItem';
 const Projects = () => {
   return (
     <Fade>
-      <div className="section_container">
+      <div className="section_container" id="projects">
         <div className="projects">
           <h1 className="section__heading">Projects</h1>
           {ProjectList.map((project) => {

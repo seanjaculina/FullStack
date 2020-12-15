@@ -22,7 +22,7 @@ const About = () => {
 
   return (
     <Fade>
-      <div className="section_container">
+      <div className="section_container" id="about">
         <div className="about">
           <h1 className="section__heading">About me</h1>
           <div className="section__content">

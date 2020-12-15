@@ -17,7 +17,7 @@ const Contact = () => {
 
   return (
     <Fade>
-      <div className="section_container">
+      <div className="section_container" id="contact">
         <h1 className="section__heading">Contact Me</h1>
         <form
           className="form-inp"

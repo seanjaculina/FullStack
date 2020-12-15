@@ -23,9 +23,10 @@ const imgMap = {
 
 const ProjectItem = ({ data }) => {
   return (
-    <div className="project-item card">
+    <div className="project-item">
       <h3>{data.title}</h3>
       <img alt={data.title} src={imgMap[data.image]} />
+      <p className="project-description">{data.description}</p>
       <a className="btn_" href={data.link} target="_blank" rel="noreferrer">
         {data.btnText}
       </a>

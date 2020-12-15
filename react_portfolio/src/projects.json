@@ -1,50 +1,51 @@
 [
   {
-    "title" : "Coffee Connection",
+    "title": "Coffee Connection",
     "link": "https://coffee-connection.herokuapp.com/",
+    "description": "A full stack MERN application built on top of Yelps Fusion Business Search API.",
     "image": "coffee_connection",
     "btnText": "See Live"
   },
   {
-    "title" : "YouTube Clone",
+    "title": "YouTube Clone",
     "link": "https://tanneryoutubeclone.netlify.app/",
+    "description": "A frontend web application leveraging React and the YouTube API for querying user video searches and playing them in the browser",
     "image": "youtube",
     "btnText": "See Live"
   },
   {
-    "title" : "Movie Finder",
+    "title": "Movie Finder",
     "link": "https://github.com/TannerBarcelos/Movie-Search",
+    "description": "A frontend web application using the TMDb Movie Search API to render out movies with keyword search or top trending movies in the US",
     "image": "movie_app",
     "btnText": "See on GitHub"
   },
   {
-    "title" : "COVID-19 Fatality Visualizer",
+    "title": "COVID-19 Fatality Visualizer",
     "link": "https://tannerbarcelos.github.io/COVID-19-Fatality-Visualizer/",
+    "description": "A VanillaJS application that leveraged ChartJS to visualize COVID-19 related deaths in the United States sourcing data from the CDC",
     "image": "covid",
     "btnText": "See Live"
   },
   {
-    "title" : "Ebay Clone",
+    "title": "Ebay Clone",
     "link": "https://ebay-clone-react.herokuapp.com/",
+    "description": "A full stack MERN web application clone of Ebay. Leverages their advanced product search API to generate real time product searches and Redux for cart updates and price fluctuations.",
     "image": "ebay",
     "btnText": "See Live"
   },
   {
-    "title" : "Twitch Clone",
+    "title": "Twitch Clone",
     "link": "https://github.com/TannerBarcelos/Twitch-Clone",
+    "description": "A frontend web application built with React that is a simple clone of the popular streaming application, Twitch.",
     "image": "stream",
     "btnText": "See on GitHub"
   },
   {
-    "title" : "Baysbook",
+    "title": "Baysbook",
     "link": "https://glacial-journey-55442.herokuapp.com/?fbclid=IwAR0CtCB32bMNEhIemAEnNwCqBfIslK78WeEZ2XRgLG9zS6PpC_mDSO3WMlc",
+    "description": "A full stack MERN application that allows the students of CSU East Bay to connect",
     "image": "baysbookland",
-    "btnText": "See Live"
-  },
-  {
-    "title" : "Weather App",
-    "link": "https://tannersweatherapp.netlify.app/",
-    "image": "weather",
     "btnText": "See Live"
   }
 ]
