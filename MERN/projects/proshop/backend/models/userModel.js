@@ -29,10 +29,18 @@ const userSchema = mongoose.Schema(
 // creating a method for our schema: this method does our password match / comparison to
 // see if the user we found exists
 userSchema.methods.matchPassword = async function (enteredPasswords) {
-  // compare the entered password with 'this' user instance password (which we know is hashed of course)
-  // this will return promise of course since this method exists in the model and not in our server so we await this in server side too
-  return await bcrypt.compare(enteredPasswords, this.password);
+  // Compare the entered password with the hashed password in the model for this user
+  return bcrypt.compareSync(enteredPasswords, this.password);
 };
+
+// Middleware to run pre-usersave and encrypt the password user entered and do the save for us
+userSchema.pre('save', async function (next) {
+  if (!this.isModified('password')) {
+    next();
+  }
+  // encrypt the password the user entered
+  this.password = await bcrypt.hash(this.password, await bcrypt.genSalt(10));
+});
 
 // create a new model - this will take the schema (design of our data) and model it out in our DB as a collection
 // which will represent a collection of users in our DB

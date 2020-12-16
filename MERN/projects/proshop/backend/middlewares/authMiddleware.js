@@ -17,8 +17,8 @@ const protect = expressAsyncHandler(async (req, res, next) => {
       // decode the token and get back the payload (the payload for our use case is the mongo users id)
       const decodedUser = jwt.verify(token, process.env.JWT_SECRET);
 
-      // find this user in our database and add them to the request object (as a property called user) so we can parse this info in the actual route when the middleware passes
-      req.user = await User.findById(decodedUser.id).select('-password');
+      // find this user in our database and add them to the request object (as a new property called user) so we can parse this info in the actual route when the middleware passes
+      req.user = await User.findById(decodedUser.id).select('-password'); // ignore password since of course we do not want to expose that in the request or responses
 
       next();
     } catch (error) {
