@@ -113,7 +113,7 @@ html {
   border-radius: 5px;
   border: none;
   width: 350px;
-  height: 450px;
+  height: 380px;
   position: relative;
   box-shadow: 5px 10px 18px #888888;
 }
@@ -150,10 +150,11 @@ html {
 }
 
 .project-item .project-description {
-  display: flex;
+  display: block;
   width: 100%;
+  margin: 0 auto;
   padding: 1rem;
-  align-items: center;
+  font-size: 0.8rem;
 }
 
 .project-item:hover {
@@ -215,7 +216,7 @@ html {
 
 /* Media Queries */
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 400px) {
   .hero-content .socials {
     width: 100%;
     justify-content: space-evenly;
