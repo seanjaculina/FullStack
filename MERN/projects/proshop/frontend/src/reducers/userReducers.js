@@ -23,7 +23,7 @@ export const userLoginReducer = (state = {}, action) => {
         error: action.payload,
       };
     case USER_LOGOUT:
-      return {};
+      return {}; // just set the object that exists for all user info to null
     default:
       return state;
   }

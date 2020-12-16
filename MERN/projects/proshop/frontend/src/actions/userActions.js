@@ -3,6 +3,7 @@ import {
   USER_LOGIN_FAIL,
   USER_LOGIN_REQUEST,
   USER_LOGIN_SUCCESS,
+  USER_LOGOUT,
 } from '../reducers/actionTypes';
 
 export const login = (email, password) => async (dispatch) => {
@@ -16,7 +17,11 @@ export const login = (email, password) => async (dispatch) => {
         'Content-Type': 'application/json',
       },
     };
-    const { data } = await axios.post('/api/users/login', config);
+    const { data } = await axios.post(
+      '/api/users/login',
+      { email, password }, // the data to send in the request
+      config,
+    );
 
     dispatch({
       type: USER_LOGIN_SUCCESS,
@@ -28,7 +33,17 @@ export const login = (email, password) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: USER_LOGIN_FAIL,
-      payload: error,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
     });
   }
+};
+
+export const logout = () => (dispatch) => {
+  localStorage.removeItem('userInfo');
+  dispatch({
+    type: USER_LOGOUT,
+  });
 };

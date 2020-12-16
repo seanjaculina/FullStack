@@ -17,7 +17,7 @@ const rootReducer = combineReducers({
   productList: productListReducer,
   productDetails: productDetailsReducer,
   cart: cartReducer, // holds the state for shopping cart
-  userLogin: userLoginReducer,
+  userLogin: userLoginReducer, // holds an object of user data. When logged out action is fired, this reducer will empty it and make it {} null
 });
 
 // Get the cart from local storage (initially this will be empty of course when we are building this app)
@@ -25,10 +25,10 @@ const cartItemsFromLocalStorage = localStorage.getItem('cartItems')
   ? JSON.parse(localStorage.getItem('cartItems'))
   : [];
 
-// See if the users info from a login is present in local storage
+// See if the users info from a login is present in local storage or not (return null) because a user can be logged in after navigating away and we are storing the logged in user for a good UX
 const userInfoFromLocalStorage = localStorage.getItem('userInfo')
-  ? JSON.parse(localStorage.getItem('cartInfo'))
-  : [];
+  ? JSON.parse(localStorage.getItem('userInfo'))
+  : null;
 
 // the initial app state - can be empty or anything you want by default when app loads
 // this can be local_storage, or just empty object. Whatever we want as the team / engineer
@@ -41,7 +41,7 @@ const middleware = [thunk];
 
 const store = createStore(
   rootReducer, // takes in the root reducer which is the overarching state
-  initialState, // takes in the initial state
+  initialState, // takes in the initial state (this is optional in apps. Of ocurse it makes sense for the initial state in our case to be the stuff in local storage if there is anything!)
   composeWithDevTools(applyMiddleware(...middleware)),
   // also a third option which is middleware and in this case, this allows us to use
   // redux devtools and apply any middlewares to it (in this case thunk)
