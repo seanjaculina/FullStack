@@ -8,6 +8,7 @@ import {
   productDetailsReducer,
 } from './reducers/productReducers';
 import { cartReducer } from './reducers/cartReducers';
+import { userLoginReducer } from './reducers/userReducers';
 
 // The reducer will be an object of all the reducers in our application combined such that
 // we can always send actions and each reducer will see the action and determine what reducer
@@ -16,6 +17,7 @@ const rootReducer = combineReducers({
   productList: productListReducer,
   productDetails: productDetailsReducer,
   cart: cartReducer, // holds the state for shopping cart
+  userLogin: userLoginReducer,
 });
 
 // Get the cart from local storage (initially this will be empty of course when we are building this app)
@@ -23,10 +25,16 @@ const cartItemsFromLocalStorage = localStorage.getItem('cartItems')
   ? JSON.parse(localStorage.getItem('cartItems'))
   : [];
 
+// See if the users info from a login is present in local storage
+const userInfoFromLocalStorage = localStorage.getItem('userInfo')
+  ? JSON.parse(localStorage.getItem('cartInfo'))
+  : [];
+
 // the initial app state - can be empty or anything you want by default when app loads
 // this can be local_storage, or just empty object. Whatever we want as the team / engineer
 const initialState = {
   cart: { cartItems: cartItemsFromLocalStorage },
+  userLogin: { userInfo: userInfoFromLocalStorage },
 };
 
 const middleware = [thunk];
