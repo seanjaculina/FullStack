@@ -269,7 +269,7 @@ html {
   }
 
   .section__heading {
-    font-size: 3rem;
+    font-size: 2.8rem;
     padding: 8rem 0 3rem 0;
   }
 
@@ -303,5 +303,10 @@ html {
   }
   .project-item .btn_ {
     padding: 1rem;
+  }
+
+  .recommendation_container .rec-card {
+    border: 1px solid lightgray;
+    box-shadow: none;
   }
 }
