@@ -216,7 +216,7 @@ html {
 
 /* Media Queries */
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 500px) {
   .hero-content .socials {
     width: 100%;
     justify-content: space-evenly;
@@ -259,5 +259,8 @@ html {
   }
   .btn {
     width: 100%;
+  }
+  .project-item .btn_ {
+    padding: 0.5rem;
   }
 }
