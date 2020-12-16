@@ -12,15 +12,16 @@ import HomeScreen from './components/screens/HomeScreen';
 import ProductScreen from './components/screens/ProductScreen';
 import CartScreen from './components/screens/CartScreen';
 import LoginScreen from './components/screens/LoginScreen';
+import RegisterScreen from './components/screens/RegisterScreen';
 
 const App = () => {
   return (
-    // for client side routing from Link presses, etc.
     <Router>
       <Header />
       <main className="py-3">
         <Container>
           <Route path="/login" component={LoginScreen} />
+          <Route path="/register" component={RegisterScreen} />
           <Route path="/product/:id" component={ProductScreen} />
           {/* Optional ID in the params by using :id? mark */}
           <Route path="/cart/:id?" component={CartScreen} />

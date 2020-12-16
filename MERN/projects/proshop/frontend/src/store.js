@@ -8,7 +8,7 @@ import {
   productDetailsReducer,
 } from './reducers/productReducers';
 import { cartReducer } from './reducers/cartReducers';
-import { userLoginReducer } from './reducers/userReducers';
+import { userLoginReducer, userRegisterReducer } from './reducers/userReducers';
 
 // The reducer will be an object of all the reducers in our application combined such that
 // we can always send actions and each reducer will see the action and determine what reducer
@@ -18,6 +18,7 @@ const rootReducer = combineReducers({
   productDetails: productDetailsReducer,
   cart: cartReducer, // holds the state for shopping cart
   userLogin: userLoginReducer, // holds an object of user data. When logged out action is fired, this reducer will empty it and make it {} null
+  userRegister: userRegisterReducer,
 });
 
 // Get the cart from local storage (initially this will be empty of course when we are building this app)
