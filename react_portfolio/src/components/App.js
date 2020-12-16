@@ -6,17 +6,16 @@ import NavBar from './NavBar';
 import About from './About';
 import Projects from './Projects';
 import Contact from './Contact';
+import Recommendations from './Recommendations';
 
 function App() {
   return (
     <>
       <NavBar />
       <Home />
-
       <Projects />
-
       <About />
-
+      <Recommendations />
       <Contact />
     </>
   );

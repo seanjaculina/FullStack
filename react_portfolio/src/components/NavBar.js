@@ -48,6 +48,12 @@ const NavBar = () => {
               About Me
             </Link>
             <Link
+              href="#recommendations"
+              style={{ color: '#fff', paddingRight: '1.5rem' }}
+            >
+              Recommendations
+            </Link>
+            <Link
               href="#contact"
               style={{ color: '#fff', paddingRight: '1.5rem' }}
             >
