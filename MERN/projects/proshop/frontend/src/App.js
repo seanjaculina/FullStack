@@ -13,6 +13,7 @@ import ProductScreen from './components/screens/ProductScreen';
 import CartScreen from './components/screens/CartScreen';
 import LoginScreen from './components/screens/LoginScreen';
 import RegisterScreen from './components/screens/RegisterScreen';
+import ProfileScreen from './components/screens/ProfileScreen';
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
         <Container>
           <Route path="/login" component={LoginScreen} />
           <Route path="/register" component={RegisterScreen} />
+          <Route path="/profile" component={ProfileScreen} />
           <Route path="/product/:id" component={ProductScreen} />
           {/* Optional ID in the params by using :id? mark */}
           <Route path="/cart/:id?" component={CartScreen} />
