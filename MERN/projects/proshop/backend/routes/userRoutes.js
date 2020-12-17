@@ -7,6 +7,7 @@ import {
   authUser,
   registerUser,
   getUserProfile,
+  updateUserProfile,
 } from '../controllers/userController.js';
 
 // JWT auth middleware
@@ -16,6 +17,10 @@ import { protect } from '../middlewares/authMiddleware.js';
 
 router.route('/').post(registerUser);
 router.post('/login', authUser);
-router.route('/profile').get(protect, getUserProfile); // this route is protected using our jwt auth middleware which is put as protect here
 
+// these routes are protected and use the controllers we made to make this more modular
+router
+  .route('/profile')
+  .get(protect, getUserProfile)
+  .put(protect, updateUserProfile);
 export default router;

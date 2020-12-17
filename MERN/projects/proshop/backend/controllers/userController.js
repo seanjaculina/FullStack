@@ -98,6 +98,38 @@ const getUserProfile = asyncHandler(async (req, res) => {
   }
 });
 
+/**
+ * @desc    Update specific users profile
+ * @route   PUT /api/users/profile
+ * @access  private
+ */
+const updateUserProfile = asyncHandler(async (req, res) => {
+  // Get logged in user in the DB from the ID of the user signed in (Stored in local storage)
+  const user = await User.findById(req.user._id);
+
+  // We still want to make extra sure our logic works even though we can assume it does. So still just
+  // make sure the user was defined
+  if (user) {
+    // update name and email if it was entered in the body. If not, (or) it will default to the user currently in the DB
+    user.name = req.body.name || user.name;
+    user.email = req.body.email || user.email;
+    if (req.body.password) {
+      user.password = req.body.password;
+    }
+    const updatedUser = await user.save();
+    res.status(200).json({
+      _id: updatedUser._id,
+      name: updatedUser.name,
+      email: updatedUser.email,
+      isAdmin: updatedUser.isAdmin,
+      token: generateToken(updatedUser._id),
+    });
+  } else {
+    res.status(400);
+    throw new Error('User not found');
+  }
+});
+
 // these controllers (routes) will be exported and put into userRoutes
 // for routing and then those are exported to the server.js file and used as middleware. Cool architecture
-export { authUser, registerUser, getUserProfile };
+export { authUser, registerUser, getUserProfile, updateUserProfile };
