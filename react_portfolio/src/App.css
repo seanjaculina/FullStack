@@ -226,12 +226,18 @@ html {
 
 .recommendation_container .rec-card {
   width: 400px;
-  height: 450px;
+  min-height: 450px;
+  line-height: 1.5rem;
+  padding: 0.8rem;
   position: relative;
   box-shadow: 5px 10px 18px #888888;
   border: none;
   border-radius: 5px;
   margin-bottom: 1.5rem;
+}
+
+.recommendation_container .rec-card #text_of {
+  padding: 0.8rem 0.8rem 0.8rem 0;
 }
 
 .recommendation_container .rec-card:hover {
