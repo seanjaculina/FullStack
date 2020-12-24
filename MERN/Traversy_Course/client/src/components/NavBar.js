@@ -27,10 +27,10 @@ const NavBar = () => {
             <Nav className="ml-auto" navbar>
               <NavItem>
                 <NavLink
-                  href="https://github.com/tannerbarcelos"
+                  href="https://github.com/TannerBarcelos/FullStack/tree/master/MERN/Traversy_Course"
                   target="_blank"
                 >
-                  GitHub
+                  GitHub repo for this project
                 </NavLink>
               </NavItem>
             </Nav>
