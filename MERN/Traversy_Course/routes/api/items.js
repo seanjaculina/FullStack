@@ -60,3 +60,13 @@ router.delete('/:id', async (req, res) => {
 });
 
 module.exports = router;
+
+/**
+ * this same design and idea is used in every application. We can define models for our data, and then use different route modules
+ * with those models in an api folder and then keep them decoupled from the sevrer.js and only worry about using the endpoints in the
+ * app. We use get,post,put and delete mostly in all CRUS REST operations. Notice we have a GET for getting all the items,
+ * a post to add a new item and a delete route to delete an item by the ID of that item. This is all very straight forward
+ *
+ * Once we can think in terms of HTTP/REST architecture and the application flow, we can build any API/project we wish using these core conepts
+ * learned in this tutorial
+ */
