@@ -14,7 +14,7 @@ const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => {
-    setIsOpen((oldState) => !oldState.isOpen);
+    setIsOpen((oldState) => !oldState);
   };
 
   return (
@@ -26,7 +26,10 @@ const NavBar = () => {
           <Collapse isOpen={isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink href="https://github.com/tannerbarcelos">
+                <NavLink
+                  href="https://github.com/tannerbarcelos"
+                  target="_blank"
+                >
                   GitHub
                 </NavLink>
               </NavItem>

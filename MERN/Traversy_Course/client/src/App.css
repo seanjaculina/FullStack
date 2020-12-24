@@ -4,3 +4,20 @@
   padding: 0;
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Transion styles for adding/removing element */
+.fade-enter {
+  opacity: 0.01;
+}
+.fade-enter-active {
+  opacity: 1;
+  transition: opacity 1000ms ease-in;
+}
+
+.fade-exit {
+  opacity: 1;
+  transition: opacity 1000ms ease-in;
+}
+.fade-exit-active {
+  opacity: 0.01;
+}
