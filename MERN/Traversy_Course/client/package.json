@@ -8,9 +8,12 @@
     "@testing-library/react": "^11.2.2",
     "@testing-library/user-event": "^12.6.0",
     "axios": "^0.21.1",
+    "bootstrap": "^4.5.3",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-scripts": "4.0.1",
+    "react-transition-group": "^4.4.1",
+    "reactstrap": "^8.8.0",
     "uuid": "^8.3.2",
     "web-vitals": "^0.2.4"
   },

@@ -8,7 +8,7 @@ import {
   NavItem,
   NavLink,
   Container,
-} from 'react-bootstrap';
+} from 'reactstrap';
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
