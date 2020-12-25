@@ -4,7 +4,7 @@ import { GET_TASKS, ADD_TASK, DELETE_TASK } from '../actions/types';
 const itemReducer = (state = [], action) => {
   switch (action.type) {
     case GET_TASKS:
-      return [...state];
+      return [...action.payload];
     case ADD_TASK:
       return [...state, action.payload];
     case DELETE_TASK:

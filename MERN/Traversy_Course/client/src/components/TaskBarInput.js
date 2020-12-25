@@ -17,7 +17,7 @@ const TaskBarInput = () => {
 
   const getTaskInput = () => {
     if (task) {
-      dispatch(addTask(v4(), task)); // dispatch the addItem action to our store
+      dispatch(addTask(task)); // dispatch the addItem action to our store
       setHandleTask(''); // empty the bar
     }
   };
