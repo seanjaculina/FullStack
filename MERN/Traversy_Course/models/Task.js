@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 // Create a schema object
-const Item = new Schema({
+const Task = new Schema({
   name: {
     type: String,
     required: true,
@@ -14,4 +14,4 @@ const Item = new Schema({
   },
 });
 
-module.exports = ItemSchema = mongoose.model('Item', Item);
+module.exports = TaskSchema = mongoose.model('Task', Task);

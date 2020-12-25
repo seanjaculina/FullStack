@@ -10,7 +10,7 @@ const app = express();
 app.use(express.json()); // to parse body data in requests
 
 // routes use/imports
-app.use('/api/items', require('./routes/api/items')); // all routes starting with /api/items should use the routes in this file
+app.use('/api/tasks', require('./routes/api/tasks')); // all routes starting with /api/items should use the routes in this file
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () =>
