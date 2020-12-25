@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   Container,
@@ -8,11 +8,13 @@ import {
   Spinner,
 } from 'reactstrap';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-
+import TaskBarInput from './TaskBarInput';
 // Action imports
 import { getTasks, deleteTask } from '../actions/itemActions';
 
 const TaskList = () => {
+  const [isChecked, setIsChecked] = useState(false);
+
   const dispatch = useDispatch(); // Hook to reference a dispatch method
 
   const taskState = useSelector((state) => state.tasks); // Hook into our redux store and get the items state
@@ -28,6 +30,7 @@ const TaskList = () => {
 
   return (
     <Container className="mt-5" style={{ width: '85%' }}>
+      <TaskBarInput />
       {loading && (
         <div
           style={{
@@ -46,20 +49,37 @@ const TaskList = () => {
           />
         </div>
       )}
-      <ListGroup>
+      <ListGroup style={{ marginTop: '2rem' }}>
         <TransitionGroup className="shopping-list">
           {taskList &&
             taskList.map((task) => (
               <CSSTransition key={task._id} timeout={500} classNames="fade">
-                <ListGroupItem className="mb-3" style={{ borderRadius: '5px' }}>
+                <ListGroupItem
+                  className="mb-3"
+                  style={{
+                    borderRadius: '3px',
+                    textDecoration: isChecked ? 'line-through' : '',
+                  }}
+                >
+                  <Button
+                    className="remove-btn"
+                    color="success"
+                    size="md"
+                    onClick={() => setIsChecked(!isChecked)}
+                    style={{
+                      marginRight: '.2rem',
+                    }}
+                  >
+                    √
+                  </Button>
                   <Button
                     className="remove-btn"
                     color="danger"
-                    size="sm"
+                    size="md"
                     onClick={() => removeTask(task._id)}
                     style={{ marginRight: '2rem' }}
                   >
-                    &times;
+                    X
                   </Button>
                   {task.name}
                 </ListGroupItem>
