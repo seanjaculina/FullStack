@@ -1,52 +1,37 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { v4 } from 'uuid';
 import { Container, ListGroup, ListGroupItem, Button } from 'reactstrap';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 // Action imports
-import { getItems, addItem, deleteItem } from '../actions/itemActions';
+import { getTasks, deleteTask } from '../actions/itemActions';
 
-const ShoppingList = () => {
+const TaskList = () => {
   const dispatch = useDispatch(); // Hook to reference a dispatch method
 
-  const itemState = useSelector((state) => state.items); // Hook into our redux store and get the items state
+  const taskState = useSelector((state) => state.tasks); // Hook into our redux store and get the items state
 
   // Get all the items in the store currently
   useEffect(() => {
-    dispatch(getItems());
+    dispatch(getTasks());
   }, [dispatch]);
 
-  const getItemInput = () => {
-    const name = prompt('Enter the task');
-    if (name) {
-      dispatch(addItem(v4(), name)); // dispatch the addItem action to our store
-    }
-  };
-
-  const removeItem = (id) => {
-    dispatch(deleteItem(id)); // dispatch the deleteItem action to our store with the given ID of the item to delete
+  const removeTask = (id) => {
+    dispatch(deleteTask(id)); // dispatch the deleteItem action to our store with the given ID of the item to delete
   };
 
   return (
-    <Container>
-      <Button
-        color="dark"
-        style={{ marginBottom: '2rem' }}
-        onClick={getItemInput}
-      >
-        Add Item
-      </Button>
+    <Container className="mt-5">
       <ListGroup>
         <TransitionGroup className="shopping-list">
-          {itemState.map(({ id, name }) => (
+          {taskState.map(({ id, name }) => (
             <CSSTransition key={id} timeout={500} classNames="fade">
-              <ListGroupItem>
+              <ListGroupItem style={{ borderRadius: '5px' }}>
                 <Button
                   className="remove-btn"
                   color="danger"
                   size="sm"
-                  onClick={() => removeItem(id)}
+                  onClick={() => removeTask(id)}
                   style={{ marginRight: '2rem' }}
                 >
                   &times;
@@ -61,4 +46,4 @@ const ShoppingList = () => {
   );
 };
 
-export default ShoppingList;
+export default TaskList;
