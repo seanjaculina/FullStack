@@ -6,7 +6,6 @@ const Task = new Schema({
   name: {
     type: String,
     required: true,
-    minlength: 6,
   },
   date: {
     type: Date,
@@ -14,4 +13,6 @@ const Task = new Schema({
   },
 });
 
-module.exports = TaskSchema = mongoose.model('Task', Task);
+const taskModel = mongoose.model('Task', Task);
+
+module.exports = taskModel;

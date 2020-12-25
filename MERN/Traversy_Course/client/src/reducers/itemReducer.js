@@ -1,14 +1,54 @@
 /* eslint-disable import/no-anonymous-default-export */
-import { GET_TASKS, ADD_TASK, DELETE_TASK } from '../actions/types';
+import {
+  GET_TASKS,
+  ADD_TASK,
+  DELETE_TASK,
+  GET_TASKS_REQUEST,
+  ADD_TASK_REQUEST,
+  DELETE_TASK_REQUEST,
+} from '../actions/types';
 
-const itemReducer = (state = [], action) => {
+// The initial state for tasks is followed below
+const initialState = {
+  loading: false,
+  success: false,
+  taskList: [],
+};
+
+const itemReducer = (state = initialState, action) => {
   switch (action.type) {
+    case GET_TASKS_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
     case GET_TASKS:
-      return [...action.payload];
+      return { loading: false, ...action.payload }; // contains success boolean and also the taskList whcih is all the tasks in the DB
+
+    case ADD_TASK_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+
     case ADD_TASK:
-      return [...state, action.payload];
+      const addedItem = action.payload.task;
+      return {
+        ...state,
+        loading: false,
+        taskList: [...state.taskList, addedItem],
+      };
+
+    case DELETE_TASK_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
     case DELETE_TASK:
-      return state.filter((item) => item.id !== action.payload.id); // removes the item with the given id
+      const filteredTasks = state.taskList.filter(
+        ({ _id }) => _id !== action.payload.taskDeleted._id,
+      );
+      return { ...state, loading: false, taskList: filteredTasks };
     default:
       return state;
   }

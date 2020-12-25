@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { v4 } from 'uuid';
 import { InputGroup, Input, Button } from 'reactstrap';
 
 // Action imports

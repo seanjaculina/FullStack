@@ -15,10 +15,10 @@ const Task = require('../../models/Task');
 router.get('/', async (req, res) => {
   try {
     // get all tasks in the DB (can easily be done by using ModelImported.find({}) where empty object will get all the values in the tasks collection)
-    const tasks = await Task.find({}).sort({ date: -1 }); // sort by descending date
-    res.json(tasks);
+    const taskList = await Task.find({}).sort({ date: -1 }); // sort by descending date
+    res.status(200).json({ success: true, taskList });
   } catch (error) {
-    console.error(error);
+    res.status(500).json({ success: false, error });
   }
 });
 
@@ -34,9 +34,9 @@ router.post('/', async (req, res) => {
   });
   try {
     const savedTask = await newTask.save();
-    res.json(savedTask);
+    res.status(200).json({ success: true, task: savedTask });
   } catch (error) {
-    res.status(500).json(error);
+    res.status(500).json({ success: false, error });
   }
 });
 

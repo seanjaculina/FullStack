@@ -1,3 +1,7 @@
 export const GET_TASKS = 'GET_TASKS';
 export const ADD_TASK = 'ADD_TASK';
 export const DELETE_TASK = 'DELETE_TASK';
+
+export const GET_TASKS_REQUEST = 'GET_TASKS_REQUEST';
+export const ADD_TASK_REQUEST = 'ADD_TASK_REQUEST';
+export const DELETE_TASK_REQUEST = 'DELETE_TASK_REQUEST';

@@ -1,6 +1,12 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Container, ListGroup, ListGroupItem, Button } from 'reactstrap';
+import {
+  Container,
+  ListGroup,
+  ListGroupItem,
+  Button,
+  Spinner,
+} from 'reactstrap';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 // Action imports
@@ -10,7 +16,7 @@ const TaskList = () => {
   const dispatch = useDispatch(); // Hook to reference a dispatch method
 
   const taskState = useSelector((state) => state.tasks); // Hook into our redux store and get the items state
-
+  const { taskList, success, error, loading } = taskState;
   // Get all the items in the store currently
   useEffect(() => {
     dispatch(getTasks());
@@ -21,25 +27,44 @@ const TaskList = () => {
   };
 
   return (
-    <Container className="mt-5">
+    <Container className="mt-5" style={{ width: '85%' }}>
+      {loading && (
+        <div
+          style={{
+            width: '100%',
+            height: '5.1rem',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <Spinner
+            style={{
+              width: '5rem',
+              height: '5rem',
+            }}
+          />
+        </div>
+      )}
       <ListGroup>
         <TransitionGroup className="shopping-list">
-          {taskState.map(({ id, name }) => (
-            <CSSTransition key={id} timeout={500} classNames="fade">
-              <ListGroupItem style={{ borderRadius: '5px' }}>
-                <Button
-                  className="remove-btn"
-                  color="danger"
-                  size="sm"
-                  onClick={() => removeTask(id)}
-                  style={{ marginRight: '2rem' }}
-                >
-                  &times;
-                </Button>
-                {name}
-              </ListGroupItem>
-            </CSSTransition>
-          ))}
+          {taskList &&
+            taskList.map((task) => (
+              <CSSTransition key={task._id} timeout={500} classNames="fade">
+                <ListGroupItem className="mb-3" style={{ borderRadius: '5px' }}>
+                  <Button
+                    className="remove-btn"
+                    color="danger"
+                    size="sm"
+                    onClick={() => removeTask(task._id)}
+                    style={{ marginRight: '2rem' }}
+                  >
+                    &times;
+                  </Button>
+                  {task.name}
+                </ListGroupItem>
+              </CSSTransition>
+            ))}
         </TransitionGroup>
       </ListGroup>
     </Container>
