@@ -10,8 +10,10 @@ const app = express();
 
 app.use(express.json()); // to parse body data in requests
 
-// routes use/imports
-app.use('/api/tasks', require('./routes/api/tasks')); // all routes starting with /api/items should use the routes in this file
+// routes use/imports (using express router for de-coupling)
+app.use('/api/tasks', require('./routes/api/tasks')); // for task related routes
+app.use('/api/users', require('./routes/api/users')); // for registering a new user
+app.use('/api/auth', require('./routes/api/auth')); // for login / authenticated routes
 
 // Serve static assets if in deployment
 if (process.env.NODE_ENV === 'production') {

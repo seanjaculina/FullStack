@@ -6,6 +6,7 @@ const dbConnect = (URI) => {
     {
       useUnifiedTopology: true,
       useNewUrlParser: true,
+      useCreateIndex: true,
     },
     (err) => {
       if (err) {

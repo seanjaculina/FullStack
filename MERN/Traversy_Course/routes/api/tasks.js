@@ -1,8 +1,7 @@
 const express = require('express');
 const router = express.Router(); // allows us to modularizxe routes into separate files to couple together similar business logic
+const auth = require('../../middleware/auth'); // to authenticate routes for creating tasks, etc
 
-// We bring in our models to particular route files so we can use them of course with
-// those routes to do some CRUD, etc.
 const Task = require('../../models/Task');
 
 // it is best practice to prefix all our routes with the documentation seen below for ease of use by yourself or your team
@@ -25,9 +24,9 @@ router.get('/', async (req, res) => {
 /**
  * @route   POST /api/tasks
  * @desc    Create a new item and put it in the tasks collection
- * @access  public
+ * @access  private (need JWT send in the request)
  */
-router.post('/', async (req, res) => {
+router.post('/', auth, async (req, res) => {
   const { name } = req.body;
   const newTask = new Task({
     name,
@@ -45,7 +44,7 @@ router.post('/', async (req, res) => {
  * @desc    Delete an item by its specific id (passed in the params of this request which is the ID from mongoDB in the UI )
  * @access  public
  */
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', auth, async (req, res) => {
   try {
     // we can findbyidanddelete and save that item we deleted to a variable and send it back in our json to do some nice UI popup saying "{item} was successfully deleted"
     const taskDeleted = await Task.findByIdAndDelete(req.params.id);
