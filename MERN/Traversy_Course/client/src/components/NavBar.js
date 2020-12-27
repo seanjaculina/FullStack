@@ -10,6 +10,8 @@ import {
   Container,
 } from 'reactstrap';
 
+import { Switch, Route, Link } from 'react-router-dom';
+
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -21,17 +23,18 @@ const NavBar = () => {
     <div>
       <Navbar color="dark" dark expand="sm" className="mb-5">
         <Container>
-          <NavbarBrand href="/">Task List</NavbarBrand>
+          <NavbarBrand href="/">
+            TaskManage
+            <i className="fas fa-thumbtack" style={{ marginLeft: '.7rem' }}></i>
+          </NavbarBrand>
           <NavbarToggler onClick={toggle} />
           <Collapse isOpen={isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink
-                  href="https://github.com/TannerBarcelos/FullStack/tree/master/MERN/Traversy_Course"
-                  target="_blank"
-                >
-                  GitHub repo for this project
-                </NavLink>
+                <NavLink href="/login">Login</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink href="/register">Register</NavLink>
               </NavItem>
             </Nav>
           </Collapse>
