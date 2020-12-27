@@ -43,7 +43,7 @@ function TaskItem({ task, removeTask }) {
           Update task
         </UncontrolledTooltip>
         <Modal isOpen={modal} toggle={toggle}>
-          <ModalHeader toggle={toggle}>Update Task</ModalHeader>
+          <ModalHeader toggle={toggle}>Update Task - {task.name}</ModalHeader>
           <ModalBody>
             Put input field here and auto-populate it with the task that
             currently exists: {task.name}
