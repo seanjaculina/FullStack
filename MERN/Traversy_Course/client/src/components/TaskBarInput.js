@@ -9,7 +9,6 @@ const TaskBarInput = () => {
   const dispatch = useDispatch(); // Hook to reference a dispatch method
 
   const [task, setHandleTask] = useState('');
-
   const handleChange = (e) => {
     setHandleTask(e.target.value);
   };
@@ -25,10 +24,16 @@ const TaskBarInput = () => {
       <InputGroup>
         <Input
           placeholder="Add a Task"
-          className="mx-5 mb-3"
+          className="mx-5 mb-3 inputLine"
           value={task}
           onChange={handleChange}
           autoFocus
+          style={{
+            border: 'none',
+            borderBottom: '2px solid gray',
+            borderRadius: '0px',
+          }}
+          onSubmit={getTaskInput}
         />
       </InputGroup>
       <Button
