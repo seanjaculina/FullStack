@@ -11,6 +11,53 @@ svg {
   width: 300px;
 }
 
+.bg-1 {
+  width: 300px;
+  height: 300px;
+  background-color: rgb(252, 215, 111);
+  border-radius: 50%;
+  position: absolute;
+  z-index: -1;
+  top: 90px;
+  left: 70px;
+}
+.bg-2 {
+  width: 300px;
+  height: 300px;
+  background-color: rgb(177, 228, 248);
+  border-radius: 50%;
+  position: absolute;
+  z-index: -1;
+  top: 90px;
+  left: 70px;
+}
+.bg-3 {
+  width: 300px;
+  height: 300px;
+  background-color: rgb(59, 103, 193);
+  border-radius: 50%;
+  position: absolute;
+  z-index: -1;
+  top: 90px;
+  left: 70px;
+}
+
 .explain {
-  font-size: 1.3rem;
+  display: block;
+  width: 100%;
+  text-align: center;
+  font-size: 1.1rem;
+  position: absolute;
+  bottom: 30px;
+  left: 0;
+}
+
+@media screen and (max-width: 480px) {
+  .explain {
+    padding: 0 1rem;
+    color: #000;
+  }
+  .bg_svg {
+    display: none;
+  }
 }

@@ -5,12 +5,32 @@ import { Container, Row, Col } from 'reactstrap';
 const Home = () => {
   return (
     <>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 1440 320"
+        className="bg_svg"
+        style={{
+          width: '100%',
+          zIndex: '-2',
+          position: 'fixed',
+          bottom: '0',
+        }}
+      >
+        <path
+          fill="#333b3f"
+          fill-opacity="1"
+          d="M0,64L48,74.7C96,85,192,107,288,122.7C384,139,480,149,576,133.3C672,117,768,75,864,58.7C960,43,1056,53,1152,74.7C1248,96,1344,128,1392,144L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
+        ></path>
+      </svg>
+
       <h1 style={{ textAlign: 'center', paddingTop: '2rem', fontSize: '4rem' }}>
         Welcome to TaskManage
       </h1>
+
       <Container fluid={true}>
         <Row>
           <Col style={{ textAlign: 'center' }}>
+            <div className="bg-1"></div>
             <svg
               id="Layer_5"
               enable-background="new 0 0 64 64"
@@ -132,13 +152,12 @@ const Home = () => {
                 </g>
               </g>
             </svg>
-            <div>
-              <p className="explain">
-                Currate tasks and accomplish at your own pace
-              </p>
-            </div>
+            <p className="explain">
+              Currate tasks and accomplish at your own pace
+            </p>
           </Col>
           <Col style={{ textAlign: 'center' }}>
+            <div className="bg-2"></div>
             <svg
               id="Layer_1"
               enable-background="new 0 0 512 512"
@@ -178,11 +197,11 @@ const Home = () => {
               </g>
             </svg>
             <p className="explain">
-              Utilize a builtin rich text editor to customize your tasks to your
-              needs
+              Builtin rich text editor to customize your tasks to your needs
             </p>
           </Col>
           <Col style={{ textAlign: 'center' }}>
+            <div className="bg-3"></div>
             <svg
               id="Capa_1"
               enable-background="new 0 0 512 512"
@@ -325,8 +344,10 @@ const Home = () => {
               </g>
             </svg>
             <p className="explain">
-              <Link to="/register">Create an account</Link> or{' '}
-              <Link to="/login">login</Link> to get started!
+              <Link to="/register">Create an account</Link>{' '}
+              <span style={{ padding: '0 .3rem' }}>or</span>
+              <Link to="/login">login</Link>
+              <span style={{ padding: '0 .3rem' }}>to get started</span>
             </p>
           </Col>
         </Row>
