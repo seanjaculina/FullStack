@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
-import rootReducer from './reducers/index'; // can leave off the index.js as if you import a foilder, JS looks automatically for an index.js
+import rootReducer from './reducers/index';
 
 const initialState = {};
 
