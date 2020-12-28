@@ -15,11 +15,9 @@ const Login = () => {
   const [password, setPassword] = useState('');
 
   const onHandleEmailChange = (e) => {
-    console.log(e.target.value);
     setEmail(e.target.value);
   };
   const onHandlePasswordChange = (e) => {
-    console.log(e.target.value);
     setPassword(e.target.value);
   };
   return (
