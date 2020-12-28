@@ -10,8 +10,6 @@ import {
   Container,
 } from 'reactstrap';
 
-import { Switch, Route, Link } from 'react-router-dom';
-
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -31,10 +29,14 @@ const NavBar = () => {
           <Collapse isOpen={isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink href="/login">Login</NavLink>
+                <NavLink href="/login" style={{ color: '#fff' }}>
+                  Login
+                </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/register">Register</NavLink>
+                <NavLink href="/register" style={{ color: '#fff' }}>
+                  Register
+                </NavLink>
               </NavItem>
             </Nav>
           </Collapse>
