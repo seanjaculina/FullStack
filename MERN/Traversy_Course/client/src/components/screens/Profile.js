@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { getTasks } from '../../actions/itemActions';
+import { Link } from 'react-router-dom';
 import {
   Col,
   Row,
@@ -13,14 +15,14 @@ import {
   InputGroupText,
   InputGroup,
   InputGroupAddon,
+  Table,
 } from 'reactstrap';
 
-const Profile = () => {
+const Profile = ({ history }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [passwordShow, setPasswordShow] = useState(false);
   const [name, setName] = useState('');
-  // const [errorShowing, setErrorShowing] = useState(false);
+  const [tasks, setTasks] = useState([]);
 
   const dispatch = useDispatch();
   const state = useSelector((state) => state); // hook into state (to get access to errors, etc.)
@@ -37,20 +39,33 @@ const Profile = () => {
 
   const onSubmit = (e) => {};
 
-  // Run everytime the component updates: used to look at auth state and see if we can redirect
-  useEffect(() => {});
+  // Fetch all the tasks for this user
+  useEffect(() => {
+    // If for whatever reason this route was exposed without being authenticated we should redirect to the login page
+    if (!state.auth.isAuthenticated) {
+      history.push('/login');
+    }
+
+    // Get the current tasks
+    dispatch(getTasks(state.auth.token));
+    setTasks(state.tasks.taskList);
+  }, [
+    dispatch,
+    history,
+    state.auth.isAuthenticated,
+    state.auth.token,
+    state.tasks.taskList,
+  ]);
 
   return (
     <Container>
-      <h1>Profile</h1>
-      <hr />
-      <Form style={{ padding: '1.5rem 1rem' }}>
-        <Row>
-          <h3 style={{ padding: '1.5rem 0' }}>Update Profile</h3>
-        </Row>
-        <Row>
-          <Col sm={4}>
-            <FormGroup row>
+      <Row style={{ padding: '1.5rem 0' }}>
+        <Col lg={6} style={{ marginBottom: '3rem' }}>
+          <Form>
+            <h3 style={{ margin: '0 0 1rem 0', color: '#000' }}>
+              Update Profile
+            </h3>
+            <FormGroup>
               <Label for="name">Name</Label>
               <Input
                 type="text"
@@ -62,11 +77,7 @@ const Profile = () => {
                 autoComplete="off"
               />
             </FormGroup>
-          </Col>
-        </Row>
-        <Row>
-          <Col sm={4}>
-            <FormGroup row>
+            <FormGroup>
               <Label for="email">Email</Label>
               <Input
                 type="email"
@@ -78,11 +89,7 @@ const Profile = () => {
                 autoComplete="off"
               />
             </FormGroup>
-          </Col>
-        </Row>
-        <Row>
-          <Col sm={4}>
-            <FormGroup row>
+            <FormGroup>
               <Label for="password">Password</Label>
               <Input
                 type="password"
@@ -94,18 +101,44 @@ const Profile = () => {
                 autoComplete="off"
               />
             </FormGroup>
-          </Col>
-        </Row>
-        <Row>
-          <Button
-            className="btn_"
-            onClick={onSubmit}
-            style={{ marginTop: '1rem' }}
-          >
-            Update Profile
-          </Button>
-        </Row>
-      </Form>
+            <Button
+              className="btn_"
+              onClick={onSubmit}
+              style={{ marginTop: '1rem' }}
+            >
+              Update Profile
+            </Button>
+          </Form>
+        </Col>
+        <Col lg={6}>
+          <h3 style={{ padding: '0 0 1rem 0' }}>
+            <Link to="/tasks" style={{ color: '#000' }}>
+              {' '}
+              Currently Open Tasks
+            </Link>
+          </h3>
+          <Table striped style={{ border: '1px solid lightgray' }}>
+            <thead>
+              <tr>
+                <th>Task Name</th>
+                <th>Task Information</th>
+              </tr>
+            </thead>
+            <tbody>
+              {tasks.length !== 0
+                ? tasks.map((task) => {
+                    return (
+                      <tr>
+                        <td>{task.name}</td>
+                        <td>data</td>
+                      </tr>
+                    );
+                  })
+                : null}
+            </tbody>
+          </Table>
+        </Col>
+      </Row>
     </Container>
   );
 };
