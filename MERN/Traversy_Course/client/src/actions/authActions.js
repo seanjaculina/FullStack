@@ -12,7 +12,7 @@ import {
   REGISTER_FAIL,
 } from './types';
 
-// Check token and load the user
+// Check token and load the user if it exists
 export const loadUser = () => async (dispatch, getState) => {
   // User loading dispatch action which will set the loading state to true
   dispatch({ type: USER_LOADING });
@@ -24,6 +24,29 @@ export const loadUser = () => async (dispatch, getState) => {
   } catch (error) {
     dispatch(returnErrors(error.response.data, error.response.status));
     dispatch({ type: AUTH_ERROR });
+  }
+};
+
+// Register new user action
+export const register = ({ name, email, password }) => async (dispatch) => {
+  const config = {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  };
+  const body = JSON.stringify({ name, email, password });
+
+  try {
+    // Perform the request
+    const userRegister = await axios.post('/api/users', body, config);
+
+    // Dispatch to state our succes with the new user
+    dispatch({ type: REGISTER_SUCCESS, payload: userRegister.data });
+  } catch (error) {
+    dispatch(
+      returnErrors(error.response.data, error.response.status, 'REGISTER_FAIL'),
+    );
+    dispatch({ type: REGISTER_FAIL });
   }
 };
 

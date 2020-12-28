@@ -3,19 +3,22 @@ const router = express.Router(); // allows us to modularizxe routes into separat
 const auth = require('../../middleware/auth'); // to authenticate routes for creating tasks, etc
 
 const Task = require('../../models/Task');
-
-// it is best practice to prefix all our routes with the documentation seen below for ease of use by yourself or your team
+const User = require('../../models/User');
 
 /**
- * @route   GET /api/tasks/ <- prefixed in server.js with /api/tasks
- * @desc    Gets all tasks
- * @access  public
+ * @route   GET /api/tasks/
+ * @desc    Gets all tasks for specific user
+ * @access  private
  */
-router.get('/', async (req, res) => {
+router.get('/', auth, async (req, res) => {
   try {
-    // get all tasks in the DB (can easily be done by using ModelImported.find({}) where empty object will get all the values in the tasks collection)
-    const taskList = await Task.find({}).sort({ date: -1 }); // sort by descending date
-    res.status(200).json({ success: true, taskList });
+    // Get the user that is attached to this request in the headers (auth middleware) and get the id
+    const user = await User.findById(req.user._id);
+
+    // Get all the tasks that are associated with this user
+    const currentTaskList = user.tasks;
+
+    res.status(200).json({ success: true, taskList: currentTaskList });
   } catch (error) {
     res.status(500).json({ success: false, error });
   }
@@ -28,11 +31,18 @@ router.get('/', async (req, res) => {
  */
 router.post('/', auth, async (req, res) => {
   const { name } = req.body;
+
+  // Get the user trying to add this task
+  const currentUser = await User.findById(req.user.id);
+
+  // Add content via the text editor here
   const newTask = new Task({
     name,
   });
   try {
     const savedTask = await newTask.save();
+    currentUser.tasks.push(savedTask);
+    currentUser.save();
     res.status(200).json({ success: true, task: savedTask });
   } catch (error) {
     res.status(500).json({ success: false, error });

@@ -25,7 +25,12 @@ router.post('/', async (req, res) => {
 
     // Else, the user does not exist so lets encrypt their password and then save this new user
     const encryptedPassword = bcrypt.hashSync(password, 12);
-    const newUser = new User({ name, email, password: encryptedPassword });
+    const newUser = new User({
+      name,
+      email,
+      password: encryptedPassword,
+      tasks: [],
+    });
     newUser.save(); // Save the new user
 
     // generate a JWT and save the users id as the signed payload (the user id will be saved in the token payload)

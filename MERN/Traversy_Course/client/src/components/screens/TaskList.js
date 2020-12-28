@@ -2,24 +2,25 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Container, ListGroup, Spinner, Alert } from 'reactstrap';
 
-import TaskBarInput from './TaskBarInput';
-import TaskItem from './TaskItem';
+import TaskBarInput from '../TaskBarInput';
+import TaskItem from '../TaskItem';
 // Action imports
-import { getTasks, deleteTask } from '../actions/itemActions';
+import { getTasks, deleteTask } from '../../actions/itemActions';
 
 const TaskList = () => {
   const [successShowing, setSuccessShowing] = useState(true);
 
   const dispatch = useDispatch(); // Hook to reference a dispatch method
 
+  //const taskState = useSelector((state) => state.tasks); // Hook into our redux store and get the items state
+  const state = useSelector((state) => state);
+  const { taskList, success, error, loading } = state.tasks;
+
   // Get all the items in the store currently
   useEffect(() => {
-    dispatch(getTasks());
+    dispatch(getTasks(state.auth.token)); // send the token in auth state which exists only after login/register (this whole 'page' cannot be accessed without a token in the first place)
     setTimeout(() => setSuccessShowing(false), 1500); // remove the popup from the UI for success
-  }, [dispatch]);
-
-  const taskState = useSelector((state) => state.tasks); // Hook into our redux store and get the items state
-  const { taskList, success, error, loading } = taskState;
+  }, [dispatch, state.auth.token]);
 
   let popupText;
 

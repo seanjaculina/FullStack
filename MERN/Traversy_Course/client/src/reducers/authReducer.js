@@ -38,7 +38,7 @@ const authReducer = (state = initialState, action) => {
     case REGISTER_SUCCESS:
       localStorage.setItem('token', action.payload.token); // save the auth token to local storage
       return {
-        ...state,
+        // ...state,
         ...action.payload, // holds token (userID) and the user (remember that is what we send back from the backend)
         isAuthenticated: true,
         isLoading: false,

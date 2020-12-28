@@ -9,11 +9,17 @@ import {
 import axios from 'axios';
 
 // Returns an action to get all items and sends no payload
-export const getTasks = () => async (dispatch, getState) => {
+export const getTasks = (token) => async (dispatch, getState) => {
   dispatch({
     type: GET_TASKS_REQUEST,
   });
-  const { data } = await axios.get('/api/tasks/'); // perform the request to the backend
+  const config = {
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  const { data } = await axios.get('/api/tasks/', config); // perform the request to the backend
   dispatch({
     type: GET_TASKS,
     payload: data,
@@ -21,19 +27,17 @@ export const getTasks = () => async (dispatch, getState) => {
 };
 
 // Returns an action to add an item with a payload of the items Name and ID
-export const addTask = (name) => async (dispatch, getState) => {
+export const addTask = (name, token) => async (dispatch, getState) => {
   dispatch({
     type: ADD_TASK_REQUEST,
   });
-  const { data } = await axios.post(
-    '/api/tasks/',
-    { name },
-    {
-      headers: {
-        'Content-Type': 'application/json',
-      },
+  const config = {
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
     },
-  );
+  };
+  const { data } = await axios.post('/api/tasks/', { name }, config);
   dispatch({
     type: ADD_TASK,
     payload: data,

@@ -20,6 +20,7 @@ const User = new Schema({
     type: Date,
     default: Date.now(),
   },
+  tasks: [],
 });
 
 const userModel = mongoose.model('User', User);

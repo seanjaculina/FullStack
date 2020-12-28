@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Container, Row, Col, NavLink } from 'reactstrap';
+import { Container, Row, Col } from 'reactstrap';
 
 const Home = () => {
   return (
@@ -160,14 +160,14 @@ const Home = () => {
             <div className="bg-2"></div>
             <svg
               id="Layer_1"
-              enable-background="new 0 0 512 512"
+              enableBackground="new 0 0 512 512"
               height="512"
               viewBox="0 0 512 512"
               width="512"
               xmlns="http://www.w3.org/2000/svg"
             >
               <g>
-                <g clip-rule="evenodd" fill-rule="evenodd">
+                <g clipRule="evenodd" fillRule="evenodd">
                   <path
                     d="m13.323 48.375h485.354c3.203 0 5.84 2.608 5.84 5.812v51.25c0 3.203-2.637 5.84-5.84 5.84h-485.354c-3.203 0-5.812-2.637-5.812-5.84v-51.25c.001-3.204 2.609-5.812 5.812-5.812z"
                     fill="#365e7d"

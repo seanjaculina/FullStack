@@ -3,7 +3,7 @@ import { GET_ERRORS, CLEAR_ERRORS } from '../actions/types';
 const initialState = {
   msg: {}, // will hold error message
   status: null, // hold status of error
-  id: null, // error ID
+  id: null, // error ID (string we can use to identify errors)
 };
 
 const errorReducer = (state = initialState, action) => {
