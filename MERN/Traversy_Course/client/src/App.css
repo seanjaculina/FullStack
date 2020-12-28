@@ -60,4 +60,8 @@ svg {
   .bg_svg {
     display: none;
   }
+
+  .btn_ {
+    width: 100%;
+  }
 }
