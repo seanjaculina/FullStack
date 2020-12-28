@@ -50,6 +50,35 @@ export const register = ({ name, email, password }) => async (dispatch) => {
   }
 };
 
+// Login user
+export const login = (user) => async (dispatch, getState) => {
+  const config = {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  };
+  const body = JSON.stringify({ email: user.email, password: user.password });
+
+  try {
+    // Perform the request to login route
+    const userLogin = await axios.post('/api/auth', body, config);
+    // Dispatch to state our success with the logged in user
+    dispatch({ type: LOGIN_SUCCESS, payload: userLogin.data });
+  } catch (error) {
+    dispatch(
+      returnErrors(error.response.data, error.response.status, 'LOGIN_FAIL'),
+    );
+    dispatch({ type: LOGIN_FAIL });
+  }
+};
+
+// Logout action
+export const logout = () => {
+  return {
+    type: LOGOUT_SUCCESS,
+  };
+};
+
 // Setup config/headers and token helper
 export const tokenConfig = (getState) => {
   // Get token from local storage (the state contains the token using .get()) and we stored it in our auth state so we can easily grab it

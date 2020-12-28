@@ -28,7 +28,6 @@ const TaskBarInput = () => {
           className="mx-5 mb-3 inputLine"
           value={task}
           onChange={handleChange}
-          autoFocus
           style={{
             border: 'none',
             borderBottom: '2px solid gray',

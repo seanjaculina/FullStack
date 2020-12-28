@@ -1,19 +1,20 @@
 import React, { useState } from 'react';
+import { logout } from '../actions/authActions';
 import {
   Collapse,
   Navbar,
   NavbarToggler,
-  NavbarBrand,
   Nav,
   NavItem,
-  NavLink,
   Container,
 } from 'reactstrap';
-import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom'; // use react router links inside the navitems to prevent reload
+import { useDispatch, useSelector } from 'react-redux';
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
+  const dispatch = useDispatch();
   const state = useSelector((state) => state);
 
   const toggle = () => {
@@ -30,41 +31,52 @@ const NavBar = () => {
         style={{ minHeight: '5rem' }}
       >
         <Container>
-          <NavbarBrand href="/">
+          <Link to="/" style={{ color: '#fff' }}>
             TaskManage
             <i className="fas fa-thumbtack" style={{ marginLeft: '.7rem' }}></i>
-          </NavbarBrand>
+          </Link>
+
           <NavbarToggler onClick={toggle} />
           <Collapse isOpen={isOpen} navbar>
             <Nav className="ml-auto" navbar>
               {!state.auth.isAuthenticated ? (
                 <NavItem>
-                  <NavLink href="/login" style={{ color: '#fff' }}>
+                  <Link
+                    to="/login"
+                    style={{ color: '#fff', marginRight: '1rem' }}
+                  >
                     Login
-                  </NavLink>
+                  </Link>
                 </NavItem>
               ) : null}
               {state.auth.isAuthenticated ? (
                 <NavItem>
-                  <NavLink href="/profile" style={{ color: '#fff' }}>
+                  <Link
+                    to="/profile"
+                    style={{ color: '#fff', marginRight: '1rem' }}
+                  >
                     Profile
-                  </NavLink>
+                  </Link>
                 </NavItem>
               ) : null}
               {state.auth.isAuthenticated ? (
                 <NavItem>
-                  <NavLink href="/tasks" style={{ color: '#fff' }}>
+                  <Link
+                    to="/tasks"
+                    style={{ color: '#fff', marginRight: '1rem' }}
+                  >
                     Current Tasks
-                  </NavLink>
+                  </Link>
                 </NavItem>
               ) : null}
               <NavItem>
-                <NavLink
-                  href={state.auth.isAuthenticated ? '/logout' : '/register'}
+                <Link
+                  to={state.auth.isAuthenticated ? '/' : '/register'}
                   style={{ color: '#fff' }}
+                  onClick={() => dispatch(logout())}
                 >
-                  {state.auth.isAuthenticated ? 'logout' : 'register'}
-                </NavLink>
+                  {state.auth.isAuthenticated ? 'Logout' : 'Register'}
+                </Link>
               </NavItem>
             </Nav>
           </Collapse>
