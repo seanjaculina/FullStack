@@ -18,7 +18,7 @@ const Home = () => {
       >
         <path
           fill="#8fd8f8"
-          fill-opacity="1"
+          fillOpacity="1"
           d="M0,64L48,74.7C96,85,192,107,288,122.7C384,139,480,149,576,133.3C672,117,768,75,864,58.7C960,43,1056,53,1152,74.7C1248,96,1344,128,1392,144L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
         ></path>
       </svg>
@@ -33,7 +33,7 @@ const Home = () => {
             <div className="bg-1"></div>
             <svg
               id="Layer_5"
-              enable-background="new 0 0 64 64"
+              enableBackground="new 0 0 64 64"
               height="512"
               viewBox="0 0 64 64"
               width="512"
@@ -204,7 +204,7 @@ const Home = () => {
             <div className="bg-3"></div>
             <svg
               id="Capa_1"
-              enable-background="new 0 0 512 512"
+              enableBackground="new 0 0 512 512"
               height="512"
               viewBox="0 0 512 512"
               width="512"
@@ -344,9 +344,19 @@ const Home = () => {
               </g>
             </svg>
             <p className="explain">
-              <Link to="/register">Create an account</Link>{' '}
+              <Link
+                to="/register"
+                style={{ color: '#000', textDecoration: 'underline' }}
+              >
+                Create an account
+              </Link>{' '}
               <span style={{ padding: '0 .3rem' }}>or</span>
-              <Link to="/login">login</Link>
+              <Link
+                to="/login"
+                style={{ color: '#000', textDecoration: 'underline' }}
+              >
+                login
+              </Link>
               <span style={{ padding: '0 .3rem' }}>to get started</span>
             </p>
           </Col>
