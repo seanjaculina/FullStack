@@ -51,4 +51,47 @@ router.post('/', async (req, res) => {
   }
 });
 
+/**
+ * @route   POST /api/users/ <- prefixed in server.js with /api/tasks
+ * @desc    Update an existing user
+ * @access  private
+ */
+router.put('/', async (req, res) => {
+  try {
+    const { name, email, password } = req.body;
+    if (!name || !email || !password) {
+      return res.status(400).json({ msg: 'Please enter all fields' });
+    }
+
+    // Find the user we are updating and update their info
+    const user = await User.findOneAndUpdate(
+      { email },
+      {
+        $set: {
+          name,
+          email,
+          password: bcrypt.hashSync(password, 12),
+        },
+      },
+      { new: true },
+    );
+    // generate a JWT and save the users id as the signed payload (the user id will be saved in the token payload)
+    // and will make verification/getting data from DB, etc. from that ID super enable_async
+    const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
+      expiresIn: 3600,
+    });
+
+    res.json({
+      user: {
+        id: user.id,
+        name: user.name,
+        email: user.email,
+      },
+      token,
+    });
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
+
 module.exports = router;

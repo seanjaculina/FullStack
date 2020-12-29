@@ -7,6 +7,8 @@ import {
   LOGIN_FAIL,
   REGISTER_SUCCESS,
   REGISTER_FAIL,
+  USER_UPDATE_SUCCESS,
+  USER_UPDATE_FAIL,
 } from '../actions/types';
 
 /**
@@ -34,6 +36,7 @@ const authReducer = (state = initialState, action) => {
         isLoading: false,
         user: action.payload,
       };
+    case USER_UPDATE_SUCCESS:
     case LOGIN_SUCCESS:
     case REGISTER_SUCCESS:
       localStorage.setItem('token', action.payload.token); // save the auth token to local storage
@@ -45,6 +48,7 @@ const authReducer = (state = initialState, action) => {
       };
     // all the following cases do the same: remove the token and all auth stuff
     case AUTH_ERROR:
+    case USER_UPDATE_FAIL:
     case LOGIN_FAIL:
     case LOGOUT_SUCCESS:
     case REGISTER_FAIL:

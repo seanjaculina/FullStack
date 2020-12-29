@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getTasks } from '../../actions/itemActions';
 import { Link } from 'react-router-dom';
 import parse from 'html-react-parser';
+import { updateUserProfile } from '../../actions/authActions';
 import {
   Col,
   Row,
@@ -33,7 +34,9 @@ const Profile = ({ history }) => {
     setPassword(e.target.value);
   };
 
-  const onSubmit = (e) => {};
+  const onSubmit = (e) => {
+    dispatch(updateUserProfile({ name, email, password }));
+  };
 
   // Fetch all the tasks for this user
   useEffect(() => {
