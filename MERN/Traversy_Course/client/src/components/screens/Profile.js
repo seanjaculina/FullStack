@@ -12,9 +12,6 @@ import {
   Input,
   Container,
   Alert,
-  InputGroupText,
-  InputGroup,
-  InputGroupAddon,
   Table,
 } from 'reactstrap';
 
@@ -45,17 +42,8 @@ const Profile = ({ history }) => {
     if (!state.auth.isAuthenticated) {
       history.push('/login');
     }
-
-    // Get the current tasks
-    dispatch(getTasks(state.auth.token));
-    setTasks(state.tasks.taskList);
-  }, [
-    dispatch,
-    history,
-    state.auth.isAuthenticated,
-    state.auth.token,
-    state.tasks.taskList,
-  ]);
+    dispatch(getTasks());
+  }, [dispatch, history, state.auth.isAuthenticated, state.auth.user]);
 
   return (
     <Container>
@@ -113,7 +101,6 @@ const Profile = ({ history }) => {
         <Col lg={6}>
           <h3 style={{ padding: '0 0 1rem 0' }}>
             <Link to="/tasks" style={{ color: '#000' }}>
-              {' '}
               Currently Open Tasks
             </Link>
           </h3>

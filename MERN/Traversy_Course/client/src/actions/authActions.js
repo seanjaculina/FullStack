@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { returnErrors } from './errorActions';
-// Remember: we need the action types in both reducers and actions
 import {
   USER_LOADED,
   USER_LOADING,
@@ -14,12 +13,9 @@ import {
 
 // Check token and load the user if it exists
 export const loadUser = () => async (dispatch, getState) => {
-  // User loading dispatch action which will set the loading state to true
   dispatch({ type: USER_LOADING });
   try {
-    // Fetch the user info from our API
     const user = await axios.get('/api/auth/user', tokenConfig(getState));
-    // Dispatch user loaded action with the user information
     dispatch({ type: USER_LOADED, payload: user.data });
   } catch (error) {
     dispatch(returnErrors(error.response.data, error.response.status));
@@ -60,10 +56,8 @@ export const login = (user) => async (dispatch, getState) => {
   const body = JSON.stringify({ email: user.email, password: user.password });
 
   try {
-    // Perform the request to login route
-    const userLogin = await axios.post('/api/auth', body, config);
-    // Dispatch to state our success with the logged in user
-    dispatch({ type: LOGIN_SUCCESS, payload: userLogin.data });
+    const { data } = await axios.post('/api/auth', body, config);
+    dispatch({ type: LOGIN_SUCCESS, payload: data });
   } catch (error) {
     dispatch(
       returnErrors(error.response.data, error.response.status, 'LOGIN_FAIL'),

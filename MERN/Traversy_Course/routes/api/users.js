@@ -29,7 +29,6 @@ router.post('/', async (req, res) => {
       name,
       email,
       password: encryptedPassword,
-      tasks: [],
     });
     newUser.save(); // Save the new user
 

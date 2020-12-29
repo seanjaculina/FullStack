@@ -45,11 +45,18 @@ export const addTask = (name, token) => async (dispatch, getState) => {
 };
 
 // Returns an action to delete an item with a payload of the items ID
-export const deleteTask = (id) => async (dispatch, getState) => {
+export const deleteTask = (id, token) => async (dispatch, getState) => {
   dispatch({
     type: DELETE_TASK_REQUEST,
   });
-  const { data } = await axios.delete(`/api/tasks/${id}`);
+  // This route requires token
+  const config = {
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  const { data } = await axios.delete(`/api/tasks/${id}`, config);
   // remember: to do async actions, we need to perform  routine requests but actually use the dispatch method to dispatch the
   // action to the state. If not async, we would just return the action creator here with a type and payload which would then populate the state
   dispatch({

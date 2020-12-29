@@ -12,13 +12,9 @@ const User = require('../../models/User');
  */
 router.get('/', auth, async (req, res) => {
   try {
-    // Get the user that is attached to this request in the headers (auth middleware) and get the id
-    const user = await User.findById(req.user._id);
-
-    // Get all the tasks that are associated with this user
-    const currentTaskList = user.tasks;
-
-    res.status(200).json({ success: true, taskList: currentTaskList });
+    // Find the posts with the req.user._id that matches the createdBy field in the Task model
+    const tasks = await Task.find({ addedBy: req.user._id });
+    res.status(200).json({ success: true, taskList: tasks });
   } catch (error) {
     res.status(500).json({ success: false, error });
   }
@@ -26,24 +22,19 @@ router.get('/', auth, async (req, res) => {
 
 /**
  * @route   POST /api/tasks
- * @desc    Create a new item and put it in the tasks collection
+ * @desc    Create a new item and put it in the tasks collection for the user adding the item
  * @access  private (need JWT send in the request)
  */
 router.post('/', auth, async (req, res) => {
   const { name } = req.body;
-
-  // Get the user trying to add this task
-  const currentUser = await User.findById(req.user.id);
-
-  // Add content via the text editor here
-  const newTask = new Task({
-    name,
-  });
   try {
-    const savedTask = await newTask.save();
-    currentUser.tasks.push(savedTask);
-    currentUser.save();
-    res.status(200).json({ success: true, task: savedTask });
+    // Add content via the text editor here
+    const newTask = new Task({
+      name,
+      addedBy: req.user._id, // the user trying to add the task is the addedBy reference
+    });
+    newTask.save();
+    res.status(200).json({ success: true, task: newTask });
   } catch (error) {
     res.status(500).json({ success: false, error });
   }
@@ -56,10 +47,14 @@ router.post('/', auth, async (req, res) => {
  */
 router.delete('/:id', auth, async (req, res) => {
   try {
-    // we can findbyidanddelete and save that item we deleted to a variable and send it back in our json to do some nice UI popup saying "{item} was successfully deleted"
-    const taskDeleted = await Task.findByIdAndDelete(req.params.id);
-    if (taskDeleted) {
-      res.status(200).json({ success: true, taskDeleted });
+    const user = await User.findOne({ _id: req.user.id });
+    const updatedTasks = user.tasks.filter(
+      (task) => task._id !== req.params.id,
+    );
+    user.tasks = updatedTasks;
+    user.save();
+    if (user) {
+      res.status(200).json({ success: true });
     } else {
       res.status(404).json({ success: false });
     }

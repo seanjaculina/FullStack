@@ -7,6 +7,11 @@ const Task = new Schema({
     type: String,
     required: true,
   },
+  // A task will have a reference to a user that added it (One to many relatiotionship)
+  addedBy: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User', // reference the user who added this item
+  },
   content: {
     type: String,
   },

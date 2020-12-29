@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import {
   ListGroupItem,
   Button,
@@ -13,8 +14,9 @@ function TaskItem({ task, removeTask }) {
   const [isChecked, setIsChecked] = useState(false);
   const [modal, setModal] = useState(false);
 
-  const toggle = () => setModal(!modal);
+  const state = useSelector((state) => state);
 
+  const toggle = () => setModal(!modal);
   return (
     <div>
       <ListGroupItem
@@ -81,7 +83,7 @@ function TaskItem({ task, removeTask }) {
           id={`UncontrolledTooltipExample${task._id + 2}`} // id reference for the tooltip to hook in to
           color="danger"
           size="md"
-          onClick={() => removeTask(task._id)}
+          onClick={() => removeTask(task._id, state.auth.token)} // pass up this items ID and the auth token
           style={{ marginRight: '2rem' }}
         >
           <i className="fas fa-trash-alt" style={{ color: '#fff' }}></i>

@@ -15,7 +15,7 @@ const initialState = {
   taskList: [],
 };
 
-const itemReducer = (state = initialState, action) => {
+const taskReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_TASKS_REQUEST:
       return {
@@ -23,7 +23,7 @@ const itemReducer = (state = initialState, action) => {
         loading: true,
       };
     case GET_TASKS:
-      return { loading: false, ...action.payload }; // contains success boolean and also the taskList whcih is all the tasks in the DB
+      return { loading: false, ...action.payload }; // contains success boolean and also the taskList which is all the tasks in the DB
 
     case ADD_TASK_REQUEST:
       return {
@@ -32,7 +32,7 @@ const itemReducer = (state = initialState, action) => {
       };
 
     case ADD_TASK:
-      const addedItem = action.payload.task;
+      const addedItem = action.payload.task; // contains the task (name, id, etc. from mongo/db interaction)
       return {
         ...state,
         loading: false,
@@ -54,4 +54,4 @@ const itemReducer = (state = initialState, action) => {
   }
 };
 
-export default itemReducer;
+export default taskReducer;
