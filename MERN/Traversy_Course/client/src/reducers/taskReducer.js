@@ -34,18 +34,6 @@ const taskReducer = (state = initialState, action) => {
         loading: true,
       };
     case UPDATE_TASK:
-      const updatedItem = action.payload.task; // contains the task (name, id, etc. from mongo/db interaction)
-      const updatedTasks = state.taskList.map((task) => {
-        if (task._id === updatedItem._id) {
-          task = updatedItem;
-        }
-        return task;
-      });
-      return {
-        ...state,
-        loading: false,
-        taskList: [...updatedTasks],
-      };
     case ADD_TASK:
       const item = action.payload.task; // contains the task (name, id, etc. from mongo/db interaction)
       return {

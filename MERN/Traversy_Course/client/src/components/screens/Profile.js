@@ -49,6 +49,7 @@ const Profile = ({ history }) => {
 
   return (
     <Container>
+      <h5>Hi, {state.auth.user.name}</h5>
       <Row style={{ padding: '1.5rem 0' }}>
         <Col lg={6} style={{ marginBottom: '3rem' }}>
           <Form>
