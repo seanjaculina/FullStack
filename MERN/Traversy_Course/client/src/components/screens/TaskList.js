@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Container, ListGroup, Spinner } from 'reactstrap';
+import { Container, ListGroup, Spinner, Button } from 'reactstrap';
 
 // Actions
 import { getTasks, addTask, deleteTask } from '../../actions/itemActions';
@@ -56,6 +56,26 @@ const TaskList = ({ history }) => {
           />
         </div>
       )}
+      <div className="btn-explanations">
+        <div className="btn-edit-container">
+          <span className="update-btn" color="info" size="md">
+            <i className="far fa-edit" style={{ color: '#fff' }}></i>
+          </span>
+          <span>Edit Task Name and add notes</span>
+        </div>
+        <div className="btn-complete-container">
+          <span className="complete-btn" color="success" size="md">
+            <i className="far fa-check-circle" style={{ color: '#fff' }}></i>
+          </span>
+          <span>Mark task as complete but not deleted</span>
+        </div>
+        <div className="btn-delete-container">
+          <span className="remove-btn" size="md">
+            <i className="fas fa-trash-alt" style={{ color: '#fff' }}></i>
+          </span>
+          <span>Delete task completely</span>
+        </div>
+      </div>
       <ListGroup style={{ marginTop: '2rem' }}>
         {state.tasks.taskList &&
           state.tasks.taskList.length > 0 &&

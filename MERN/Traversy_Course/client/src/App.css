@@ -52,7 +52,50 @@ svg {
   left: 0;
 }
 
+.btn-explanations {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  padding: 0.5rem 1rem;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.btn-edit-container,
+.btn-complete-container,
+.btn-delete-container {
+  display: flex;
+  padding: 0.6rem 0;
+  align-items: center;
+}
+
+.btn-edit-container .update-btn,
+.btn-complete-container .complete-btn,
+.btn-delete-container .remove-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1rem;
+  border-radius: 3px;
+  width: 2.7rem;
+  height: 2.7rem;
+  align-items: center;
+}
+
+.update-btn {
+  background-color: #14a3b8;
+}
+.complete-btn {
+  background-color: #28a744;
+}
+.remove-btn {
+  background-color: #dd3444;
+}
+
 .my-modal {
+  margin-top: 10rem;
   width: 90vw;
   min-height: 20vh;
 }

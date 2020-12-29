@@ -49,7 +49,6 @@ function TaskItem({ task, removeTask }) {
       >
         <Button
           className="update-btn"
-          id={'UncontrolledTooltipExample1'} // id reference for the tooltip to hook in to
           color="info"
           size="md"
           onClick={toggle}
@@ -59,12 +58,6 @@ function TaskItem({ task, removeTask }) {
         >
           <i className="far fa-edit" style={{ color: '#fff' }}></i>
         </Button>
-        <UncontrolledTooltip
-          placement="top"
-          target={'UncontrolledTooltipExample1'}
-        >
-          Update task
-        </UncontrolledTooltip>
         <Modal
           isOpen={modal}
           toggle={toggle}
@@ -88,7 +81,6 @@ function TaskItem({ task, removeTask }) {
         </Modal>
         <Button
           className="complete-btn"
-          id={'UncontrolledTooltipExample3'} // id reference for the tooltip to hook in to
           color="success"
           size="md"
           onClick={() => setIsChecked(!isChecked)}
@@ -98,15 +90,8 @@ function TaskItem({ task, removeTask }) {
         >
           <i className="far fa-check-circle" style={{ color: '#fff' }}></i>
         </Button>
-        <UncontrolledTooltip
-          placement="top"
-          target={'UncontrolledTooltipExample3'}
-        >
-          Mark as complete
-        </UncontrolledTooltip>
         <Button
           className="remove-btn"
-          id={'UncontrolledTooltipExample4'} // id reference for the tooltip to hook in to
           color="danger"
           size="md"
           onClick={() => removeTask(task._id, state.auth.token)} // pass up this items ID and the auth token
@@ -114,12 +99,6 @@ function TaskItem({ task, removeTask }) {
         >
           <i className="fas fa-trash-alt" style={{ color: '#fff' }}></i>
         </Button>
-        <UncontrolledTooltip
-          placement="top"
-          target={'UncontrolledTooltipExample4'}
-        >
-          Remove task
-        </UncontrolledTooltip>
         {task.name}
       </ListGroupItem>
     </div>

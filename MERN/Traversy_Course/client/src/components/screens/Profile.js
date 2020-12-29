@@ -12,7 +12,6 @@ import {
   Label,
   Input,
   Container,
-  Alert,
   Table,
 } from 'reactstrap';
 
@@ -20,7 +19,6 @@ const Profile = ({ history }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
-  const [tasks, setTasks] = useState([]);
 
   const dispatch = useDispatch();
   const state = useSelector((state) => state); // hook into state (to get access to errors, etc.)
@@ -43,6 +41,7 @@ const Profile = ({ history }) => {
     if (!state.auth.isAuthenticated) {
       history.push('/login');
     }
+    dispatch(getTasks());
   }, [dispatch, history, state.auth.isAuthenticated]);
 
   return (

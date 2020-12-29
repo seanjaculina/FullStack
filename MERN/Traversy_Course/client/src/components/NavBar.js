@@ -65,7 +65,7 @@ const NavBar = () => {
                     to="/tasks"
                     style={{ color: '#fff', marginRight: '1rem' }}
                   >
-                    Current Tasks
+                    Add Task
                   </Link>
                 </NavItem>
               ) : null}
