@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Container, ListGroup, Spinner, Button } from 'reactstrap';
+import { Container, ListGroup, Spinner } from 'reactstrap';
 
 // Actions
 import { getTasks, addTask, deleteTask } from '../../actions/itemActions';
@@ -22,10 +22,9 @@ const TaskList = ({ history }) => {
     }
     // Get all the tasks if they are authenticated
     dispatch(getTasks(state.auth.token));
-  }, [dispatch, history, state.auth.token, state.tasks.tasks]);
+  }, [dispatch, history, state.auth.token]);
 
   const addTask_ = (taskData, token) => {
-    // Add task (takes in task name and the auth token)
     dispatch(addTask(taskData, token));
     setLoading(false);
   };

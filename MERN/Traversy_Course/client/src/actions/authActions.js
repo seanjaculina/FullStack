@@ -13,17 +13,17 @@ import {
   USER_UPDATE_FAIL,
 } from './types';
 
-// Check token and load the user if it exists
-export const loadUser = () => async (dispatch, getState) => {
-  dispatch({ type: USER_LOADING });
-  try {
-    const user = await axios.get('/api/auth/user', tokenConfig(getState));
-    dispatch({ type: USER_LOADED, payload: user.data });
-  } catch (error) {
-    dispatch(returnErrors(error.response.data, error.response.status));
-    dispatch({ type: AUTH_ERROR });
-  }
-};
+// // Check token and load the user if it exists
+// export const loadUser = () => async (dispatch, getState) => {
+//   dispatch({ type: USER_LOADING });
+//   try {
+//     const user = await axios.get('/api/auth/user', tokenConfig(getState));
+//     dispatch({ type: USER_LOADED, payload: user.data });
+//   } catch (error) {
+//     dispatch(returnErrors(error.response.data, error.response.status));
+//     dispatch({ type: AUTH_ERROR });
+//   }
+// };
 
 // Register new user action
 export const register = ({ name, email, password }) => async (dispatch) => {

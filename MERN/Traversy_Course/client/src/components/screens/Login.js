@@ -23,6 +23,14 @@ const Login = ({ history }) => {
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
 
+  // Run everytime the component updates: used to look at auth state and see if we can redirect
+  useEffect(() => {
+    if (state.auth.isAuthenticated) {
+      dispatch(clearErrors());
+      history.push('/tasks');
+    }
+  }, [dispatch, history, state.auth.isAuthenticated]);
+
   const onHandleEmailChange = (e) => {
     setEmail(e.target.value);
   };
@@ -30,26 +38,13 @@ const Login = ({ history }) => {
     setPassword(e.target.value);
   };
 
-  const onSubmit = (e) => {
+  const onSubmit = () => {
     const user = { email, password };
-    dispatch(login(user)); // register the user with the register action which will perform the request and then update the state
-    if (!state.auth.isAuthenticated) {
+    dispatch(login(user));
+    if (state.error.msg) {
       setErrorShowing(true);
-      setTimeout(() => {
-        setErrorShowing(false);
-      }, 1500);
     }
   };
-
-  // Run everytime the component updates: used to look at auth state and see if we can redirect
-  useEffect(() => {
-    // if the user is authenticated (there is a token) just redirect
-    if (state.auth.isAuthenticated) {
-      dispatch(clearErrors());
-      setErrorShowing(false);
-      history.push('/tasks');
-    }
-  }, [dispatch, history, state.auth.isAuthenticated]);
 
   return (
     <Container>
