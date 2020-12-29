@@ -41,8 +41,10 @@ const Login = ({ history }) => {
   const onSubmit = () => {
     const user = { email, password };
     dispatch(login(user));
-    if (state.error.msg) {
+    if (state.error) {
       setErrorShowing(true);
+    } else {
+      setErrorShowing(false);
     }
   };
 
@@ -50,7 +52,8 @@ const Login = ({ history }) => {
     <Container>
       <h1>Login</h1>
       <hr />
-      {errorShowing && (
+      {/* Render error if there is an error message and the error showing state is true */}
+      {errorShowing && state.error.msg.msg && (
         <Alert color="danger" className="mb-3 mt-3">
           {state.error.msg.msg}
         </Alert>
