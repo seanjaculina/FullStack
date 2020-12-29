@@ -25,6 +25,23 @@ class RichTextEditor extends Component {
     this.toggleInlineStyle = this._toggleInlineStyle.bind(this);
   }
 
+  // Get initial editor content and convert to html to be shown nicely
+  componentDidMount() {
+    this.props.getCurrentValue(
+      draftToHtml(convertToRaw(this.state.editorState.getCurrentContent())),
+    );
+  }
+
+  // For every update to state, we have to wrap the helper from taskItem to set the newest html conversion
+  // since you cannot set it during render from another component
+  componentDidUpdate(prevState) {
+    if (prevState.editorState !== this.state.editorState) {
+      this.props.getCurrentValue(
+        draftToHtml(convertToRaw(this.state.editorState.getCurrentContent())),
+      );
+    }
+  }
+
   _handleKeyCommand(command, editorState) {
     const newState = RichUtils.handleKeyCommand(editorState, command);
     if (newState) {
@@ -61,10 +78,6 @@ class RichTextEditor extends Component {
 
   render() {
     const { editorState } = this.state;
-
-    this.props.getCurrentValue(
-      draftToHtml(convertToRaw(editorState.getCurrentContent())),
-    );
 
     let className = 'RichEditor-editor';
     var contentState = editorState.getCurrentContent();

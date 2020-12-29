@@ -78,7 +78,6 @@ const TaskList = ({ history }) => {
       </div>
       <ListGroup style={{ marginTop: '2rem' }}>
         {state.tasks.taskList &&
-          state.tasks.taskList.length > 0 &&
           state.tasks.taskList.map((task) => (
             <TaskItem key={task._id} task={task} removeTask={removeTask} />
           ))}

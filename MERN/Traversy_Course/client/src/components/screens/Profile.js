@@ -41,8 +41,8 @@ const Profile = ({ history }) => {
     if (!state.auth.isAuthenticated) {
       history.push('/login');
     }
-    dispatch(getTasks());
-  }, [dispatch, history, state.auth.isAuthenticated]);
+    dispatch(getTasks(state.auth.token));
+  }, [dispatch, history, state.auth.isAuthenticated, state.auth.token]);
 
   return (
     <Container>
