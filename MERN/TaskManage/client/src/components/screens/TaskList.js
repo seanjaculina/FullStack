@@ -20,7 +20,7 @@ const TaskList = ({ history }) => {
     if (!state.auth.token) {
       history.push('/login');
     }
-    // Get all the tasks if they are authenticated
+    // Get all the tasks if the user is authenticated: this action requires the token in our state to be sent
     dispatch(getTasks(state.auth.token));
   }, [dispatch, history, state.auth.token]);
 

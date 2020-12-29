@@ -34,12 +34,12 @@ const authReducer = (state = initialState, action) => {
         ...state,
         isAuthenticated: true,
         isLoading: false,
-        user: action.payload,
+        user: action.payload, // contains the token
       };
     case USER_UPDATE_SUCCESS:
     case LOGIN_SUCCESS:
     case REGISTER_SUCCESS:
-      localStorage.setItem('token', action.payload.token); // save the auth token to local storage
+      localStorage.setItem('token', action.payload.token); // save the auth token to local storage such that when we reload page, requests that send on those loads that require token to be sent will still exist in local storage so we can persist auth sessions
       return {
         ...state,
         ...action.payload, // holds token (userID) and the user (remember that is what we send back from the backend)
