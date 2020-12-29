@@ -46,8 +46,7 @@ router.post('/', auth, async (req, res) => {
  */
 router.delete('/:id', auth, async (req, res) => {
   try {
-    const task = await Task.findByIdAndDelete({ _id: req.params.id }); // get the items ID from the params (we are deleting a task by ID NOT THE USERS ID - we have a relationshp (one user -> many tasks))
-    task.save();
+    const task = await Task.findByIdAndDelete(req.params.id); // get the items ID from the params (we are deleting a task by ID NOT THE USERS ID - we have a relationshp (one user -> many tasks))
     if (task) {
       res.status(200).json({ success: true, taskDeleted: task });
     } else {

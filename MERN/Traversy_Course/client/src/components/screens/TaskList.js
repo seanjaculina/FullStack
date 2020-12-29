@@ -18,7 +18,7 @@ const TaskList = ({ history }) => {
   const state = useSelector((state) => state);
 
   useEffect(() => {
-    if (!state.auth.isAuthenticated) {
+    if (!state.auth.token) {
       history.push('/login');
     }
     // Get all the tasks if they are authenticated
@@ -59,6 +59,7 @@ const TaskList = ({ history }) => {
       )}
       <ListGroup style={{ marginTop: '2rem' }}>
         {state.tasks.taskList &&
+          state.tasks.taskList.length > 0 &&
           state.tasks.taskList.map((task) => (
             <TaskItem key={task._id} task={task} removeTask={removeTask} />
           ))}
