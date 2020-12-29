@@ -3,7 +3,6 @@ const router = express.Router(); // allows us to modularizxe routes into separat
 const auth = require('../../middleware/auth'); // to authenticate routes for creating tasks, etc
 
 const Task = require('../../models/Task');
-const User = require('../../models/User');
 
 /**
  * @route   GET /api/tasks/

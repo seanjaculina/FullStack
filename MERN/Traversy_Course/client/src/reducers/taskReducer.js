@@ -46,7 +46,7 @@ const taskReducer = (state = initialState, action) => {
       };
     case DELETE_TASK:
       const filteredTasks = state.taskList.filter(
-        ({ _id }) => _id !== action.payload.taskDeleted._id,
+        ({ _id }) => _id !== action.payload.taskDeleted._id, // remove the item we got back from the reqquest (and in the action payload) from the state [deleting from DB will not delete from state. Only the UI, potentially depedning how we implement]
       );
       return { ...state, loading: false, taskList: filteredTasks };
     default:
