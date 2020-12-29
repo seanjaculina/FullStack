@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Container, ListGroup, Spinner, Alert } from 'reactstrap';
 
 // Actions
-import { getTasks, addTask } from '../../actions/itemActions';
+import { getTasks, addTask, deleteTask } from '../../actions/itemActions';
 
 import TaskBarInput from '../TaskBarInput';
 import TaskItem from '../TaskItem';
@@ -25,29 +25,20 @@ const TaskList = ({ history }) => {
     dispatch(getTasks(state.auth.token));
   }, [dispatch, history, state.auth.isAuthenticated, state.auth.token]);
 
-  const addTask_ = async (taskData, token) => {
+  const addTask_ = (taskData, token) => {
     // Add task (takes in task name and the auth token)
     dispatch(addTask(taskData, token));
     setLoading(false);
   };
 
-  // dispatch the deleteItem action to our store with the given ID of the item to delete
-  const removeTask = async (id, token) => {
-    const config = {
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`,
-      },
-    };
-    const { data } = await axios.delete(`/api/tasks/${id}`, config);
-    state.auth.user.tasks = state.auth.tasks.filter(
-      (task) => task._id !== data._id,
-    );
+  // dispatch the deleteItem action to our store with the given ID of the item and auth token to delete the item
+  const removeTask = (id, token) => {
+    dispatch(deleteTask(id, token));
   };
 
   return (
     <Container className="mt-5" style={{ width: '85%' }}>
-      <TaskBarInput addTask={addTask_} />
+      <TaskBarInput addTask_={addTask_} />
       {loading && (
         <div
           style={{

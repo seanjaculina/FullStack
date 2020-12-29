@@ -17,6 +17,7 @@ function TaskItem({ task, removeTask }) {
   const state = useSelector((state) => state);
 
   const toggle = () => setModal(!modal);
+
   return (
     <div>
       <ListGroupItem
@@ -61,7 +62,7 @@ function TaskItem({ task, removeTask }) {
           </ModalFooter>
         </Modal>
         <Button
-          className=" complete-btn"
+          className="complete-btn"
           id={`UncontrolledTooltipExample${task._id + 1}`} // id reference for the tooltip to hook in to
           color="success"
           size="md"

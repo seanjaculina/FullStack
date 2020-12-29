@@ -43,18 +43,14 @@ router.post('/', auth, async (req, res) => {
 /**
  * @route   DELETE /api/tasks/:id
  * @desc    Delete an item by its specific id (passed in the params of this request which is the ID from mongoDB in the UI )
- * @access  public
+ * @access  private
  */
 router.delete('/:id', auth, async (req, res) => {
   try {
-    const user = await User.findOne({ _id: req.user.id });
-    const updatedTasks = user.tasks.filter(
-      (task) => task._id !== req.params.id,
-    );
-    user.tasks = updatedTasks;
-    user.save();
-    if (user) {
-      res.status(200).json({ success: true });
+    const task = await Task.findByIdAndDelete(req.params.id); // get the items ID from the params (we are deleting a task by ID NOT THE USERS ID - we have a relationshp (one user -> many tasks))
+    task.save();
+    if (task) {
+      res.status(200).json({ success: true, taskDeleted: task });
     } else {
       res.status(404).json({ success: false });
     }

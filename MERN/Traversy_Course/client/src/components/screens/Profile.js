@@ -42,8 +42,7 @@ const Profile = ({ history }) => {
     if (!state.auth.isAuthenticated) {
       history.push('/login');
     }
-    dispatch(getTasks());
-  }, [dispatch, history, state.auth.isAuthenticated, state.auth.user]);
+  }, [dispatch, history, state.auth.isAuthenticated]);
 
   return (
     <Container>
@@ -112,16 +111,15 @@ const Profile = ({ history }) => {
               </tr>
             </thead>
             <tbody>
-              {tasks.length !== 0
-                ? tasks.map((task) => {
-                    return (
-                      <tr>
-                        <td>{task.name}</td>
-                        <td>data</td>
-                      </tr>
-                    );
-                  })
-                : null}
+              {state.tasks.taskList &&
+                state.tasks.taskList.map((task) => {
+                  return (
+                    <tr>
+                      <td>{task.name}</td>
+                      <td>data</td>
+                    </tr>
+                  );
+                })}
             </tbody>
           </Table>
         </Col>
