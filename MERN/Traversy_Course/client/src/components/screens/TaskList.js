@@ -22,13 +22,7 @@ const TaskList = ({ history }) => {
     }
     // Get all the tasks if they are authenticated
     dispatch(getTasks(state.auth.token));
-  }, [
-    dispatch,
-    history,
-    state.auth.isAuthenticated,
-    state.auth.token,
-    state.tasks.taskList,
-  ]);
+  }, [dispatch, history, state.auth.isAuthenticated, state.auth.token]);
 
   const addTask_ = (taskData, token) => {
     // Add task (takes in task name and the auth token)

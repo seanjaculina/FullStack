@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getTasks } from '../../actions/itemActions';
 import { Link } from 'react-router-dom';
+import parse from 'html-react-parser';
 import {
   Col,
   Row,
@@ -115,7 +116,7 @@ const Profile = ({ history }) => {
                 state.tasks.taskList.map((task) => (
                   <tr key={task._id}>
                     <td>{task.name}</td>
-                    <td>data</td>
+                    <td>{parse(task.content)}</td>
                   </tr>
                 ))}
             </tbody>

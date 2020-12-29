@@ -31,7 +31,6 @@ function TaskItem({ task, removeTask }) {
   };
 
   const getCurrentValue = (editorText) => {
-    console.log(editorText);
     setEditorHTML(editorText);
   };
 
@@ -50,7 +49,7 @@ function TaskItem({ task, removeTask }) {
       >
         <Button
           className="update-btn"
-          id={`UncontrolledTooltipExample${task._id}`} // id reference for the tooltip to hook in to
+          id={'UncontrolledTooltipExample1'} // id reference for the tooltip to hook in to
           color="info"
           size="md"
           onClick={toggle}
@@ -62,7 +61,7 @@ function TaskItem({ task, removeTask }) {
         </Button>
         <UncontrolledTooltip
           placement="top"
-          target={`UncontrolledTooltipExample${task._id}`}
+          target={'UncontrolledTooltipExample1'}
         >
           Update task
         </UncontrolledTooltip>
@@ -70,7 +69,7 @@ function TaskItem({ task, removeTask }) {
           isOpen={modal}
           toggle={toggle}
           contentClassName="my-modal"
-          centered="false"
+          centered={false}
           size="xl"
         >
           <ModalHeader toggle={toggle}>{task.name}</ModalHeader>
@@ -89,7 +88,7 @@ function TaskItem({ task, removeTask }) {
         </Modal>
         <Button
           className="complete-btn"
-          id={`UncontrolledTooltipExample${task._id + 1}`} // id reference for the tooltip to hook in to
+          id={'UncontrolledTooltipExample3'} // id reference for the tooltip to hook in to
           color="success"
           size="md"
           onClick={() => setIsChecked(!isChecked)}
@@ -101,13 +100,13 @@ function TaskItem({ task, removeTask }) {
         </Button>
         <UncontrolledTooltip
           placement="top"
-          target={`UncontrolledTooltipExample${task._id + 1}`}
+          target={'UncontrolledTooltipExample3'}
         >
           Mark as complete
         </UncontrolledTooltip>
         <Button
           className="remove-btn"
-          id={`UncontrolledTooltipExample${task._id + 2}`} // id reference for the tooltip to hook in to
+          id={'UncontrolledTooltipExample4'} // id reference for the tooltip to hook in to
           color="danger"
           size="md"
           onClick={() => removeTask(task._id, state.auth.token)} // pass up this items ID and the auth token
@@ -117,7 +116,7 @@ function TaskItem({ task, removeTask }) {
         </Button>
         <UncontrolledTooltip
           placement="top"
-          target={`UncontrolledTooltipExample${task._id + 2}`}
+          target={'UncontrolledTooltipExample4'}
         >
           Remove task
         </UncontrolledTooltip>
