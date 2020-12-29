@@ -114,7 +114,7 @@ const Profile = ({ history }) => {
               {state.tasks.taskList &&
                 state.tasks.taskList.map((task) => {
                   return (
-                    <tr>
+                    <tr key={task._id}>
                       <td>{task.name}</td>
                       <td>data</td>
                     </tr>
