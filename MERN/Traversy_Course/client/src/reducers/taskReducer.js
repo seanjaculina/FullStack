@@ -4,6 +4,8 @@ import {
   ADD_TASK,
   DELETE_TASK,
   GET_TASKS_REQUEST,
+  UPDATE_TASK,
+  UPDATE_TASK_REQUEST,
   ADD_TASK_REQUEST,
   DELETE_TASK_REQUEST,
 } from '../actions/types';
@@ -17,6 +19,7 @@ const initialState = {
 
 const taskReducer = (state = initialState, action) => {
   switch (action.type) {
+    case UPDATE_TASK_REQUEST:
     case GET_TASKS_REQUEST:
       return {
         ...state,
@@ -30,13 +33,13 @@ const taskReducer = (state = initialState, action) => {
         ...state,
         loading: true,
       };
-
+    case UPDATE_TASK:
     case ADD_TASK:
-      const addedItem = action.payload.task; // contains the task (name, id, etc. from mongo/db interaction)
+      const item = action.payload.task; // contains the task (name, id, etc. from mongo/db interaction)
       return {
         ...state,
         loading: false,
-        taskList: [...state.taskList, addedItem],
+        taskList: [...state.taskList, item],
       };
 
     case DELETE_TASK_REQUEST:

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { updateTask } from '../actions/itemActions';
 import {
   ListGroupItem,
   Button,
@@ -13,12 +14,30 @@ import RichTextEditor from './RichTextEditor';
 
 function TaskItem({ task, removeTask }) {
   const [isChecked, setIsChecked] = useState(false);
+  const [editorHTML, setEditorHTML] = useState(null);
 
   const [modal, setModal] = useState(false);
 
+  const dispatch = useDispatch();
   const state = useSelector((state) => state);
 
-  const toggle = () => setModal(!modal);
+  const toggleAndSubmit = () => {
+    setModal(!modal);
+    submitHtml();
+  };
+
+  const toggle = () => {
+    setModal(!modal);
+  };
+
+  const getCurrentValue = (editorText) => {
+    console.log(editorText);
+    setEditorHTML(editorText);
+  };
+
+  const submitHtml = () => {
+    dispatch(updateTask(task._id, task.name, editorHTML, state.auth.token));
+  };
 
   return (
     <div>
@@ -56,12 +75,11 @@ function TaskItem({ task, removeTask }) {
         >
           <ModalHeader toggle={toggle}>{task.name}</ModalHeader>
           <ModalBody>
-            {/**The text editor component */}
-            <RichTextEditor />
+            <RichTextEditor data={task} getCurrentValue={getCurrentValue} />
           </ModalBody>
           <ModalFooter>
             {/* Have these buttons send request to the endpoint for updating a task */}
-            <Button color="success" onClick={toggle}>
+            <Button color="success" onClick={toggleAndSubmit}>
               Update Task
             </Button>{' '}
             <Button color="secondary" onClick={toggle}>

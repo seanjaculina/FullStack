@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router(); // allows us to modularizxe routes into separate files to couple together similar business logic
 const auth = require('../../middleware/auth'); // to authenticate routes for creating tasks, etc
-
+const sanitizeHtml = require('sanitize-html');
 const Task = require('../../models/Task');
 
 /**
@@ -25,15 +25,45 @@ router.get('/', auth, async (req, res) => {
  * @access  private (need JWT send in the request)
  */
 router.post('/', auth, async (req, res) => {
-  const { name } = req.body;
+  const { name, content } = req.body;
   try {
     // Add content via the text editor here
     const newTask = new Task({
       name,
+      content,
       addedBy: req.user._id, // the user trying to add the task is the addedBy reference
     });
     newTask.save();
     res.status(200).json({ success: true, task: newTask });
+  } catch (error) {
+    res.status(500).json({ success: false, error });
+  }
+});
+
+/**
+ * @route   POST /api/tasks
+ * @desc    Update an item by the item ID which should add an updates name / Draft.js info if applicable
+ * @access  private (need JWT send in the request)
+ */
+router.put('/:id', auth, async (req, res) => {
+  const { name, content } = req.body;
+
+  // Sanitize the HTML content from the editor such that we can prevent any XSS or other issues
+  const clean = sanitizeHtml(content);
+  try {
+    // Find the item we are updating
+    const task = await Task.findOneAndUpdate(
+      { _id: req.params.id },
+      {
+        $set: {
+          name,
+          content: clean,
+          addedBy: req.user._id, // the user trying to add the task is the addedBy reference
+        },
+      },
+      { new: true },
+    );
+    res.status(200).json({ success: true, task });
   } catch (error) {
     res.status(500).json({ success: false, error });
   }

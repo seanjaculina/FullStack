@@ -4,6 +4,8 @@ import {
   DELETE_TASK,
   GET_TASKS_REQUEST,
   ADD_TASK_REQUEST,
+  UPDATE_TASK,
+  UPDATE_TASK_REQUEST,
   DELETE_TASK_REQUEST,
 } from './types';
 import axios from 'axios';
@@ -37,9 +39,38 @@ export const addTask = (name, token) => async (dispatch, getState) => {
       Authorization: `Bearer ${token}`,
     },
   };
-  const { data } = await axios.post('/api/tasks/', { name }, config);
+  const { data } = await axios.post(
+    '/api/tasks/',
+    { name, content: '' },
+    config,
+  );
   dispatch({
     type: ADD_TASK,
+    payload: data,
+  });
+};
+
+// Returns an action to add an item with a payload of the items Name and ID
+export const updateTask = (id, name, content, token) => async (
+  dispatch,
+  getState,
+) => {
+  dispatch({
+    type: UPDATE_TASK_REQUEST,
+  });
+  const config = {
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  const { data } = await axios.put(
+    `/api/tasks/${id}`,
+    { name, content },
+    config,
+  );
+  dispatch({
+    type: UPDATE_TASK,
     payload: data,
   });
 };

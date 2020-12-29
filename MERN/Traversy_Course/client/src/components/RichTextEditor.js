@@ -1,14 +1,23 @@
 import React, { Component } from 'react';
+import { convertFromHTML, convertToRaw, ContentState } from 'draft-js';
 import { Editor, EditorState, getDefaultKeyBinding, RichUtils } from 'draft-js';
 import '../RichText.css';
+import draftToHtml from 'draftjs-to-html';
 
 class RichTextEditor extends Component {
   constructor(props) {
     super(props);
-    this.state = { editorState: EditorState.createEmpty() };
-
+    // This chunk will take the html from the content in our DB (taskList[someIndex].content) and convert from html
+    // into content that Draft.js can understand
+    const blocksFromHTML = convertFromHTML(this.props.data.content);
+    const content = ContentState.createFromBlockArray(blocksFromHTML);
+    this.state = {
+      editorState: EditorState.createWithContent(content),
+    };
     this.focus = () => this.refs.editor.focus();
-    this.onChange = (editorState) => this.setState({ editorState });
+    this.onChange = (editorState) => {
+      this.setState({ editorState });
+    };
 
     this.handleKeyCommand = this._handleKeyCommand.bind(this);
     this.mapKeyToEditorCommand = this._mapKeyToEditorCommand.bind(this);
@@ -53,8 +62,10 @@ class RichTextEditor extends Component {
   render() {
     const { editorState } = this.state;
 
-    // If the user changes block type before entering any text, we can
-    // either style the placeholder or hide it. Let's just hide it now.
+    this.props.getCurrentValue(
+      draftToHtml(convertToRaw(editorState.getCurrentContent())),
+    );
+
     let className = 'RichEditor-editor';
     var contentState = editorState.getCurrentContent();
     if (!contentState.hasText()) {
@@ -82,6 +93,7 @@ class RichTextEditor extends Component {
             keyBindingFn={this.mapKeyToEditorCommand}
             onChange={this.onChange}
             placeholder="Add to your task"
+            value={this.props.data.content}
             ref="editor"
             spellCheck={true}
           />
