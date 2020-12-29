@@ -4,7 +4,6 @@ import { updateTask } from '../actions/itemActions';
 import {
   ListGroupItem,
   Button,
-  UncontrolledTooltip,
   Modal,
   ModalHeader,
   ModalBody,
@@ -22,8 +21,8 @@ function TaskItem({ task, removeTask }) {
   const state = useSelector((state) => state);
 
   const toggleAndSubmit = () => {
+    dispatch(updateTask(task._id, task.name, editorHTML, state.auth.token));
     setModal(!modal);
-    submitHtml();
   };
 
   const toggle = () => {
@@ -32,10 +31,6 @@ function TaskItem({ task, removeTask }) {
 
   const getCurrentValue = (editorText) => {
     setEditorHTML(editorText);
-  };
-
-  const submitHtml = () => {
-    dispatch(updateTask(task._id, task.name, editorHTML, state.auth.token));
   };
 
   return (
