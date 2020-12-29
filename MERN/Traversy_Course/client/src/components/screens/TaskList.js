@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
-import { Container, ListGroup, Spinner, Alert } from 'reactstrap';
+import { Container, ListGroup, Spinner } from 'reactstrap';
 
 // Actions
 import { getTasks, addTask, deleteTask } from '../../actions/itemActions';

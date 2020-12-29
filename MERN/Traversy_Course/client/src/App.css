@@ -52,6 +52,11 @@ svg {
   left: 0;
 }
 
+.my-modal {
+  width: 90vw;
+  height: 90vh;
+}
+
 @media screen and (max-width: 480px) {
   .explain {
     padding: 0 1rem;

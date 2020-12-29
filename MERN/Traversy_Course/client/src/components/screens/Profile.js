@@ -112,14 +112,12 @@ const Profile = ({ history }) => {
             </thead>
             <tbody>
               {state.tasks.taskList &&
-                state.tasks.taskList.map((task) => {
-                  return (
-                    <tr key={task._id}>
-                      <td>{task.name}</td>
-                      <td>data</td>
-                    </tr>
-                  );
-                })}
+                state.tasks.taskList.map((task) => (
+                  <tr key={task._id}>
+                    <td>{task.name}</td>
+                    <td>data</td>
+                  </tr>
+                ))}
             </tbody>
           </Table>
         </Col>

@@ -45,7 +45,13 @@ function TaskItem({ task, removeTask }) {
         >
           Update task
         </UncontrolledTooltip>
-        <Modal isOpen={modal} toggle={toggle}>
+        <Modal
+          isOpen={modal}
+          toggle={toggle}
+          contentClassName="my-modal"
+          centered="false"
+          size="xl"
+        >
           <ModalHeader toggle={toggle}>Update Task - {task.name}</ModalHeader>
           <ModalBody>
             Put input field here and auto-populate it with the task that
