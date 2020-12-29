@@ -56,6 +56,7 @@ function TaskItem({ task, removeTask }) {
         >
           <ModalHeader toggle={toggle}>{task.name}</ModalHeader>
           <ModalBody>
+            {/**The text editor component */}
             <RichTextEditor />
           </ModalBody>
           <ModalFooter>

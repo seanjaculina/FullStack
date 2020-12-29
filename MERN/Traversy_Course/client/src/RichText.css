@@ -2,8 +2,7 @@
   background: #fff;
   border: 1px solid #ddd;
   border-radius: 3px;
-  height: 100%;
-  overflow: hidden;
+  min-height: 100%;
   font-size: 14px;
   padding: 15px;
 }

@@ -54,7 +54,7 @@ svg {
 
 .my-modal {
   width: 90vw;
-  height: 90vh;
+  min-height: 20vh;
 }
 
 @media screen and (max-width: 480px) {
