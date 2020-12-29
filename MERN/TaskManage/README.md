@@ -9,9 +9,16 @@
 - This is a full-stack productivity task manager application built with the MERN stack.
 - The purpose of this application is to allow registered users the ability to layout tasks they plan to accomplish and have them displayer neatly in the UI.
 - Upon naming a new task, the user will have the ability to edit the task to change its title but also use a full-fledged rich text editor to add subtasks, notes, lists, etc. such that each task you plan to accomplish can contain all sorts of data about the task! Below is the button you'd press to open up the editor to update said task / add information to it.
+- The data is parsed from text in the editor to HTML and saved to the database. Once you load the task up to edit it again, the editor will be automatically populated with your last edit and parsed from the string in the database back into rich text in the same format as its HTML equivalent!
+  ![task](./readme_imgs/editor.png)
   ![update](./readme_imgs/update.png)
 - After adding notes, a new task name, etc. you can submit your changes and have the application update in real time.
-- If you are reading this at the time that the readme shows what the app is "going to have" the ablity to do or "further versions", that means I am actively developing the app and progress will continue to be made!
+- The application allows you to update your profile information and also track the task queue aside from the task page. Pretty neat!
+  ![profil](./readme_imgs/profile.png)
+
+### Coming Soon
+
+- Analytics! The plan is to visualize your productivity in a way that is visually appealing but also helpful to your work ethic. The application will track day/day, week/week ,month/month and year/year historical data on your task submissions / completions! What better way to stay motivated?
 
 ### Further versions
 
