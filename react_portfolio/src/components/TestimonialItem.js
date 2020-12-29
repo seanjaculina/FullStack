@@ -1,6 +1,6 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
-const RecommendationItem = ({ data }) => {
+const TestimonialItem = ({ data }) => {
   return (
     <Card className="rec-card">
       <Card.Body>
@@ -25,4 +25,4 @@ const RecommendationItem = ({ data }) => {
   );
 };
 
-export default RecommendationItem;
+export default TestimonialItem;

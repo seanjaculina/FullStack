@@ -6,6 +6,29 @@
     "image": "coffee_connection",
     "btnText": "See Live"
   },
+
+  {
+    "title": "TaskManage",
+    "link": "https://github.com/TannerBarcelos/FullStack/tree/master/MERN/TaskManage",
+    "description": "A MERN application that allows for rich text editing for custom notes and managing tasks to keep users acountable for the things they want to achieve.",
+    "image": "task",
+    "btnText": "See on GitHub"
+  },
+
+  {
+    "title": "Baysbook",
+    "link": "https://glacial-journey-55442.herokuapp.com/?fbclid=IwAR0CtCB32bMNEhIemAEnNwCqBfIslK78WeEZ2XRgLG9zS6PpC_mDSO3WMlc",
+    "description": "A full stack MERN application that allows the students of CSU East Bay to connect",
+    "image": "baysbookland",
+    "btnText": "See Live"
+  },
+  {
+    "title": "COVID-19 Fatality Visualizer",
+    "link": "https://tannerbarcelos.github.io/COVID-19-Fatality-Visualizer/",
+    "description": "A VanillaJS application that leveraged ChartJS to visualize COVID-19 related deaths in the United States sourcing data from the CDC",
+    "image": "covid",
+    "btnText": "See Live"
+  },
   {
     "title": "YouTube Clone",
     "link": "https://tanneryoutubeclone.netlify.app/",
@@ -21,31 +44,10 @@
     "btnText": "See on GitHub"
   },
   {
-    "title": "COVID-19 Fatality Visualizer",
-    "link": "https://tannerbarcelos.github.io/COVID-19-Fatality-Visualizer/",
-    "description": "A VanillaJS application that leveraged ChartJS to visualize COVID-19 related deaths in the United States sourcing data from the CDC",
-    "image": "covid",
-    "btnText": "See Live"
-  },
-  {
     "title": "Ebay Clone",
     "link": "https://ebay-clone-react.herokuapp.com/",
     "description": "A full stack MERN web application clone of Ebay. Leverages their advanced product search API to generate real time product searches and Redux for cart updates and price fluctuations.",
     "image": "ebay",
-    "btnText": "See Live"
-  },
-  {
-    "title": "Twitch Clone",
-    "link": "https://github.com/TannerBarcelos/Twitch-Clone",
-    "description": "A frontend web application built with React that is a simple clone of the popular streaming application, Twitch.",
-    "image": "stream",
-    "btnText": "See on GitHub"
-  },
-  {
-    "title": "Baysbook",
-    "link": "https://glacial-journey-55442.herokuapp.com/?fbclid=IwAR0CtCB32bMNEhIemAEnNwCqBfIslK78WeEZ2XRgLG9zS6PpC_mDSO3WMlc",
-    "description": "A full stack MERN application that allows the students of CSU East Bay to connect",
-    "image": "baysbookland",
     "btnText": "See Live"
   }
 ]

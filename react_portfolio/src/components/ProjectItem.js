@@ -9,6 +9,7 @@ import ebay from '../images/ebay.png';
 import stream from '../images/stream.png';
 import baysbookland from '../images/baysbookland.jpg';
 import weather from '../images/weather.png';
+import task from '../images/task.png';
 
 const imgMap = {
   coffee_connection: coffee_connection,
@@ -19,6 +20,7 @@ const imgMap = {
   stream: stream,
   baysbookland: baysbookland,
   weather: weather,
+  task,
 };
 
 const ProjectItem = ({ data }) => {

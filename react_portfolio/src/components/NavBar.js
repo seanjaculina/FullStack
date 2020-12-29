@@ -48,10 +48,10 @@ const NavBar = () => {
               About Me
             </Link>
             <Link
-              href="#recommendations"
+              href="#testimonials"
               style={{ color: '#fff', paddingRight: '1.5rem' }}
             >
-              Recommendations
+              Testimonials
             </Link>
             <Link
               href="#contact"
