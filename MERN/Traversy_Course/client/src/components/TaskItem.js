@@ -9,9 +9,11 @@ import {
   ModalBody,
   ModalFooter,
 } from 'reactstrap';
+import RichTextEditor from './RichTextEditor';
 
 function TaskItem({ task, removeTask }) {
   const [isChecked, setIsChecked] = useState(false);
+
   const [modal, setModal] = useState(false);
 
   const state = useSelector((state) => state);
@@ -52,10 +54,9 @@ function TaskItem({ task, removeTask }) {
           centered="false"
           size="xl"
         >
-          <ModalHeader toggle={toggle}>Update Task - {task.name}</ModalHeader>
+          <ModalHeader toggle={toggle}>{task.name}</ModalHeader>
           <ModalBody>
-            Put input field here and auto-populate it with the task that
-            currently exists: {task.name}
+            <RichTextEditor />
           </ModalBody>
           <ModalFooter>
             {/* Have these buttons send request to the endpoint for updating a task */}

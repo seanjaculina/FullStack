@@ -6,6 +6,8 @@ import './App.css';
 
 // Needed for bootstrap/reactstrap to work
 import 'bootstrap/dist/css/bootstrap.min.css';
+// DraftJS
+import 'draft-js/dist/Draft.css';
 
 // Component imports
 import App from './App';
