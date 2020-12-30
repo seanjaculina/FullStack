@@ -58,10 +58,7 @@ router.post('/', async (req, res) => {
  */
 router.put('/', async (req, res) => {
   try {
-    const { name, email, password } = req.body;
-    if (!name || !email || !password) {
-      return res.status(400).json({ msg: 'Please enter all fields' });
-    }
+    const { name, email } = req.body;
 
     // Find the user we are updating and update their info
     const user = await User.findOneAndUpdate(
@@ -70,7 +67,6 @@ router.put('/', async (req, res) => {
         $set: {
           name,
           email,
-          password: bcrypt.hashSync(password, 12),
         },
       },
       { new: true },

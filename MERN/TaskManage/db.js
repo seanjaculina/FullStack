@@ -13,7 +13,7 @@ const dbConnect = (URI) => {
       if (err) {
         console.log(err);
       } else {
-        console.log('MongoDB connection established'.bgGreen.white);
+        console.log('MongoDB connection established');
       }
     },
   );

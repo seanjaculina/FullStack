@@ -17,12 +17,20 @@ import {
 } from 'reactstrap';
 
 const Profile = ({ history }) => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [name, setName] = useState('');
-
   const dispatch = useDispatch();
   const state = useSelector((state) => state); // hook into state (to get access to errors, etc.)
+
+  // Autopopulate update fields with the current text of your info in the DB
+  const [email, setEmail] = useState('');
+  const [name, setName] = useState('');
+
+  // Fetch all the tasks for this user
+  useEffect(() => {
+    if (!state.auth.isAuthenticated) {
+      history.push('/login');
+    }
+    dispatch(getTasks(state.auth.token));
+  }, []);
 
   const onHandleNameChange = (e) => {
     setName(e.target.value);
@@ -30,21 +38,10 @@ const Profile = ({ history }) => {
   const onHandleEmailChange = (e) => {
     setEmail(e.target.value);
   };
-  const onHandlePasswordChange = (e) => {
-    setPassword(e.target.value);
-  };
 
   const onSubmit = () => {
-    dispatch(updateUserProfile({ name, email, password }));
+    dispatch(updateUserProfile(name, email));
   };
-
-  // Fetch all the tasks for this user
-  useEffect(() => {
-    if (!state.auth.token) {
-      history.push('/login');
-    }
-    dispatch(getTasks(state.auth.token));
-  }, [dispatch, history, state.auth.token]);
 
   return (
     <Container>
@@ -76,18 +73,6 @@ const Profile = ({ history }) => {
                 value={email}
                 id="email"
                 placeholder="Please enter an email"
-                autoComplete="off"
-              />
-            </FormGroup>
-            <FormGroup>
-              <Label for="password">Password</Label>
-              <Input
-                type="password"
-                name="password"
-                onChange={onHandlePasswordChange}
-                value={password}
-                id="password"
-                placeholder="Enter password"
                 autoComplete="off"
               />
             </FormGroup>

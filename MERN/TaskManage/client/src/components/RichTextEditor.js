@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { convertFromHTML, convertToRaw, ContentState } from 'draft-js';
 import { Editor, EditorState, getDefaultKeyBinding, RichUtils } from 'draft-js';
-import '../RichText.css';
+//import '../RichText.css';
 import draftToHtml from 'draftjs-to-html';
 
 class RichTextEditor extends Component {

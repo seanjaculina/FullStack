@@ -16,19 +16,9 @@
 - The application allows you to update your profile information and also track the task queue aside from the task page. Pretty neat!
   ![profil](./readme_imgs/profile.png)
 
-### Coming Soon
+##### Click to see demonsstration on YouTube:
 
-- Analytics! The plan is to visualize your productivity in a way that is visually appealing but also helpful to your work ethic. The application will track day/day, week/week ,month/month and year/year historical data on your task submissions / completions! What better way to stay motivated?
-
-### Further versions
-
-- After completing the ability to create a task and add all sorts of data about that task, the next iteration of this application is planned to add the following features:
-
-1. Set priorities on a task
-2. Sort by priority and drag-to-rearange ability
-3. Dark / light mode toggle
-4. Upload images to a task
-5. Set due dates on a task that will determine tags on a task like "due soon", "due today", "past-due", "urgent", etc.
+[![TaskManage](https://img.youtube.com/vi/rnqCNtu82Ho/0.jpg)](https://www.youtube.com/watch?v=rnqCNtu82Ho&feature=youtu.be)
 
 ### Project Inspiration
 

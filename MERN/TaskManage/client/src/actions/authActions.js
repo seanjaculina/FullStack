@@ -55,22 +55,29 @@ export const register = ({ name, email, password }) => async (dispatch) => {
 };
 
 // Update user profile
-export const updateUserProfile = ({ name, email, password }) => async (
+export const updateUserProfile = (name, email) => async (
   dispatch,
+  getState,
 ) => {
   const config = {
     headers: {
       'Content-Type': 'application/json',
     },
   };
-  const body = JSON.stringify({ name, email, password });
+
+  if (!name || name === '') {
+    name = getState().auth.user.name;
+  }
+  if (!email || email === '') {
+    email = getState().auth.user.email;
+  }
+  const body = JSON.stringify({ name, email });
 
   try {
     // Perform the request
-    const userRegister = await axios.put('/api/users', body, config);
-
+    const { data } = await axios.put('/api/users', body, config);
     // Dispatch to state our succes with the new user
-    dispatch({ type: USER_UPDATE_SUCCESS, payload: userRegister.data });
+    dispatch({ type: USER_UPDATE_SUCCESS, payload: data });
   } catch (error) {
     dispatch(
       returnErrors(

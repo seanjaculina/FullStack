@@ -39,9 +39,6 @@ const Register = ({ history }) => {
     dispatch(register(user)); // register the user with the register action which will perform the request and then update the state
     if (!state.auth.isAuthenticated) {
       setErrorShowing(true);
-      setTimeout(() => {
-        setErrorShowing(false);
-      }, 1500);
     }
   };
 
