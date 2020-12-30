@@ -17,12 +17,12 @@ const TaskList = ({ history }) => {
   const state = useSelector((state) => state);
 
   useEffect(() => {
-    if (!state.auth.token) {
+    if (!state.auth.isAuthenticated) {
       history.push('/login');
     }
     // Get all the tasks if the user is authenticated: this action requires the token in our state to be sent
     dispatch(getTasks(state.auth.token));
-  }, [dispatch, history, state.auth.token]);
+  }, [dispatch, history, state.auth.isAuthenticated, state.auth.token]);
 
   const addTask_ = (taskData, token) => {
     dispatch(addTask(taskData, token));

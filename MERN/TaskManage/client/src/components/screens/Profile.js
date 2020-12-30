@@ -34,18 +34,17 @@ const Profile = ({ history }) => {
     setPassword(e.target.value);
   };
 
-  const onSubmit = (e) => {
+  const onSubmit = () => {
     dispatch(updateUserProfile({ name, email, password }));
   };
 
   // Fetch all the tasks for this user
   useEffect(() => {
-    // If for whatever reason this route was exposed without being authenticated we should redirect to the login page
-    if (!state.auth.isAuthenticated) {
+    if (!state.auth.token) {
       history.push('/login');
     }
     dispatch(getTasks(state.auth.token));
-  }, [dispatch, history, state.auth.isAuthenticated, state.auth.token]);
+  }, [dispatch, history, state.auth.token]);
 
   return (
     <Container>

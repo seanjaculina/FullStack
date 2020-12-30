@@ -8,7 +8,28 @@ import {
   REGISTER_FAIL,
   USER_UPDATE_SUCCESS,
   USER_UPDATE_FAIL,
+  USER_LOADING,
+  USER_LOADED,
+  AUTH_ERROR,
 } from './types';
+
+// Load user: used for initial load and reload
+export const loadUser = () => async (dispatch, getState) => {
+  dispatch({ type: USER_LOADING });
+  const config = {
+    headers: {
+      'Content-type': 'application/json',
+      Authorization: getState().auth.token,
+    },
+  };
+
+  try {
+    const { data } = await axios.get('/api/auth/user', config);
+    dispatch({ type: USER_LOADED, payload: data });
+  } catch (error) {
+    dispatch({ type: AUTH_ERROR });
+  }
+};
 
 // Register new user action
 export const register = ({ name, email, password }) => async (dispatch) => {

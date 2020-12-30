@@ -16,7 +16,7 @@ import {
  * If they are authenticated. if it is loading and then the user (for profile UI stuff)
  */
 const initialState = {
-  token: localStorage.getItem('token'),
+  token: localStorage.getItem('token'), // see if there is a token in localStorage
   isAuthenticated: null,
   isLoading: false,
   user: null,
@@ -34,12 +34,12 @@ const authReducer = (state = initialState, action) => {
         ...state,
         isAuthenticated: true,
         isLoading: false,
-        user: action.payload, // contains the token
+        user: action.payload, // contains the token and user information
       };
     case USER_UPDATE_SUCCESS:
     case LOGIN_SUCCESS:
     case REGISTER_SUCCESS:
-      localStorage.setItem('token', action.payload.token); // save the auth token to local storage such that when we reload page, requests that send on those loads that require token to be sent will still exist in local storage so we can persist auth sessions
+      localStorage.setItem('token', action.payload.token);
       return {
         ...state,
         ...action.payload, // holds token (userID) and the user (remember that is what we send back from the backend)
@@ -53,10 +53,10 @@ const authReducer = (state = initialState, action) => {
     case LOGOUT_SUCCESS:
     case REGISTER_FAIL:
       localStorage.removeItem('token'); // REMOVE TOKEN
+      localStorage.removeItem('userInformation');
       return {
         ...state,
         token: null,
-        user: null,
         isAuthenticated: false,
         isLoading: false,
       };
