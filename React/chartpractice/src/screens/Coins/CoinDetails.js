@@ -30,7 +30,13 @@ const CoinDetails = () => {
     <Container className="coins_container">
       <Container>
         <h1>Coin Details</h1>
-        <PaginationBar setPagination={paginate} />
+        <Link to="/">
+          <Button>Go Home</Button>
+        </Link>
+        <PaginationBar
+          setPagination={paginate}
+          nums={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
+        />
       </Container>
       <Table>
         <thead>

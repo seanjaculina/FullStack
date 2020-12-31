@@ -1,7 +1,6 @@
 import React from 'react';
 import { Pagination, PaginationItem, PaginationLink } from 'reactstrap';
-const PaginationBar = ({ setPagination }) => {
-  const nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+const PaginationBar = ({ setPagination, nums }) => {
   return (
     <Pagination
       aria-label="Page navigation example"
