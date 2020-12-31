@@ -3,9 +3,9 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
 
 // Component imports
-import Home from './screens/Home/Home';
-import CoinDetails from './screens/Coins/CoinDetails';
-import CoinDetail from './screens/Coins/CoinDetail';
+import Home from './components/screens/Home/Home';
+import CoinDetails from './components/screens/Coins/CoinDetails';
+import CoinDetail from './components/screens/Coins/CoinDetail';
 
 const App = () => {
   return (

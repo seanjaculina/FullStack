@@ -7,43 +7,76 @@ import { Button, Container, Table, Spinner } from 'reactstrap';
 // Component imports
 import PaginationBar from '../../../PaginationBar';
 import LoadingSpinner from '../../../LoadingSpinner';
-const state = {
-  labels: ['January', 'February', 'March', 'April', 'May'],
-  datasets: [
-    {
-      label: 'Rainfall',
-      fill: false,
-      lineTension: 0.5,
-      backgroundColor: 'rgba(0,0,0,0)',
-      borderColor: 'rgba(0,0,0,1)',
-      borderWidth: 2,
-      data: [65, 59, 80, 81, 56],
-    },
-  ],
-};
+
+// Helper methods
+import { createDatePriceCollection } from '../../../helpers/dateConversion';
+import {
+  slicePathName,
+  sliceAndUpperCasePathName,
+} from '../../../helpers/slicePathName';
+// Chart configs and such
 
 const CoinDetail = ({ match, location }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [paginatedDayValue, setPaginatedDayValue] = useState(7); // allow pagination
   const [coin, setCoin] = useState('');
-  const [coinData, setCoinData] = useState([]);
+  const [coinData, setCoinData] = useState(null);
   useEffect(() => {
     const fetchData = async () => {
       setIsLoading(true);
-      const coinName = location.pathname.slice(6); // get the name of the coin from the path of this url using the location API
-      setCoin(
-        location.pathname.slice(6)[0].toUpperCase() +
-          location.pathname.slice(7),
-      );
+      const coinName = slicePathName(location.pathname);
+      setCoin(sliceAndUpperCasePathName(location));
       const { data } = await axios.get(
-        `https://api.coingecko.com/api/v3/coins/${coinName}/market_chart?vs_currency=usd&days=${paginatedDayValue}`,
+        `https://api.coingecko.com/api/v3/coins/${coinName}/market_chart?vs_currency=usd&days=${paginatedDayValue}&interval=daily`,
       );
       setCoinData(data);
       setIsLoading(false);
     };
     fetchData();
-  }, [coin, location.pathname, paginatedDayValue]);
-  console.log(coinData);
+  }, [coin, location, location.pathname, paginatedDayValue]);
+
+  if (coinData) {
+    const coinDatesAndPrices = createDatePriceCollection(coinData);
+    console.log(coinDatesAndPrices);
+  }
+
+  const data = {
+    labels: ['January', 'February', 'March', 'April', 'May'],
+    datasets: [
+      {
+        label: `Price changes the last ${paginatedDayValue} days`,
+        fill: true,
+        lineTension: 0.5,
+        borderColor: 'rgba(255,255,255,0.7)',
+        borderWidth: 2,
+        data: [65, 59, 80, 81, 56],
+        backgroundColor: [
+          'rgba(255, 99, 132, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(75, 192, 192, 0.2)',
+          'rgba(153, 102, 255, 0.2)',
+          'rgba(255, 159, 64, 0.2)',
+        ],
+      },
+    ],
+  };
+
+  const options = {
+    title: {
+      display: true,
+      text: `${coin} prices`,
+      fontSize: 20,
+    },
+    legend: {
+      display: true,
+      position: 'bottom',
+    },
+    scales: {
+      xAxes: [],
+    },
+  };
+
   return (
     <Container className="coins_container">
       {isLoading && <LoadingSpinner />}
@@ -68,20 +101,7 @@ const CoinDetail = ({ match, location }) => {
         </Container>
       )}
       <div style={{ marginTop: '50px' }}>
-        <Line
-          data={state}
-          options={{
-            title: {
-              display: true,
-              text: `${coin} prices`,
-              fontSize: 20,
-            },
-            legend: {
-              display: true,
-              position: 'bottom',
-            },
-          }}
-        />
+        <Line data={data} options={options} />
       </div>
     </Container>
   );
