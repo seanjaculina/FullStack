@@ -1,0 +1,102 @@
+.home_container {
+  background-color: #0a043c;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.home_container h1 {
+  color: #fff;
+  font-size: 4rem;
+}
+
+.home_container p {
+  color: #fff;
+}
+
+.home_container .start-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  margin-top: 2rem;
+  padding: 1rem;
+  width: 200px;
+  height: 70px;
+  background-color: #bc6ff1;
+  font-size: 1.1rem;
+  text-decoration: none;
+  color: #fff;
+}
+
+.home_container .start-btn:hover {
+  box-shadow: 0 0 5px 3px #fff8c1;
+}
+
+@media screen and (max-width: 500px) {
+  .home_container h1 {
+    font-size: 3rem;
+  }
+  .home_container {
+    display: flex;
+    padding: 1rem;
+    font-size: 1rem;
+  }
+
+  .home_container .start-btn {
+    width: 100%;
+    height: 50px;
+  }
+  .home_container .start-btn:hover {
+    box-shadow: none;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .home_container h1 {
+    font-size: 2.4rem;
+    padding-bottom: 1rem;
+  }
+  .home_container {
+    display: flex;
+    padding: 1rem;
+    font-size: 1rem;
+  }
+
+  .home_container .start-btn {
+    width: 100%;
+    height: 50px;
+  }
+  .home_container .start-btn:hover {
+    box-shadow: none;
+  }
+}
+
+@media screen and (max-width: 300px) {
+  .home_container h1 {
+    font-size: 1.7rem;
+    padding-bottom: 1rem;
+  }
+  .home_container {
+    display: flex;
+    padding: 1rem;
+    font-size: 1rem;
+  }
+
+  .home_container p {
+    font-size: 0.8rem;
+    color: #fff;
+  }
+
+  .home_container .start-btn {
+    width: 100%;
+    height: 30px;
+    font-size: 0.8rem;
+  }
+  .home_container .start-btn:hover {
+    box-shadow: none;
+  }
+}
