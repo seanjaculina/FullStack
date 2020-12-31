@@ -4,12 +4,15 @@ const PaginationBar = ({ setPagination, nums }) => {
   return (
     <Pagination
       aria-label="Page navigation example"
-      style={{ marginTop: '10px' }}
+      style={{
+        marginTop: '10px',
+        borderRadius: '3px',
+      }}
     >
       {nums.map((num) => {
         return (
           <PaginationItem key={num} onClick={() => setPagination(num)}>
-            <PaginationLink first>{num}</PaginationLink>
+            <PaginationLink className="page">{num}</PaginationLink>
           </PaginationItem>
         );
       })}

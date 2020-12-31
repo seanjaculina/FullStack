@@ -56,3 +56,7 @@ th {
   align-items: center;
   justify-content: center;
 }
+
+.page:hover {
+  background-color: #047dfea5 !important;
+}

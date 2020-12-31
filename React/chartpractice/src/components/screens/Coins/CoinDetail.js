@@ -5,8 +5,8 @@ import axios from 'axios';
 import { Button, Container, Table, Spinner } from 'reactstrap';
 
 // Component imports
-import PaginationBar from './PaginationBar';
-import LoadingSpinner from '../../LoadingSpinner';
+import PaginationBar from '../../../PaginationBar';
+import LoadingSpinner from '../../../LoadingSpinner';
 const state = {
   labels: ['January', 'February', 'March', 'April', 'May'],
   datasets: [

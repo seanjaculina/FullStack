@@ -7,7 +7,7 @@ import './Coins.css';
 import { Button, Container, Table } from 'reactstrap';
 
 // Component imports
-import PaginationBar from './PaginationBar';
+import PaginationBar from '../../../PaginationBar';
 
 const CoinDetails = () => {
   const [coins, setCoins] = useState([]);

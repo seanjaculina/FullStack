@@ -11,3 +11,8 @@ html,
 body {
   background-color: #0a043c !important;
 }
+
+.page {
+  color: #fff !important;
+  background-color: #047bfe !important;
+}
