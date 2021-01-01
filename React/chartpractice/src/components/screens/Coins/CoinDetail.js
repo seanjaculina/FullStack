@@ -14,13 +14,13 @@ import {
   slicePathName,
   sliceAndUpperCasePathName,
 } from '../../../helpers/slicePathName';
-// Chart configs and such
 
 const CoinDetail = ({ match, location }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [paginatedDayValue, setPaginatedDayValue] = useState(7); // allow pagination
   const [coin, setCoin] = useState('');
-  const [coinData, setCoinData] = useState(null);
+  const [coinData, setCoinData] = useState({});
+  // const [datePriceCoin, setDatePriceCoin] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
       setIsLoading(true);
@@ -33,31 +33,26 @@ const CoinDetail = ({ match, location }) => {
       setIsLoading(false);
     };
     fetchData();
-  }, [coin, location, location.pathname, paginatedDayValue]);
+  }, [location, paginatedDayValue]);
 
-  if (coinData) {
+  // Only if the coinData exists should we run our conversions
+  let datePriceInfo = [];
+  if (coinData && coinData.prices) {
     const coinDatesAndPrices = createDatePriceCollection(coinData);
-    console.log(coinDatesAndPrices);
+    datePriceInfo = coinDatesAndPrices;
+    console.log(datePriceInfo);
   }
 
   const data = {
-    labels: ['January', 'February', 'March', 'April', 'May'],
+    labels: datePriceInfo.map((price) => price.date),
     datasets: [
       {
-        label: `Price changes the last ${paginatedDayValue} days`,
         fill: true,
         lineTension: 0.5,
         borderColor: 'rgba(255,255,255,0.7)',
         borderWidth: 2,
-        data: [65, 59, 80, 81, 56],
-        backgroundColor: [
-          'rgba(255, 99, 132, 0.2)',
-          'rgba(54, 162, 235, 0.2)',
-          'rgba(255, 206, 86, 0.2)',
-          'rgba(75, 192, 192, 0.2)',
-          'rgba(153, 102, 255, 0.2)',
-          'rgba(255, 159, 64, 0.2)',
-        ],
+        data: datePriceInfo.map((price) => parseFloat(price.price)),
+        backgroundColor: 'rgba(0,100, 255, 0.2)',
       },
     ],
   };
@@ -65,11 +60,13 @@ const CoinDetail = ({ match, location }) => {
   const options = {
     title: {
       display: true,
-      text: `${coin} prices`,
+      text: `${coin} prices the last ${paginatedDayValue} days`,
       fontSize: 20,
+      fontColor: '#fff',
+      fontFamily: "'Dosis', sans-serif",
     },
     legend: {
-      display: true,
+      display: false,
       position: 'bottom',
     },
     scales: {
