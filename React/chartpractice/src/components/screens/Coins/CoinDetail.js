@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Line } from 'react-chartjs-2';
 import axios from 'axios';
-import { Button, Container, Table, Spinner } from 'reactstrap';
+import { Button, Container } from 'reactstrap';
 
 // Component imports
 import PaginationBar from '../../../PaginationBar';
@@ -20,7 +20,6 @@ const CoinDetail = ({ match, location }) => {
   const [paginatedDayValue, setPaginatedDayValue] = useState(7); // allow pagination
   const [coin, setCoin] = useState('');
   const [coinData, setCoinData] = useState({});
-  // const [datePriceCoin, setDatePriceCoin] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
       setIsLoading(true);
@@ -37,10 +36,11 @@ const CoinDetail = ({ match, location }) => {
 
   // Only if the coinData exists should we run our conversions
   let datePriceInfo = [];
+  let currentPrice;
   if (coinData && coinData.prices) {
     const coinDatesAndPrices = createDatePriceCollection(coinData);
     datePriceInfo = coinDatesAndPrices;
-    console.log(datePriceInfo);
+    currentPrice = datePriceInfo[datePriceInfo.length - 1].price;
   }
 
   const data = {
@@ -70,8 +70,27 @@ const CoinDetail = ({ match, location }) => {
       display: false,
       position: 'bottom',
     },
+
     scales: {
-      xAxes: [],
+      xAxes: [
+        {
+          label: 'Price',
+          ticks: {
+            beginAtZero: false,
+          },
+        },
+      ],
+      yAxes: [
+        {
+          ticks: {
+            beginAtZero: false,
+          },
+          scaleLabel: {
+            display: true,
+            labelString: 'Price range in $',
+          },
+        },
+      ],
     },
   };
 
@@ -98,8 +117,15 @@ const CoinDetail = ({ match, location }) => {
           />
         </>
       )}
+
       <div style={{ marginTop: '50px' }}>
         <Line data={data} options={options} />
+      </div>
+      <div className="insight-numbers">
+        <div className="insight-price">
+          <p>Current price:</p>
+          <span>${currentPrice}</span>
+        </div>
       </div>
     </Container>
   );

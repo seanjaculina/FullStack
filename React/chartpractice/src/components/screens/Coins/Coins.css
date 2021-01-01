@@ -60,3 +60,22 @@ th {
 .page:hover {
   background-color: #047dfea5 !important;
 }
+
+.insight-numbers {
+  display: flex;
+  margin-top: 3rem;
+  background-color: #fff;
+}
+
+.insight-price {
+  display: flex;
+  background-color: red;
+}
+
+.insight-numbers span {
+  display: flex;
+}
+
+.insight-numbers p {
+  display: flex;
+}
