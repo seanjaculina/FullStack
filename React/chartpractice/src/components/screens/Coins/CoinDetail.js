@@ -61,9 +61,10 @@ const CoinDetail = ({ match, location }) => {
     title: {
       display: true,
       text: `${coin} prices the last ${paginatedDayValue} days`,
-      fontSize: 20,
+      fontSize: 30,
       fontColor: '#fff',
       fontFamily: "'Dosis', sans-serif",
+      padding: 30,
     },
     legend: {
       display: false,
@@ -78,7 +79,7 @@ const CoinDetail = ({ match, location }) => {
     <Container className="coins_container">
       {isLoading && <LoadingSpinner />}
       {coin && (
-        <Container>
+        <>
           <h1>{coin}</h1>
           <Link to="/coindetails">
             <Button>Go Back</Button>
@@ -95,7 +96,7 @@ const CoinDetail = ({ match, location }) => {
             setPagination={setPaginatedDayValue}
             nums={[7, 14, 30, 90, 365]}
           />
-        </Container>
+        </>
       )}
       <div style={{ marginTop: '50px' }}>
         <Line data={data} options={options} />
