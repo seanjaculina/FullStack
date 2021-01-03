@@ -8,16 +8,21 @@ import { Button, Container, Table } from 'reactstrap';
 
 // Component imports
 import PaginationBar from '../../../PaginationBar';
+import LoadingSpinner from '../../../LoadingSpinner';
 
 const CoinDetails = () => {
   const [coins, setCoins] = useState([]);
   const [paginatedValue, setPaginatedValue] = useState(1); // allow pagination
+  const [isLoading, setIsLoading] = useState(false);
+
   useEffect(() => {
     const fetch = async () => {
+      setIsLoading(true);
       const { data } = await axios.get(
         `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=${paginatedValue}&sparkline=false`,
       );
       setCoins(data);
+      setIsLoading(false);
     };
     fetch();
   }, [paginatedValue]);
@@ -28,6 +33,7 @@ const CoinDetails = () => {
 
   return (
     <Container className="coins_container">
+      {isLoading && <LoadingSpinner />}
       <Container>
         <h1>Coin Details</h1>
         <Link to="/">

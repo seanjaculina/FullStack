@@ -15,15 +15,30 @@ import {
   sliceAndUpperCasePathName,
 } from '../../../helpers/slicePathName';
 
+// Chart Configs
+import { dataObj, optionsObj } from '../../../chartConfig/chartConfig';
+
 const CoinDetail = ({ match, location }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [paginatedDayValue, setPaginatedDayValue] = useState(7); // allow pagination
+
+  const [coinPrice, setCoinPrice] = useState(null);
   const [coin, setCoin] = useState('');
   const [coinData, setCoinData] = useState({});
+
+  // Grab the coin name from the url path
+  const coinName = slicePathName(location.pathname);
+
+  // Get the prcies of the coin based off pagiination selection (initial query is 7 days)
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchCoinPrice = async () => {
       setIsLoading(true);
-      const coinName = slicePathName(location.pathname);
+      const { data } = await axios.get(
+        `https://api.coingecko.com/api/v3/simple/price?ids=${coinName}&vs_currencies=usd`,
+      );
+      setCoinPrice(data[coinName].usd);
+    };
+    const fetchCoinData = async () => {
       setCoin(sliceAndUpperCasePathName(location));
       const { data } = await axios.get(
         `https://api.coingecko.com/api/v3/coins/${coinName}/market_chart?vs_currency=usd&days=${paginatedDayValue}&interval=daily`,
@@ -31,75 +46,31 @@ const CoinDetail = ({ match, location }) => {
       setCoinData(data);
       setIsLoading(false);
     };
-    fetchData();
-  }, [location, paginatedDayValue]);
+
+    fetchCoinPrice();
+    fetchCoinData();
+  }, [coinName, location, paginatedDayValue]);
 
   // Only if the coinData exists should we run our conversions
-  let datePriceInfo = [];
-  let currentPrice;
-  if (coinData && coinData.prices) {
-    const coinDatesAndPrices = createDatePriceCollection(coinData);
-    datePriceInfo = coinDatesAndPrices;
-    currentPrice = datePriceInfo[datePriceInfo.length - 1].price;
-  }
-
-  const data = {
-    labels: datePriceInfo.map((price) => price.date),
-    datasets: [
-      {
-        fill: true,
-        lineTension: 0.5,
-        borderColor: 'rgba(255,255,255,0.7)',
-        borderWidth: 2,
-        data: datePriceInfo.map((price) => parseFloat(price.price)),
-        backgroundColor: 'rgba(0,100, 255, 0.2)',
-      },
-    ],
-  };
-
-  const options = {
-    title: {
-      display: true,
-      text: `${coin} prices the last ${paginatedDayValue} days`,
-      fontSize: 30,
-      fontColor: '#fff',
-      fontFamily: "'Dosis', sans-serif",
-      padding: 30,
-    },
-    legend: {
-      display: false,
-      position: 'bottom',
-    },
-
-    scales: {
-      xAxes: [
-        {
-          label: 'Price',
-          ticks: {
-            beginAtZero: false,
-          },
-        },
-      ],
-      yAxes: [
-        {
-          ticks: {
-            beginAtZero: false,
-          },
-          scaleLabel: {
-            display: true,
-            labelString: 'Price range in $',
-          },
-        },
-      ],
-    },
+  const formatCoinData = () => {
+    if (coinData && coinData.prices) {
+      return createDatePriceCollection(coinData);
+    } else {
+      return [];
+    }
   };
 
   return (
     <Container className="coins_container">
       {isLoading && <LoadingSpinner />}
       {coin && (
-        <>
-          <h1>{coin}</h1>
+        <div>
+          <div className="top-info">
+            <h1>{coin}</h1>
+            <div className="insight-numbers">
+              {coinPrice && <span>Current price: ${coinPrice}</span>}
+            </div>
+          </div>
           <Link to="/coindetails">
             <Button>Go Back</Button>
           </Link>
@@ -115,17 +86,14 @@ const CoinDetail = ({ match, location }) => {
             setPagination={setPaginatedDayValue}
             nums={[7, 14, 30, 90, 365]}
           />
-        </>
+        </div>
       )}
 
       <div style={{ marginTop: '50px' }}>
-        <Line data={data} options={options} />
-      </div>
-      <div className="insight-numbers">
-        <div className="insight-price">
-          <p>Current price:</p>
-          <span>${currentPrice}</span>
-        </div>
+        <Line
+          data={dataObj(formatCoinData)}
+          options={optionsObj(coin, paginatedDayValue)}
+        />
       </div>
     </Container>
   );
