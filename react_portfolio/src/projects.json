@@ -1,6 +1,6 @@
 [
   {
-    "title": "Coffee Connection",
+    "title": "CoffeeConnection",
     "link": "https://coffee-connection.herokuapp.com/",
     "description": "A full stack MERN application built on top of Yelps Fusion Business Search API.",
     "image": "coffee_connection",
@@ -13,6 +13,13 @@
     "description": "A MERN application that allows for rich text editing for custom notes and managing tasks to keep users acountable for the things they want to achieve.",
     "image": "task",
     "btnText": "See on GitHub"
+  },
+  {
+    "title": "CoinSight",
+    "link": "https://coinsight.netlify.app/",
+    "description": "React application using the CoinGecko API and ChartJS to do data visualizations of Crypto Currency price fluctuations over time",
+    "image": "coin",
+    "btnText": "See Live"
   },
 
   {
@@ -42,12 +49,5 @@
     "description": "A frontend web application using the TMDb Movie Search API to render out movies with keyword search or top trending movies in the US",
     "image": "movie_app",
     "btnText": "See on GitHub"
-  },
-  {
-    "title": "Ebay Clone",
-    "link": "https://ebay-clone-react.herokuapp.com/",
-    "description": "A full stack MERN web application clone of Ebay. Leverages their advanced product search API to generate real time product searches and Redux for cart updates and price fluctuations.",
-    "image": "ebay",
-    "btnText": "See Live"
   }
 ]

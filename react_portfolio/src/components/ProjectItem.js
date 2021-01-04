@@ -5,7 +5,7 @@ import coffee_connection from '../images/coffee_connection.png';
 import youtube from '../images/youtube.png';
 import movie_app from '../images/movie_app.png';
 import covid from '../images/covid.png';
-import ebay from '../images/ebay.png';
+import coin from '../images/coinsight.png';
 import stream from '../images/stream.png';
 import baysbookland from '../images/baysbookland.jpg';
 import weather from '../images/weather.png';
@@ -16,7 +16,7 @@ const imgMap = {
   youtube: youtube,
   movie_app: movie_app,
   covid: covid,
-  ebay: ebay,
+  coin: coin,
   stream: stream,
   baysbookland: baysbookland,
   weather: weather,
