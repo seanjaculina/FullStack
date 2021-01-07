@@ -26,12 +26,31 @@ const imgMap = {
 const ProjectItem = ({ data }) => {
   return (
     <div className="project-item">
-      <h3>{data.title}</h3>
+      <div className="explanation-container">
+        <h3>{data.title}</h3>
+        <p className="project-description">{data.description}</p>
+        <div className="technologies-used">
+          {data.technologies.map((tech) => (
+            <span className="tech-span">{tech}</span>
+          ))}
+        </div>
+        <div className="btn-container">
+          <a className="btn_" href={data.link} target="_blank" rel="noreferrer">
+            {data.btnText}
+          </a>
+          {data.code_link.length > 0 && (
+            <a
+              className="btn_"
+              href={data.link}
+              target="_blank"
+              rel="noreferrer"
+            >
+              GitHub
+            </a>
+          )}
+        </div>
+      </div>
       <img alt={data.title} src={imgMap[data.image]} />
-      <p className="project-description">{data.description}</p>
-      <a className="btn_" href={data.link} target="_blank" rel="noreferrer">
-        {data.btnText}
-      </a>
     </div>
   );
 };

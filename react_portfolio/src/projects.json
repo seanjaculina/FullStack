@@ -2,6 +2,17 @@
   {
     "title": "CoffeeConnection",
     "link": "https://coffee-connection.herokuapp.com/",
+    "code_link": "https://github.com/TannerBarcelos/Coffee-Connection",
+    "technologies": [
+      "React",
+      "CSS",
+      "NodeJS",
+      "Express",
+      "MongoDB",
+      "SASS",
+      "Bootstrap",
+      "SemanticUI"
+    ],
     "description": "A full stack MERN application built on top of Yelps Fusion Business Search API.",
     "image": "coffee_connection",
     "btnText": "See Live"
@@ -10,13 +21,26 @@
   {
     "title": "TaskManage",
     "link": "https://github.com/TannerBarcelos/FullStack/tree/master/MERN/TaskManage",
+    "code_link": "",
+    "technologies": [
+      "React",
+      "CSS",
+      "DraftJS",
+      "NodeJS",
+      "Express",
+      "MongoDB",
+      "SASS",
+      "Bootstrap"
+    ],
     "description": "A MERN application that allows for rich text editing for custom notes and managing tasks to keep users acountable for the things they want to achieve.",
     "image": "task",
-    "btnText": "See on GitHub"
+    "btnText": "GitHub"
   },
   {
     "title": "CoinSight",
     "link": "https://coinsight.netlify.app/",
+    "code_link": "https://github.com/TannerBarcelos/FullStack/tree/master/React/chartpractice",
+    "technologies": ["React", "CSS", "ChartJS"],
     "description": "React application using the CoinGecko API and ChartJS to do data visualizations of Crypto Currency price fluctuations over time",
     "image": "coin",
     "btnText": "See Live"
@@ -25,6 +49,17 @@
   {
     "title": "Baysbook",
     "link": "https://glacial-journey-55442.herokuapp.com/?fbclid=IwAR0CtCB32bMNEhIemAEnNwCqBfIslK78WeEZ2XRgLG9zS6PpC_mDSO3WMlc",
+    "code_link": "https://github.com/TannerBarcelos/BaysBook",
+    "technologies": [
+      "React",
+      "Redux",
+      "CSS",
+      "NodeJS",
+      "Express",
+      "MongoDB",
+      "SASS",
+      "Bootstrap"
+    ],
     "description": "A full stack MERN application that allows the students of CSU East Bay to connect",
     "image": "baysbookland",
     "btnText": "See Live"
@@ -32,6 +67,8 @@
   {
     "title": "COVID-19 Fatality Visualizer",
     "link": "https://tannerbarcelos.github.io/COVID-19-Fatality-Visualizer/",
+    "code_link": "https://github.com/TannerBarcelos/COVID-19-Fatality-Visualizer",
+    "technologies": ["React", "CSS", "ChartJS"],
     "description": "A VanillaJS application that leveraged ChartJS to visualize COVID-19 related deaths in the United States sourcing data from the CDC",
     "image": "covid",
     "btnText": "See Live"
@@ -39,6 +76,8 @@
   {
     "title": "YouTube Clone",
     "link": "https://tanneryoutubeclone.netlify.app/",
+    "code_link": "https://github.com/TannerBarcelos/Basic_YouTube_Clone",
+    "technologies": ["React", "ExpressJS", "NodeJS", "SemanticUI"],
     "description": "A frontend web application leveraging React and the YouTube API for querying user video searches and playing them in the browser",
     "image": "youtube",
     "btnText": "See Live"
@@ -46,6 +85,8 @@
   {
     "title": "Movie Finder",
     "link": "https://github.com/TannerBarcelos/Movie-Search",
+    "code_link": "https://github.com/TannerBarcelos/Movie-Search",
+    "technologies": ["React", "ExpressJS", "NodeJS", "SemanticUI"],
     "description": "A frontend web application using the TMDb Movie Search API to render out movies with keyword search or top trending movies in the US",
     "image": "movie_app",
     "btnText": "See on GitHub"
