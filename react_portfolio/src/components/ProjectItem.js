@@ -41,7 +41,7 @@ const ProjectItem = ({ data }) => {
           {data.code_link.length > 0 && (
             <a
               className="btn_"
-              href={data.link}
+              href={data.code_link}
               target="_blank"
               rel="noreferrer"
             >
