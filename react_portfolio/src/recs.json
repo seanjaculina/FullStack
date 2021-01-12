@@ -1,10 +1,10 @@
 [
   {
-    "name": "Karan Monga",
-    "position": "Software Developer at Apexx Strategies",
-    "association": "Former classmates and developers on senior capstone project",
-    "recommendation": "I had the pleasure of working with Tanner on the Frontend team for the class project during our Software Engineering course. Tanner always displayed enthusiasm to learn new things and motivated the team to do a better job. His experience in JavaScript programming proved valuable during the development phase. Above all, I was really impressed with Tanner's quick learning ability and his dedication to the task at hand. I highly recommend him for any Frontend developer position",
-    "linkedin": "https://www.linkedin.com/in/karanmongaa/"
+    "name": "Greg Bernstein",
+    "position": "Telecommunications Consultant and Contractor, previous professor at CSU East Bay",
+    "association": "Professor for undergraduate and graduate level web development and systems courses",
+    "recommendation": "Tanner was one of the top students in my CS351 Web Development class at California State University East Bay. This class was on full stack web development which includes development for the front end (browser or mobile platform), the backend (servers of content and/or data), and the network (protocols and architectures). Tanner excelled at Website design, React, and Node.js development. As an undergraduate he then took my graduate level CS651 Web Systems class where he was my top student. This class featured enhanced web security, server testing (via JavaScript testing frameworks), enhanced JSON processing including JSON-Schema based validation and WebSockets.Tanner went significantly beyond class requirements with his own development project (web app) which featured independent deployment, API usage, enhanced CSS techniques, etc. In addition, Tanner has very good communication skills. I highly recommend Tanner for any type of web related development job",
+    "linkedin": "linkedin.com/in/greg-bernstein-518688/"
   },
   {
     "name": "Katrina Herweg",
@@ -12,6 +12,13 @@
     "association": "Previous classmates in undergraduate computer science program at CSU East Bay",
     "recommendation": "Tanner is a highly motivated self-starter who I have had the opportunity to work with at school. He extends his learning beyond the classroom by working on projects that fuel his passion for web development. Tanner continuously seeks opportunities for self-improvement and education while displaying perseverance. On top of his enthusiasm for learning and side-projects, Tanner is always happy to aid his peers in their computer science journey whenever he can",
     "linkedin": "https://www.linkedin.com/in/katrina-herweg-831738122/"
+  },
+  {
+    "name": "Karan Monga",
+    "position": "Software Developer at Apexx Strategies",
+    "association": "Former classmates and developers on senior capstone project",
+    "recommendation": "I had the pleasure of working with Tanner on the Frontend team for the class project during our Software Engineering course. Tanner always displayed enthusiasm to learn new things and motivated the team to do a better job. His experience in JavaScript programming proved valuable during the development phase. Above all, I was really impressed with Tanner's quick learning ability and his dedication to the task at hand. I highly recommend him for any Frontend developer position",
+    "linkedin": "https://www.linkedin.com/in/karanmongaa/"
   },
   {
     "name": "Joshua Knudsen",
