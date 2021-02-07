@@ -89,6 +89,6 @@
     "technologies": ["React", "ExpressJS", "NodeJS", "SemanticUI"],
     "description": "A frontend web application using the TMDb Movie Search API to render out movies with keyword search or top trending movies in the US",
     "image": "movie_app",
-    "btnText": "See on GitHub"
+    "btnText": "GitHub"
   }
 ]
