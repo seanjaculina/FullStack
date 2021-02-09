@@ -194,7 +194,6 @@ html {
   font-size: 12px;
   color: #fff;
   padding: 7px;
-  border-radius: 10px;
   margin: 5px 5px 5px 0;
 }
 
@@ -217,7 +216,6 @@ html {
 }
 
 .section__content img {
-  border-radius: 50%;
   width: 350px;
   height: 350px;
   margin: 2rem 0 1rem 0;
@@ -238,11 +236,6 @@ html {
   justify-content: space-evenly;
   flex-wrap: wrap;
   margin-top: 2rem;
-}
-
-.technologies_container i {
-  font-size: 6rem;
-  padding: 2rem 1rem;
 }
 
 .btn {

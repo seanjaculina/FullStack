@@ -5,28 +5,16 @@ import Fade from 'react-reveal/Fade'; // fade in effect
 
 import Me from '../images/me.jpg';
 
-const About = () => {
-  const iconArray = [
-    { className: 'fab fa-js', technology: 'js' },
-    { className: 'fab fa-react', technology: 'react' },
-    { className: 'fab fa-node', technology: 'node' },
-    { className: 'fab fa-html5', technology: 'html5' },
-    { className: 'fab fa-css3-alt', technology: 'css3' },
-    { className: 'fab fa-java', technology: 'java' },
-    { className: 'fab fa-python', technology: 'python' },
-    {
-      className: 'fas fa-project-diagram',
-      technology: 'data structures and algorithms',
-    },
-  ];
+import iconArray from '../icon_factory';
 
+const About = () => {
   return (
     <Fade>
       <div className="section_container" id="about">
         <div className="about">
           <h1 className="section__heading">About me</h1>
           <div className="section__content">
-            <img alt="profile" src={Me} />
+            <img alt="profile" src={Me} style={{ borderRadius: '50%' }} />
             <p>
               My name is Tanner and I am a rising senior at CSU East Bay in
               Hayward graduating this coming May. I have an interest in full
