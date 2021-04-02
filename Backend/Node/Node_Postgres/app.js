@@ -14,16 +14,16 @@ app.use(express.json());
 
 // template engine - using server-rendered app here. No client side JS / React
 app.engine(
-  'handlebars',
+  'hbs',
   exphbs({
-    defaultLayout: 'main', // the default html layout for every page which can then have custom html for each view injected in
+    defaultLayout: 'main.hbs', // the default html layout for every page which can then have custom html for each view injected in
     runtimeOptions: {
       allowProtoPropertiesByDefault: true,
       allowProtoMethodsByDefault: true,
     },
   }),
 );
-app.set('view engine', 'handlebars'); // set the view engine to handlebars
+app.set('view engine', 'hbs'); // set the view engine to handlebars
 app.use(express.static(path.join(__dirname, 'public'))); // set static assets folder - public folder holds all static assets
 
 // Connect to the database
@@ -37,7 +37,7 @@ app.use(express.static(path.join(__dirname, 'public'))); // set static assets fo
 })();
 
 // Home page route - server rendered home page
-app.get('/', (req, res) => res.render('index', { layout: 'landing' }));
+app.get('/', (req, res) => res.render('index', { layout: 'landing.hbs' }));
 
 // routes - like blueprints in flask - applies modularity to the routes in a server
 app.use('/gigs', require('./routes/gigs'));

@@ -50,7 +50,7 @@ router.post('/add', async (req, res) => {
     else budget = `$${budget}`;
 
     // Edit the comma sepatated list of technologies by making lowercase and removing spaces after commas
-    technologies = technologies.toLowerCase().replace(/, /g, ',');
+    technologies = technologies.toLowerCase().replaceAll(' ', '');
 
     try {
       // Insert this data into the table as a new record - returns a promise
