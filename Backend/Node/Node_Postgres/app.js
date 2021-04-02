@@ -1,16 +1,31 @@
 const express = require('express');
 const exphbs = require('express-handlebars');
 const path = require('path');
-require('dotenv').config(); // must config to let nodejs use the environment variables
+require('dotenv').config();
 
 const db = require('./config/database');
 
-// Middlewares
+// Init express app
 const app = express();
+
+// Middlewares
 app.use(express.json());
+// template engine - using server-rendered app here. No client side JS / React
+app.engine(
+  'handlebars',
+  exphbs({
+    defaultLayout: 'main', // the default html layout for every page which can then have custom html for each view injected in
+    runtimeOptions: {
+      allowProtoPropertiesByDefault: true,
+      allowProtoMethodsByDefault: true,
+    },
+  }),
+);
+app.set('view engine', 'handlebars'); // set the view engine to handlebars
+app.use(express.static(path.join(__dirname, 'public'))); // set static assets folder - public folder holds all static assets
 
 // Connect to the database
-(async function connectDB() {
+(async function connect() {
   try {
     await db.authenticate();
     console.log('Connection has been established successfully.');
@@ -19,7 +34,8 @@ app.use(express.json());
   }
 })();
 
-app.get('/', (req, res) => res.send('Index'));
+// Home page route - server rendered home page
+app.get('/', (req, res) => res.render('index', { layout: 'landing' }));
 
 // routes - like blueprints in flask - applies modularity to the routes in a server
 app.use('/gigs', require('./routes/gigs'));
