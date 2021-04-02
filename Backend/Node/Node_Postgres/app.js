@@ -9,7 +9,9 @@ const db = require('./config/database');
 const app = express();
 
 // Middlewares
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
 // template engine - using server-rendered app here. No client side JS / React
 app.engine(
   'handlebars',

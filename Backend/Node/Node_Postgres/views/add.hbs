@@ -1,7 +1,8 @@
 <!--
 Notice: this is just html and the form has all the required name, types etc. in it. Since the form 
 is being served up from express in a template, the form by default will be sending the requests to the same 
-origin (5000 in this case) that the host server is running on 
+origin (5000 in this case) that the host server is running on. Line 14 shows that we want to send the post request
+of a new gig to /gigs/add api we made to add a new gig to the db
 -->
 <section id="add" class="container">
       <div class="form-wrap">
@@ -10,7 +11,14 @@ origin (5000 in this case) that the host server is running on
           Your contact email will be shared with registered users to apply to
           your gig
         </p>
-        <form>
+        <!-- Loop all the errors and output each of their text properties that represent the error - see server -->
+        {{#each errors}}
+          <div class="error">
+            <p>{{text}}</p>
+          </div>
+        {{/each}}
+        <!-- Send this new gig to the /gigs/add route as a POST-->
+        <form action="/gigs/add" method="POST">
           <div class="input-group">
             <label for="title">Gig Title</label>
             <input
@@ -20,7 +28,7 @@ origin (5000 in this case) that the host server is running on
               class="input-box"
               placeholder="eg. Small Wordpress website, React developer"
               maxlength="100"
-              required
+              value={{title}}
             />
           </div>
           <div class="input-group">
@@ -32,6 +40,7 @@ origin (5000 in this case) that the host server is running on
               class="input-box"
               placeholder="eg. javascript, react, PHP"
               maxlength="100"
+              value={{technologies}}
             />
           </div>
           <div class="input-group">
@@ -42,6 +51,7 @@ origin (5000 in this case) that the host server is running on
               id="budget"
               class="input-box"
               placeholder="eg. 500, 5000, 10000"
+              value={{budget}}
             />
           </div>
           <div class="input-group">
@@ -52,8 +62,7 @@ origin (5000 in this case) that the host server is running on
               class="input-box"
               placeholder="Describe the details of the gig"
               rows="10"
-              required
-            ></textarea>
+            >{{description}}</textarea>
           </div>
           <div class="input-group">
             <label for="budget">Contact Email</label>
@@ -63,10 +72,10 @@ origin (5000 in this case) that the host server is running on
               id="contactemail"
               class="input-box"
               placeholder="Enter an email"
-              required
+              value={{contact_email}}
             />
           </div>
           <input type="submit" value="Add Gig" class="btn btn-reverse" />
         </form>
       </div>
-    </section>
+</section>
