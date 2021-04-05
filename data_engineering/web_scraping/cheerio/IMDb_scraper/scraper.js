@@ -22,7 +22,7 @@ const searchMovies = async (term) => {
   // Get every element in the table
   $('.findResult').each(async (index, element) => {
     const el = $(element);
-    const title = el.find('td.result_text a').text(); // get the title of the element
+    const title = el.find('td.result_text a').text().trim(); // get the title of the element
     const image = el.find('td a img').attr('src'); // get the image source attribute
     const moreInfoLink = el.find('td.result_text a').attr('href'); // get the link to more info on this movie
     const newMovie = new Movie({
@@ -30,13 +30,10 @@ const searchMovies = async (term) => {
       image_url: image,
       info_url: `${baseURI}${moreInfoLink}`,
     });
-    const exists = await Movie.find({
-      title: { $regex: title, $options: 'i' },
-    });
-    if (!exists) {
+    try {
       movies.push(newMovie);
       await newMovie.save();
-    }
+    } catch (error) {}
   });
   return movies;
 };

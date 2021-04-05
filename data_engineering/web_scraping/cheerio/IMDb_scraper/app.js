@@ -14,13 +14,12 @@ connectDB();
 // Search for a movie - performs a scrape on the request
 app.post('/movies', async (req, res) => {
   const { term } = req.body;
-  const exists = await Movie.find({ title: { $regex: term, $options: 'i' } }); // see if the term being searched already exists to enhance performance time
-
-  if (exists.length === 0 || !exists) {
-    const movies = await searchMovies(term);
+  const movies = await Movie.find({ title: { $regex: term, $options: 'i' } });
+  if (movies) {
+    console.log('ran');
     res.status(200).json(movies);
   } else {
-    res.status(200).json(exists);
+    res.status(200).json(await searchMovies(term));
   }
 });
 
