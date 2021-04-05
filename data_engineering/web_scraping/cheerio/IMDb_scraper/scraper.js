@@ -30,8 +30,13 @@ const searchMovies = async (term) => {
       image_url: image,
       info_url: `${baseURI}${moreInfoLink}`,
     });
-    movies.push(newMovie);
-    await newMovie.save();
+    const exists = await Movie.find({
+      title: { $regex: title, $options: 'i' },
+    });
+    if (!exists) {
+      movies.push(newMovie);
+      await newMovie.save();
+    }
   });
   return movies;
 };

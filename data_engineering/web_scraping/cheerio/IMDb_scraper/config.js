@@ -6,6 +6,7 @@ const connectDB = () => {
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,
+      useCreateIndex: true,
     },
     () => console.log('Connected to DB'),
   );

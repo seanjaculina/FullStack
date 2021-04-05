@@ -15,7 +15,8 @@ connectDB();
 app.post('/movies', async (req, res) => {
   const { term } = req.body;
   const exists = await Movie.find({ title: { $regex: term, $options: 'i' } }); // see if the term being searched already exists to enhance performance time
-  if (!exists) {
+
+  if (exists.length === 0 || !exists) {
     const movies = await searchMovies(term);
     res.status(200).json(movies);
   } else {
