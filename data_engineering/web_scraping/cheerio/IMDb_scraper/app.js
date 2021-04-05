@@ -5,22 +5,26 @@ const connectDB = require('./config');
 const Movie = require('./models/Movie');
 
 const app = express();
+
+// Middlewares
 app.use(cors());
 app.use(express.json());
 
 // Connect to the DB
 connectDB();
 
-// Search for a movie - performs a scrape on the request
+// Get the top movies on IMDB - home route
+app.get('/', (req, res) => {
+  res.send('hello');
+});
+
+// Search for a movie - performs a scrape on the request if the requested term movies does not already exist in the db
 app.post('/movies', async (req, res) => {
   const { term } = req.body;
   const movies = await Movie.find({ title: { $regex: term, $options: 'i' } });
-  if (movies) {
-    console.log('ran');
-    res.status(200).json(movies);
-  } else {
-    res.status(200).json(await searchMovies(term));
-  }
+  movies.length > 0
+    ? res.status(200).json(movies)
+    : res.status(200).json(await searchMovies(term));
 });
 
 // Get movie by its ID

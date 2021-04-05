@@ -28,12 +28,14 @@ const searchMovies = async (term) => {
     const newMovie = new Movie({
       title,
       image_url: image,
-      info_url: `${baseURI}${moreInfoLink}`,
+      info_url: `https://imdb.com/${moreInfoLink}`,
     });
     try {
       movies.push(newMovie);
       await newMovie.save();
-    } catch (error) {}
+    } catch (error) {
+      console.log('Movie already exists');
+    }
   });
   return movies;
 };
