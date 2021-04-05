@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const searchMovies = require('./scraper');
+const { searchMovies, searchMovieById } = require('./scraper');
 const connectDB = require('./config');
 const Movie = require('./models/Movie');
 
@@ -21,6 +21,7 @@ app.get('/', (req, res) => {
 // Search for a movie - performs a scrape on the request if the requested term movies does not already exist in the db
 app.post('/movies', async (req, res) => {
   const { term } = req.body;
+  const movies = await Movie.find({ title: { $regex: term, $options: 'i' } });
   movies.length > 0
     ? res.status(200).json(movies)
     : res.status(200).json(await searchMovies(term));
@@ -29,6 +30,7 @@ app.post('/movies', async (req, res) => {
 // Get movie by its ID
 app.get('/movies/:id', async (req, res) => {
   const { id } = req.params;
+  // const movieInformation = await searchMovieById(id);
   res.status(200).json(await Movie.findById(id));
 });
 

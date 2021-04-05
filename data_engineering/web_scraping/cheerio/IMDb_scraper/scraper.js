@@ -23,21 +23,22 @@ const searchMovies = async (term) => {
   $('.findResult').each(async (index, element) => {
     const el = $(element);
     const title = el.find('td.result_text a').text().trim(); // get the title of the element
-    const image = el.find('td a img').attr('src'); // get the image source attribute
+    const image = el.find('td a img').attr('src'); // get the image source
     const moreInfoLink = el.find('td.result_text a').attr('href'); // get the link to more info on this movie
     const newMovie = new Movie({
       title,
       image_url: image,
       info_url: `https://imdb.com/${moreInfoLink}`,
     });
-    try {
-      movies.push(newMovie);
-      await newMovie.save();
-    } catch (error) {
-      console.log('Movie already exists');
-    }
+    movies.push(newMovie);
+    await newMovie.save();
   });
   return movies;
 };
 
-module.exports = searchMovies;
+// Performs scrape on specific movie information
+const searchMovieById = async (id) => {
+  console.log(id);
+};
+
+module.exports = { searchMovies, searchMovieById };

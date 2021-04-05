@@ -4,7 +4,6 @@ const mongoose = require('mongoose');
 const movieSchema = new mongoose.Schema({
   title: {
     type: String,
-    unique: true,
   },
   image_url: {
     type: String,
