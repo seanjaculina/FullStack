@@ -14,11 +14,13 @@ const searchMovies = async (term) => {
   const page = await fetch(`${baseURI}${term}`);
   const html = await page.text();
 
+  const movies = [];
+
   // Init cheerio to load the html being requested
   const $ = cheerio.load(html);
 
   // Get every element in the table
-  $('.findResult').each((index, element) => {
+  $('.findResult').each(async (index, element) => {
     const el = $(element);
     const title = el.find('td.result_text a').text(); // get the title of the element
     const image = el.find('td a img').attr('src'); // get the image source attribute
@@ -28,11 +30,10 @@ const searchMovies = async (term) => {
       image_url: image,
       info_url: `${baseURI}${moreInfoLink}`,
     });
+    movies.push(newMovie);
+    await newMovie.save();
   });
+  return movies;
 };
-
-// const searchMovieById = async (id) => {
-//   const page = await fetch
-// }
 
 module.exports = searchMovies;
