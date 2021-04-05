@@ -21,7 +21,6 @@ app.get('/', (req, res) => {
 // Search for a movie - performs a scrape on the request if the requested term movies does not already exist in the db
 app.post('/movies', async (req, res) => {
   const { term } = req.body;
-  const movies = await Movie.find({ title: { $regex: term, $options: 'i' } });
   movies.length > 0
     ? res.status(200).json(movies)
     : res.status(200).json(await searchMovies(term));
