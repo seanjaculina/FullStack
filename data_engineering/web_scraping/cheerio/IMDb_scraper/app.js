@@ -6,10 +6,17 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.get('/', async (req, res) => {
+app.post('/movies', async (req, res) => {
   const { term } = req.body;
-  const movies = await searchMovies('star wars');
+  const movies = await searchMovies(term);
   res.status(200).json(movies);
+});
+
+app.get('/movies:id', (req, res) => {
+  const { id } = req.params;
+  // const movieData = await searchMovieById(id);
+  // res.status(200).json(movieData);
+  res.status(200).json(id);
 });
 
 const PORT = process.env.PORT || 4040;
