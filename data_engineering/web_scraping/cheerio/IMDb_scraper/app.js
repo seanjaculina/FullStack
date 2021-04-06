@@ -21,10 +21,23 @@ app.get('/', (req, res) => {
 // Search for a movie - performs a scrape on the request if the requested term movies does not already exist in the db
 app.post('/movies', async (req, res) => {
   const { term } = req.body;
-  const movies = await Movie.find({ title: { $regex: term, $options: 'i' } });
-  movies.length > 0
-    ? res.status(200).json(movies)
-    : res.status(200).json(await searchMovies(term));
+
+  // Check the DB for this term. If there is already a collection of movies with this title, return the collection
+  // else, scrape for this new term, save to db and return. I am taking this step to ensure performance update
+  // We still have overhead on the scraping as unless a user searches for a movie that is in our database, we will need
+  // to save the new searched movies from a scrape and then later searches will be fast. The only way to fix this is of course
+  // to just use a movie API or literally search all possible movies ever and make our own db. The former is better than the latter
+  // but this whole application is an exercise of building an API from scraped data
+
+  const movies = await Movie.find({
+    title: { $regex: `^${term}`, $options: 'i' },
+  });
+
+  if (movies && movies.length > 0) {
+    res.status(200).json(movies);
+  } else {
+    res.status(200).json(await searchMovies(term));
+  }
 });
 
 // Get movie by its ID

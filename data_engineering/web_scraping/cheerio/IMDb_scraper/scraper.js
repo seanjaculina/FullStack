@@ -15,7 +15,7 @@ const searchMovies = async (term) => {
   const page = await fetch(`${baseURI}${term}`);
   const html = await page.text();
 
-  const movies = [];
+  const moviePromises = [];
 
   // Init cheerio to load the html being requested
   const $ = cheerio.load(html);
@@ -32,10 +32,9 @@ const searchMovies = async (term) => {
       image_url: image,
       info_url: `https://imdb.com/${moreInfoLink}`,
     });
-    movies.push(newMovie);
-    await newMovie.save(); // commit it
+    moviePromises.push(newMovie.save());
   });
-  return movies;
+  return Promise.all(moviePromises);
 };
 
 // Performs scrape on specific movie information
