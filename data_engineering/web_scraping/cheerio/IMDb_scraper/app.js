@@ -39,8 +39,16 @@ app.post('/movies', async (req, res) => {
 // Get movie by its ID
 app.get('/movies/:id', async (req, res) => {
   const { id } = req.params;
-  // const movieInformation = await searchMovieById(id);
-  res.status(200).json(await Movie.findById(id));
+  try {
+    const movie = await Movie.findById(id);
+    if (movie) {
+      res.status(200).json(movie);
+    } else {
+      res.status(404).json({ message: 'Movie not found' });
+    }
+  } catch (error) {
+    res.status(500).json({ message: 'Something went wrong' });
+  }
 });
 
 const PORT = process.env.PORT || 4040;

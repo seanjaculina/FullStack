@@ -8,5 +8,5 @@ The idea was simple. Although APIs like TMDB, etc. exist to get information abou
 
 - NodeJS and Express For Server Side
 - Cheerio For Web Scraping in The NodeJS Environment
-- VanillaJS For The Client Side [React is amazing but VanillaJS is always fun to mess with!]
+- React For The Client Side
 - CSS For Styling
