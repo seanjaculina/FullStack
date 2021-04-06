@@ -33,6 +33,8 @@ app.post('/movies', async (req, res) => {
     title: { $regex: `^${term}`, $options: 'i' },
   });
 
+  console.log(movies);
+
   if (movies && movies.length > 0) {
     res.status(200).json(movies);
   } else {
