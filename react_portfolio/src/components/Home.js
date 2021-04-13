@@ -6,7 +6,10 @@ const Home = () => {
   return (
     <div className="section_container" id="home">
       <div className="hero-content">
-        <h1>Hi, my name is Tanner Barcelos</h1>
+        <div className="headline">
+          <span>Hi</span>
+          <span>My name is Tanner Barcelos</span>
+        </div>
         <ul className="socials">
           <li>
             <a href="https://github.com/TannerBarcelos" target="_blank">
@@ -31,7 +34,6 @@ const Home = () => {
           </li>
         </ul>
       </div>
-      <i className="fas fa-arrow-down arrow"></i>
     </div>
   );
 };

@@ -10,10 +10,7 @@ import javascript from './tech_icons/javascript.svg';
 import java from './tech_icons/java.svg';
 import html from './tech_icons/html.png';
 import flask from './tech_icons/flask.png';
-import ds from './tech_icons/ds.svg';
-import css from './tech_icons/css.svg';
-import cpp from './tech_icons/cpp.png';
-import c from './tech_icons/c.png';
+import css from './tech_icons/css.png';
 import express from './tech_icons/express.jpeg';
 
 const iconArray = [
@@ -39,15 +36,6 @@ const iconArray = [
   {
     name: 'java',
     path: java,
-  },
-
-  {
-    name: 'cpp',
-    path: cpp,
-  },
-  {
-    name: 'c',
-    path: c,
   },
 
   {
@@ -84,10 +72,6 @@ const iconArray = [
     path: flask,
   },
   { name: 'express', path: express },
-  {
-    name: 'ds',
-    path: ds,
-  },
 ];
 
 export default iconArray;

@@ -1,7 +1,5 @@
 import React from 'react';
 
-import Fade from 'react-reveal/Fade'; // fade in effect
-
 // Projects JSON file
 import ProjectList from '../projects.json';
 import ProjectItem from './ProjectItem';
