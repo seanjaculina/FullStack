@@ -277,9 +277,23 @@ html {
 /* Media Queries */
 
 @media screen and (max-width: 1000px) {
+  .hero-content {
+    width: 100vw;
+    text-align: center;
+  }
+
+  .hero-content .headline span:first-of-type {
+    font-size: 3rem;
+  }
+
+  .hero-content .headline span:last-of-type {
+    font-size: 1rem;
+    padding-top: 2rem;
+  }
   .hero-content .socials {
-    width: 100%;
+    width: 85vw;
     justify-content: space-evenly;
+    align-items: center;
   }
 
   .section__content {
@@ -306,22 +320,15 @@ html {
   }
 
   .project-item {
-    min-height: 860px;
-    width: 100%;
-  }
-
-  .project-item {
-    box-shadow: none;
-    min-height: 860px;
-    width: 100%;
+    min-height: 680px;
+    width: 90vw;
     flex-direction: column-reverse;
+    margin-bottom: 3rem;
   }
 
   .project-item:nth-child(even) {
-    box-shadow: none;
-    min-height: 860px;
-    width: 100%;
     flex-direction: column-reverse;
+    margin-bottom: 3rem;
   }
 
   .project-item h3 {
@@ -331,20 +338,18 @@ html {
   }
 
   .project-item img {
-    width: 350px;
+    width: 85vw;
     height: 350px;
     margin-top: 2rem;
+    margin-left: 10px;
+    margin-right: 10px;
     padding: 0;
   }
 
   .project-item .explanation-container {
-    width: 90%;
-    min-height: 450px;
+    width: 100%;
+    min-height: 250px;
     align-items: center;
-  }
-
-  .project-description {
-    padding: 1rem;
   }
 
   .technologies-used {
@@ -356,13 +361,9 @@ html {
   }
   .project-item .explanation-container .btn_ {
     height: 2.7rem;
-    width: 100%;
+    width: 95%;
     font-size: 1rem;
     margin: 0.5rem auto;
-  }
-
-  .technologies-used {
-    margin-bottom: 0;
   }
 
   .hero-content h1 {
@@ -373,5 +374,19 @@ html {
   }
   .project-item .btn_ {
     padding: 1rem;
+  }
+
+  .recommendation_container {
+    width: 90vw;
+  }
+
+  .technologies_container {
+    width: 90vw;
+  }
+
+  .technologies_container img {
+    width: 100px !important;
+    height: 100px !important;
+    margin: none !important;
   }
 }
