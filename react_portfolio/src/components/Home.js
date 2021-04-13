@@ -7,8 +7,8 @@ const Home = () => {
     <div className="section_container" id="home">
       <div className="hero-content">
         <div className="headline">
-          <span>Hi</span>
-          <span>My name is Tanner Barcelos</span>
+          <span>Hi, my name is Tanner Barcelos</span>
+          <span>Developer. Researcher. Designer. Creator</span>
         </div>
         <ul className="socials">
           <li>
@@ -30,6 +30,14 @@ const Home = () => {
               target="_blank"
             >
               <i className="far fa-file"></i>
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://medium.com/@tanner.manuel.barcelos"
+              target="_blank"
+            >
+              <i class="fab fa-medium"></i>
             </a>
           </li>
         </ul>

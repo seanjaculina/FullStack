@@ -1,14 +1,14 @@
 [
   {
     "name": "Greg Bernstein",
-    "position": "Telecommunications Consultant and Contractor, previous professor at CSU East Bay",
+    "position": "Professor at CSU East Bay",
     "association": "Professor for undergraduate and graduate level web development and systems courses",
     "recommendation": "Tanner was one of the top students in my CS351 Web Development class at California State University East Bay. This class was on full stack web development which includes development for the front end (browser or mobile platform), the backend (servers of content and/or data), and the network (protocols and architectures). Tanner excelled at Website design, React, and Node.js development. As an undergraduate he then took my graduate level CS651 Web Systems class where he was my top student. This class featured enhanced web security, server testing (via JavaScript testing frameworks), enhanced JSON processing including JSON-Schema based validation and WebSockets.Tanner went significantly beyond class requirements with his own development project (web app) which featured independent deployment, API usage, enhanced CSS techniques, etc. In addition, Tanner has very good communication skills. I highly recommend Tanner for any type of web related development job",
     "linkedin": "https://www.linkedin.com/in/greg-bernstein-518688/"
   },
   {
     "name": "Katrina Herweg",
-    "position": "Cyber Security Intern at Lawrence Livermore National Lab",
+    "position": "Cyber Security at Lawrence Livermore National Lab",
     "association": "Previous classmates in undergraduate computer science program at CSU East Bay",
     "recommendation": "Tanner is a highly motivated self-starter who I have had the opportunity to work with at school. He extends his learning beyond the classroom by working on projects that fuel his passion for web development. Tanner continuously seeks opportunities for self-improvement and education while displaying perseverance. On top of his enthusiasm for learning and side-projects, Tanner is always happy to aid his peers in their computer science journey whenever he can",
     "linkedin": "https://www.linkedin.com/in/katrina-herweg-831738122/"

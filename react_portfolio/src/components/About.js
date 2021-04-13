@@ -13,10 +13,12 @@ const About = () => {
         <div className="section__content">
           <img alt="profile" src={Me} style={{ borderRadius: '50%' }} />
           <p>
-            My name is Tanner and I am a rising senior at CSU East Bay in
-            Hayward graduating this coming May. I have an interest in full stack
-            development and am interested in Frontend/Fullstack engineering
-            roles. See some of my technical skills below!
+            Hi there! My name is Tanner and I am a Computer Science graduate
+            from CSU East Bay in Hayward, CA. My degree was focused around
+            Full-Stack Software Engineering and on the side, I self taught
+            myself Product Design. I have a passion for designing and creating
+            wonderful applications that provide purpose and meaning in users
+            lives. Below are some of the skills and technologies I know.
           </p>
           <div className="technologies_container">
             {iconArray.map((icon, i) => (
