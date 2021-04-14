@@ -1,6 +1,7 @@
 const axios = require('axios');
 const cheerio = require('cheerio');
 const convertToUSD = require('./conversion');
+
 const URL = 'http://books.toscrape.com/';
 
 // Gets the HTML page - returns promise as it is an async func
@@ -15,7 +16,17 @@ const scrapeAllProducts = async () => {
   // Init cheerio
   const $ = cheerio.load(html);
 
+  // Get total results and the amount of results per page so we can loop all pages and get all data
+  const totalResults = $('.form-horizontal strong:first-of-type').text();
+  const totalOnPage = $('.form-horizontal strong:last-of-type').text();
+  const totalPages = totalResults / totalOnPage;
+
   const books = [];
+
+  for (let i = 1; i < totalPages + 1; i++) {
+    if (i === 1) {
+    }
+  }
 
   $('div ol.row li').each((index, element) => {
     const book = $(element);
