@@ -1,0 +1,10 @@
+<h1><%- title %></h1>
+<ul class="list-group">
+  <!--Uses basic JS and HTML but embedded in the EJS symbols-->
+  <% things.forEach((thing, i) => { %>
+  <li class="list-group-item" data-id="<%= i %>">
+    <%= thing %>
+    <button class="btn btn-danger deleteBtn">X</button>
+  </li>
+  <% });%>
+</ul>
